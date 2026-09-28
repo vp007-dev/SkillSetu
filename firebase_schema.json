@@ -1,0 +1,165 @@
+{
+  "name": "SkillSetu v3 Firebase Firestore Database Schema",
+  "version": "3.0",
+  "database": "Cloud Firestore",
+  "collections": {
+    "users": {
+      "description": "Authenticated candidate accounts",
+      "fields": {
+        "id": "string (Primary Key / Firebase UID)",
+        "email": "string",
+        "name": "string",
+        "avatar_url": "string (optional)",
+        "target_roles": "array of strings",
+        "location_preferences": "array of strings",
+        "linkedin_url": "string (optional)",
+        "github_url": "string (optional)",
+        "portfolio_url": "string (optional)",
+        "created_at": "timestamp / ISO string",
+        "updated_at": "timestamp / ISO string"
+      }
+    },
+    "profiles": {
+      "description": "Candidate personas and groundings",
+      "fields": {
+        "id": "string (Primary Key)",
+        "user_id": "string",
+        "resume_id": "string (optional)",
+        "name": "string",
+        "email": "string",
+        "phone": "string",
+        "role": "string",
+        "location_preference": "string",
+        "career_goals": "string",
+        "tech_stack": "array of strings",
+        "skills": "array of strings",
+        "projects": "array of maps",
+        "experiences": "array of maps",
+        "education": "array of maps",
+        "certifications": "array of maps",
+        "search_keywords": "array of strings",
+        "preferred_roles": "array of strings",
+        "experience_summary": "string",
+        "raw_markdown": "string",
+        "is_primary": "boolean",
+        "created_at": "timestamp / ISO string"
+      }
+    },
+    "documents": {
+      "description": "Uploaded resume files and converted markdown docs",
+      "fields": {
+        "id": "string (Primary Key)",
+        "user_id": "string",
+        "candidate_id": "string (optional)",
+        "filename": "string",
+        "doc_type": "string (resume | cover_letter | certificate | job_posting | portfolio)",
+        "raw_markdown": "string",
+        "metadata": "map",
+        "file_url": "string (optional)",
+        "created_at": "timestamp / ISO string"
+      }
+    },
+    "embeddings": {
+      "description": "RAG vector embeddings store for semantic career context search",
+      "fields": {
+        "id": "string (Primary Key)",
+        "document_id": "string",
+        "user_id": "string",
+        "candidate_id": "string (optional)",
+        "chunk_text": "string",
+        "chunk_index": "number",
+        "chunk_metadata": "map",
+        "embedding": "array of numbers (768 float vector)",
+        "created_at": "timestamp / ISO string"
+      }
+    },
+    "resumes": {
+      "description": "Parsed structured resumes",
+      "fields": {
+        "id": "string (Primary Key)",
+        "user_id": "string",
+        "candidate_id": "string (optional)",
+        "document_id": "string (optional)",
+        "name": "string",
+        "email": "string",
+        "phone": "string",
+        "education": "array of maps",
+        "experience": "array of maps",
+        "skills": "array of strings",
+        "projects": "array of maps",
+        "certifications": "array of maps",
+        "raw_text": "string",
+        "created_at": "timestamp / ISO string"
+      }
+    },
+    "resume_analysis": {
+      "description": "AI-generated resume feedback and breakdown",
+      "fields": {
+        "id": "string (Primary Key)",
+        "resume_id": "string",
+        "user_id": "string",
+        "strengths": "array of strings",
+        "weaknesses": "array of strings",
+        "experience_level": "string",
+        "domain_focus": "string",
+        "key_technologies": "array of strings",
+        "summary": "string",
+        "created_at": "timestamp / ISO string"
+      }
+    },
+    "opportunities": {
+      "description": "Job postings, internships, and hackathons",
+      "fields": {
+        "id": "string (Primary Key)",
+        "profile_id": "string (optional)",
+        "user_id": "string",
+        "title": "string",
+        "company_name": "string",
+        "url": "string",
+        "description": "string",
+        "source": "string",
+        "category": "string (job | internship | competition | hackathon | conclave)",
+        "location": "string",
+        "salary_range": "string",
+        "relevance_score": "number",
+        "matched_candidate_id": "string",
+        "skills_required": "array of strings",
+        "application_status": "string",
+        "is_active": "boolean",
+        "created_at": "timestamp / ISO string"
+      }
+    },
+    "ranked_opportunities": {
+      "description": "Candidate-ranked opportunity cards",
+      "fields": {
+        "id": "string (Primary Key)",
+        "opportunity_id": "string",
+        "profile_id": "string",
+        "user_id": "string",
+        "title": "string",
+        "company": "string",
+        "relevance_score": "number (0-100)",
+        "match_reasons": "array of strings",
+        "rank": "number",
+        "category": "string",
+        "created_at": "timestamp / ISO string"
+      }
+    },
+    "tailored_resumes": {
+      "description": "Company-tailored resumes and PDF links",
+      "fields": {
+        "id": "string (Primary Key)",
+        "user_id": "string",
+        "profile_id": "string",
+        "opportunity_id": "string",
+        "tailored_markdown": "string",
+        "pdf_url": "string",
+        "ats_score": "number (0-100)",
+        "keyword_matches": "array of strings",
+        "tailored_sections": "array of maps",
+        "company_alignment_notes": "string",
+        "created_at": "timestamp / ISO string"
+      }
+    }
+  }
+}

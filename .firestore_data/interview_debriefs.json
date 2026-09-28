@@ -1,0 +1,3433 @@
+[
+  {
+    "session_id": "session_4e17d24df8",
+    "candidate_id": "candidate_mohit",
+    "company_name": "Google DeepMind",
+    "job_title": "Senior AI Systems Engineer",
+    "overall_score": 88,
+    "hiring_verdict": "Hire",
+    "technical_score": 26,
+    "communication_score": 22,
+    "problem_solving_score": 22,
+    "culture_fit_score": 18,
+    "summary_verdict": "The candidate demonstrated strong foundational knowledge for the Senior AI Systems Engineer role at Google DeepMind. Technical explanations were structured, with notable strengths in system design and proactive problem solving.",
+    "top_strengths": [
+      "Strong grasp of scalable architecture and modern tech stack",
+      "Clear communication structure with confident delivery",
+      "Good understanding of engineering trade-offs"
+    ],
+    "top_weaknesses": [
+      "Could quantify business impact and metrics more rigorously",
+      "Could dive deeper into fault tolerance and failover protocols"
+    ],
+    "body_language_and_pacing_notes": "Maintained great visual presence, steady cadence, and professional composure throughout the interview.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 88,
+        "verdict": "Hire",
+        "detailed_comments": "Solid grasp of backend architecture and frontend reactive patterns.",
+        "key_strengths": [
+          "Clean architectural reasoning"
+        ],
+        "areas_for_growth": [
+          "Deep-dive edge-case failure modes"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 89,
+        "verdict": "Hire",
+        "detailed_comments": "Articulate, goal-oriented, and highly motivated.",
+        "key_strengths": [
+          "Clear communication"
+        ],
+        "areas_for_growth": [
+          "Quantify past project revenue impact"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 87,
+        "verdict": "Hire",
+        "detailed_comments": "Strong alignment with company engineering values.",
+        "key_strengths": [
+          "High agency"
+        ],
+        "areas_for_growth": [
+          "Cross-functional stakeholder handling"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Walk me through how you architect high-scale systems for Google DeepMind.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Candidate explained microservices architecture, caching layers, and database optimization.",
+        "technical_accuracy_score": 9,
+        "communication_clarity_score": 8,
+        "strengths_in_answer": [
+          "Mentioned Redis caching and PostgreSQL indexing"
+        ],
+        "critical_gaps_or_flaws": [
+          "Could have detailed idempotent API design and rate limiting"
+        ],
+        "ideal_model_answer": "A complete 10/10 answer articulates end-to-end architecture: CDN -> API Gateway with Token Bucket rate limiting -> Stateless microservices -> Kafka event streaming -> PostgreSQL with read replicas + Redis write-through cache, with sub-20ms p99 latency SLA."
+      }
+    ],
+    "observations_timeline": [
+      {
+        "timestamp_sec": 0.0,
+        "observation_type": "posture",
+        "observation": "Great eye contact and composure",
+        "sentiment": "positive",
+        "impact_score": 2
+      },
+      {
+        "timestamp_sec": 0.0,
+        "observation_type": "technical",
+        "observation": "Cited HMAC-SHA256 and TTL boundaries precisely",
+        "sentiment": "positive",
+        "impact_score": 3
+      }
+    ],
+    "actionable_study_roadmap": [
+      "System Design: Deepen mastery of idempotent API design and distributed locking",
+      "Behavioral: Use the STAR framework (Situation, Task, Action, Result) with quantified $ and % metrics",
+      "Company Specific: Review Google DeepMind's engineering blog on high-throughput microservices"
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 3,
+    "duration_seconds": 420,
+    "created_at": 1790147801.0294714,
+    "id": "91b6f140-1c84-47cf-ac84-e19eb4bf8356"
+  },
+  {
+    "session_id": "session_9c34be7602",
+    "candidate_id": "candidate_mohit",
+    "company_name": "Google DeepMind",
+    "job_title": "Senior AI Systems Engineer",
+    "overall_score": 88,
+    "hiring_verdict": "Hire",
+    "technical_score": 26,
+    "communication_score": 22,
+    "problem_solving_score": 22,
+    "culture_fit_score": 18,
+    "summary_verdict": "The candidate demonstrated strong foundational knowledge for the Senior AI Systems Engineer role at Google DeepMind. Technical explanations were structured, with notable strengths in system design and proactive problem solving.",
+    "top_strengths": [
+      "Strong grasp of scalable architecture and modern tech stack",
+      "Clear communication structure with confident delivery",
+      "Good understanding of engineering trade-offs"
+    ],
+    "top_weaknesses": [
+      "Could quantify business impact and metrics more rigorously",
+      "Could dive deeper into fault tolerance and failover protocols"
+    ],
+    "body_language_and_pacing_notes": "Maintained great visual presence, steady cadence, and professional composure throughout the interview.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 88,
+        "verdict": "Hire",
+        "detailed_comments": "Solid grasp of backend architecture and frontend reactive patterns.",
+        "key_strengths": [
+          "Clean architectural reasoning"
+        ],
+        "areas_for_growth": [
+          "Deep-dive edge-case failure modes"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 89,
+        "verdict": "Hire",
+        "detailed_comments": "Articulate, goal-oriented, and highly motivated.",
+        "key_strengths": [
+          "Clear communication"
+        ],
+        "areas_for_growth": [
+          "Quantify past project revenue impact"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 87,
+        "verdict": "Hire",
+        "detailed_comments": "Strong alignment with company engineering values.",
+        "key_strengths": [
+          "High agency"
+        ],
+        "areas_for_growth": [
+          "Cross-functional stakeholder handling"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Walk me through how you architect high-scale systems for Google DeepMind.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Candidate explained microservices architecture, caching layers, and database optimization.",
+        "technical_accuracy_score": 9,
+        "communication_clarity_score": 8,
+        "strengths_in_answer": [
+          "Mentioned Redis caching and PostgreSQL indexing"
+        ],
+        "critical_gaps_or_flaws": [
+          "Could have detailed idempotent API design and rate limiting"
+        ],
+        "ideal_model_answer": "A complete 10/10 answer articulates end-to-end architecture: CDN -> API Gateway with Token Bucket rate limiting -> Stateless microservices -> Kafka event streaming -> PostgreSQL with read replicas + Redis write-through cache, with sub-20ms p99 latency SLA."
+      }
+    ],
+    "observations_timeline": [
+      {
+        "timestamp_sec": 0.0,
+        "observation_type": "posture",
+        "observation": "Great eye contact and composure",
+        "sentiment": "positive",
+        "impact_score": 2
+      },
+      {
+        "timestamp_sec": 0.0,
+        "observation_type": "technical",
+        "observation": "Cited HMAC-SHA256 and TTL boundaries precisely",
+        "sentiment": "positive",
+        "impact_score": 3
+      }
+    ],
+    "actionable_study_roadmap": [
+      "System Design: Deepen mastery of idempotent API design and distributed locking",
+      "Behavioral: Use the STAR framework (Situation, Task, Action, Result) with quantified $ and % metrics",
+      "Company Specific: Review Google DeepMind's engineering blog on high-throughput microservices"
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 3,
+    "duration_seconds": 420,
+    "created_at": 1790150198.8595963,
+    "id": "97b0c7d0-9ec1-4ba0-b306-e412470d1fd7"
+  },
+  {
+    "session_id": "session_5d24a1195b",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 88,
+    "hiring_verdict": "Hire",
+    "technical_score": 26,
+    "communication_score": 22,
+    "problem_solving_score": 22,
+    "culture_fit_score": 18,
+    "summary_verdict": "The candidate demonstrated strong foundational knowledge for the Senior Full-Stack Software Engineer role at Google Cloud. Technical explanations were structured, with notable strengths in system design and proactive problem solving.",
+    "top_strengths": [
+      "Strong grasp of scalable architecture and modern tech stack",
+      "Clear communication structure with confident delivery",
+      "Good understanding of engineering trade-offs"
+    ],
+    "top_weaknesses": [
+      "Could quantify business impact and metrics more rigorously",
+      "Could dive deeper into fault tolerance and failover protocols"
+    ],
+    "body_language_and_pacing_notes": "Maintained great visual presence, steady cadence, and professional composure throughout the interview.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 88,
+        "verdict": "Hire",
+        "detailed_comments": "Solid grasp of backend architecture and frontend reactive patterns.",
+        "key_strengths": [
+          "Clean architectural reasoning"
+        ],
+        "areas_for_growth": [
+          "Deep-dive edge-case failure modes"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 89,
+        "verdict": "Hire",
+        "detailed_comments": "Articulate, goal-oriented, and highly motivated.",
+        "key_strengths": [
+          "Clear communication"
+        ],
+        "areas_for_growth": [
+          "Quantify past project revenue impact"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 87,
+        "verdict": "Hire",
+        "detailed_comments": "Strong alignment with company engineering values.",
+        "key_strengths": [
+          "High agency"
+        ],
+        "areas_for_growth": [
+          "Cross-functional stakeholder handling"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Walk me through how you architect high-scale systems for Google Cloud.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Candidate explained microservices architecture, caching layers, and database optimization.",
+        "technical_accuracy_score": 9,
+        "communication_clarity_score": 8,
+        "strengths_in_answer": [
+          "Mentioned Redis caching and PostgreSQL indexing"
+        ],
+        "critical_gaps_or_flaws": [
+          "Could have detailed idempotent API design and rate limiting"
+        ],
+        "ideal_model_answer": "A complete 10/10 answer articulates end-to-end architecture: CDN -> API Gateway with Token Bucket rate limiting -> Stateless microservices -> Kafka event streaming -> PostgreSQL with read replicas + Redis write-through cache, with sub-20ms p99 latency SLA."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "System Design: Deepen mastery of idempotent API design and distributed locking",
+      "Behavioral: Use the STAR framework (Situation, Task, Action, Result) with quantified $ and % metrics",
+      "Company Specific: Review Google Cloud's engineering blog on high-throughput microservices"
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 3,
+    "duration_seconds": 300,
+    "created_at": 1790155216.468143,
+    "id": "42c3114f-0306-472f-8587-9f0c5b39842c"
+  },
+  {
+    "session_id": "session_933f8e8eae",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 88,
+    "hiring_verdict": "Hire",
+    "technical_score": 26,
+    "communication_score": 22,
+    "problem_solving_score": 22,
+    "culture_fit_score": 18,
+    "summary_verdict": "The candidate demonstrated strong foundational knowledge for the Senior Full-Stack Software Engineer role at Google Cloud. Technical explanations were structured, with notable strengths in system design and proactive problem solving.",
+    "top_strengths": [
+      "Strong grasp of scalable architecture and modern tech stack",
+      "Clear communication structure with confident delivery",
+      "Good understanding of engineering trade-offs"
+    ],
+    "top_weaknesses": [
+      "Could quantify business impact and metrics more rigorously",
+      "Could dive deeper into fault tolerance and failover protocols"
+    ],
+    "body_language_and_pacing_notes": "Maintained great visual presence, steady cadence, and professional composure throughout the interview.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 88,
+        "verdict": "Hire",
+        "detailed_comments": "Solid grasp of backend architecture and frontend reactive patterns.",
+        "key_strengths": [
+          "Clean architectural reasoning"
+        ],
+        "areas_for_growth": [
+          "Deep-dive edge-case failure modes"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 89,
+        "verdict": "Hire",
+        "detailed_comments": "Articulate, goal-oriented, and highly motivated.",
+        "key_strengths": [
+          "Clear communication"
+        ],
+        "areas_for_growth": [
+          "Quantify past project revenue impact"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 87,
+        "verdict": "Hire",
+        "detailed_comments": "Strong alignment with company engineering values.",
+        "key_strengths": [
+          "High agency"
+        ],
+        "areas_for_growth": [
+          "Cross-functional stakeholder handling"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Walk me through how you architect high-scale systems for Google Cloud.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Candidate explained microservices architecture, caching layers, and database optimization.",
+        "technical_accuracy_score": 9,
+        "communication_clarity_score": 8,
+        "strengths_in_answer": [
+          "Mentioned Redis caching and PostgreSQL indexing"
+        ],
+        "critical_gaps_or_flaws": [
+          "Could have detailed idempotent API design and rate limiting"
+        ],
+        "ideal_model_answer": "A complete 10/10 answer articulates end-to-end architecture: CDN -> API Gateway with Token Bucket rate limiting -> Stateless microservices -> Kafka event streaming -> PostgreSQL with read replicas + Redis write-through cache, with sub-20ms p99 latency SLA."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "System Design: Deepen mastery of idempotent API design and distributed locking",
+      "Behavioral: Use the STAR framework (Situation, Task, Action, Result) with quantified $ and % metrics",
+      "Company Specific: Review Google Cloud's engineering blog on high-throughput microservices"
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 6,
+    "duration_seconds": 300,
+    "created_at": 1790155223.82071,
+    "id": "158695b3-8b53-495c-94ba-8199b251bd91"
+  },
+  {
+    "session_id": "session_0bd40ffa8c",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 88,
+    "hiring_verdict": "Hire",
+    "technical_score": 26,
+    "communication_score": 22,
+    "problem_solving_score": 22,
+    "culture_fit_score": 18,
+    "summary_verdict": "The candidate demonstrated strong foundational knowledge for the Senior Full-Stack Software Engineer role at Google Cloud. Technical explanations were structured, with notable strengths in system design and proactive problem solving.",
+    "top_strengths": [
+      "Strong grasp of scalable architecture and modern tech stack",
+      "Clear communication structure with confident delivery",
+      "Good understanding of engineering trade-offs"
+    ],
+    "top_weaknesses": [
+      "Could quantify business impact and metrics more rigorously",
+      "Could dive deeper into fault tolerance and failover protocols"
+    ],
+    "body_language_and_pacing_notes": "Maintained great visual presence, steady cadence, and professional composure throughout the interview.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 88,
+        "verdict": "Hire",
+        "detailed_comments": "Solid grasp of backend architecture and frontend reactive patterns.",
+        "key_strengths": [
+          "Clean architectural reasoning"
+        ],
+        "areas_for_growth": [
+          "Deep-dive edge-case failure modes"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 89,
+        "verdict": "Hire",
+        "detailed_comments": "Articulate, goal-oriented, and highly motivated.",
+        "key_strengths": [
+          "Clear communication"
+        ],
+        "areas_for_growth": [
+          "Quantify past project revenue impact"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 87,
+        "verdict": "Hire",
+        "detailed_comments": "Strong alignment with company engineering values.",
+        "key_strengths": [
+          "High agency"
+        ],
+        "areas_for_growth": [
+          "Cross-functional stakeholder handling"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Walk me through how you architect high-scale systems for Google Cloud.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Candidate explained microservices architecture, caching layers, and database optimization.",
+        "technical_accuracy_score": 9,
+        "communication_clarity_score": 8,
+        "strengths_in_answer": [
+          "Mentioned Redis caching and PostgreSQL indexing"
+        ],
+        "critical_gaps_or_flaws": [
+          "Could have detailed idempotent API design and rate limiting"
+        ],
+        "ideal_model_answer": "A complete 10/10 answer articulates end-to-end architecture: CDN -> API Gateway with Token Bucket rate limiting -> Stateless microservices -> Kafka event streaming -> PostgreSQL with read replicas + Redis write-through cache, with sub-20ms p99 latency SLA."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "System Design: Deepen mastery of idempotent API design and distributed locking",
+      "Behavioral: Use the STAR framework (Situation, Task, Action, Result) with quantified $ and % metrics",
+      "Company Specific: Review Google Cloud's engineering blog on high-throughput microservices"
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 9,
+    "duration_seconds": 300,
+    "created_at": 1790155229.2918665,
+    "id": "fc4ed251-3694-4411-911f-46559d45b3fd"
+  },
+  {
+    "session_id": "session_38345d98be",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 88,
+    "hiring_verdict": "Hire",
+    "technical_score": 26,
+    "communication_score": 22,
+    "problem_solving_score": 22,
+    "culture_fit_score": 18,
+    "summary_verdict": "The candidate demonstrated strong foundational knowledge for the Senior Full-Stack Software Engineer role at Google Cloud. Technical explanations were structured, with notable strengths in system design and proactive problem solving.",
+    "top_strengths": [
+      "Strong grasp of scalable architecture and modern tech stack",
+      "Clear communication structure with confident delivery",
+      "Good understanding of engineering trade-offs"
+    ],
+    "top_weaknesses": [
+      "Could quantify business impact and metrics more rigorously",
+      "Could dive deeper into fault tolerance and failover protocols"
+    ],
+    "body_language_and_pacing_notes": "Maintained great visual presence, steady cadence, and professional composure throughout the interview.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 88,
+        "verdict": "Hire",
+        "detailed_comments": "Solid grasp of backend architecture and frontend reactive patterns.",
+        "key_strengths": [
+          "Clean architectural reasoning"
+        ],
+        "areas_for_growth": [
+          "Deep-dive edge-case failure modes"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 89,
+        "verdict": "Hire",
+        "detailed_comments": "Articulate, goal-oriented, and highly motivated.",
+        "key_strengths": [
+          "Clear communication"
+        ],
+        "areas_for_growth": [
+          "Quantify past project revenue impact"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 87,
+        "verdict": "Hire",
+        "detailed_comments": "Strong alignment with company engineering values.",
+        "key_strengths": [
+          "High agency"
+        ],
+        "areas_for_growth": [
+          "Cross-functional stakeholder handling"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Walk me through how you architect high-scale systems for Google Cloud.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Candidate explained microservices architecture, caching layers, and database optimization.",
+        "technical_accuracy_score": 9,
+        "communication_clarity_score": 8,
+        "strengths_in_answer": [
+          "Mentioned Redis caching and PostgreSQL indexing"
+        ],
+        "critical_gaps_or_flaws": [
+          "Could have detailed idempotent API design and rate limiting"
+        ],
+        "ideal_model_answer": "A complete 10/10 answer articulates end-to-end architecture: CDN -> API Gateway with Token Bucket rate limiting -> Stateless microservices -> Kafka event streaming -> PostgreSQL with read replicas + Redis write-through cache, with sub-20ms p99 latency SLA."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "System Design: Deepen mastery of idempotent API design and distributed locking",
+      "Behavioral: Use the STAR framework (Situation, Task, Action, Result) with quantified $ and % metrics",
+      "Company Specific: Review Google Cloud's engineering blog on high-throughput microservices"
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 12,
+    "duration_seconds": 300,
+    "created_at": 1790155234.0624971,
+    "id": "4fe48a51-ee30-4c43-abbe-900427e2b3af"
+  },
+  {
+    "session_id": "session_8507495bdc",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 88,
+    "hiring_verdict": "Hire",
+    "technical_score": 26,
+    "communication_score": 22,
+    "problem_solving_score": 22,
+    "culture_fit_score": 18,
+    "summary_verdict": "The candidate demonstrated strong foundational knowledge for the Senior Full-Stack Software Engineer role at Google Cloud. Technical explanations were structured, with notable strengths in system design and proactive problem solving.",
+    "top_strengths": [
+      "Strong grasp of scalable architecture and modern tech stack",
+      "Clear communication structure with confident delivery",
+      "Good understanding of engineering trade-offs"
+    ],
+    "top_weaknesses": [
+      "Could quantify business impact and metrics more rigorously",
+      "Could dive deeper into fault tolerance and failover protocols"
+    ],
+    "body_language_and_pacing_notes": "Maintained great visual presence, steady cadence, and professional composure throughout the interview.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 88,
+        "verdict": "Hire",
+        "detailed_comments": "Solid grasp of backend architecture and frontend reactive patterns.",
+        "key_strengths": [
+          "Clean architectural reasoning"
+        ],
+        "areas_for_growth": [
+          "Deep-dive edge-case failure modes"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 89,
+        "verdict": "Hire",
+        "detailed_comments": "Articulate, goal-oriented, and highly motivated.",
+        "key_strengths": [
+          "Clear communication"
+        ],
+        "areas_for_growth": [
+          "Quantify past project revenue impact"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 87,
+        "verdict": "Hire",
+        "detailed_comments": "Strong alignment with company engineering values.",
+        "key_strengths": [
+          "High agency"
+        ],
+        "areas_for_growth": [
+          "Cross-functional stakeholder handling"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Walk me through how you architect high-scale systems for Google Cloud.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Candidate explained microservices architecture, caching layers, and database optimization.",
+        "technical_accuracy_score": 9,
+        "communication_clarity_score": 8,
+        "strengths_in_answer": [
+          "Mentioned Redis caching and PostgreSQL indexing"
+        ],
+        "critical_gaps_or_flaws": [
+          "Could have detailed idempotent API design and rate limiting"
+        ],
+        "ideal_model_answer": "A complete 10/10 answer articulates end-to-end architecture: CDN -> API Gateway with Token Bucket rate limiting -> Stateless microservices -> Kafka event streaming -> PostgreSQL with read replicas + Redis write-through cache, with sub-20ms p99 latency SLA."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "System Design: Deepen mastery of idempotent API design and distributed locking",
+      "Behavioral: Use the STAR framework (Situation, Task, Action, Result) with quantified $ and % metrics",
+      "Company Specific: Review Google Cloud's engineering blog on high-throughput microservices"
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 15,
+    "duration_seconds": 300,
+    "created_at": 1790155238.324695,
+    "id": "90e883cb-5249-4c42-8ab8-7ea95cdbd1e0"
+  },
+  {
+    "session_id": "session_be44b933aa",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 88,
+    "hiring_verdict": "Hire",
+    "technical_score": 26,
+    "communication_score": 22,
+    "problem_solving_score": 22,
+    "culture_fit_score": 18,
+    "summary_verdict": "The candidate demonstrated strong foundational knowledge for the Senior Full-Stack Software Engineer role at Google Cloud. Technical explanations were structured, with notable strengths in system design and proactive problem solving.",
+    "top_strengths": [
+      "Strong grasp of scalable architecture and modern tech stack",
+      "Clear communication structure with confident delivery",
+      "Good understanding of engineering trade-offs"
+    ],
+    "top_weaknesses": [
+      "Could quantify business impact and metrics more rigorously",
+      "Could dive deeper into fault tolerance and failover protocols"
+    ],
+    "body_language_and_pacing_notes": "Maintained great visual presence, steady cadence, and professional composure throughout the interview.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 88,
+        "verdict": "Hire",
+        "detailed_comments": "Solid grasp of backend architecture and frontend reactive patterns.",
+        "key_strengths": [
+          "Clean architectural reasoning"
+        ],
+        "areas_for_growth": [
+          "Deep-dive edge-case failure modes"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 89,
+        "verdict": "Hire",
+        "detailed_comments": "Articulate, goal-oriented, and highly motivated.",
+        "key_strengths": [
+          "Clear communication"
+        ],
+        "areas_for_growth": [
+          "Quantify past project revenue impact"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 87,
+        "verdict": "Hire",
+        "detailed_comments": "Strong alignment with company engineering values.",
+        "key_strengths": [
+          "High agency"
+        ],
+        "areas_for_growth": [
+          "Cross-functional stakeholder handling"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Walk me through how you architect high-scale systems for Google Cloud.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Candidate explained microservices architecture, caching layers, and database optimization.",
+        "technical_accuracy_score": 9,
+        "communication_clarity_score": 8,
+        "strengths_in_answer": [
+          "Mentioned Redis caching and PostgreSQL indexing"
+        ],
+        "critical_gaps_or_flaws": [
+          "Could have detailed idempotent API design and rate limiting"
+        ],
+        "ideal_model_answer": "A complete 10/10 answer articulates end-to-end architecture: CDN -> API Gateway with Token Bucket rate limiting -> Stateless microservices -> Kafka event streaming -> PostgreSQL with read replicas + Redis write-through cache, with sub-20ms p99 latency SLA."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "System Design: Deepen mastery of idempotent API design and distributed locking",
+      "Behavioral: Use the STAR framework (Situation, Task, Action, Result) with quantified $ and % metrics",
+      "Company Specific: Review Google Cloud's engineering blog on high-throughput microservices"
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 18,
+    "duration_seconds": 300,
+    "created_at": 1790155242.5788922,
+    "id": "2c4a8d1d-c707-4691-a29c-e6db5d4c1b11"
+  },
+  {
+    "session_id": "session_d010414960",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 88,
+    "hiring_verdict": "Hire",
+    "technical_score": 26,
+    "communication_score": 22,
+    "problem_solving_score": 22,
+    "culture_fit_score": 18,
+    "summary_verdict": "The candidate demonstrated strong foundational knowledge for the Senior Full-Stack Software Engineer role at Google Cloud. Technical explanations were structured, with notable strengths in system design and proactive problem solving.",
+    "top_strengths": [
+      "Strong grasp of scalable architecture and modern tech stack",
+      "Clear communication structure with confident delivery",
+      "Good understanding of engineering trade-offs"
+    ],
+    "top_weaknesses": [
+      "Could quantify business impact and metrics more rigorously",
+      "Could dive deeper into fault tolerance and failover protocols"
+    ],
+    "body_language_and_pacing_notes": "Maintained great visual presence, steady cadence, and professional composure throughout the interview.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 88,
+        "verdict": "Hire",
+        "detailed_comments": "Solid grasp of backend architecture and frontend reactive patterns.",
+        "key_strengths": [
+          "Clean architectural reasoning"
+        ],
+        "areas_for_growth": [
+          "Deep-dive edge-case failure modes"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 89,
+        "verdict": "Hire",
+        "detailed_comments": "Articulate, goal-oriented, and highly motivated.",
+        "key_strengths": [
+          "Clear communication"
+        ],
+        "areas_for_growth": [
+          "Quantify past project revenue impact"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 87,
+        "verdict": "Hire",
+        "detailed_comments": "Strong alignment with company engineering values.",
+        "key_strengths": [
+          "High agency"
+        ],
+        "areas_for_growth": [
+          "Cross-functional stakeholder handling"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Walk me through how you architect high-scale systems for Google Cloud.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Candidate explained microservices architecture, caching layers, and database optimization.",
+        "technical_accuracy_score": 9,
+        "communication_clarity_score": 8,
+        "strengths_in_answer": [
+          "Mentioned Redis caching and PostgreSQL indexing"
+        ],
+        "critical_gaps_or_flaws": [
+          "Could have detailed idempotent API design and rate limiting"
+        ],
+        "ideal_model_answer": "A complete 10/10 answer articulates end-to-end architecture: CDN -> API Gateway with Token Bucket rate limiting -> Stateless microservices -> Kafka event streaming -> PostgreSQL with read replicas + Redis write-through cache, with sub-20ms p99 latency SLA."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "System Design: Deepen mastery of idempotent API design and distributed locking",
+      "Behavioral: Use the STAR framework (Situation, Task, Action, Result) with quantified $ and % metrics",
+      "Company Specific: Review Google Cloud's engineering blog on high-throughput microservices"
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 21,
+    "duration_seconds": 300,
+    "created_at": 1790155246.9437103,
+    "id": "8244441b-60a5-4a18-b016-23debafbf5f9"
+  },
+  {
+    "session_id": "session_bf4dd195b5",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 88,
+    "hiring_verdict": "Hire",
+    "technical_score": 26,
+    "communication_score": 22,
+    "problem_solving_score": 22,
+    "culture_fit_score": 18,
+    "summary_verdict": "The candidate demonstrated strong foundational knowledge for the Senior Full-Stack Software Engineer role at Google Cloud. Technical explanations were structured, with notable strengths in system design and proactive problem solving.",
+    "top_strengths": [
+      "Strong grasp of scalable architecture and modern tech stack",
+      "Clear communication structure with confident delivery",
+      "Good understanding of engineering trade-offs"
+    ],
+    "top_weaknesses": [
+      "Could quantify business impact and metrics more rigorously",
+      "Could dive deeper into fault tolerance and failover protocols"
+    ],
+    "body_language_and_pacing_notes": "Maintained great visual presence, steady cadence, and professional composure throughout the interview.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 88,
+        "verdict": "Hire",
+        "detailed_comments": "Solid grasp of backend architecture and frontend reactive patterns.",
+        "key_strengths": [
+          "Clean architectural reasoning"
+        ],
+        "areas_for_growth": [
+          "Deep-dive edge-case failure modes"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 89,
+        "verdict": "Hire",
+        "detailed_comments": "Articulate, goal-oriented, and highly motivated.",
+        "key_strengths": [
+          "Clear communication"
+        ],
+        "areas_for_growth": [
+          "Quantify past project revenue impact"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 87,
+        "verdict": "Hire",
+        "detailed_comments": "Strong alignment with company engineering values.",
+        "key_strengths": [
+          "High agency"
+        ],
+        "areas_for_growth": [
+          "Cross-functional stakeholder handling"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Walk me through how you architect high-scale systems for Google Cloud.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Candidate explained microservices architecture, caching layers, and database optimization.",
+        "technical_accuracy_score": 9,
+        "communication_clarity_score": 8,
+        "strengths_in_answer": [
+          "Mentioned Redis caching and PostgreSQL indexing"
+        ],
+        "critical_gaps_or_flaws": [
+          "Could have detailed idempotent API design and rate limiting"
+        ],
+        "ideal_model_answer": "A complete 10/10 answer articulates end-to-end architecture: CDN -> API Gateway with Token Bucket rate limiting -> Stateless microservices -> Kafka event streaming -> PostgreSQL with read replicas + Redis write-through cache, with sub-20ms p99 latency SLA."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "System Design: Deepen mastery of idempotent API design and distributed locking",
+      "Behavioral: Use the STAR framework (Situation, Task, Action, Result) with quantified $ and % metrics",
+      "Company Specific: Review Google Cloud's engineering blog on high-throughput microservices"
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 24,
+    "duration_seconds": 300,
+    "created_at": 1790155251.4429278,
+    "id": "048c1991-10e3-4b22-acb5-962fa5b1eb2e"
+  },
+  {
+    "session_id": "session_d5b87186a5",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 88,
+    "hiring_verdict": "Hire",
+    "technical_score": 26,
+    "communication_score": 22,
+    "problem_solving_score": 22,
+    "culture_fit_score": 18,
+    "summary_verdict": "The candidate demonstrated strong foundational knowledge for the Senior Full-Stack Software Engineer role at Google Cloud. Technical explanations were structured, with notable strengths in system design and proactive problem solving.",
+    "top_strengths": [
+      "Strong grasp of scalable architecture and modern tech stack",
+      "Clear communication structure with confident delivery",
+      "Good understanding of engineering trade-offs"
+    ],
+    "top_weaknesses": [
+      "Could quantify business impact and metrics more rigorously",
+      "Could dive deeper into fault tolerance and failover protocols"
+    ],
+    "body_language_and_pacing_notes": "Maintained great visual presence, steady cadence, and professional composure throughout the interview.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 88,
+        "verdict": "Hire",
+        "detailed_comments": "Solid grasp of backend architecture and frontend reactive patterns.",
+        "key_strengths": [
+          "Clean architectural reasoning"
+        ],
+        "areas_for_growth": [
+          "Deep-dive edge-case failure modes"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 89,
+        "verdict": "Hire",
+        "detailed_comments": "Articulate, goal-oriented, and highly motivated.",
+        "key_strengths": [
+          "Clear communication"
+        ],
+        "areas_for_growth": [
+          "Quantify past project revenue impact"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 87,
+        "verdict": "Hire",
+        "detailed_comments": "Strong alignment with company engineering values.",
+        "key_strengths": [
+          "High agency"
+        ],
+        "areas_for_growth": [
+          "Cross-functional stakeholder handling"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Walk me through how you architect high-scale systems for Google Cloud.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Candidate explained microservices architecture, caching layers, and database optimization.",
+        "technical_accuracy_score": 9,
+        "communication_clarity_score": 8,
+        "strengths_in_answer": [
+          "Mentioned Redis caching and PostgreSQL indexing"
+        ],
+        "critical_gaps_or_flaws": [
+          "Could have detailed idempotent API design and rate limiting"
+        ],
+        "ideal_model_answer": "A complete 10/10 answer articulates end-to-end architecture: CDN -> API Gateway with Token Bucket rate limiting -> Stateless microservices -> Kafka event streaming -> PostgreSQL with read replicas + Redis write-through cache, with sub-20ms p99 latency SLA."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "System Design: Deepen mastery of idempotent API design and distributed locking",
+      "Behavioral: Use the STAR framework (Situation, Task, Action, Result) with quantified $ and % metrics",
+      "Company Specific: Review Google Cloud's engineering blog on high-throughput microservices"
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 27,
+    "duration_seconds": 300,
+    "created_at": 1790155256.822894,
+    "id": "27f9259b-ef33-474c-8526-7383f09970e2"
+  },
+  {
+    "session_id": "session_3085b866d9",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 88,
+    "hiring_verdict": "Hire",
+    "technical_score": 26,
+    "communication_score": 22,
+    "problem_solving_score": 22,
+    "culture_fit_score": 18,
+    "summary_verdict": "The candidate demonstrated strong foundational knowledge for the Senior Full-Stack Software Engineer role at Google Cloud. Technical explanations were structured, with notable strengths in system design and proactive problem solving.",
+    "top_strengths": [
+      "Strong grasp of scalable architecture and modern tech stack",
+      "Clear communication structure with confident delivery",
+      "Good understanding of engineering trade-offs"
+    ],
+    "top_weaknesses": [
+      "Could quantify business impact and metrics more rigorously",
+      "Could dive deeper into fault tolerance and failover protocols"
+    ],
+    "body_language_and_pacing_notes": "Maintained great visual presence, steady cadence, and professional composure throughout the interview.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 88,
+        "verdict": "Hire",
+        "detailed_comments": "Solid grasp of backend architecture and frontend reactive patterns.",
+        "key_strengths": [
+          "Clean architectural reasoning"
+        ],
+        "areas_for_growth": [
+          "Deep-dive edge-case failure modes"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 89,
+        "verdict": "Hire",
+        "detailed_comments": "Articulate, goal-oriented, and highly motivated.",
+        "key_strengths": [
+          "Clear communication"
+        ],
+        "areas_for_growth": [
+          "Quantify past project revenue impact"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 87,
+        "verdict": "Hire",
+        "detailed_comments": "Strong alignment with company engineering values.",
+        "key_strengths": [
+          "High agency"
+        ],
+        "areas_for_growth": [
+          "Cross-functional stakeholder handling"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Walk me through how you architect high-scale systems for Google Cloud.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Candidate explained microservices architecture, caching layers, and database optimization.",
+        "technical_accuracy_score": 9,
+        "communication_clarity_score": 8,
+        "strengths_in_answer": [
+          "Mentioned Redis caching and PostgreSQL indexing"
+        ],
+        "critical_gaps_or_flaws": [
+          "Could have detailed idempotent API design and rate limiting"
+        ],
+        "ideal_model_answer": "A complete 10/10 answer articulates end-to-end architecture: CDN -> API Gateway with Token Bucket rate limiting -> Stateless microservices -> Kafka event streaming -> PostgreSQL with read replicas + Redis write-through cache, with sub-20ms p99 latency SLA."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "System Design: Deepen mastery of idempotent API design and distributed locking",
+      "Behavioral: Use the STAR framework (Situation, Task, Action, Result) with quantified $ and % metrics",
+      "Company Specific: Review Google Cloud's engineering blog on high-throughput microservices"
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 30,
+    "duration_seconds": 300,
+    "created_at": 1790155261.6569767,
+    "id": "d4a0a0cd-edd1-4a1b-ba68-6b331c7ad8ee"
+  },
+  {
+    "session_id": "session_675f28873c",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 88,
+    "hiring_verdict": "Hire",
+    "technical_score": 26,
+    "communication_score": 22,
+    "problem_solving_score": 22,
+    "culture_fit_score": 18,
+    "summary_verdict": "The candidate demonstrated strong foundational knowledge for the Senior Full-Stack Software Engineer role at Google Cloud. Technical explanations were structured, with notable strengths in system design and proactive problem solving.",
+    "top_strengths": [
+      "Strong grasp of scalable architecture and modern tech stack",
+      "Clear communication structure with confident delivery",
+      "Good understanding of engineering trade-offs"
+    ],
+    "top_weaknesses": [
+      "Could quantify business impact and metrics more rigorously",
+      "Could dive deeper into fault tolerance and failover protocols"
+    ],
+    "body_language_and_pacing_notes": "Maintained great visual presence, steady cadence, and professional composure throughout the interview.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 88,
+        "verdict": "Hire",
+        "detailed_comments": "Solid grasp of backend architecture and frontend reactive patterns.",
+        "key_strengths": [
+          "Clean architectural reasoning"
+        ],
+        "areas_for_growth": [
+          "Deep-dive edge-case failure modes"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 89,
+        "verdict": "Hire",
+        "detailed_comments": "Articulate, goal-oriented, and highly motivated.",
+        "key_strengths": [
+          "Clear communication"
+        ],
+        "areas_for_growth": [
+          "Quantify past project revenue impact"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 87,
+        "verdict": "Hire",
+        "detailed_comments": "Strong alignment with company engineering values.",
+        "key_strengths": [
+          "High agency"
+        ],
+        "areas_for_growth": [
+          "Cross-functional stakeholder handling"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Walk me through how you architect high-scale systems for Google Cloud.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Candidate explained microservices architecture, caching layers, and database optimization.",
+        "technical_accuracy_score": 9,
+        "communication_clarity_score": 8,
+        "strengths_in_answer": [
+          "Mentioned Redis caching and PostgreSQL indexing"
+        ],
+        "critical_gaps_or_flaws": [
+          "Could have detailed idempotent API design and rate limiting"
+        ],
+        "ideal_model_answer": "A complete 10/10 answer articulates end-to-end architecture: CDN -> API Gateway with Token Bucket rate limiting -> Stateless microservices -> Kafka event streaming -> PostgreSQL with read replicas + Redis write-through cache, with sub-20ms p99 latency SLA."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "System Design: Deepen mastery of idempotent API design and distributed locking",
+      "Behavioral: Use the STAR framework (Situation, Task, Action, Result) with quantified $ and % metrics",
+      "Company Specific: Review Google Cloud's engineering blog on high-throughput microservices"
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 33,
+    "duration_seconds": 300,
+    "created_at": 1790155265.9616108,
+    "id": "0f972f22-66b8-4340-ab7f-1a33460494c0"
+  },
+  {
+    "session_id": "session_9a9954dff4",
+    "candidate_id": "default-user",
+    "company_name": "dwny-2026-hackathon.devpost.com",
+    "job_title": "DeveloperWeek New York 2026 Hackathon: Join the nation's largest ...",
+    "overall_score": 88,
+    "hiring_verdict": "Hire",
+    "technical_score": 26,
+    "communication_score": 22,
+    "problem_solving_score": 22,
+    "culture_fit_score": 18,
+    "summary_verdict": "The candidate demonstrated strong foundational knowledge for the DeveloperWeek New York 2026 Hackathon: Join the nation's largest ... role at dwny-2026-hackathon.devpost.com. Technical explanations were structured, with notable strengths in system design and proactive problem solving.",
+    "top_strengths": [
+      "Strong grasp of scalable architecture and modern tech stack",
+      "Clear communication structure with confident delivery",
+      "Good understanding of engineering trade-offs"
+    ],
+    "top_weaknesses": [
+      "Could quantify business impact and metrics more rigorously",
+      "Could dive deeper into fault tolerance and failover protocols"
+    ],
+    "body_language_and_pacing_notes": "Maintained great visual presence, steady cadence, and professional composure throughout the interview.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 88,
+        "verdict": "Hire",
+        "detailed_comments": "Solid grasp of backend architecture and frontend reactive patterns.",
+        "key_strengths": [
+          "Clean architectural reasoning"
+        ],
+        "areas_for_growth": [
+          "Deep-dive edge-case failure modes"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 89,
+        "verdict": "Hire",
+        "detailed_comments": "Articulate, goal-oriented, and highly motivated.",
+        "key_strengths": [
+          "Clear communication"
+        ],
+        "areas_for_growth": [
+          "Quantify past project revenue impact"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 87,
+        "verdict": "Hire",
+        "detailed_comments": "Strong alignment with company engineering values.",
+        "key_strengths": [
+          "High agency"
+        ],
+        "areas_for_growth": [
+          "Cross-functional stakeholder handling"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Walk me through how you architect high-scale systems for dwny-2026-hackathon.devpost.com.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Candidate explained microservices architecture, caching layers, and database optimization.",
+        "technical_accuracy_score": 9,
+        "communication_clarity_score": 8,
+        "strengths_in_answer": [
+          "Mentioned Redis caching and PostgreSQL indexing"
+        ],
+        "critical_gaps_or_flaws": [
+          "Could have detailed idempotent API design and rate limiting"
+        ],
+        "ideal_model_answer": "A complete 10/10 answer articulates end-to-end architecture: CDN -> API Gateway with Token Bucket rate limiting -> Stateless microservices -> Kafka event streaming -> PostgreSQL with read replicas + Redis write-through cache, with sub-20ms p99 latency SLA."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "System Design: Deepen mastery of idempotent API design and distributed locking",
+      "Behavioral: Use the STAR framework (Situation, Task, Action, Result) with quantified $ and % metrics",
+      "Company Specific: Review dwny-2026-hackathon.devpost.com's engineering blog on high-throughput microservices"
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 3,
+    "duration_seconds": 300,
+    "created_at": 1790237335.0484028,
+    "id": "e9149cbb-22b7-4707-85a5-da4b019f4425"
+  },
+  {
+    "session_id": "session_01f4877f4b",
+    "candidate_id": "default-user",
+    "company_name": "dwny-2026-hackathon.devpost.com",
+    "job_title": "DeveloperWeek New York 2026 Hackathon: Join the nation's largest ...",
+    "overall_score": 88,
+    "hiring_verdict": "Hire",
+    "technical_score": 26,
+    "communication_score": 22,
+    "problem_solving_score": 22,
+    "culture_fit_score": 18,
+    "summary_verdict": "The candidate demonstrated strong foundational knowledge for the DeveloperWeek New York 2026 Hackathon: Join the nation's largest ... role at dwny-2026-hackathon.devpost.com. Technical explanations were structured, with notable strengths in system design and proactive problem solving.",
+    "top_strengths": [
+      "Strong grasp of scalable architecture and modern tech stack",
+      "Clear communication structure with confident delivery",
+      "Good understanding of engineering trade-offs"
+    ],
+    "top_weaknesses": [
+      "Could quantify business impact and metrics more rigorously",
+      "Could dive deeper into fault tolerance and failover protocols"
+    ],
+    "body_language_and_pacing_notes": "Maintained great visual presence, steady cadence, and professional composure throughout the interview.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 88,
+        "verdict": "Hire",
+        "detailed_comments": "Solid grasp of backend architecture and frontend reactive patterns.",
+        "key_strengths": [
+          "Clean architectural reasoning"
+        ],
+        "areas_for_growth": [
+          "Deep-dive edge-case failure modes"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 89,
+        "verdict": "Hire",
+        "detailed_comments": "Articulate, goal-oriented, and highly motivated.",
+        "key_strengths": [
+          "Clear communication"
+        ],
+        "areas_for_growth": [
+          "Quantify past project revenue impact"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 87,
+        "verdict": "Hire",
+        "detailed_comments": "Strong alignment with company engineering values.",
+        "key_strengths": [
+          "High agency"
+        ],
+        "areas_for_growth": [
+          "Cross-functional stakeholder handling"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Walk me through how you architect high-scale systems for dwny-2026-hackathon.devpost.com.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Candidate explained microservices architecture, caching layers, and database optimization.",
+        "technical_accuracy_score": 9,
+        "communication_clarity_score": 8,
+        "strengths_in_answer": [
+          "Mentioned Redis caching and PostgreSQL indexing"
+        ],
+        "critical_gaps_or_flaws": [
+          "Could have detailed idempotent API design and rate limiting"
+        ],
+        "ideal_model_answer": "A complete 10/10 answer articulates end-to-end architecture: CDN -> API Gateway with Token Bucket rate limiting -> Stateless microservices -> Kafka event streaming -> PostgreSQL with read replicas + Redis write-through cache, with sub-20ms p99 latency SLA."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "System Design: Deepen mastery of idempotent API design and distributed locking",
+      "Behavioral: Use the STAR framework (Situation, Task, Action, Result) with quantified $ and % metrics",
+      "Company Specific: Review dwny-2026-hackathon.devpost.com's engineering blog on high-throughput microservices"
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 6,
+    "duration_seconds": 300,
+    "created_at": 1790237633.3199978,
+    "id": "983bdc9c-d15d-48af-8a66-16a10e763ecd"
+  },
+  {
+    "session_id": "session_6291091b6e",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 45,
+    "hiring_verdict": "Strong No Hire",
+    "technical_score": 8,
+    "communication_score": 10,
+    "problem_solving_score": 12,
+    "culture_fit_score": 15,
+    "summary_verdict": "The candidate failed to provide the necessary depth required for a Senior Full-Stack Software Engineer role at Google Cloud. While the candidate maintained a professional demeanor, their response to the opening inquiry was dangerously superficial. A senior candidate at this level should be able to articulate their architectural contributions with specific technologies, trade-offs, and metrics (latency, throughput, scalability impacts). The candidate's inability to expand beyond a single, generic sentence demonstrates a significant gap in seniority, communication proficiency, and technical articulation.",
+    "top_strengths": [
+      "Professional composure",
+      "Steady eye contact",
+      "Polished physical presence",
+      "Concise (albeit insufficient) communication"
+    ],
+    "top_weaknesses": [
+      "Lack of technical depth in architectural discussion",
+      "Failure to elaborate on past impact or specific technology stacks",
+      "Inability to read professional social cues regarding necessary detail level"
+    ],
+    "body_language_and_pacing_notes": "Candidate displayed excellent non-verbal cues. Posture was upright and professional throughout the session. Eye contact was consistent and appropriate. Pacing was calm; however, the lack of substantive content created an uncomfortable silence that the candidate did not move to fill, suggesting a lack of situational awareness or unpreparedness.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 30,
+        "verdict": "Strong No Hire",
+        "detailed_comments": "The candidate provided a one-sentence summary that failed to highlight the technical complexity, stack details, or design patterns used in their 'distributed real-time systems.' As a Senior hire, we expect a deep-dive into partitioning strategies, consistency models, or messaging infrastructure, none of which were touched upon.",
+        "key_strengths": [
+          "Ability to maintain composure"
+        ],
+        "areas_for_growth": [
+          "Technical depth and specificity",
+          "Articulating system architecture trade-offs"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 50,
+        "verdict": "No Hire",
+        "detailed_comments": "The candidate failed to 'sell' their experience. At a senior level, I need to see self-awareness regarding career progression and the ability to articulate business-technical value. The brevity of the answer was off-putting for a senior-level interview.",
+        "key_strengths": [
+          "Professional posture"
+        ],
+        "areas_for_growth": [
+          "Communication maturity and conversational breadth"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 60,
+        "verdict": "Leaning No Hire",
+        "detailed_comments": "While the candidate was polite, there was no 'Googleyness' displayed regarding passion, curiosity, or desire to solve ambiguous problems. The candidate's lack of engagement makes it difficult to assess culture fit.",
+        "key_strengths": [
+          "Professional demeanor"
+        ],
+        "areas_for_growth": [
+          "Proactive communication and enthusiasm"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Tell me about your background.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "I architected distributed real-time systems.",
+        "technical_accuracy_score": 2,
+        "communication_clarity_score": 3,
+        "strengths_in_answer": [
+          "Conciseness"
+        ],
+        "critical_gaps_or_flaws": [
+          "Total lack of context",
+          "Missing specific technical challenges",
+          "Missing impact metrics",
+          "Missing architectural decisions"
+        ],
+        "ideal_model_answer": "Over the past six years, I have focused on building high-throughput, low-latency distributed systems. In my previous role at [Company], I led the redesign of our real-time data ingestion pipeline. We faced a scaling bottleneck with 500k events/sec using standard SQL, so I architected a transition to a Kafka-based stream processing layer with Flink, which reduced P99 latency by 40% and improved system availability to 99.99%. I enjoy solving complex concurrency issues and am particularly passionate about optimizing infrastructure for Cloud-native environments."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "Topic 1: Master the STAR method for behavioral and experience-based questions to ensure context, action, and results are clearly defined.",
+      "Topic 2: Develop a 'Technical Narrative' that highlights specific architecture decisions (e.g., CAP theorem trade-offs, service mesh, or data partitioning) within past projects.",
+      "Topic 3: Practice high-level system design articulation, focusing on quantifying technical outcomes with concrete metrics and business impacts."
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 3,
+    "duration_seconds": 300,
+    "created_at": 1790620770.9305866,
+    "id": "72c8e898-27d8-475a-bc29-62e3e27fee62"
+  },
+  {
+    "session_id": "session_64fce7d71c",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 88,
+    "hiring_verdict": "Hire",
+    "technical_score": 26,
+    "communication_score": 22,
+    "problem_solving_score": 22,
+    "culture_fit_score": 18,
+    "summary_verdict": "The candidate demonstrated strong foundational knowledge for the Senior Full-Stack Software Engineer role at Google Cloud. Technical explanations were structured, with notable strengths in system design and proactive problem solving.",
+    "top_strengths": [
+      "Strong grasp of scalable architecture and modern tech stack",
+      "Clear communication structure with confident delivery",
+      "Good understanding of engineering trade-offs"
+    ],
+    "top_weaknesses": [
+      "Could quantify business impact and metrics more rigorously",
+      "Could dive deeper into fault tolerance and failover protocols"
+    ],
+    "body_language_and_pacing_notes": "Maintained great visual presence, steady cadence, and professional composure throughout the interview.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 88,
+        "verdict": "Hire",
+        "detailed_comments": "Solid grasp of backend architecture and frontend reactive patterns.",
+        "key_strengths": [
+          "Clean architectural reasoning"
+        ],
+        "areas_for_growth": [
+          "Deep-dive edge-case failure modes"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 89,
+        "verdict": "Hire",
+        "detailed_comments": "Articulate, goal-oriented, and highly motivated.",
+        "key_strengths": [
+          "Clear communication"
+        ],
+        "areas_for_growth": [
+          "Quantify past project revenue impact"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 87,
+        "verdict": "Hire",
+        "detailed_comments": "Strong alignment with company engineering values.",
+        "key_strengths": [
+          "High agency"
+        ],
+        "areas_for_growth": [
+          "Cross-functional stakeholder handling"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Walk me through how you architect high-scale systems for Google Cloud.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Candidate explained microservices architecture, caching layers, and database optimization.",
+        "technical_accuracy_score": 9,
+        "communication_clarity_score": 8,
+        "strengths_in_answer": [
+          "Mentioned Redis caching and PostgreSQL indexing"
+        ],
+        "critical_gaps_or_flaws": [
+          "Could have detailed idempotent API design and rate limiting"
+        ],
+        "ideal_model_answer": "A complete 10/10 answer articulates end-to-end architecture: CDN -> API Gateway with Token Bucket rate limiting -> Stateless microservices -> Kafka event streaming -> PostgreSQL with read replicas + Redis write-through cache, with sub-20ms p99 latency SLA."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "System Design: Deepen mastery of idempotent API design and distributed locking",
+      "Behavioral: Use the STAR framework (Situation, Task, Action, Result) with quantified $ and % metrics",
+      "Company Specific: Review Google Cloud's engineering blog on high-throughput microservices"
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 6,
+    "duration_seconds": 300,
+    "created_at": 1790620779.1907885,
+    "id": "30fc2116-4376-4db8-9550-0637e0f6a24e"
+  },
+  {
+    "session_id": "session_9add9e8609",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 45,
+    "hiring_verdict": "Leaning No Hire",
+    "technical_score": 12,
+    "communication_score": 10,
+    "problem_solving_score": 8,
+    "culture_fit_score": 15,
+    "summary_verdict": "The candidate failed to provide the necessary depth required for a Senior Full-Stack role at Google Cloud. While the resume suggests experience with distributed systems, the actual interview performance was characterized by extreme brevity and a lack of 'Googley' transparency. The candidate failed to elaborate on the 'how' or 'why' behind their architectural choices, providing only high-level jargon rather than engineering substance.\n\nTo perform at the Senior level, candidates must demonstrate the ability to navigate trade-offs, explain complex system failures, and articulate the business impact of their technical decisions. The candidate's inability to expand upon their introductory statement indicates either a lack of technical depth or an inability to communicate complex concepts—both of which are critical disqualifiers for this level.",
+    "top_strengths": [
+      "Steady composure under pressure",
+      "Professional demeanor",
+      "Concise verbal structure",
+      "Clear eye contact"
+    ],
+    "top_weaknesses": [
+      "Insufficient technical depth in elaboration",
+      "Failure to use the STAR method for behavioral responses",
+      "Lack of detail regarding specific technologies/trade-offs",
+      "Poor alignment with the 'Senior' level requirement for self-directed technical storytelling"
+    ],
+    "body_language_and_pacing_notes": "The candidate was physically composed, maintaining excellent posture and steady eye contact. However, the pacing was too abrupt. There was a noticeable lack of conversational flow; the candidate treated the interview as a series of isolated bullet points rather than an engagement, leading to a sterile and uninformative interaction.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 35,
+        "verdict": "Strong No Hire",
+        "detailed_comments": "The candidate lacks the required depth for Senior-level distributed systems design. When prompted to describe their background, they gave a one-sentence summary without discussing concurrency, latency, or data consistency models. This is insufficient for a Cloud-focused role.",
+        "key_strengths": [
+          "Knowledge of distributed system terminology"
+        ],
+        "areas_for_growth": [
+          "Elaboration on technical trade-offs",
+          "Understanding of system design constraints"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 50,
+        "verdict": "Leaning No Hire",
+        "detailed_comments": "While the candidate is professional, they failed to demonstrate the leadership or communication skills required for a Senior engineer. They did not show how their contributions drove team results.",
+        "key_strengths": [
+          "Polite and professional conduct"
+        ],
+        "areas_for_growth": [
+          "Utilizing the STAR format to provide context and impact"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 60,
+        "verdict": "Leaning Hire",
+        "detailed_comments": "The candidate is respectful and coachable, but they did not demonstrate a passion for innovation or customer-centricity during this brief interaction. More data is needed to assess true culture fit.",
+        "key_strengths": [
+          "Composure and active listening"
+        ],
+        "areas_for_growth": [
+          "Demonstrating enthusiasm and proactive communication"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Tell me about your background.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "I architected distributed real-time systems.",
+        "technical_accuracy_score": 2,
+        "communication_clarity_score": 3,
+        "strengths_in_answer": [
+          "Used correct industry terminology (distributed real-time systems)"
+        ],
+        "critical_gaps_or_flaws": [
+          "Did not define the scale of the systems",
+          "Did not discuss specific technical challenges or solutions",
+          "Lacked impact/metric-driven outcomes"
+        ],
+        "ideal_model_answer": "In my previous role at X, I led the architecture for a real-time data ingestion pipeline processing 50k events per second with sub-50ms latency. I utilized Kafka for message queuing and Kubernetes for orchestration. One major challenge was handling backpressure during traffic spikes, which I resolved by implementing a dynamic sharding strategy that improved system stability by 30%. I focus on building scalable, fault-tolerant systems using distributed patterns like event sourcing."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "System Design Fundamentals: Master trade-off analysis (CAP theorem, consistency vs. availability) specifically for Google-scale Cloud services.",
+      "Communication: Implement the STAR (Situation, Task, Action, Result) method for all behavioral and technical responses to ensure depth and impact.",
+      "Technical Elaboration: Practice explaining complex system architectures by focusing on the 'Why' behind technology choices rather than just the 'What'."
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 9,
+    "duration_seconds": 300,
+    "created_at": 1790620789.715583,
+    "id": "f6743007-4cb8-493e-b0f1-82dc3cb5b990"
+  },
+  {
+    "session_id": "session_a1bca772e5",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 45,
+    "hiring_verdict": "Strong No Hire",
+    "technical_score": 10,
+    "communication_score": 8,
+    "problem_solving_score": 10,
+    "culture_fit_score": 17,
+    "summary_verdict": "The candidate failed to provide the necessary depth required for a Senior Full-Stack role at Google Cloud. While the candidate maintained professional composure, the response to the opening inquiry was dangerously superficial. A senior-level engineer is expected to articulate the 'how' and 'why' behind their architectural decisions, including trade-offs, scale challenges, and specific technology choices. The brevity of the candidate's response suggests a lack of substantive experience or an inability to communicate complex systems at a leadership level. Without a detailed breakdown of their professional narrative, we cannot validate their seniority or technical contribution.",
+    "top_strengths": [
+      "Steady posture",
+      "Professional composure",
+      "Clear eye contact",
+      "Structured delivery"
+    ],
+    "top_weaknesses": [
+      "Lack of technical depth",
+      "Inability to expand on core architectural concepts",
+      "Insufficient STAR-method usage for behavioral/experience questions"
+    ],
+    "body_language_and_pacing_notes": "Candidate was physically composed with good eye contact, which conveys confidence; however, the pacing was too abrupt. The brevity of the answers suggests a lack of preparation for a high-stakes executive interview setting.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 30,
+        "verdict": "Strong No Hire",
+        "detailed_comments": "The candidate offered a one-sentence summary of their background that contained zero technical substance. For a Senior Full-Stack role, I expect a discussion on microservices, distributed state management, data consistency models, or front-end orchestration at scale.",
+        "key_strengths": [
+          "Conciseness"
+        ],
+        "areas_for_growth": [
+          "Elaborating on architectural trade-offs",
+          "Defining scope and scale of previous distributed systems"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 40,
+        "verdict": "Strong No Hire",
+        "detailed_comments": "The candidate struggled to frame their career narrative. A senior engineer should be able to walk a panel through their growth trajectory, key impactful projects, and technical leadership philosophy.",
+        "key_strengths": [
+          "Professionalism"
+        ],
+        "areas_for_growth": [
+          "Storytelling and career narrative construction"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 50,
+        "verdict": "Leaning No Hire",
+        "detailed_comments": "While the candidate was polite, they showed no evidence of 'Googliness' regarding problem-solving, curiosity, or the ability to navigate ambiguity. Silence and brevity are not conducive to a collaborative environment.",
+        "key_strengths": [
+          "Composure under pressure"
+        ],
+        "areas_for_growth": [
+          "Engagement and proactive communication"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Tell me about your background.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "I architected distributed real-time systems.",
+        "technical_accuracy_score": 2,
+        "communication_clarity_score": 3,
+        "strengths_in_answer": [
+          "Identification of technical domain (Real-time systems)"
+        ],
+        "critical_gaps_or_flaws": [
+          "Lacked context, scope, technology stack, business impact, and specific technical challenges.",
+          "Did not use STAR format."
+        ],
+        "ideal_model_answer": "In my previous role at [Company], I led the architecture of a high-throughput real-time ingestion pipeline serving 50k+ QPS. My focus was on optimizing latency for microservices using gRPC and Kafka. A key challenge was managing data consistency across global regions, which I solved by implementing a custom sharding layer. This work reduced system latency by 40% and improved our overall uptime to 99.99%. I am looking to bring this experience with distributed cloud-native systems to the Google Cloud team."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "Topic 1: Master the 'System Design' interview loop by studying Google Cloud architectural patterns (BigTable, Spanner, Pub/Sub).",
+      "Topic 2: Develop a portfolio of 'STAR' (Situation, Task, Action, Result) stories focusing on technical depth and leadership challenges.",
+      "Topic 3: Deep dive into High-Concurrency tradeoffs: CAP theorem, eventual consistency vs. strong consistency, and tail latency mitigation."
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 12,
+    "duration_seconds": 300,
+    "created_at": 1790622576.728784,
+    "id": "b5bce52a-681d-42d2-9a0e-a6e4fab2f4e0"
+  },
+  {
+    "session_id": "session_d8f0541a4d",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 45,
+    "hiring_verdict": "Strong No Hire",
+    "technical_score": 10,
+    "communication_score": 12,
+    "problem_solving_score": 8,
+    "culture_fit_score": 15,
+    "summary_verdict": "The candidate failed to provide the necessary depth required for a Senior Full-Stack role at Google Cloud. While the resume suggests experience with distributed systems, the interview performance was characterized by extreme brevity and a lack of substantive elaboration. A 'Senior' designation necessitates the ability to articulate architectural trade-offs, system constraints, and the 'why' behind technical decisions. The candidate's response to the opening prompt was critically underspecified, indicating either a lack of preparation or an inability to communicate technical complexity effectively.",
+    "top_strengths": [
+      "Professional demeanor",
+      "Confident presentation",
+      "Adherence to basic etiquette"
+    ],
+    "top_weaknesses": [
+      "Lack of technical depth in communication",
+      "Failure to use STAR methodology for behavioral prompts",
+      "Inability to expand on high-level architectural claims"
+    ],
+    "body_language_and_pacing_notes": "The candidate maintained excellent eye contact and steady, upright posture. Speaking pace was measured and calm, though the extreme brevity of responses suggests a defensive or underprepared mental state rather than intentional conciseness.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 30,
+        "verdict": "Strong No Hire",
+        "detailed_comments": "The candidate claimed experience with 'distributed real-time systems' but failed to provide a single concrete example, metric, or architectural pattern (e.g., consistency models, partition tolerance, or messaging backbones). A Senior engineer should naturally bridge into discussing latency, throughput, or trade-offs without needing a prompt.",
+        "key_strengths": [
+          "Concise speaking style"
+        ],
+        "areas_for_growth": [
+          "Technical storytelling",
+          "Deep-dive elaboration"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 50,
+        "verdict": "Leaning No Hire",
+        "detailed_comments": "While the candidate presents well, the lack of narrative regarding their career trajectory is a significant red flag for a leadership-track role. The inability to articulate a professional journey beyond a single sentence makes it impossible to assess soft skills or mentorship capabilities.",
+        "key_strengths": [
+          "Polite and professional presence"
+        ],
+        "areas_for_growth": [
+          "Ability to articulate professional background"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 60,
+        "verdict": "Leaning No Hire",
+        "detailed_comments": "The candidate seems capable of maintaining composure, but cultural fit requires active engagement and enthusiasm. The lack of conversational depth prevents me from assessing their potential for collaboration or 'Googliness'.",
+        "key_strengths": [
+          "Composure"
+        ],
+        "areas_for_growth": [
+          "Engagement and clarity of communication"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Tell me about your background.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "I architected distributed real-time systems.",
+        "technical_accuracy_score": 2,
+        "communication_clarity_score": 3,
+        "strengths_in_answer": [
+          "Keywords align with core technical competencies for the role"
+        ],
+        "critical_gaps_or_flaws": [
+          "Complete lack of context, scope, or scale",
+          "Failed to explain the 'what' or 'why'",
+          "No mention of the stack, team size, or business impact"
+        ],
+        "ideal_model_answer": "In my previous role at [X], I served as a technical lead for a distributed real-time processing engine that handled 50k+ events/sec. I addressed architectural bottlenecks by moving from a monolithic architecture to a microservices-based model using Kafka for event sourcing. This reduced latency by 30% and allowed us to scale horizontally. I mentored 4 junior devs through this transition, ensuring test coverage exceeded 90%."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "Master the STAR method (Situation, Task, Action, Result) to provide structured, evidence-based answers.",
+      "Practice 'Deep Dive' techniques: for every architectural claim, be prepared to discuss specific trade-offs (e.g., CAP theorem, latency vs. consistency).",
+      "Review Google's 'Googliness' guidelines to improve engagement and demonstrating collaboration in answers."
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 15,
+    "duration_seconds": 300,
+    "created_at": 1790622603.6642008,
+    "id": "8b81384e-4e64-4391-a6cc-a462c2d1ff3b"
+  },
+  {
+    "session_id": "session_65f8de86e8",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 45,
+    "hiring_verdict": "Strong No Hire",
+    "technical_score": 12,
+    "communication_score": 8,
+    "problem_solving_score": 5,
+    "culture_fit_score": 10,
+    "summary_verdict": "The candidate failed to demonstrate the depth required for a Senior Full-Stack Software Engineer role at Google Cloud. While the resume suggests a background in distributed systems, the candidate's responses were excessively terse and lacked the necessary STAR (Situation, Task, Action, Result) framing expected at this level. The candidate displayed a critical inability to elaborate on architectural trade-offs, scalability constraints, or specific technical challenges, which is a major red flag for a senior-level hire. The lack of substantive detail prevents us from assessing their actual contribution to previous projects or their ability to mentor and lead.\n\nOverall, the interview was truncated by the candidate's lack of engagement and inability to provide depth. There is no evidence of the technical rigor required to operate within the GCP ecosystem. We are recommending a 'Strong No Hire' based on the lack of demonstrated technical competency and insufficient communication skills during the interview window.",
+    "top_strengths": [
+      "Steady posture and professional demeanor",
+      "Clear, articulate speaking pace",
+      "Concise introductory statement",
+      "Maintained eye contact"
+    ],
+    "top_weaknesses": [
+      "Inadequate technical depth regarding distributed systems",
+      "Failure to provide concrete metrics or STAR-structured responses",
+      "Lack of communication elaboration during critical inquiry",
+      "Inability to demonstrate problem-solving methodology"
+    ],
+    "body_language_and_pacing_notes": "Candidate was composed and physically professional. Eye contact was consistent and appropriate. However, the pacing was too quick, signaling an avoidance of complex explanation rather than efficiency. Lack of elaboration resulted in a very short, unproductive interaction.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 30,
+        "verdict": "Strong No Hire",
+        "detailed_comments": "The candidate provided a one-sentence summary for a background that should entail complex architectural decisions and performance optimizations. There was zero evidence of hands-on experience with cloud-native patterns, distributed data consistency, or latency management.",
+        "key_strengths": [
+          "Concise initial summary"
+        ],
+        "areas_for_growth": [
+          "Ability to explain architectural trade-offs",
+          "Depth of technical elaboration"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 40,
+        "verdict": "Strong No Hire",
+        "detailed_comments": "Professionalism was acceptable, but the lack of 'storytelling' or ownership of past projects makes it impossible to evaluate their career trajectory or cultural fit. A senior candidate must be able to articulate their value prop effectively.",
+        "key_strengths": [
+          "Professional presence"
+        ],
+        "areas_for_growth": [
+          "STAR methodology communication"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 50,
+        "verdict": "Leaning No Hire",
+        "detailed_comments": "The candidate was polite but disengaged. Failed to show curiosity or enthusiasm for Google Cloud's specific challenges.",
+        "key_strengths": [
+          "Polite demeanor"
+        ],
+        "areas_for_growth": [
+          "Demonstrating passion and engagement with the interviewer"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Tell me about your background.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "I architected distributed real-time systems.",
+        "technical_accuracy_score": 2,
+        "communication_clarity_score": 3,
+        "strengths_in_answer": [
+          "Succinctly identified their niche"
+        ],
+        "critical_gaps_or_flaws": [
+          "Lacked technical specifics",
+          "Missing project context",
+          "Missing impact metrics",
+          "Failed to explain the 'how' or 'why'"
+        ],
+        "ideal_model_answer": "In my previous role at X, I architected a distributed real-time data pipeline processing 50k events per second. The biggest challenge was ensuring strict ordering under high concurrency, so I implemented a sharded Kafka partitioning strategy. This reduced latency by 30% and improved system availability to 99.99%. I led the full-stack design from the frontend dashboard integration down to the Go-based backend services."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "Mastering STAR structure: Ensure every technical explanation follows a clear Situation, Task, Action, Result path.",
+      "System Design Deep Dive: Study high-concurrency systems, CAP theorem trade-offs, and microservices architecture relevant to GCP.",
+      "Communication Practice: Work on expanding technical summaries with metrics, challenges faced, and specific individual contributions."
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 3,
+    "duration_seconds": 300,
+    "created_at": 1790622608.8010862,
+    "id": "5fcf9ca7-ed21-42c2-844f-44bccb9e6de7"
+  },
+  {
+    "session_id": "session_765de79a59",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 88,
+    "hiring_verdict": "Hire",
+    "technical_score": 26,
+    "communication_score": 22,
+    "problem_solving_score": 22,
+    "culture_fit_score": 18,
+    "summary_verdict": "The candidate demonstrated strong foundational knowledge for the Senior Full-Stack Software Engineer role at Google Cloud. Technical explanations were structured, with notable strengths in system design and proactive problem solving.",
+    "top_strengths": [
+      "Strong grasp of scalable architecture and modern tech stack",
+      "Clear communication structure with confident delivery",
+      "Good understanding of engineering trade-offs"
+    ],
+    "top_weaknesses": [
+      "Could quantify business impact and metrics more rigorously",
+      "Could dive deeper into fault tolerance and failover protocols"
+    ],
+    "body_language_and_pacing_notes": "Maintained great visual presence, steady cadence, and professional composure throughout the interview.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 88,
+        "verdict": "Hire",
+        "detailed_comments": "Solid grasp of backend architecture and frontend reactive patterns.",
+        "key_strengths": [
+          "Clean architectural reasoning"
+        ],
+        "areas_for_growth": [
+          "Deep-dive edge-case failure modes"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 89,
+        "verdict": "Hire",
+        "detailed_comments": "Articulate, goal-oriented, and highly motivated.",
+        "key_strengths": [
+          "Clear communication"
+        ],
+        "areas_for_growth": [
+          "Quantify past project revenue impact"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 87,
+        "verdict": "Hire",
+        "detailed_comments": "Strong alignment with company engineering values.",
+        "key_strengths": [
+          "High agency"
+        ],
+        "areas_for_growth": [
+          "Cross-functional stakeholder handling"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Walk me through how you architect high-scale systems for Google Cloud.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Candidate explained microservices architecture, caching layers, and database optimization.",
+        "technical_accuracy_score": 9,
+        "communication_clarity_score": 8,
+        "strengths_in_answer": [
+          "Mentioned Redis caching and PostgreSQL indexing"
+        ],
+        "critical_gaps_or_flaws": [
+          "Could have detailed idempotent API design and rate limiting"
+        ],
+        "ideal_model_answer": "A complete 10/10 answer articulates end-to-end architecture: CDN -> API Gateway with Token Bucket rate limiting -> Stateless microservices -> Kafka event streaming -> PostgreSQL with read replicas + Redis write-through cache, with sub-20ms p99 latency SLA."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "System Design: Deepen mastery of idempotent API design and distributed locking",
+      "Behavioral: Use the STAR framework (Situation, Task, Action, Result) with quantified $ and % metrics",
+      "Company Specific: Review Google Cloud's engineering blog on high-throughput microservices"
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 18,
+    "duration_seconds": 300,
+    "created_at": 1790622634.2302644,
+    "id": "0dc6244a-19c6-4131-b3d8-0a4948aebf16"
+  },
+  {
+    "session_id": "session_bcf0029a48",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 45,
+    "hiring_verdict": "Strong No Hire",
+    "technical_score": 10,
+    "communication_score": 8,
+    "problem_solving_score": 5,
+    "culture_fit_score": 5,
+    "summary_verdict": "The candidate failed to provide the necessary depth expected for a Senior Full-Stack role at Google Cloud. While the candidate displayed composure, the lack of substantive detail regarding their claimed experience with 'distributed real-time systems' suggests a significant resume-to-interview discrepancy. A Senior Engineer must be able to articulate architecture, trade-offs, and specific technical contributions, none of which were demonstrated in the session.\n\nThe candidate’s inability to elaborate beyond a single sentence demonstrates a lack of professional readiness or a fundamental misunderstanding of the interview expectations. Given the high bar at Google Cloud, we require candidates who can dive deep into complex systems and provide concrete examples of their impact. This performance was inadequate.",
+    "top_strengths": [
+      "Maintained professional composure",
+      "Steady non-verbal communication",
+      "Polite demeanor",
+      "Adherence to basic etiquette"
+    ],
+    "top_weaknesses": [
+      "Insufficient technical depth",
+      "Failure to elaborate on key experience",
+      "Inability to provide context or STAR-formatted responses",
+      "Lack of engagement with interview goals"
+    ],
+    "body_language_and_pacing_notes": "Candidate was physically composed with consistent eye contact. However, the pacing was prematurely halted by an extremely abbreviated response. There was no sign of nervous fidgeting, but the candidate lacked the executive presence required to steer a complex technical discussion.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 15,
+        "verdict": "Strong No Hire",
+        "detailed_comments": "The candidate provided a one-line summary of their background that lacked any mention of languages, frameworks, scalability metrics, or specific architectural challenges. For a Senior role, this is an immediate red flag regarding their actual level of expertise.",
+        "key_strengths": [
+          "Conciseness"
+        ],
+        "areas_for_growth": [
+          "Ability to speak to distributed system design",
+          "Technical narrative depth"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 20,
+        "verdict": "Strong No Hire",
+        "detailed_comments": "The candidate failed to communicate their career trajectory effectively. A Senior engineer should be able to weave their experience into a compelling narrative of growth and impact; this candidate provided zero context.",
+        "key_strengths": [
+          "Professional posture"
+        ],
+        "areas_for_growth": [
+          "Interview preparation and STAR storytelling"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 25,
+        "verdict": "No Hire",
+        "detailed_comments": "There was no evidence of 'Googley' traits, such as humility, intellectual curiosity, or collaborative spirit. The lack of communicative effort is a cultural mismatch for a team-driven environment.",
+        "key_strengths": [
+          "Composure"
+        ],
+        "areas_for_growth": [
+          "Active engagement and communication style"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Tell me about your background.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "I architected distributed real-time systems.",
+        "technical_accuracy_score": 1,
+        "communication_clarity_score": 2,
+        "strengths_in_answer": [
+          "Brief identification of domain area"
+        ],
+        "critical_gaps_or_flaws": [
+          "Complete lack of technical depth",
+          "No mention of specific technologies used",
+          "No business context provided",
+          "Failed to use STAR structure"
+        ],
+        "ideal_model_answer": "In my previous role at [Company], I led the architecture of a high-throughput real-time data ingestion pipeline using Go and Kafka. The system handled over 100k events per second with sub-50ms latency. I spearheaded the migration from a legacy monolithic stack to a microservices-based model on GKE, which improved system availability from 99.9% to 99.99%. I managed a team of 4 engineers, focusing on CI/CD improvements that reduced deployment time by 40%. I’m now looking to apply this experience in distributed systems to Google Cloud’s global infrastructure projects."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "Master the STAR method (Situation, Task, Action, Result) for behavioral and technical storytelling.",
+      "Deep dive into system design: specifically high-concurrency, latency, and consistency trade-offs (CAP theorem) in distributed systems.",
+      "Prepare comprehensive project 'deep-dives' that include tech stack details, challenges faced, and measurable outcomes."
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 6,
+    "duration_seconds": 300,
+    "created_at": 1790622638.4327762,
+    "id": "1f594ee2-59f1-40d7-ac08-e1cd8953aad8"
+  },
+  {
+    "session_id": "session_8215f1e130",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 45,
+    "hiring_verdict": "Strong No Hire",
+    "technical_score": 10,
+    "communication_score": 10,
+    "problem_solving_score": 10,
+    "culture_fit_score": 15,
+    "summary_verdict": "The candidate failed to demonstrate the depth required for a Senior Full-Stack role at Google Cloud. While the resume lists distributed systems experience, the interview performance was critically underspecified. A single-sentence response to an open-ended request for background indicates a severe lack of preparation, communication structure, or an inability to articulate technical contributions at a senior level. \n\nGiven the seniority of the role, we expect a nuanced narrative covering technical trade-offs, system design challenges, and leadership experiences. The candidate provided zero context regarding stack preferences, architectural challenges, or collaboration styles, which is disqualifying for an L5/L6 position.",
+    "top_strengths": [
+      "Professional demeanor and composed posture",
+      "Punctual attendance",
+      "Clear speech articulation",
+      "Conciseness"
+    ],
+    "top_weaknesses": [
+      "Extreme brevity in response to open-ended behavioral questions",
+      "Lack of technical depth or specific architectural examples",
+      "Inability to engage in professional storytelling or structured communication (STAR)",
+      "Failed to demonstrate Senior-level engineering impact"
+    ],
+    "body_language_and_pacing_notes": "Candidate remained seated with good posture and maintained steady eye contact throughout the session. Despite the composure, the pace was too rapid, suggesting a lack of reflective thought or a premature desire to end the interaction. No visible signs of anxiety, yet no signs of engagement or enthusiasm.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 15,
+        "verdict": "Strong No Hire",
+        "detailed_comments": "The candidate provided a vacuous summary of their experience. In a Google Cloud technical interview, I look for deep dives into data partitioning, consistency models, and latency optimization. A simple claim of 'architecting distributed real-time systems' without any supporting evidence of scale, technology choices, or complex problem-solving is unacceptable.",
+        "key_strengths": [
+          "Directness"
+        ],
+        "areas_for_growth": [
+          "Elaboration on technical specifics",
+          "System design documentation"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 20,
+        "verdict": "Strong No Hire",
+        "detailed_comments": "Candidates at this level must be able to sell their experience and connect their work to business value. This response showed zero awareness of the role's requirements or professional storytelling standards.",
+        "key_strengths": [
+          "Professional presence"
+        ],
+        "areas_for_growth": [
+          "Using the STAR method to structure experience"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 30,
+        "verdict": "Strong No Hire",
+        "detailed_comments": "The lack of effort in the opening question suggests a low level of 'Googleyness'. We look for curiosity, drive, and willingness to share knowledge; none were present.",
+        "key_strengths": [
+          "Polite demeanor"
+        ],
+        "areas_for_growth": [
+          "Demonstrating passion and collaborative spirit"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Tell me about your background.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Candidate claimed to have architected distributed real-time systems.",
+        "technical_accuracy_score": 1,
+        "communication_clarity_score": 2,
+        "strengths_in_answer": [
+          "None"
+        ],
+        "critical_gaps_or_flaws": [
+          "Lack of metrics",
+          "Lack of specific stack details",
+          "Lack of project scope",
+          "No mention of team dynamics or leadership"
+        ],
+        "ideal_model_answer": "In my previous role at X, I served as the technical lead for a distributed message-processing pipeline that scaled to 1M+ RPS. I focused on building low-latency, resilient infrastructure using Go and gRPC, migrating us from a monolithic architecture to a event-driven microservices model. This resulted in a 40% reduction in end-to-end latency and improved system availability from 99.9% to 99.99%. I managed the technical strategy for a team of 8, while mentoring junior developers on observability and distributed tracing best practices."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "Master the STAR (Situation, Task, Action, Result) method for all behavioral and experience-based questions.",
+      "Deep dive into Google's engineering culture and 'Googleyness' expectations regarding openness and collaboration.",
+      "Prepare a 2-3 minute structured 'elevator pitch' that highlights specific technical stack expertise, measurable impact, and team leadership experience."
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 21,
+    "duration_seconds": 300,
+    "created_at": 1790622650.1356783,
+    "id": "4aa93d23-fe39-48b4-b6b8-1697e7ead504"
+  },
+  {
+    "session_id": "session_df4e2d731a",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 45,
+    "hiring_verdict": "Strong No Hire",
+    "technical_score": 10,
+    "communication_score": 8,
+    "problem_solving_score": 5,
+    "culture_fit_score": 5,
+    "summary_verdict": "The candidate failed to provide the necessary depth expected for a Senior Full-Stack Software Engineer role at Google Cloud. While the candidate's professional demeanor was adequate, the substance of their responses was critically thin. A senior candidate is expected to articulate specific architectural trade-offs, discuss latency constraints, and detail the lifecycle of their distributed systems projects. The candidate's singular sentence response indicates either a lack of technical depth or an inability to communicate complex engineering accomplishments effectively.\n\nGiven the high bar at Google Cloud, a response of this brevity is disqualifying for an L5/L6 position. There was no demonstration of system design acumen, database schema optimization knowledge, or ability to handle high-concurrency production environments. We require candidates who can deep-dive into distributed systems, and this candidate did not present enough evidence to warrant a technical deep-dive assessment.",
+    "top_strengths": [
+      "Professional composure",
+      "Steady eye contact",
+      "Clear, articulate speech",
+      "Concise delivery"
+    ],
+    "top_weaknesses": [
+      "Lack of technical depth",
+      "Inability to expand on complex systems",
+      "Insufficient STAR methodology usage",
+      "Failure to provide metrics or concrete engineering results"
+    ],
+    "body_language_and_pacing_notes": "The candidate was physically poised and calm. Eye contact was maintained consistently throughout the interaction. However, the pacing was static; the candidate provided no narrative arc or elaboration, suggesting a lack of preparation for a high-stakes engineering interview.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 15,
+        "verdict": "Strong No Hire",
+        "detailed_comments": "The candidate provided a one-line summary of their experience. I was looking for architectural patterns, concurrency models, or data consistency trade-offs. The total lack of substance prevents me from validating any technical competence.",
+        "key_strengths": [
+          "Confident delivery"
+        ],
+        "areas_for_growth": [
+          "Ability to speak to system design",
+          "Depth of engineering experience"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 30,
+        "verdict": "Strong No Hire",
+        "detailed_comments": "Professionalism is not a substitute for substance. The candidate failed to elaborate on their career trajectory, which is a fundamental requirement for a senior role evaluation.",
+        "key_strengths": [
+          "Professional presentation"
+        ],
+        "areas_for_growth": [
+          "Storytelling and STAR methodology"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 20,
+        "verdict": "Strong No Hire",
+        "detailed_comments": "A Senior Engineer must be able to communicate effectively with stakeholders. The candidate was unresponsive to the prompt for a detailed background, indicating a potential struggle with ambiguity and engagement.",
+        "key_strengths": [
+          "Polite demeanor"
+        ],
+        "areas_for_growth": [
+          "Engagement with interviewers"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Tell me about your background.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "I architected distributed real-time systems.",
+        "technical_accuracy_score": 1,
+        "communication_clarity_score": 3,
+        "strengths_in_answer": [
+          "Identified the specific domain (real-time distributed systems)"
+        ],
+        "critical_gaps_or_flaws": [
+          "No mention of technologies used",
+          "No mention of business impact",
+          "No mention of scale or architectural challenges",
+          "Failed to use STAR format"
+        ],
+        "ideal_model_answer": "In my previous role at X, I led the architecture of a high-throughput, low-latency messaging system that handled 1M+ requests per second. Using a microservices approach with gRPC and Kafka, I solved a significant data consistency challenge by implementing a distributed locking mechanism on top of Redis. This increased system reliability by 40% and reduced end-to-end latency by 150ms. I focused heavily on scalability and cross-team collaboration to migrate legacy monolithic components into this new event-driven architecture."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "Master the STAR method: Structure all experience answers by Situation, Task, Action, and Result.",
+      "System Design Deep Dive: Review 'Designing Data-Intensive Applications' by Martin Kleppmann to articulate architectural trade-offs.",
+      "High-Concurrency Analytics: Prepare concrete examples involving sharding, load balancing, and cache invalidation strategies from your own projects."
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 9,
+    "duration_seconds": 300,
+    "created_at": 1790622653.7844563,
+    "id": "8c5d3f45-ca7d-45ab-9b5b-a147aadcec32"
+  },
+  {
+    "session_id": "session_b3effe887d",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 45,
+    "hiring_verdict": "Leaning No Hire",
+    "technical_score": 12,
+    "communication_score": 10,
+    "problem_solving_score": 8,
+    "culture_fit_score": 15,
+    "summary_verdict": "The candidate failed to provide the necessary depth required for a Senior Full-Stack role at Google Cloud. While the resume suggests experience with distributed systems, the live response to the 'tell me about your background' prompt was excessively brief, lacking the technical narrative, architectural context, or business impact metrics expected at the L5/L6 level. The candidate demonstrated a lack of engagement and failed to leverage the opportunity to showcase their career trajectory or problem-solving methodology.\n\nUltimately, the candidate’s performance was insufficient to move forward. They struggled to articulate the 'how' and 'why' behind their stated experience, leaving the committee with significant doubts regarding their ability to operate in high-ambiguity, high-scale environments. Without a more robust demonstration of technical depth and communication skills, they do not meet the bar for Google Cloud engineering.",
+    "top_strengths": [
+      "Steady composure under pressure",
+      "Professional demeanor",
+      "Concise (though overly so) delivery style"
+    ],
+    "top_weaknesses": [
+      "Failure to provide technical depth or scope in responses",
+      "Lack of 'Googliness' in terms of proactive communication and self-advocacy",
+      "Inability to connect past experience to business value"
+    ],
+    "body_language_and_pacing_notes": "The candidate maintained good posture and consistent eye contact throughout the short interaction. Pacing was steady but lacked the dynamism required to influence a panel. The candidate remained composed, though appeared under-prepared to lead a technical conversation.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 30,
+        "verdict": "Strong No Hire",
+        "detailed_comments": "The candidate stated they 'architected distributed real-time systems' but failed to elaborate on the tech stack, data consistency models, latency targets, or the specific scale of their systems. This lack of detail is unacceptable for a Senior role.",
+        "key_strengths": [
+          "Confident tone"
+        ],
+        "areas_for_growth": [
+          "Technical storytelling",
+          "Elaboration on architectural decisions"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 50,
+        "verdict": "Leaning No Hire",
+        "detailed_comments": "The candidate was professional but did not demonstrate the level of seniority or leadership communication expected. They did not provide context regarding their team roles or scope of influence.",
+        "key_strengths": [
+          "Polite and attentive"
+        ],
+        "areas_for_growth": [
+          "STAR method implementation",
+          "Career impact articulation"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 55,
+        "verdict": "Leaning No Hire",
+        "detailed_comments": "While the candidate was respectful, there was no 'customer obsession' or 'think 10x' mentality demonstrated. The lack of enthusiasm or clear passion for building at scale was noted.",
+        "key_strengths": [
+          "Professional behavior"
+        ],
+        "areas_for_growth": [
+          "Demonstrating alignment with Google core values"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Tell me about your background.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Candidate provided a single, non-descriptive sentence: 'I architected distributed real-time systems.'",
+        "technical_accuracy_score": 2,
+        "communication_clarity_score": 2,
+        "strengths_in_answer": [
+          "Conciseness"
+        ],
+        "critical_gaps_or_flaws": [
+          "No mention of specific tools, technologies, scale, or business impact.",
+          "Failed to use the STAR method.",
+          "Did not provide context for current or past projects."
+        ],
+        "ideal_model_answer": "In my previous role at X, I served as the primary architect for a distributed telemetry platform handling 500k+ events per second. I led the migration from a legacy monolithic stack to a microservices architecture using Go, Kafka, and Kubernetes on GCP. By implementing an event-driven design, I reduced end-to-end latency by 40% and improved system availability to 99.99%. I also mentored three junior engineers and collaborated with product management to define roadmap priorities that aligned with our 12-month scaling goals."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "Master the STAR (Situation, Task, Action, Result) framework to ensure all answers provide technical depth and measurable impact.",
+      "Develop a 'Technical Narrative' document detailing the architecture, trade-offs, and scaling challenges of past projects.",
+      "Study high-concurrency patterns and distributed system fundamentals specifically related to Google Cloud architecture."
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 12,
+    "duration_seconds": 300,
+    "created_at": 1790622667.339808,
+    "id": "2064c464-ba2a-4f2c-8ffb-1eec8f34d6d3"
+  },
+  {
+    "session_id": "session_d10690f64d",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 78,
+    "hiring_verdict": "Leaning Hire",
+    "technical_score": 22,
+    "communication_score": 20,
+    "problem_solving_score": 20,
+    "culture_fit_score": 16,
+    "summary_verdict": "The candidate demonstrates strong fundamental engineering principles and a clear ability to articulate architectural concepts. They show a propensity for methodical system design, though the response lacked deep-dive metrics regarding latency optimization or specific failure-mode handling in a cloud-native environment. \n\nOverall, the candidate is a solid contributor who meets the baseline for a Senior level role but requires more seasoning in articulating high-scale distributed system trade-offs. Their communication style is structured and professional, showing a high level of composure under the pressure of a live assessment.",
+    "top_strengths": [
+      "Logical and structured technical storytelling",
+      "Strong grasp of distributed system components",
+      "Professional demeanor and composed delivery",
+      "Effective synthesis of complex requirements"
+    ],
+    "top_weaknesses": [
+      "Insufficient depth on trade-off metrics (e.g., specific latency impact vs. throughput)",
+      "Limited exploration of edge-case failure modes",
+      "Could improve on linking architectural choices back to business value"
+    ],
+    "body_language_and_pacing_notes": "The candidate maintained excellent eye contact and a steady, measured pace. Posture was professional and engaged. No signs of nervousness were observed; the candidate used silence effectively to gather thoughts before speaking, indicating a high level of composure.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 80,
+        "verdict": "Hire",
+        "detailed_comments": "The candidate presented a coherent design for a microservices architecture. They correctly identified the CAP theorem trade-offs involved but could have been more specific about the recovery time objectives (RTO) in the event of partial system failures.",
+        "key_strengths": [
+          "Good understanding of service discovery",
+          "Clear articulation of data consistency models"
+        ],
+        "areas_for_growth": [
+          "Deeper analysis of cascading failure prevention",
+          "More concrete data regarding system load and scaling constraints"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 75,
+        "verdict": "Leaning Hire",
+        "detailed_comments": "The candidate displays strong communication skills and a team-oriented mindset. They handled the behavioral framing well, keeping the focus on engineering challenges rather than individual ego.",
+        "key_strengths": [
+          "Concise and professional communication"
+        ],
+        "areas_for_growth": [
+          "Need for more 'Googleyness'—demonstrating deeper ownership of team success"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 78,
+        "verdict": "Leaning Hire",
+        "detailed_comments": "The candidate shows an ability to deal with ambiguity, though they tended to favor 'safe' architectural patterns. Would like to see more initiative in suggesting non-traditional solutions to complex problems.",
+        "key_strengths": [
+          "Calm and collaborative attitude"
+        ],
+        "areas_for_growth": [
+          "Willingness to propose bolder, innovative system designs"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Could you tell me about a complex, distributed system you’ve designed recently and the biggest architectural trade-off you had to make?",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Discussed a migration from a monolithic service to a microservices architecture utilizing Kafka for message streaming. The trade-off focused on choosing eventual consistency over strong consistency to improve write availability during high-traffic bursts.",
+        "technical_accuracy_score": 8,
+        "communication_clarity_score": 9,
+        "strengths_in_answer": [
+          "Clearly explained the rationale behind choosing eventual consistency",
+          "Used industry-standard patterns like event-driven architecture"
+        ],
+        "critical_gaps_or_flaws": [
+          "Failed to mention how the team handled duplicate messages",
+          "Did not touch on the monitoring or observability challenges introduced by the shift"
+        ],
+        "ideal_model_answer": "STAR Format: Situation (System bottlenecked), Task (Design scalable architecture), Action (Migrated to event-driven system, utilized Kafka for decoupling, opted for eventual consistency via Saga patterns), Result (Increased write throughput by 40% during peak events). Technical depth includes addressing Idempotency, partition key selection for ordering, and using distributed tracing (OpenTelemetry) to mitigate debugging complexities."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "Deep dive into Distributed Systems failure recovery: Study circuit breakers, bulkheads, and retry policies.",
+      "Improve Behavioral Responses: Incorporate more explicit 'I' vs 'We' distinctions and focus on quantifying impact (business value, cost savings).",
+      "System Design Scaling: Practice articulating design decisions with specific throughput/latency numbers (e.g., 'supporting 10k RPS' vs 'supporting high traffic')."
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 15,
+    "duration_seconds": 300,
+    "created_at": 1790623153.408445,
+    "id": "3686753b-3f94-4c7a-8763-a1d553a8aee0"
+  },
+  {
+    "session_id": "session_760625a6e7",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 78,
+    "hiring_verdict": "Leaning Hire",
+    "technical_score": 22,
+    "communication_score": 20,
+    "problem_solving_score": 20,
+    "culture_fit_score": 16,
+    "summary_verdict": "The candidate demonstrates strong fundamental engineering knowledge and clear communication skills. They were able to articulate a distributed system architecture with reasonable confidence. However, for a Senior Full-Stack role at Google Cloud, the depth of discussion regarding trade-offs—specifically concerning data consistency models versus availability (CAP theorem) and latency implications—was slightly shallow. \n\nWhile the candidate shows potential, they require further evidence of navigating high-scale, cross-functional ambiguity to meet the bar for a Senior-level role. The response was structured well, but lacked the 'nitty-gritty' architectural scrutiny expected of a lead engineer. They would benefit from a follow-up deep-dive session to ensure they can handle the complexity of GCP infrastructure at scale.",
+    "top_strengths": [
+      "Structured communication and logical flow",
+      "Solid understanding of standard distributed patterns (microservices, message queues)",
+      "Professionalism and composure under pressure",
+      "Clarity in defining high-level system components"
+    ],
+    "top_weaknesses": [
+      "Lack of depth on specific latency trade-offs",
+      "Insufficient discussion of failure mode analysis (resiliency patterns)",
+      "Surface-level understanding of data consistency in distributed environments"
+    ],
+    "body_language_and_pacing_notes": "Candidate maintained excellent, consistent eye contact throughout the session. Posture was professional and engaged. Pacing was moderate, suggesting thoughtful reflection, though there was a slight hesitation during the transition to the trade-off analysis portion, suggesting moderate preparation for high-pressure technical critique.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 75,
+        "verdict": "Leaning Hire",
+        "detailed_comments": "The candidate has the right vocabulary but needs to push deeper into the 'why' behind architectural choices. They identified a standard trade-off but struggled to quantify the impact on P99 latency.",
+        "key_strengths": [
+          "Clear system diagramming",
+          "Pragmatic approach to technology selection"
+        ],
+        "areas_for_growth": [
+          "More rigorous analysis of trade-offs under heavy load",
+          "Deeper consideration of distributed consistency models"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 82,
+        "verdict": "Hire",
+        "detailed_comments": "Very impressed by the clarity of communication. The candidate articulates complex concepts in a way that is easy to follow, which is a major asset for cross-functional collaboration.",
+        "key_strengths": [
+          "Professional poise and executive presence"
+        ],
+        "areas_for_growth": [
+          "Refining the 'STAR' delivery to highlight more individual ownership"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 80,
+        "verdict": "Hire",
+        "detailed_comments": "Shows good alignment with 'Respect the user' and 'Focus on the user'. Seems collaborative and humble, which fits well with our internal engineering culture.",
+        "key_strengths": [
+          "Collaborative mindset"
+        ],
+        "areas_for_growth": [
+          "Demonstrating more examples of '10x thinking' in previous projects"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Could you tell me about a complex, distributed system you’ve designed recently and the biggest architectural trade-off you had to make?",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Described a microservices migration to a pub/sub model to decouple services. Identified latency vs. consistency as the main trade-off.",
+        "technical_accuracy_score": 7,
+        "communication_clarity_score": 9,
+        "strengths_in_answer": [
+          "Logical grouping of system services",
+          "Clear identification of the decoupling benefit"
+        ],
+        "critical_gaps_or_flaws": [
+          "Failed to explain the impact of asynchronous processing on eventual consistency",
+          "Did not discuss how the system handles partition tolerance during failure"
+        ],
+        "ideal_model_answer": "I recently architected a high-throughput event processing system for financial analytics. We used a distributed event bus (Kafka) to decouple ingestion from processing. The primary trade-off was adopting eventual consistency via an async model to gain 50% improvement in ingest throughput. I managed this by implementing idempotent consumers and a side-car pattern for health checks to detect lag. We sacrificed strong consistency at write-time, which we mitigated using a read-your-writes pattern at the application level to preserve user experience."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "Deep dive into distributed systems trade-offs: CAP theorem, PACELC, and consensus algorithms (Raft/Paxos).",
+      "Refine the STAR method: Ensure every behavioral story includes a specific metric (e.g., 'reduced latency by X%' or 'improved availability to 99.99%').",
+      "Resiliency patterns: Study circuit breakers, bulkheads, and retries with backoff strategies to demonstrate robustness in system design."
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 18,
+    "duration_seconds": 300,
+    "created_at": 1790623175.5802538,
+    "id": "e5566625-141d-4b3b-92d9-001671c29976"
+  },
+  {
+    "session_id": "session_30fea829aa",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 78,
+    "hiring_verdict": "Leaning Hire",
+    "technical_score": 22,
+    "communication_score": 20,
+    "problem_solving_score": 20,
+    "culture_fit_score": 16,
+    "summary_verdict": "The candidate demonstrates strong foundational knowledge in distributed systems and articulate communication. While they successfully identified a complex architectural challenge, the depth of the trade-off analysis leaned slightly toward theoretical constraints rather than Google-scale operational realities. \n\nOverall, the candidate is a capable engineer with potential for growth. They demonstrate the technical aptitude required for the role but need to refine their ability to defend architectural decisions under pressure, particularly concerning observability, latency, and cost-efficiency at scale.",
+    "top_strengths": [
+      "Structured communication style",
+      "Strong fundamental grasp of distributed primitives",
+      "Professional demeanor and composure under questioning",
+      "Clear articulation of system boundaries"
+    ],
+    "top_weaknesses": [
+      "Lack of specific performance metrics or throughput data",
+      "Over-reliance on high-level abstractions",
+      "Insufficient focus on trade-off analysis regarding developer velocity vs. system performance"
+    ],
+    "body_language_and_pacing_notes": "Candidate exhibited high level of composure. Posture was professional and engaged. Eye contact was consistent, suggesting high confidence. Speaking pace was deliberate and rhythmic, though slightly rehearsed; candidate remained unflappable when Dr. Vance interrupted for clarification.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 75,
+        "verdict": "Leaning Hire",
+        "detailed_comments": "The candidate understands distributed systems architecture but struggled to provide concrete data regarding the 'why' behind the trade-offs. The discussion on consensus algorithms was accurate, but they failed to articulate how this would impact tail latency in a multi-region deployment.",
+        "key_strengths": [
+          "Good understanding of CAP theorem application",
+          "Clear diagrams and architectural flow"
+        ],
+        "areas_for_growth": [
+          "Needs to incorporate more metrics and data-driven justifications",
+          "Deeper dive into latency budgets"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 82,
+        "verdict": "Hire",
+        "detailed_comments": "Strong trajectory. The candidate has a clear sense of career direction and handles technical leadership questions with maturity. They communicate complex ideas in a way that remains accessible.",
+        "key_strengths": [
+          "Exceptional clarity of thought"
+        ],
+        "areas_for_growth": [
+          "Needs to share more examples of cross-functional team mentorship"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 80,
+        "verdict": "Hire",
+        "detailed_comments": "Good alignment with Google’s collaborative spirit. The candidate shows empathy for the end-user and demonstrated an understanding of the balance between innovation and system stability.",
+        "key_strengths": [
+          "Customer-centric mindset"
+        ],
+        "areas_for_growth": [
+          "Demonstrate more experience navigating ambiguity in non-technical project outcomes"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Tell me about a complex, distributed system you’ve designed recently and the biggest architectural trade-off you had to make?",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Candidate described a microservice-based architecture for an inventory management system using eventual consistency to handle high read/write loads.",
+        "technical_accuracy_score": 8,
+        "communication_clarity_score": 9,
+        "strengths_in_answer": [
+          "Successfully identified the need for eventual consistency",
+          "Good understanding of sharding strategies"
+        ],
+        "critical_gaps_or_flaws": [
+          "Did not quantify the impact of eventual consistency on user UX",
+          "Failed to explain how they handled cascading failures in the service dependencies"
+        ],
+        "ideal_model_answer": "I designed an inventory reservation system processing 10k TPS. The trade-off was choosing Eventual Consistency via Kafka vs. Strong Consistency via a distributed lock. We opted for Eventual Consistency to achieve 99.99th percentile latency of <50ms. I quantified this: switching to strong consistency would have added 200ms overhead, violating our SLA. I mitigated potential overselling by implementing a 'soft-lock' reservation pattern in our Redis layer, which reduced inventory drift by 95% compared to our previous monolithic approach."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "Deep dive into SRE principles (Google SRE Handbook) focusing on Error Budgets and SLIs.",
+      "Practice STAR methodology with a focus on including specific KPIs (e.g., 'reduced latency by X%').",
+      "Analyze trade-offs in high-concurrency systems, specifically focusing on the performance cost of Paxos/Raft vs. gossip protocols."
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 21,
+    "duration_seconds": 300,
+    "created_at": 1790623207.8960762,
+    "id": "c2113184-8323-4255-9d6f-20bacef6c636"
+  },
+  {
+    "session_id": "session_f49e10140c",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 78,
+    "hiring_verdict": "Leaning Hire",
+    "technical_score": 22,
+    "communication_score": 20,
+    "problem_solving_score": 20,
+    "culture_fit_score": 16,
+    "summary_verdict": "The candidate demonstrates strong fundamental engineering knowledge and a coherent grasp of distributed systems architecture. They articulate technical trade-offs with sufficient clarity, though the response lacked deep-dive quantitative metrics regarding throughput, latency impact, or cost-benefit analysis typical of a Senior-level candidate at Google Cloud. \n\nWhile the candidate exhibits a professional demeanor and structured communication, they require more rigorous preparation for high-concurrency systems design questions. The candidate shows promise in their ability to reason through complex problems, but currently sits on the borderline of the 'Senior' requirement due to a lack of nuanced system-level optimization discussions.",
+    "top_strengths": [
+      "Logical approach to system decomposition",
+      "Professional communication style",
+      "Good awareness of trade-offs",
+      "Strong baseline architectural vocabulary"
+    ],
+    "top_weaknesses": [
+      "Lack of quantitative data in design answers",
+      "Underdeveloped discussion on failure modes",
+      "Limited exploration of global scalability constraints"
+    ],
+    "body_language_and_pacing_notes": "The candidate maintained excellent composure throughout the session. Posture was professional and engaged. Pacing was moderate and thoughtful, avoiding rushed or nervous tendencies. Eye contact was consistent, indicating high confidence levels despite the high-pressure environment of the Bar-Raiser panel.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 75,
+        "verdict": "Leaning Hire",
+        "detailed_comments": "The candidate successfully identified a relevant system design challenge. They understood the trade-offs (Consistency vs. Availability), but struggled to quantify the specific performance trade-offs in a way that suggests mastery of high-scale cloud environments.",
+        "key_strengths": [
+          "Clear architectural diagramming logic",
+          "Recognition of CAP theorem constraints"
+        ],
+        "areas_for_growth": [
+          "Quantifying latency and throughput expectations",
+          "Deepening knowledge of micro-service failure propagation"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 82,
+        "verdict": "Hire",
+        "detailed_comments": "Strong collaborative tone and ability to convey complex ideas clearly. Career trajectory demonstrates a steady progression of technical ownership. Would excel in a team-oriented environment.",
+        "key_strengths": [
+          "Professional poise and articulate delivery"
+        ],
+        "areas_for_growth": [
+          "More concrete examples of mentorship and cross-functional leadership"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 80,
+        "verdict": "Hire",
+        "detailed_comments": "The candidate displays humility and a growth mindset. They align well with Google's cultural values of being 'user-focused' and respectful of team dynamics.",
+        "key_strengths": [
+          "Active listening and candidate engagement"
+        ],
+        "areas_for_growth": [
+          "Demonstrating 'Googleyness' through specific 'think big' initiatives"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Tell me about a complex, distributed system you’ve designed recently and the biggest architectural trade-off you had to make?",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Discussed a message-queuing microservice implementation; noted the choice between Kafka and RabbitMQ based on throughput requirements and message persistence needs.",
+        "technical_accuracy_score": 7,
+        "communication_clarity_score": 9,
+        "strengths_in_answer": [
+          "Accurate classification of system requirements",
+          "Clear articulation of why RabbitMQ was rejected for Kafka"
+        ],
+        "critical_gaps_or_flaws": [
+          "Failed to touch on observability, data recovery in case of partitioning, or cost-scaling considerations",
+          "Did not discuss performance metrics or benchmarks"
+        ],
+        "ideal_model_answer": "STAR structure: SITUATION: Designing a real-time analytics pipeline handling 100k events/sec. TASK: Ensure sub-second latency with event-ordering guarantees. ACTION: Evaluated Kafka vs. Google Cloud Pub/Sub. Chosen Pub/Sub for native managed scalability and lower operational overhead despite higher per-message cost. Trade-off: Lost fine-grained partition management in exchange for global auto-scaling and simplified SRE load. RESULT: Reduced pipeline latency by 30% while eliminating 2 headcount-equivalent tasks in manual scaling."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "Master high-scale system design: Review 'Designing Data-Intensive Applications' with a focus on partitioning, consensus, and failure models.",
+      "Improve Behavioral Responses: Practice the STAR method to incorporate specific 'Quantifiable Metrics' into every answer.",
+      "Deep dive into GCP core primitives: Gain expert-level understanding of Cloud Spanner, Pub/Sub, and GKE scaling mechanisms."
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 24,
+    "duration_seconds": 300,
+    "created_at": 1790623225.0159087,
+    "id": "28d33398-e356-4dc3-aa20-6de21ea316a2"
+  },
+  {
+    "session_id": "session_bbc83fc064",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 78,
+    "hiring_verdict": "Leaning Hire",
+    "technical_score": 22,
+    "communication_score": 20,
+    "problem_solving_score": 20,
+    "culture_fit_score": 16,
+    "summary_verdict": "The candidate demonstrates strong architectural foundations and a clear grasp of distributed systems concepts. During the initial technical probe, they articulated a logical system design, though they lacked deep-dive precision regarding tail-latency performance at scale. Their communication style is structured and follows a professional cadence, which reflects well on their ability to lead in a cross-functional environment.\n\nWhile the candidate shows potential for the Senior level, there is a moderate gap in navigating extreme-scale trade-offs typical of Google Cloud infrastructure. Their ability to handle ambiguity is proficient, but they require further seasoning in articulating the 'why' behind specific technology choices rather than just the 'how'. With targeted mentorship on high-concurrency patterns, the candidate is expected to ramp up quickly.",
+    "top_strengths": [
+      "Logical approach to complex system architecture",
+      "Strong verbal articulation and structured communication",
+      "Professional demeanor and composure under scrutiny",
+      "Demonstrated ability to balance immediate requirements with long-term technical debt"
+    ],
+    "top_weaknesses": [
+      "Insufficient depth on performance profiling at high-concurrency",
+      "Needs more quantitative backing for design decisions",
+      "Surface-level understanding of cloud-native observability"
+    ],
+    "body_language_and_pacing_notes": "Candidate displayed high engagement, maintaining consistent eye contact and an upright, attentive posture throughout the session. Their pace was measured and intentional, effectively managing the 20-minute window without appearing rushed. No signs of nervous fidgeting or deflection were noted.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 75,
+        "verdict": "Leaning Hire",
+        "detailed_comments": "The candidate provided a solid high-level overview of a microservices architecture. They correctly identified the need for eventual consistency in distributed databases, but hesitated when pressed on the specific trade-offs of using Paxos vs. Raft in their implementation. The design pattern was sound but lacked the 'Google-scale' rigor required for this level.",
+        "key_strengths": [
+          "Well-structured architectural diagrams",
+          "Clear understanding of distributed system consistency models"
+        ],
+        "areas_for_growth": [
+          "Depth in consensus algorithms",
+          "Quantitative analysis of latency trade-offs"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 82,
+        "verdict": "Hire",
+        "detailed_comments": "The candidate is a strong communicator who shows high professional maturity. Their ability to translate complex engineering challenges into understandable business impact is a key differentiator for this role. They exhibit a leadership presence that will serve our teams well.",
+        "key_strengths": [
+          "High level of professional presence and interpersonal clarity"
+        ],
+        "areas_for_growth": [
+          "More concrete examples of cross-functional team leadership"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 80,
+        "verdict": "Hire",
+        "detailed_comments": "Displays strong alignment with our 'Googley' values, particularly in their collaborative approach to problem solving and willingness to learn from failure. They articulated a clear path for dealing with ambiguity when system requirements shift.",
+        "key_strengths": [
+          "Growth mindset and humility in evaluating past design mistakes"
+        ],
+        "areas_for_growth": [
+          "Demonstrating more initiative in mentoring junior developers"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Could you tell me about a complex, distributed system you’ve designed recently and the biggest architectural trade-off you had to make?",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Candidate described a microservices-based event processing system using Kafka and a distributed NoSQL store, citing the trade-off between strict consistency and throughput during peak write loads.",
+        "technical_accuracy_score": 7,
+        "communication_clarity_score": 9,
+        "strengths_in_answer": [
+          "Clear identification of the CAP theorem trade-off (Consistency vs. Availability)"
+        ],
+        "critical_gaps_or_flaws": [
+          "Failed to quantify the impact on latency metrics (p99)",
+          "Did not discuss recovery time objectives (RTO) or disaster recovery strategies"
+        ],
+        "ideal_model_answer": "1. Identify the system (e.g., Global real-time analytics pipeline). 2. Detail the architecture (Ingestion, Processing, Storage, Serving). 3. Define the trade-off (e.g., Implementing optimistic locking to optimize for 95th percentile latency at the expense of potential write conflicts during network partitions). 4. Use data (e.g., 'Moving from synchronous writes to asynchronous replication reduced p99 latency from 400ms to 60ms, though it introduced a 50ms window of potential staleness'). 5. Explain the 'Why' (e.g., business requirement for real-time dashboard responsiveness over zero-staleness)."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "Master high-concurrency systems design focusing on p99 latency metrics and tail-latency optimization.",
+      "Refine behavioral stories using the STAR (Situation, Task, Action, Result) method with an emphasis on quantifiable metrics and personal leadership impact.",
+      "Deep dive into distributed consensus protocols and cloud-native observability stacks (e.g., Prometheus, OpenTelemetry, Dapper-style tracing)."
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 27,
+    "duration_seconds": 300,
+    "created_at": 1790623242.9225183,
+    "id": "dce87c2b-c601-4f2d-af55-edb09ecb9935"
+  },
+  {
+    "session_id": "session_2b5133d52b",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 88,
+    "hiring_verdict": "Hire",
+    "technical_score": 26,
+    "communication_score": 22,
+    "problem_solving_score": 22,
+    "culture_fit_score": 18,
+    "summary_verdict": "The candidate demonstrated strong foundational knowledge for the Senior Full-Stack Software Engineer role at Google Cloud. Technical explanations were structured, with notable strengths in system design and proactive problem solving.",
+    "top_strengths": [
+      "Strong grasp of scalable architecture and modern tech stack",
+      "Clear communication structure with confident delivery",
+      "Good understanding of engineering trade-offs"
+    ],
+    "top_weaknesses": [
+      "Could quantify business impact and metrics more rigorously",
+      "Could dive deeper into fault tolerance and failover protocols"
+    ],
+    "body_language_and_pacing_notes": "Maintained great visual presence, steady cadence, and professional composure throughout the interview.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 88,
+        "verdict": "Hire",
+        "detailed_comments": "Solid grasp of backend architecture and frontend reactive patterns.",
+        "key_strengths": [
+          "Clean architectural reasoning"
+        ],
+        "areas_for_growth": [
+          "Deep-dive edge-case failure modes"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 89,
+        "verdict": "Hire",
+        "detailed_comments": "Articulate, goal-oriented, and highly motivated.",
+        "key_strengths": [
+          "Clear communication"
+        ],
+        "areas_for_growth": [
+          "Quantify past project revenue impact"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 87,
+        "verdict": "Hire",
+        "detailed_comments": "Strong alignment with company engineering values.",
+        "key_strengths": [
+          "High agency"
+        ],
+        "areas_for_growth": [
+          "Cross-functional stakeholder handling"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Walk me through how you architect high-scale systems for Google Cloud.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Candidate explained microservices architecture, caching layers, and database optimization.",
+        "technical_accuracy_score": 9,
+        "communication_clarity_score": 8,
+        "strengths_in_answer": [
+          "Mentioned Redis caching and PostgreSQL indexing"
+        ],
+        "critical_gaps_or_flaws": [
+          "Could have detailed idempotent API design and rate limiting"
+        ],
+        "ideal_model_answer": "A complete 10/10 answer articulates end-to-end architecture: CDN -> API Gateway with Token Bucket rate limiting -> Stateless microservices -> Kafka event streaming -> PostgreSQL with read replicas + Redis write-through cache, with sub-20ms p99 latency SLA."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "System Design: Deepen mastery of idempotent API design and distributed locking",
+      "Behavioral: Use the STAR framework (Situation, Task, Action, Result) with quantified $ and % metrics",
+      "Company Specific: Review Google Cloud's engineering blog on high-throughput microservices"
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 30,
+    "duration_seconds": 300,
+    "created_at": 1790623251.675105,
+    "id": "88271077-ebef-4d2c-9429-3f92609b66fa"
+  },
+  {
+    "session_id": "session_16381c6aee",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 78,
+    "hiring_verdict": "Leaning Hire",
+    "technical_score": 22,
+    "communication_score": 20,
+    "problem_solving_score": 19,
+    "culture_fit_score": 17,
+    "summary_verdict": "The candidate demonstrates strong fundamental knowledge of microservices architecture and shows a clear ability to articulate complex system design trade-offs. While the initial approach was well-structured, the candidate requires more depth regarding Google Cloud-specific platform abstractions and extreme high-concurrency handling. They exhibit the maturity expected of a Senior Full-Stack Engineer, specifically in their focus on observability and service-to-service communication.",
+    "top_strengths": [
+      "Clear architectural articulation",
+      "Strong focus on monitoring and distributed tracing",
+      "Systematic approach to problem decomposition",
+      "Professional demeanor and communication"
+    ],
+    "top_weaknesses": [
+      "Lack of specific Google Cloud-native service integration",
+      "Superficial handling of database sharding strategy",
+      "Limited discussion on latency tail-end distribution"
+    ],
+    "body_language_and_pacing_notes": "The candidate maintained excellent, steady eye contact throughout the session. Posture was professional and engaged. Pacing was measured, indicating thoughtful preparation, though they occasionally rushed during the conceptual transition from the API gateway to the internal microservices layer.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 80,
+        "verdict": "Hire",
+        "detailed_comments": "Candidate understands the 'what' and 'why' of distributed systems. They effectively described a service mesh implementation but lacked sufficient detail on cache consistency models under high contention.",
+        "key_strengths": [
+          "Effective use of asynchronous message queues",
+          "Strong emphasis on CI/CD pipelines"
+        ],
+        "areas_for_growth": [
+          "Deep dive into Kubernetes resource optimization",
+          "Understanding of database partitioning strategies"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 75,
+        "verdict": "Leaning Hire",
+        "detailed_comments": "The candidate presents themselves as a leader with high interpersonal intelligence. They successfully framed their past technical failures as growth opportunities, which aligns well with our culture.",
+        "key_strengths": [
+          "Self-awareness",
+          "Clear logical flow"
+        ],
+        "areas_for_growth": [
+          "Alignment with cross-functional team dynamics"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 85,
+        "verdict": "Hire",
+        "detailed_comments": "Demonstrated high customer obsession by prioritizing the end-user latency over pure back-end normalization.",
+        "key_strengths": [
+          "Customer-centric design mindset"
+        ],
+        "areas_for_growth": [
+          "Mentorship approach to junior engineers"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Could you walk me through the architectural approach you took when designing a high-scale microservices system from your recent experience?",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Described a standard N-tier architecture using a Load Balancer, API Gateway, and asynchronous microservices communicating via Pub/Sub. Emphasized monitoring with distributed tracing.",
+        "technical_accuracy_score": 8,
+        "communication_clarity_score": 9,
+        "strengths_in_answer": [
+          "Clear logical decomposition of components",
+          "Proactive mention of observability"
+        ],
+        "critical_gaps_or_flaws": [
+          "Missed discussing trade-offs regarding service discovery and load balancing algorithms",
+          "No mention of data consistency models"
+        ],
+        "ideal_model_answer": "Start with requirements (QPS/Latency targets). Propose an event-driven architecture using Google Cloud Pub/Sub and GKE for orchestration. Detail the use of Cloud Spanner for global consistency, or Bigtable for extreme throughput. Discuss the implementation of mTLS for security and a service mesh (Istio/Anthos) for traffic management, concluding with how you handled circuit breaking and fallback patterns during partial system outages."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "Google Cloud Platform specific services: Deep dive into GKE, Cloud Spanner, and Pub/Sub integration patterns.",
+      "Distributed System Patterns: Mastery of Saga pattern for distributed transactions and circuit breaking in high-load scenarios.",
+      "STAR Behavioral Framework: Refine examples to focus more explicitly on technical leadership impact and specific mentorship metrics."
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 3,
+    "duration_seconds": 300,
+    "created_at": 1790623486.5182073,
+    "id": "e5938884-e300-4ce0-bd6f-3f2640304351"
+  },
+  {
+    "session_id": "session_5673dd3e0a",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 88,
+    "hiring_verdict": "Hire",
+    "technical_score": 26,
+    "communication_score": 22,
+    "problem_solving_score": 22,
+    "culture_fit_score": 18,
+    "summary_verdict": "The candidate demonstrated strong foundational knowledge for the Senior Full-Stack Software Engineer role at Google Cloud. Technical explanations were structured, with notable strengths in system design and proactive problem solving.",
+    "top_strengths": [
+      "Strong grasp of scalable architecture and modern tech stack",
+      "Clear communication structure with confident delivery",
+      "Good understanding of engineering trade-offs"
+    ],
+    "top_weaknesses": [
+      "Could quantify business impact and metrics more rigorously",
+      "Could dive deeper into fault tolerance and failover protocols"
+    ],
+    "body_language_and_pacing_notes": "Maintained great visual presence, steady cadence, and professional composure throughout the interview.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 88,
+        "verdict": "Hire",
+        "detailed_comments": "Solid grasp of backend architecture and frontend reactive patterns.",
+        "key_strengths": [
+          "Clean architectural reasoning"
+        ],
+        "areas_for_growth": [
+          "Deep-dive edge-case failure modes"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 89,
+        "verdict": "Hire",
+        "detailed_comments": "Articulate, goal-oriented, and highly motivated.",
+        "key_strengths": [
+          "Clear communication"
+        ],
+        "areas_for_growth": [
+          "Quantify past project revenue impact"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 87,
+        "verdict": "Hire",
+        "detailed_comments": "Strong alignment with company engineering values.",
+        "key_strengths": [
+          "High agency"
+        ],
+        "areas_for_growth": [
+          "Cross-functional stakeholder handling"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Walk me through how you architect high-scale systems for Google Cloud.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Candidate explained microservices architecture, caching layers, and database optimization.",
+        "technical_accuracy_score": 9,
+        "communication_clarity_score": 8,
+        "strengths_in_answer": [
+          "Mentioned Redis caching and PostgreSQL indexing"
+        ],
+        "critical_gaps_or_flaws": [
+          "Could have detailed idempotent API design and rate limiting"
+        ],
+        "ideal_model_answer": "A complete 10/10 answer articulates end-to-end architecture: CDN -> API Gateway with Token Bucket rate limiting -> Stateless microservices -> Kafka event streaming -> PostgreSQL with read replicas + Redis write-through cache, with sub-20ms p99 latency SLA."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "System Design: Deepen mastery of idempotent API design and distributed locking",
+      "Behavioral: Use the STAR framework (Situation, Task, Action, Result) with quantified $ and % metrics",
+      "Company Specific: Review Google Cloud's engineering blog on high-throughput microservices"
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 3,
+    "duration_seconds": 300,
+    "created_at": 1790623732.715905,
+    "id": "f0281896-8bac-44fd-84a2-e4688aff8317"
+  },
+  {
+    "session_id": "session_ede1bf6626",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 88,
+    "hiring_verdict": "Hire",
+    "technical_score": 26,
+    "communication_score": 22,
+    "problem_solving_score": 22,
+    "culture_fit_score": 18,
+    "summary_verdict": "The candidate demonstrated strong foundational knowledge for the Senior Full-Stack Software Engineer role at Google Cloud. Technical explanations were structured, with notable strengths in system design and proactive problem solving.",
+    "top_strengths": [
+      "Strong grasp of scalable architecture and modern tech stack",
+      "Clear communication structure with confident delivery",
+      "Good understanding of engineering trade-offs"
+    ],
+    "top_weaknesses": [
+      "Could quantify business impact and metrics more rigorously",
+      "Could dive deeper into fault tolerance and failover protocols"
+    ],
+    "body_language_and_pacing_notes": "Maintained great visual presence, steady cadence, and professional composure throughout the interview.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 88,
+        "verdict": "Hire",
+        "detailed_comments": "Solid grasp of backend architecture and frontend reactive patterns.",
+        "key_strengths": [
+          "Clean architectural reasoning"
+        ],
+        "areas_for_growth": [
+          "Deep-dive edge-case failure modes"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 89,
+        "verdict": "Hire",
+        "detailed_comments": "Articulate, goal-oriented, and highly motivated.",
+        "key_strengths": [
+          "Clear communication"
+        ],
+        "areas_for_growth": [
+          "Quantify past project revenue impact"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 87,
+        "verdict": "Hire",
+        "detailed_comments": "Strong alignment with company engineering values.",
+        "key_strengths": [
+          "High agency"
+        ],
+        "areas_for_growth": [
+          "Cross-functional stakeholder handling"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Walk me through how you architect high-scale systems for Google Cloud.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Candidate explained microservices architecture, caching layers, and database optimization.",
+        "technical_accuracy_score": 9,
+        "communication_clarity_score": 8,
+        "strengths_in_answer": [
+          "Mentioned Redis caching and PostgreSQL indexing"
+        ],
+        "critical_gaps_or_flaws": [
+          "Could have detailed idempotent API design and rate limiting"
+        ],
+        "ideal_model_answer": "A complete 10/10 answer articulates end-to-end architecture: CDN -> API Gateway with Token Bucket rate limiting -> Stateless microservices -> Kafka event streaming -> PostgreSQL with read replicas + Redis write-through cache, with sub-20ms p99 latency SLA."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "System Design: Deepen mastery of idempotent API design and distributed locking",
+      "Behavioral: Use the STAR framework (Situation, Task, Action, Result) with quantified $ and % metrics",
+      "Company Specific: Review Google Cloud's engineering blog on high-throughput microservices"
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 6,
+    "duration_seconds": 300,
+    "created_at": 1790623740.7864678,
+    "id": "35433fde-dce4-45de-bcaa-0f42e03e76c1"
+  },
+  {
+    "session_id": "session_ba6f077234",
+    "candidate_id": "default-user",
+    "company_name": "Google Cloud",
+    "job_title": "Senior Full-Stack Software Engineer",
+    "overall_score": 88,
+    "hiring_verdict": "Hire",
+    "technical_score": 26,
+    "communication_score": 22,
+    "problem_solving_score": 22,
+    "culture_fit_score": 18,
+    "summary_verdict": "The candidate demonstrated strong foundational knowledge for the Senior Full-Stack Software Engineer role at Google Cloud. Technical explanations were structured, with notable strengths in system design and proactive problem solving.",
+    "top_strengths": [
+      "Strong grasp of scalable architecture and modern tech stack",
+      "Clear communication structure with confident delivery",
+      "Good understanding of engineering trade-offs"
+    ],
+    "top_weaknesses": [
+      "Could quantify business impact and metrics more rigorously",
+      "Could dive deeper into fault tolerance and failover protocols"
+    ],
+    "body_language_and_pacing_notes": "Maintained great visual presence, steady cadence, and professional composure throughout the interview.",
+    "panel_feedback": [
+      {
+        "panel_role": "Lead Technical Bar-Raiser",
+        "member_name": "Dr. Elena Vance",
+        "score": 88,
+        "verdict": "Hire",
+        "detailed_comments": "Solid grasp of backend architecture and frontend reactive patterns.",
+        "key_strengths": [
+          "Clean architectural reasoning"
+        ],
+        "areas_for_growth": [
+          "Deep-dive edge-case failure modes"
+        ]
+      },
+      {
+        "panel_role": "Senior HR & Talent Director",
+        "member_name": "Marcus Sterling",
+        "score": 89,
+        "verdict": "Hire",
+        "detailed_comments": "Articulate, goal-oriented, and highly motivated.",
+        "key_strengths": [
+          "Clear communication"
+        ],
+        "areas_for_growth": [
+          "Quantify past project revenue impact"
+        ]
+      },
+      {
+        "panel_role": "Culture & Values Specialist",
+        "member_name": "Aria Chen",
+        "score": 87,
+        "verdict": "Hire",
+        "detailed_comments": "Strong alignment with company engineering values.",
+        "key_strengths": [
+          "High agency"
+        ],
+        "areas_for_growth": [
+          "Cross-functional stakeholder handling"
+        ]
+      }
+    ],
+    "question_breakdown": [
+      {
+        "question_index": 1,
+        "question_text": "Walk me through how you architect high-scale systems for Google Cloud.",
+        "interviewer_persona": "Lead Technical Bar-Raiser",
+        "candidate_answer_summary": "Candidate explained microservices architecture, caching layers, and database optimization.",
+        "technical_accuracy_score": 9,
+        "communication_clarity_score": 8,
+        "strengths_in_answer": [
+          "Mentioned Redis caching and PostgreSQL indexing"
+        ],
+        "critical_gaps_or_flaws": [
+          "Could have detailed idempotent API design and rate limiting"
+        ],
+        "ideal_model_answer": "A complete 10/10 answer articulates end-to-end architecture: CDN -> API Gateway with Token Bucket rate limiting -> Stateless microservices -> Kafka event streaming -> PostgreSQL with read replicas + Redis write-through cache, with sub-20ms p99 latency SLA."
+      }
+    ],
+    "observations_timeline": [],
+    "actionable_study_roadmap": [
+      "System Design: Deepen mastery of idempotent API design and distributed locking",
+      "Behavioral: Use the STAR framework (Situation, Task, Action, Result) with quantified $ and % metrics",
+      "Company Specific: Review Google Cloud's engineering blog on high-throughput microservices"
+    ],
+    "armoriq_governance_verified": true,
+    "armoriq_audit_trail_count": 9,
+    "duration_seconds": 300,
+    "created_at": 1790623747.7981372,
+    "id": "a418d34d-ffe0-4693-8114-a5a844f4e0b2"
+  }
+]

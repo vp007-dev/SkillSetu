@@ -1,4 +1,4 @@
-const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:8000';
+const API_BASE = '';
 
 let authToken = null;
 
@@ -13,10 +13,10 @@ export function invalidateClientCache() {
 }
 
 async function fetchWithConfig(url, options = {}) {
-  const token = authToken || localStorage.getItem('careeros_token');
+  const token = authToken || localStorage.getItem('skillsetu_token');
   let currentUserId = null;
   try {
-    const savedUser = localStorage.getItem('careeros_user');
+    const savedUser = localStorage.getItem('skillsetu_user');
     if (savedUser) {
       currentUserId = JSON.parse(savedUser)?.id;
     }
@@ -30,22 +30,24 @@ async function fetchWithConfig(url, options = {}) {
     headers['x-user-id'] = currentUserId;
   }
 
+  const fullUrl = url.startsWith('http') ? url : `${API_BASE}${url}`;
+
   try {
-    const res = await fetch(url, {
+    const res = await fetch(fullUrl, {
       ...options,
       headers
     });
     return res;
   } catch (error) {
     if (error.name === 'AbortError') {
-      console.warn(`[Network aborted] Request to ${url} cancelled.`);
+      console.warn(`[Network aborted] Request to ${fullUrl} cancelled.`);
     }
     throw error;
   }
 }
 
 export async function loginUser(credentials) {
-  const res = await fetchWithConfig(`${API_BASE}/api/auth/login`, {
+  const res = await fetchWithConfig(`/api/auth/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(credentials),
@@ -58,7 +60,7 @@ export async function loginUser(credentials) {
 }
 
 export async function registerUser(userData) {
-  const res = await fetchWithConfig(`${API_BASE}/api/auth/register`, {
+  const res = await fetchWithConfig(`/api/auth/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(userData),
@@ -71,7 +73,7 @@ export async function registerUser(userData) {
 }
 
 export async function resetDatabase() {
-  const res = await fetchWithConfig(`${API_BASE}/api/database/reset`, {
+  const res = await fetchWithConfig(`/api/database/reset`, {
     method: 'POST',
   });
   if (!res.ok) {
@@ -82,7 +84,7 @@ export async function resetDatabase() {
 }
 
 export async function loginWithGoogle(googleData) {
-  const res = await fetchWithConfig(`${API_BASE}/api/auth/google`, {
+  const res = await fetchWithConfig(`/api/auth/google`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(googleData),
@@ -108,7 +110,7 @@ export async function uploadDocument(file, docType = 'resume', userId = null, ca
     formData.append('create_new_persona', 'true');
   }
 
-  const res = await fetchWithConfig(`${API_BASE}/api/documents/upload`, {
+  const res = await fetchWithConfig(`/api/documents/upload`, {
     method: 'POST',
     body: formData,
   });
@@ -120,7 +122,7 @@ export async function uploadDocument(file, docType = 'resume', userId = null, ca
 }
 
 export async function uploadUrl(url, docType = 'resume', userId = null) {
-  const res = await fetchWithConfig(`${API_BASE}/api/documents/upload-url`, {
+  const res = await fetchWithConfig(`/api/documents/upload-url`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ url, doc_type: docType, user_id: userId }),
@@ -133,14 +135,14 @@ export async function uploadUrl(url, docType = 'resume', userId = null) {
 }
 
 export async function fetchCandidates(userId = null) {
-  const url = userId ? `${API_BASE}/api/candidates?user_id=${encodeURIComponent(userId)}` : `${API_BASE}/api/candidates`;
+  const url = userId ? `/api/candidates?user_id=${encodeURIComponent(userId)}` : `/api/candidates`;
   const res = await fetchWithConfig(url);
   if (!res.ok) return { status: 'error', candidates: [] };
   return await res.json();
 }
 
 export async function createCandidate(candidateData) {
-  const res = await fetchWithConfig(`${API_BASE}/api/candidates`, {
+  const res = await fetchWithConfig(`/api/candidates`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(candidateData),
@@ -153,7 +155,7 @@ export async function createCandidate(candidateData) {
 }
 
 export async function deleteCandidate(candidateId) {
-  const res = await fetchWithConfig(`${API_BASE}/api/candidates/${encodeURIComponent(candidateId)}`, {
+  const res = await fetchWithConfig(`/api/candidates/${encodeURIComponent(candidateId)}`, {
     method: 'DELETE',
   });
   if (!res.ok) {
@@ -164,7 +166,7 @@ export async function deleteCandidate(candidateId) {
 }
 
 export async function reassignDocument(docId, candidateId) {
-  const res = await fetchWithConfig(`${API_BASE}/api/documents/${encodeURIComponent(docId)}/reassign`, {
+  const res = await fetchWithConfig(`/api/documents/${encodeURIComponent(docId)}/reassign`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ candidate_id: candidateId }),
@@ -177,13 +179,13 @@ export async function reassignDocument(docId, candidateId) {
 }
 
 export async function fetchCandidateDetails(candidateId = 'default-user') {
-  const res = await fetchWithConfig(`${API_BASE}/api/candidates/${encodeURIComponent(candidateId)}`);
+  const res = await fetchWithConfig(`/api/candidates/${encodeURIComponent(candidateId)}`);
   if (!res.ok) return { status: 'error', candidate: null };
   return await res.json();
 }
 
 export async function saveCandidateTemplate(candidateId, resumeMarkdown) {
-  const res = await fetchWithConfig(`${API_BASE}/api/candidates/${encodeURIComponent(candidateId)}/save-template`, {
+  const res = await fetchWithConfig(`/api/candidates/${encodeURIComponent(candidateId)}/save-template`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ resume_markdown: resumeMarkdown }),
@@ -196,7 +198,7 @@ export async function saveCandidateTemplate(candidateId, resumeMarkdown) {
 }
 
 export async function setActiveCandidateTemplate(candidateId, documentId) {
-  const res = await fetchWithConfig(`${API_BASE}/api/candidates/${encodeURIComponent(candidateId)}/set-active-template`, {
+  const res = await fetchWithConfig(`/api/candidates/${encodeURIComponent(candidateId)}/set-active-template`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ document_id: documentId }),
@@ -211,21 +213,21 @@ export async function setActiveCandidateTemplate(candidateId, documentId) {
 
 export async function fetchKnowledgeGraph(userId = 'default-user', candidateId = null) {
   const url = candidateId
-    ? `${API_BASE}/api/knowledge-graph/${userId}?candidate_id=${encodeURIComponent(candidateId)}`
-    : `${API_BASE}/api/knowledge-graph/${userId}`;
+    ? `/api/knowledge-graph/${userId}?candidate_id=${encodeURIComponent(candidateId)}`
+    : `/api/knowledge-graph/${userId}`;
   const res = await fetchWithConfig(url);
   if (!res.ok) return { nodes: [], links: [] };
   return await res.json();
 }
 
 export async function fetchOpportunityById(id) {
-  const res = await fetchWithConfig(`${API_BASE}/api/opportunities/${id}`);
+  const res = await fetchWithConfig(`/api/opportunities/${id}`);
   if (!res.ok) throw new Error('Failed to fetch opportunity');
   return await res.json();
 }
 
 export async function deepResearchOpportunity(oppId) {
-  const res = await fetchWithConfig(`${API_BASE}/api/opportunities/${oppId}/deep-research`, {
+  const res = await fetchWithConfig(`/api/opportunities/${oppId}/deep-research`, {
     method: 'POST',
   });
   if (!res.ok) {
@@ -236,7 +238,7 @@ export async function deepResearchOpportunity(oppId) {
 }
 
 export async function deepResearchCompany(companyName, jobTitle = 'Software Engineer', jobUrl = null) {
-  const res = await fetchWithConfig(`${API_BASE}/api/company/deep-research`, {
+  const res = await fetchWithConfig(`/api/company/deep-research`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ company_name: companyName, job_title: jobTitle, job_url: jobUrl }),
@@ -249,20 +251,20 @@ export async function deepResearchCompany(companyName, jobTitle = 'Software Engi
 }
 
 export function createPipelineWebSocket(sessionId) {
-  const wsBase = API_BASE.replace(/^http/, 'ws');
-  return new WebSocket(`${wsBase}/ws/pipeline/${sessionId}`);
+  const wsBase = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+  return new WebSocket(`${wsBase}//${window.location.host}/ws/pipeline/${sessionId}`);
 }
 
 export function createAutoPilotWebSocket(sessionId) {
-  const wsBase = API_BASE.replace(/^http/, 'ws');
-  return new WebSocket(`${wsBase}/ws/autopilot/${sessionId}`);
+  const wsBase = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+  return new WebSocket(`${wsBase}//${window.location.host}/ws/autopilot/${sessionId}`);
 }
 
 export async function processResumePipeline(resumeText) {
   const formData = new FormData();
   formData.append('resume_text', resumeText);
 
-  const res = await fetchWithConfig(`${API_BASE}/api/process-resume`, {
+  const res = await fetchWithConfig(`/api/process-resume`, {
     method: 'POST',
     body: formData,
   });
@@ -274,7 +276,7 @@ export async function processResumePipeline(resumeText) {
 }
 
 export async function queryDbCandidate(question, profileId = null) {
-  const res = await fetchWithConfig(`${API_BASE}/api/query-db`, {
+  const res = await fetchWithConfig(`/api/query-db`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ question, profile_id: profileId }),
@@ -287,7 +289,7 @@ export async function queryDbCandidate(question, profileId = null) {
 }
 
 export async function searchKnowledge(query, topK = 10) {
-  const res = await fetchWithConfig(`${API_BASE}/api/knowledge/search`, {
+  const res = await fetchWithConfig(`/api/knowledge/search`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ query, top_k: topK }),
@@ -321,7 +323,7 @@ export async function tailorResume(arg1, arg2, arg3, arg4, arg5) {
     };
   }
 
-  const res = await fetchWithConfig(`${API_BASE}/api/tailor`, {
+  const res = await fetchWithConfig(`/api/tailor`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
@@ -334,7 +336,7 @@ export async function tailorResume(arg1, arg2, arg3, arg4, arg5) {
 }
 
 export async function triggerAttack(secured = true, scenario = 'prompt_injection_apply') {
-  const res = await fetchWithConfig(`${API_BASE}/api/demo/trigger-attack`, {
+  const res = await fetchWithConfig(`/api/demo/trigger-attack`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ secured, scenario }),
@@ -347,7 +349,7 @@ export async function triggerAttack(secured = true, scenario = 'prompt_injection
 }
 
 export async function approveAction(actionId, decision = 'approve', supervisorId = 'supervisor_admin') {
-  const res = await fetchWithConfig(`${API_BASE}/api/demo/approve-action`, {
+  const res = await fetchWithConfig(`/api/demo/approve-action`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ action_id: actionId, decision, supervisor_id: supervisorId }),
@@ -360,35 +362,35 @@ export async function approveAction(actionId, decision = 'approve', supervisorId
 }
 
 export async function fetchStats(userId = null) {
-  const url = userId ? `${API_BASE}/api/stats?user_id=${encodeURIComponent(userId)}` : `${API_BASE}/api/stats`;
+  const url = userId ? `/api/stats?user_id=${encodeURIComponent(userId)}` : `/api/stats`;
   const res = await fetchWithConfig(url);
   if (!res.ok) return { total_documents: 0, total_profiles: 0, total_opportunities: 0, total_audit_events: 0 };
   return await res.json();
 }
 
 export async function fetchAuditLogs() {
-  const res = await fetchWithConfig(`${API_BASE}/api/audit-logs`);
+  const res = await fetchWithConfig(`/api/audit-logs`);
   if (!res.ok) return { status: 'error', logs: [] };
   return await res.json();
 }
 
 export async function fetchProfiles() {
-  const res = await fetchWithConfig(`${API_BASE}/api/profiles`);
+  const res = await fetchWithConfig(`/api/profiles`);
   if (!res.ok) return { status: 'error', profiles: [] };
   return await res.json();
 }
 
 export async function fetchDocuments(userId = null) {
   const url = userId
-    ? `${API_BASE}/api/documents?user_id=${encodeURIComponent(userId)}`
-    : `${API_BASE}/api/documents`;
+    ? `/api/documents?user_id=${encodeURIComponent(userId)}`
+    : `/api/documents`;
   const res = await fetchWithConfig(url);
   if (!res.ok) return { status: 'error', documents: [] };
   return await res.json();
 }
 
 export async function deleteDocument(docId) {
-  const res = await fetchWithConfig(`${API_BASE}/api/documents/${docId}`, {
+  const res = await fetchWithConfig(`/api/documents/${docId}`, {
     method: 'DELETE',
   });
   if (!res.ok) {
@@ -400,15 +402,15 @@ export async function deleteDocument(docId) {
 
 export async function fetchOpportunities(candidateId = null) {
   const url = candidateId && candidateId !== 'candidate_all'
-    ? `${API_BASE}/api/opportunities?candidate_id=${encodeURIComponent(candidateId)}`
-    : `${API_BASE}/api/opportunities`;
+    ? `/api/opportunities?candidate_id=${encodeURIComponent(candidateId)}`
+    : `/api/opportunities`;
   const res = await fetchWithConfig(url);
   if (!res.ok) return { status: 'error', opportunities: [] };
   return await res.json();
 }
 
 export async function scoutProfileOpportunities(profileId) {
-  const res = await fetchWithConfig(`${API_BASE}/api/profiles/${profileId}/scout`, {
+  const res = await fetchWithConfig(`/api/profiles/${profileId}/scout`, {
     method: 'POST',
   });
   if (!res.ok) {
@@ -419,13 +421,13 @@ export async function scoutProfileOpportunities(profileId) {
 }
 
 export async function fetchAdkGraph() {
-  const res = await fetchWithConfig(`${API_BASE}/api/adk/graph`);
+  const res = await fetchWithConfig(`/api/adk/graph`);
   if (!res.ok) return { name: 'my_agent', root_agent: { name: 'root_agent', sub_agents: [] } };
   return await res.json();
 }
 
 export async function executeAdkAgent(message, sessionId = null, userId = null) {
-  const res = await fetchWithConfig(`${API_BASE}/api/adk/run`, {
+  const res = await fetchWithConfig(`/api/adk/run`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ message, session_id: sessionId, user_id: userId }),
@@ -438,7 +440,7 @@ export async function executeAdkAgent(message, sessionId = null, userId = null) 
 }
 
 export async function runAutoPilot(inputType = 'profile_id', inputValue = '', categories = null) {
-  const res = await fetchWithConfig(`${API_BASE}/api/autopilot/run`, {
+  const res = await fetchWithConfig(`/api/autopilot/run`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -455,7 +457,7 @@ export async function runAutoPilot(inputType = 'profile_id', inputValue = '', ca
 }
 
 export async function refineResume(resumeMarkdown, action = 'ats_optimize', context = '') {
-  const res = await fetchWithConfig(`${API_BASE}/api/resume/refine`, {
+  const res = await fetchWithConfig(`/api/resume/refine`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -472,7 +474,7 @@ export async function refineResume(resumeMarkdown, action = 'ats_optimize', cont
 }
 
 export async function downloadResumePdf(pdfPath = null, markdown = null, filename = 'Tailored_Resume.pdf') {
-  const res = await fetchWithConfig(`${API_BASE}/api/resume/download-pdf`, {
+  const res = await fetchWithConfig(`/api/resume/download-pdf`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -496,13 +498,13 @@ export async function downloadResumePdf(pdfPath = null, markdown = null, filenam
 }
 
 export async function fetchTailoredResumes() {
-  const res = await fetchWithConfig(`${API_BASE}/api/tailored-resumes`);
+  const res = await fetchWithConfig(`/api/tailored-resumes`);
   if (!res.ok) return { status: 'error', tailored_resumes: [] };
   return await res.json();
 }
 
 export async function customSearchOpportunities(query, category = 'all', profileId = null) {
-  const res = await fetchWithConfig(`${API_BASE}/api/opportunities/custom-search`, {
+  const res = await fetchWithConfig(`/api/opportunities/custom-search`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -520,13 +522,13 @@ export async function customSearchOpportunities(query, category = 'all', profile
 
 export async function fetchUserProfile(candidateId = null) {
   const query = candidateId ? `?candidate_id=${encodeURIComponent(candidateId)}` : '';
-  const res = await fetchWithConfig(`${API_BASE}/api/user/profile${query}`);
+  const res = await fetchWithConfig(`/api/user/profile${query}`);
   if (!res.ok) return { status: 'error', profile: null };
   return await res.json();
 }
 
 export async function updateUserProfile(profileData) {
-  const res = await fetchWithConfig(`${API_BASE}/api/user/profile`, {
+  const res = await fetchWithConfig(`/api/user/profile`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(profileData),
@@ -545,7 +547,7 @@ export async function uploadUserTemplate(file, candidateId = null) {
     formData.append('candidate_id', candidateId);
   }
 
-  const res = await fetchWithConfig(`${API_BASE}/api/user/upload-template`, {
+  const res = await fetchWithConfig(`/api/user/upload-template`, {
     method: 'POST',
     body: formData,
   });
@@ -557,7 +559,7 @@ export async function uploadUserTemplate(file, candidateId = null) {
 }
 
 export async function extractSocialLinks(resumeMarkdown) {
-  const res = await fetchWithConfig(`${API_BASE}/api/user/extract-links`, {
+  const res = await fetchWithConfig(`/api/user/extract-links`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ resume_markdown: resumeMarkdown }),
@@ -567,7 +569,7 @@ export async function extractSocialLinks(resumeMarkdown) {
 }
 
 export async function runATS90GoalPipeline(payload) {
-  const res = await fetchWithConfig(`${API_BASE}/api/ats-goal-pipeline`, {
+  const res = await fetchWithConfig(`/api/ats-goal-pipeline`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
@@ -580,7 +582,7 @@ export async function runATS90GoalPipeline(payload) {
 }
 
 export async function fetchCompanyJdDeepIntel(companyName, jobTitle = 'Software Engineer', jobUrl = null) {
-  const res = await fetchWithConfig(`${API_BASE}/api/company-jd-deep-intel`, {
+  const res = await fetchWithConfig(`/api/company-jd-deep-intel`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -602,7 +604,7 @@ export async function uploadInterviewResume(file) {
   const formData = new FormData();
   formData.append('file', file);
 
-  const res = await fetchWithConfig(`${API_BASE}/api/interview/upload-resume`, {
+  const res = await fetchWithConfig(`/api/interview/upload-resume`, {
     method: 'POST',
     body: formData,
   });
@@ -614,7 +616,7 @@ export async function uploadInterviewResume(file) {
 }
 
 export async function initInterviewSession(config) {
-  const res = await fetchWithConfig(`${API_BASE}/api/interview/init-session`, {
+  const res = await fetchWithConfig(`/api/interview/init-session`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(config),
@@ -627,7 +629,7 @@ export async function initInterviewSession(config) {
 }
 
 export async function generateInterviewDebrief(payload) {
-  const res = await fetchWithConfig(`${API_BASE}/api/interview/debrief`, {
+  const res = await fetchWithConfig(`/api/interview/debrief`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
@@ -641,7 +643,7 @@ export async function generateInterviewDebrief(payload) {
 
 export async function fetchInterviewHistory(candidateId = null) {
   const query = candidateId ? `?candidate_id=${encodeURIComponent(candidateId)}` : '';
-  const res = await fetchWithConfig(`${API_BASE}/api/interview/history${query}`);
+  const res = await fetchWithConfig(`/api/interview/history${query}`);
   if (!res.ok) {
     return { status: 'success', history: [] };
   }

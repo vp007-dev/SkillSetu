@@ -3,12 +3,12 @@ import { motion } from 'framer-motion';
 import { Sparkles, Search, BarChart3, Target, Rocket, ShieldCheck } from 'lucide-react';
 
 const actions = [
-  { icon: Sparkles, text: 'Analyze my resume', color: 'text-yellow-500' },
-  { icon: Search, text: 'Find opportunities matching my profile', color: 'text-cyan-500' },
-  { icon: BarChart3, text: 'What are my top skills?', color: 'text-green-500' },
-  { icon: Target, text: 'Tailor resume for a company', color: 'text-indigo-500' },
-  { icon: Rocket, text: 'Show my career trajectory', color: 'text-purple-500' },
-  { icon: ShieldCheck, text: 'Run security audit demo', color: 'text-rose-500' }
+  { icon: Sparkles, text: 'Analyze my active resume markdown', color: 'text-amber-600 bg-amber-50 border-amber-200' },
+  { icon: Search, text: 'Find top matching job opportunities', color: 'text-cyan-600 bg-cyan-50 border-cyan-200' },
+  { icon: BarChart3, text: 'Evaluate my core skills & experience', color: 'text-emerald-600 bg-emerald-50 border-emerald-200' },
+  { icon: Target, text: 'Tailor resume for target role', color: 'text-indigo-600 bg-indigo-50 border-indigo-200' },
+  { icon: Rocket, text: 'Simulate AI live interview room', color: 'text-purple-600 bg-purple-50 border-purple-200' },
+  { icon: ShieldCheck, text: 'Run RAG knowledge graph analysis', color: 'text-rose-600 bg-rose-50 border-rose-200' }
 ];
 
 const container = {
@@ -16,13 +16,13 @@ const container = {
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1
+      staggerChildren: 0.08
     }
   }
 };
 
 const item = {
-  hidden: { opacity: 0, y: 10 },
+  hidden: { opacity: 0, y: 12 },
   show: { opacity: 1, y: 0 }
 };
 
@@ -32,7 +32,7 @@ export default function QuickActions({ onAction }) {
       variants={container}
       initial="hidden"
       animate="show"
-      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 w-full max-w-3xl mx-auto mt-8 px-4"
+      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 w-full max-w-4xl mx-auto mt-6 px-2"
     >
       {actions.map((action, i) => {
         const Icon = action.icon;
@@ -41,12 +41,12 @@ export default function QuickActions({ onAction }) {
             key={i}
             variants={item}
             onClick={() => onAction(action.text)}
-            className="flex items-center gap-3 p-4 rounded-xl bg-white/50 dark:bg-slate-800/40 backdrop-blur-md border border-slate-200/50 dark:border-slate-700/50 hover:bg-white dark:hover:bg-slate-800/80 transition-all hover:-translate-y-1 hover:shadow-[0_4px_20px_-4px_rgba(99,102,241,0.2)] text-left group"
+            className="flex items-center gap-3.5 p-4 rounded-2xl bg-white border border-slate-200/90 hover:border-indigo-400 hover:bg-slate-50 transition-all duration-200 hover:-translate-y-0.5 shadow-sm hover:shadow-md text-left group cursor-pointer"
           >
-            <div className={`p-2 rounded-lg bg-slate-100 dark:bg-slate-900/50 ${action.color}`}>
+            <div className={`p-2.5 rounded-xl border ${action.color} shrink-0`}>
               <Icon size={18} />
             </div>
-            <span className="text-sm font-medium text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
+            <span className="text-xs font-bold text-slate-700 group-hover:text-slate-900 transition-colors leading-snug">
               {action.text}
             </span>
           </motion.button>
@@ -55,3 +55,5 @@ export default function QuickActions({ onAction }) {
     </motion.div>
   );
 }
+
+

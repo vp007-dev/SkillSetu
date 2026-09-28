@@ -1,4 +1,4 @@
-# CareerOS — ArmorIQ Hackathon Goal & Architecture Specification
+# SkillSetu — ArmorIQ Hackathon Goal & Architecture Specification
 
 > **Hackathon Track:** Problem 2 — "Who authorized that?" (Multi-Agent Delegation & Governance)  
 > **Core Governance Engine:** ArmorIQ SDK (`capture_plan()`, `delegate()`, `invoke()`)  
@@ -8,9 +8,9 @@
 
 ## 1. Project Goal
 
-**CareerOS** is an autonomous multi-agent career automation platform that parses candidate resumes, analyzes career trajectories, builds structured candidate profiles, searches for real-world opportunities (jobs, internships, hackathons, conclaves), and ranks them by relevance.
+**SkillSetu** is an autonomous multi-agent career automation platform that parses candidate resumes, analyzes career trajectories, builds structured candidate profiles, searches for real-world opportunities (jobs, internships, hackathons, conclaves), and ranks them by relevance.
 
-To satisfy **ArmorIQ Problem 2 ("Who authorized that?")**, CareerOS enforces **zero-trust cryptographic delegation**:
+To satisfy **ArmorIQ Problem 2 ("Who authorized that?")**, SkillSetu enforces **zero-trust cryptographic delegation**:
 1. **Explicit Delegation Chains:** The parent coordinator agent grants scoped, signed delegation tokens to individual sub-agents.
 2. **Keypair Isolation:** Every sub-agent runs with its own distinct cryptographic keypair.
 3. **Dedicated MCP Tools:** Every sub-agent executes tools via its own isolated MCP server using `invoke()`.
@@ -21,7 +21,7 @@ To satisfy **ArmorIQ Problem 2 ("Who authorized that?")**, CareerOS enforces **z
 
 ## 2. Key Rules & Alignment Matrix
 
-| Hackathon Rule | CareerOS Implementation |
+| Hackathon Rule | SkillSetu Implementation |
 |----------------|-------------------------|
 | **1. Every sub-agent must have at least one MCP tool** | All 5 sub-agents have dedicated MCP servers and executable tools (no decorative/pure-prompt agents). |
 | **2. Sub-agents must run with separate keypairs** | Each sub-agent (`resume_extractor`, `resume_analyzer`, `profile_maker`, `opportunity_scout`, `opportunity_ranker`) uses a unique RSA/Ed25519 keypair. |

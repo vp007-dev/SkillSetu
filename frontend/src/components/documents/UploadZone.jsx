@@ -144,7 +144,7 @@ export default function UploadZone({ onUploadSuccess, onPipelineComplete }) {
   };
 
   return (
-    <GlassCard className="w-full max-w-2xl mx-auto" padding="lg">
+    <GlassCard className="w-full max-w-2xl mx-auto upload-zone" padding="lg">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-xl font-bold text-slate-100 flex items-center gap-2">
           <UploadCloud className="w-6 h-6 text-indigo-400" />

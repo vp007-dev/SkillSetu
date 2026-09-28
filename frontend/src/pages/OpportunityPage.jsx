@@ -128,12 +128,12 @@ export default function OpportunityPage() {
   if (error || !opportunity) {
     return (
       <PageShell title="Opportunity Detail" subtitle="Error" icon={Target}>
-        <GlassCard className="p-8 text-center space-y-4">
-          <h3 className="text-xl font-bold text-red-400">{error || 'Opportunity not found'}</h3>
-          <p className="text-sm text-slate-400">The requested opportunity ID does not exist or was removed.</p>
+        <GlassCard className="p-8 text-center space-y-4 bg-white border border-slate-200">
+          <h3 className="text-xl font-bold text-rose-600">{error || 'Opportunity not found'}</h3>
+          <p className="text-sm text-slate-500">The requested opportunity ID does not exist or was removed.</p>
           <button
             onClick={() => navigate('/documents')}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition-all"
+            className="btn-aesthetic-primary inline-flex items-center gap-2 px-4 py-2 text-xs font-bold"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Opportunities
@@ -155,34 +155,34 @@ export default function OpportunityPage() {
         {/* Back Link */}
         <button
           onClick={() => navigate('/documents')}
-          className="inline-flex items-center gap-2 text-xs text-slate-400 hover:text-white transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-bold text-slate-500 hover:text-indigo-600 transition-colors cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Documents & Opportunities
         </button>
 
         {/* Hero Section */}
-        <GlassCard className="p-8 relative overflow-hidden bg-gradient-to-br from-slate-900/90 via-slate-900/60 to-indigo-950/40 border-indigo-500/20">
+        <GlassCard className="p-8 relative overflow-hidden bg-white border border-slate-200 shadow-sm rounded-3xl">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
             <div className="space-y-3 flex-1">
               <div className="flex items-center gap-2 flex-wrap">
                 <Badge variant={opportunity.category || 'job'} size="md">
                   {(opportunity.category || 'JOB').toUpperCase()}
                 </Badge>
-                <span className="text-xs text-slate-500 font-mono">ID: {opportunity.id}</span>
+                <span className="text-xs text-slate-400 font-mono font-bold">ID: {opportunity.id}</span>
               </div>
 
-              <h1 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
+              <h1 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">
                 {opportunity.title}
               </h1>
 
-              <div className="flex items-center gap-4 text-sm text-slate-300 flex-wrap">
-                <div className="flex items-center gap-1.5 font-medium">
-                  <Building2 className="w-4 h-4 text-indigo-400" />
+              <div className="flex items-center gap-4 text-sm text-slate-600 flex-wrap">
+                <div className="flex items-center gap-1.5 font-bold text-slate-800">
+                  <Building2 className="w-4 h-4 text-indigo-600" />
                   <span>{opportunity.company}</span>
                 </div>
-                <div className="flex items-center gap-1.5 text-slate-400">
-                  <MapPin className="w-4 h-4 text-cyan-400" />
+                <div className="flex items-center gap-1.5 text-slate-500 font-medium">
+                  <MapPin className="w-4 h-4 text-slate-400" />
                   <span>{opportunity.location || 'Remote / Hybrid'}</span>
                 </div>
               </div>
@@ -190,70 +190,61 @@ export default function OpportunityPage() {
 
             {/* Score & Actions */}
             <div className="flex flex-col sm:flex-row items-center gap-4">
-              <div className="flex items-center gap-3 bg-slate-950/80 p-3 rounded-2xl border border-slate-800">
+              <div className="flex items-center gap-3 bg-slate-50 p-3.5 rounded-2xl border border-slate-200">
                 <ScoreGauge score={matchScore} size={68} strokeWidth={5} />
                 <div className="text-left">
-                  <div className="text-[10px] uppercase font-bold text-slate-500">Match Score</div>
-                  <div className="text-xs font-semibold text-emerald-400">Highly Relevant</div>
+                  <div className="text-[10px] uppercase font-bold text-slate-400">Match Score</div>
+                  <div className="text-xs font-black text-emerald-600">Highly Relevant</div>
                 </div>
               </div>
 
               <div className="flex flex-col gap-2.5 w-full sm:w-auto">
                 <button
                   onClick={() => setIsInterviewSetupOpen(true)}
-                  className="px-5 py-2.5 bg-gradient-to-r from-cyan-600 via-indigo-600 to-purple-600 hover:from-cyan-500 hover:to-purple-500 text-white font-black text-xs rounded-xl shadow-lg shadow-indigo-950/60 flex items-center justify-center gap-2 transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
+                  className="btn-aesthetic-primary px-5 py-2.5 text-xs font-bold flex items-center justify-center gap-2"
                 >
-                  <Video className="w-4 h-4 text-cyan-300" />
+                  <Video className="w-4 h-4" />
                   Take AI Live Interview
-                  <span className="text-[9px] px-1.5 py-0.2 rounded-full bg-cyan-950/80 border border-cyan-400/40 text-cyan-300">LIVE</span>
                 </button>
                 <button
                   onClick={() => setIsATSGoalOpen(true)}
-                  className="px-5 py-2.5 bg-gradient-to-r from-amber-400 via-emerald-400 to-cyan-400 hover:from-amber-300 hover:via-emerald-300 hover:to-cyan-300 text-slate-950 font-black text-xs rounded-xl shadow-lg shadow-emerald-950/60 flex items-center justify-center gap-2 transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
+                  className="btn-aesthetic-secondary px-5 py-2.5 text-xs font-bold flex items-center justify-center gap-2"
                 >
-                  <Target className="w-4 h-4 text-slate-950" />
+                  <Target className="w-4 h-4 text-indigo-600" />
                   Run ATS 90+ Goal Pipeline
-                  <Sparkles className="w-3.5 h-3.5 text-slate-950 animate-bounce" />
                 </button>
                 {opportunity.url && (
                   <a
                     href={opportunity.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white font-bold text-xs rounded-xl border border-slate-700 flex items-center justify-center gap-2 transition-all cursor-pointer"
+                    className="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl border border-slate-200 flex items-center justify-center gap-2 transition-all cursor-pointer"
                   >
                     Direct Apply Link
                     <ExternalLink className="w-4 h-4" />
                   </a>
                 )}
-                <button
-                  onClick={() => navigate('/studio')}
-                  className="px-5 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-extrabold text-xs rounded-xl shadow-lg shadow-purple-950 flex items-center justify-center gap-2 transition-all cursor-pointer"
-                >
-                  <Wand2 className="w-4 h-4" />
-                  Open in AI Resume Studio
-                </button>
               </div>
             </div>
           </div>
         </GlassCard>
 
         {/* Why This Matches Section */}
-        <GlassCard className="p-6 space-y-4">
-          <div className="flex items-center gap-2 text-indigo-400 font-bold text-base">
-            <Sparkles className="w-5 h-5 text-indigo-400" />
+        <GlassCard className="p-6 space-y-4 bg-white border border-slate-200 rounded-2xl shadow-xs">
+          <div className="flex items-center gap-2 text-indigo-600 font-extrabold text-base">
+            <Sparkles className="w-5 h-5 text-indigo-600" />
             <h2>Why This Opportunity Matches Your Profile</h2>
           </div>
 
-          <p className="text-sm text-slate-300 leading-relaxed">
+          <p className="text-sm text-slate-700 leading-relaxed font-medium">
             {opportunity.description ||
               `This ${opportunity.category || 'job'} at ${opportunity.company} matches your target career goals and registered technical stack. Our AI RAG pipeline evaluated your uploaded credentials against the role's core competencies.`}
           </p>
 
           {candidateProfile && (
-            <div className="pt-4 border-t border-slate-800/80 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-              <div className="bg-slate-900/60 p-4 rounded-xl border border-slate-800 space-y-2">
-                <span className="font-semibold text-slate-400 uppercase tracking-wider text-[10px]">
+            <div className="pt-4 border-t border-slate-200 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                <span className="font-bold text-slate-500 uppercase tracking-wider text-[10px]">
                   Your Stack Overlap
                 </span>
                 <div className="flex flex-wrap gap-1.5">
@@ -261,18 +252,18 @@ export default function OpportunityPage() {
                     ? candidateProfile.tech_stack
                     : (candidateProfile.tech_stack || 'React, Python, FastAPI').split(',')
                   ).map((tech, idx) => (
-                    <span key={idx} className="px-2 py-0.5 bg-indigo-950 text-indigo-300 rounded font-mono">
+                    <span key={idx} className="px-2.5 py-0.5 bg-indigo-50 text-indigo-700 border border-indigo-200 rounded-md font-mono font-bold">
                       ✓ {tech.trim()}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <div className="bg-slate-900/60 p-4 rounded-xl border border-slate-800 space-y-2">
-                <span className="font-semibold text-slate-400 uppercase tracking-wider text-[10px]">
+              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                <span className="font-bold text-slate-500 uppercase tracking-wider text-[10px]">
                   Target Career Goals
                 </span>
-                <p className="text-slate-300">
+                <p className="text-slate-800 font-medium">
                   {candidateProfile.summary || candidateProfile.target_roles || 'Senior Full-Stack & AI Engineer'}
                 </p>
               </div>
@@ -282,14 +273,14 @@ export default function OpportunityPage() {
 
         {/* Tailor Resume Section */}
         <div id="tailor-section">
-          <GlassCard className="p-8 space-y-6 border-amber-500/20">
+          <GlassCard className="p-8 space-y-6 bg-white border border-slate-200 rounded-3xl shadow-xs">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-amber-500/10 rounded-xl border border-amber-500/30">
-                <FileEdit className="w-6 h-6 text-amber-400" />
+              <div className="p-2.5 bg-amber-50 rounded-xl border border-amber-200">
+                <FileEdit className="w-6 h-6 text-amber-600" />
               </div>
               <div>
-                <h2 className="text-lg font-bold text-white">ATS Resume Tailor</h2>
-                <p className="text-xs text-slate-400">
+                <h2 className="text-lg font-bold text-slate-900">ATS Resume Tailor</h2>
+                <p className="text-xs text-slate-500 font-medium">
                   Auto-populated with this opportunity's specifics. Generates company-tailored resume content & WeasyPrint PDF.
                 </p>
               </div>
@@ -298,41 +289,41 @@ export default function OpportunityPage() {
             <form onSubmit={handleTailorSubmit} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-400 mb-1.5">Company Name</label>
+                  <label className="block text-xs font-bold text-slate-700 mb-1.5">Company Name</label>
                   <input
                     type="text"
                     value={companyName}
                     onChange={(e) => setCompanyName(e.target.value)}
                     required
-                    className="w-full px-4 py-2.5 bg-slate-900/80 border border-slate-800 rounded-xl text-xs text-white focus:outline-none focus:border-amber-500"
+                    className="w-full px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-100 focus:border-amber-500 font-medium"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-slate-400 mb-1.5">Target Role Title</label>
+                  <label className="block text-xs font-bold text-slate-700 mb-1.5">Target Role Title</label>
                   <input
                     type="text"
                     value={roleTitle}
                     onChange={(e) => setRoleTitle(e.target.value)}
                     required
-                    className="w-full px-4 py-2.5 bg-slate-900/80 border border-slate-800 rounded-xl text-xs text-white focus:outline-none focus:border-amber-500"
+                    className="w-full px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-100 focus:border-amber-500 font-medium"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-400 mb-1.5">Job Requirements & Key Qualifications</label>
+                <label className="block text-xs font-bold text-slate-700 mb-1.5">Job Requirements & Key Qualifications</label>
                 <textarea
                   rows={4}
                   value={requirements}
                   onChange={(e) => setRequirements(e.target.value)}
-                  className="w-full px-4 py-2.5 bg-slate-900/80 border border-slate-800 rounded-xl text-xs text-white focus:outline-none focus:border-amber-500 font-mono"
+                  className="w-full px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-100 focus:border-amber-500 font-mono"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={isTailoring}
-                className="px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white font-extrabold text-xs rounded-xl shadow-lg shadow-amber-950 flex items-center justify-center gap-2 transition-all disabled:opacity-50 cursor-pointer"
+                className="btn-aesthetic-primary px-6 py-3 text-xs font-extrabold flex items-center justify-center gap-2"
               >
                 {isTailoring ? (
                   <>
@@ -350,27 +341,27 @@ export default function OpportunityPage() {
 
             {/* Tailor Results */}
             {tailorResult && (
-              <div className="pt-6 border-t border-slate-800 space-y-4 animate-slide-up">
-                <div className="flex items-center justify-between bg-slate-950/80 p-4 rounded-xl border border-slate-800">
+              <div className="pt-6 border-t border-slate-200 space-y-4 animate-slide-up">
+                <div className="flex items-center justify-between bg-emerald-50 p-4 rounded-2xl border border-emerald-200">
                   <div className="flex items-center gap-3">
-                    <CheckCircle2 className="w-6 h-6 text-emerald-400" />
+                    <CheckCircle2 className="w-6 h-6 text-emerald-600" />
                     <div>
-                      <h4 className="text-sm font-bold text-white">Tailored Resume Ready!</h4>
-                      <p className="text-xs text-slate-400">Optimized for {companyName} ATS keywords</p>
+                      <h4 className="text-sm font-bold text-slate-900">Tailored Resume Ready!</h4>
+                      <p className="text-xs text-emerald-800 font-medium">Optimized for {companyName} ATS keywords</p>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => navigate('/studio')}
-                      className="px-3.5 py-2 bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold rounded-xl flex items-center gap-1.5 shadow-md shadow-purple-950"
+                      className="btn-aesthetic-secondary text-xs py-2 px-3.5 font-bold"
                     >
                       <Wand2 className="w-3.5 h-3.5" />
                       Edit in Studio
                     </button>
                     <button
                       onClick={() => downloadResumePdf(tailorResult.pdf_path, tailorResult.tailored_markdown || tailorResult.tailored_resume, `Tailored_Resume_${companyName}.pdf`)}
-                      className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-xl flex items-center gap-2 shadow-md shadow-emerald-950"
+                      className="btn-aesthetic-primary text-xs py-2 px-4 font-bold flex items-center gap-2"
                     >
                       <Download className="w-4 h-4" />
                       Download PDF
@@ -379,7 +370,7 @@ export default function OpportunityPage() {
                 </div>
 
                 {tailorResult.tailored_resume && (
-                  <div className="bg-slate-950 p-6 rounded-2xl border border-slate-800 max-h-96 overflow-y-auto">
+                  <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 max-h-96 overflow-y-auto text-slate-800">
                     <div className="prose-chat">
                       <ReactMarkdown remarkPlugins={[remarkGfm]}>
                         {tailorResult.tailored_resume}
@@ -395,8 +386,8 @@ export default function OpportunityPage() {
         {/* Similar Opportunities Carousel */}
         {similarOpps.length > 0 && (
           <div className="space-y-4">
-            <h3 className="text-base font-bold text-white flex items-center gap-2">
-              <Building className="w-4 h-4 text-cyan-400" />
+            <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+              <Building className="w-4 h-4 text-indigo-600" />
               Similar Opportunities
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

@@ -1,5 +1,5 @@
 /**
- * CareerOS v3 Multi-Agent Bar-Raiser Interviewer Personas, Coding Challenges, and Agenda Rubrics
+ * SkillSetu v3 Multi-Agent Bar-Raiser Interviewer Personas, Coding Challenges, and Agenda Rubrics
  */
 
 export const INTERVIEWER_PROFILES = [
@@ -7,50 +7,50 @@ export const INTERVIEWER_PROFILES = [
     id: "sarah",
     name: "Sarah Jenkins",
     role: "Principal Bar-Raiser & Executive Talent Partner",
-    company: "CareerOS v3 Hiring Committee",
+    company: "SkillSetu v3 Hiring Committee",
     avatarUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80",
     voice: "Zephyr",
-    personality: "CareerOS v3 Executive Lead: Highly articulate, structured, empathetic, with an eagle eye on system architecture, executive presence, and behavioral alignment.",
+    personality: "SkillSetu v3 Executive Lead: Highly articulate, structured, empathetic, with an eagle eye on system architecture, executive presence, and behavioral alignment.",
     accentColor: "#3b82f6",
   },
   {
     id: "alex",
     name: "Alex Rivera",
     role: "Director of Infrastructure & Distributed Core",
-    company: "CareerOS v3 Systems Guild",
+    company: "SkillSetu v3 Systems Guild",
     avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80",
     voice: "Kore",
-    personality: "CareerOS v3 Systems Specialist: Pragmatic, sharp, and values concurrency, partition tolerance, and clean modular code.",
+    personality: "SkillSetu v3 Systems Specialist: Pragmatic, sharp, and values concurrency, partition tolerance, and clean modular code.",
     accentColor: "#10b981",
   },
   {
     id: "maya",
     name: "Maya Lin",
     role: "Head of Engineering Leadership & Culture",
-    company: "CareerOS v3 People Operations",
+    company: "SkillSetu v3 People Operations",
     avatarUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop&q=80",
     voice: "Aoede",
-    personality: "CareerOS v3 Behavioral Expert: Warm, perceptive, analyzing deep STAR stories, stakeholder ownership, and cross-functional leadership.",
+    personality: "SkillSetu v3 Behavioral Expert: Warm, perceptive, analyzing deep STAR stories, stakeholder ownership, and cross-functional leadership.",
     accentColor: "#a855f7",
   },
   {
     id: "david",
     name: "David Chen",
     role: "Principal AI & Low-Latency Systems Architect",
-    company: "CareerOS v3 Research Lab",
+    company: "SkillSetu v3 Research Lab",
     avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80",
     voice: "Puck",
-    personality: "CareerOS v3 Algorithms & AI Specialist: High-energy, curious, relentlessly exploring boundary conditions, time complexity, and zero-copy pipelines.",
+    personality: "SkillSetu v3 Algorithms & AI Specialist: High-energy, curious, relentlessly exploring boundary conditions, time complexity, and zero-copy pipelines.",
     accentColor: "#ef4444",
   },
   {
     id: "marcus",
     name: "Marcus Vance",
     role: "Staff Frontend & Reactive Systems Architect",
-    company: "CareerOS v3 UI Architecture",
+    company: "SkillSetu v3 UI Architecture",
     avatarUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80",
     voice: "Fenrir",
-    personality: "CareerOS v3 UI/UX Architect: Calm, structured, evaluating modern web performance, accessibility, state synchronization, and component hierarchy.",
+    personality: "SkillSetu v3 UI/UX Architect: Calm, structured, evaluating modern web performance, accessibility, state synchronization, and component hierarchy.",
     accentColor: "#f59e0b",
   },
 ];

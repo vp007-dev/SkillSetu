@@ -9,31 +9,31 @@ const Badge = ({ children, variant = 'default', size = 'sm', dot = false, icon: 
   }[size] || sizeClasses.sm;
 
   const variantStyles = {
-    default: 'bg-slate-700 text-slate-300',
-    primary: 'bg-indigo-900/50 text-indigo-300 border border-indigo-700/50',
-    success: 'bg-emerald-900/50 text-emerald-300 border border-emerald-700/50',
-    warning: 'bg-amber-900/50 text-amber-300 border border-amber-700/50',
-    error: 'bg-red-900/50 text-red-300 border border-red-700/50',
-    info: 'bg-blue-900/50 text-blue-300 border border-blue-700/50',
-    job: 'bg-cyan-900/50 text-cyan-300',
-    internship: 'bg-purple-900/50 text-purple-300',
-    hackathon: 'bg-orange-900/50 text-orange-300',
-    competition: 'bg-pink-900/50 text-pink-300',
-    conclave: 'bg-teal-900/50 text-teal-300'
+    default: 'bg-slate-100 text-slate-700 border border-slate-200',
+    primary: 'bg-indigo-50 text-indigo-700 border border-indigo-200 font-bold',
+    success: 'bg-emerald-50 text-emerald-800 border border-emerald-200 font-bold',
+    warning: 'bg-amber-50 text-amber-800 border border-amber-200 font-bold',
+    error: 'bg-rose-50 text-rose-700 border border-rose-200 font-bold',
+    info: 'bg-sky-50 text-sky-700 border border-sky-200 font-bold',
+    job: 'bg-cyan-50 text-cyan-800 border border-cyan-200 font-bold',
+    internship: 'bg-purple-50 text-purple-700 border border-purple-200 font-bold',
+    hackathon: 'bg-orange-50 text-orange-800 border border-orange-200 font-bold',
+    competition: 'bg-pink-50 text-pink-700 border border-pink-200 font-bold',
+    conclave: 'bg-teal-50 text-teal-800 border border-teal-200 font-bold'
   };
   
   const dotColors = {
-    default: 'bg-slate-400',
-    primary: 'bg-indigo-400',
-    success: 'bg-emerald-400',
-    warning: 'bg-amber-400',
-    error: 'bg-red-400',
-    info: 'bg-blue-400',
-    job: 'bg-cyan-400',
-    internship: 'bg-purple-400',
-    hackathon: 'bg-orange-400',
-    competition: 'bg-pink-400',
-    conclave: 'bg-teal-400'
+    default: 'bg-slate-500',
+    primary: 'bg-indigo-600',
+    success: 'bg-emerald-600',
+    warning: 'bg-amber-600',
+    error: 'bg-rose-600',
+    info: 'bg-sky-600',
+    job: 'bg-cyan-600',
+    internship: 'bg-purple-600',
+    hackathon: 'bg-orange-600',
+    competition: 'bg-pink-600',
+    conclave: 'bg-teal-600'
   };
 
   const styleClass = variantStyles[variant] || variantStyles.default;

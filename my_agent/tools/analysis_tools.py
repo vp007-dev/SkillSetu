@@ -1,4 +1,4 @@
-"""Resume analysis tool for CareerOS powered by LiteLLM & Groq Cloud LLM with Pydantic validation."""
+"""Resume analysis tool for SkillSetu powered by LiteLLM & Groq Cloud LLM with Pydantic validation."""
 
 import json
 from .llm_tools import call_groq_llm_json

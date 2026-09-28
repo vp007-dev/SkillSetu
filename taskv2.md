@@ -1,4 +1,4 @@
-# CareerOS v3 — Detailed Implementation Task Breakdown (taskv2.md)
+# SkillSetu v3 — Detailed Implementation Task Breakdown (taskv2.md)
 
 > **Source Architecture Plan:** [update.md](file:///Users/mohitupraity/Documents/projects/automatic-hack/update.md)  
 > **Status:** 🎉 100% Complete — All Tasks Implemented & Verified  

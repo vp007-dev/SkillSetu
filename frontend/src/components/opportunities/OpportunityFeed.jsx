@@ -192,15 +192,15 @@ export default function OpportunityFeed({ onSelectOpportunity }) {
   return (
     <div className="w-full space-y-5">
       {/* Header & User Info Bar with Candidate Selector */}
-      <GlassCard className="p-4 bg-slate-900/80 border border-slate-800 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 shadow-xl">
+      <GlassCard className="p-4 bg-white border border-slate-200 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 shadow-sm">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-cyan-600 flex items-center justify-center font-bold text-xs text-white shadow-inner shrink-0">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-cyan-600 flex items-center justify-center font-bold text-xs text-white shadow-sm shrink-0">
             {activeCandidate?.name ? activeCandidate.name.slice(0, 2).toUpperCase() : 'ME'}
           </div>
           <div className="min-w-0">
             <div className="flex items-center gap-1.5">
-              <Users className="w-3.5 h-3.5 text-indigo-400" />
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Candidate Perspective:</span>
+              <Users className="w-3.5 h-3.5 text-indigo-600" />
+              <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Candidate Perspective:</span>
             </div>
             <div className="relative mt-0.5 w-full sm:w-64 max-w-full">
               <select
@@ -209,7 +209,7 @@ export default function OpportunityFeed({ onSelectOpportunity }) {
                   const val = e.target.value;
                   setSelectedCandidateId(val);
                 }}
-                className="w-full bg-slate-950 border border-slate-700/80 rounded-xl px-3 py-1.5 text-xs text-slate-100 font-extrabold focus:outline-none focus:border-indigo-500 appearance-none pr-8 cursor-pointer shadow-inner truncate"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-1.5 text-xs text-slate-800 font-extrabold focus:outline-none focus:border-indigo-500 appearance-none pr-8 cursor-pointer shadow-sm truncate"
               >
                 <option value="all">🌐 All Candidates (Combined Feed)</option>
                 {candidates.map((c) => {
@@ -231,7 +231,7 @@ export default function OpportunityFeed({ onSelectOpportunity }) {
         <div className="flex items-center gap-2 flex-wrap">
           <button
             onClick={() => setIsAutoPilotOpen(true)}
-            className="px-3.5 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-extrabold text-xs rounded-xl shadow flex items-center gap-1.5 transition-all cursor-pointer"
+            className="btn-aesthetic-primary text-xs py-2 px-3.5 shadow-sm"
           >
             <Sparkles className="w-3.5 h-3.5" />
             Run Auto-Pilot
@@ -239,7 +239,7 @@ export default function OpportunityFeed({ onSelectOpportunity }) {
           <button
             onClick={handleScout}
             disabled={isScouting}
-            className="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white font-bold text-xs rounded-xl border border-slate-700 flex items-center gap-1.5 transition-all cursor-pointer disabled:opacity-50"
+            className="btn-aesthetic-secondary text-xs py-2 px-3.5 shadow-sm disabled:opacity-50"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${isScouting ? 'animate-spin' : ''}`} />
             {isScouting ? 'Scouting Web...' : 'Scout Opportunities'}
@@ -250,19 +250,19 @@ export default function OpportunityFeed({ onSelectOpportunity }) {
       {/* Search Input Bar */}
       <form onSubmit={handleCustomSearch} className="flex gap-2">
         <div className="relative flex-1">
-          <Search className="w-4 h-4 text-slate-500 absolute left-3.5 top-3 pointer-events-none" />
+          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3 pointer-events-none" />
           <input
             type="text"
             placeholder="Search by role, company, or skills (e.g. 'React Developer', 'DRDO AI', 'Hackathon 2026')..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-slate-900/90 border border-slate-800 rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500 shadow-inner"
+            className="w-full bg-white border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 shadow-sm"
           />
         </div>
         <button
           type="submit"
           disabled={isSearching}
-          className="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs rounded-xl transition-colors flex items-center gap-1.5 shrink-0 cursor-pointer disabled:opacity-50"
+          className="btn-aesthetic-primary text-xs py-2.5 px-4 shadow-sm disabled:opacity-50"
         >
           <Search className="w-3.5 h-3.5" />
           Search
@@ -270,17 +270,17 @@ export default function OpportunityFeed({ onSelectOpportunity }) {
       </form>
 
       {/* Categories & Filter Bar */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-slate-950/60 p-2 rounded-2xl border border-slate-800/60">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-slate-100/80 p-2 rounded-2xl border border-slate-200/90 shadow-2xs">
         {/* Category Tabs */}
-        <div className="flex items-center gap-1 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
           {CATEGORIES.map((cat) => (
             <button
               key={cat}
               onClick={() => setCategory(cat)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer ${
                 category === cat
-                  ? 'bg-indigo-600 text-white shadow-md'
-                  : 'bg-slate-900/80 text-slate-400 hover:text-slate-200 border border-slate-800'
+                  ? 'bg-indigo-600 text-white shadow-sm'
+                  : 'bg-white text-slate-600 hover:text-slate-900 border border-slate-200/90 hover:border-slate-300 shadow-2xs'
               }`}
             >
               {cat}
@@ -290,16 +290,16 @@ export default function OpportunityFeed({ onSelectOpportunity }) {
 
         {/* Min Score Filter */}
         <div className="flex items-center gap-2 self-end sm:self-auto">
-          <span className="text-xs text-slate-500 font-medium">Min Match:</span>
-          <div className="flex items-center gap-1 bg-slate-900/80 p-1 rounded-xl border border-slate-800">
+          <span className="text-xs text-slate-500 font-bold uppercase tracking-wider">Min Match:</span>
+          <div className="flex items-center gap-1 bg-white p-1 rounded-xl border border-slate-200/90 shadow-2xs">
             {MIN_SCORES.map((s) => (
               <button
                 key={s.label}
                 onClick={() => setMinScore(s.value)}
-                className={`px-2 py-0.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                className={`px-2.5 py-0.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   minScore === s.value
-                    ? 'bg-slate-800 text-emerald-400 shadow-inner'
-                    : 'text-slate-400 hover:text-slate-200'
+                    ? 'bg-indigo-600 text-white shadow-sm'
+                    : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
                 {s.label}
@@ -312,7 +312,7 @@ export default function OpportunityFeed({ onSelectOpportunity }) {
       {/* Cards Grid */}
       {isLoading ? (
         <div className="flex justify-center items-center py-16">
-          <LoadingSpinner size="lg" text="Retrieving ranked opportunities from Career OS..." />
+          <LoadingSpinner size="lg" text="Retrieving ranked opportunities from SkillSetu..." />
         </div>
       ) : filteredOpportunities.length === 0 ? (
         <div className="border-2 border-dashed border-slate-800 rounded-2xl p-12 text-center flex flex-col items-center">

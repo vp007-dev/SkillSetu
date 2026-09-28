@@ -1,1 +1,1 @@
-# Dedicated MCP Server Modules for CareerOS Sub-Agents
+# Dedicated MCP Server Modules for SkillSetu Sub-Agents

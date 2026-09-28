@@ -34,12 +34,11 @@ export function useGeminiLive(options = {}) {
         setIsAiSpeaking(outVol > 0.04);
       });
 
-      // 3. Connect to WebSocket (supports local port 3000 bridge or port 8000 fallback)
-      const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-      const targetWsUrl =
-        window.location.port === "5173"
-          ? `${protocol}//${window.location.hostname}:3000/api/live`
-          : `${protocol}//${window.location.host}/api/live`;
+      // 3. Connect to WebSocket (supports local port 3000 bridge or port 8001 fallback)
+      const apiBase = import.meta.env.VITE_API_BASE || "http://localhost:8001";
+      const wsProtocol = apiBase.startsWith("https") ? "wss" : "ws";
+      const wsHost = apiBase.replace(/^https?:\/\//, "");
+      const targetWsUrl = `${wsProtocol}://${wsHost}/api/live?company=${encodeURIComponent(options.company || "Google Cloud")}&role=${encodeURIComponent(options.jobTitle || "Senior Software Engineer")}&candidate=${encodeURIComponent(options.candidateName || "Candidate")}&voice=${encodeURIComponent(options.voice || "Zephyr")}&seniority=${encodeURIComponent(options.seniority || "Senior")}&format=${encodeURIComponent(options.interviewType || "Full Technical & Coding")}`;
 
       const ws = new WebSocket(targetWsUrl);
       socketRef.current = ws;

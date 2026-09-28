@@ -24,7 +24,7 @@ from my_agent.models.schemas import (
     ATSGoalPipelineResponseSchema,
     TailoredResumeSchema,
 )
-from my_agent.tools.db_tools import get_supabase, store_to_db, read_from_db
+from my_agent.tools.db_tools import get_firestore, store_to_db, read_from_db
 from my_agent.tools.docling_tools import convert_resume_to_docling, markdown_to_docling_doc
 from my_agent.tools.knowledge_tools import get_rag_context
 from my_agent.tools.llm_tools import call_groq_llm, call_groq_llm_json
@@ -527,19 +527,19 @@ def run_ats_90_goal_pipeline(
     )
 
     # 2. Retrieve Candidate Gold Base Resume
-    sb = get_supabase()
+    db = get_firestore()
     effective_cand = candidate_id or user_id or "default-user"
     base_markdown = ""
 
     # Check candidate profile or document store
     try:
-        docs = sb.select("documents", filters={"user_id": f"eq.{effective_cand}"})
+        docs = db.select("documents", filters={"user_id": f"eq.{effective_cand}"})
         if not docs and candidate_id:
-            docs = sb.select("documents", filters={"user_id": f"eq.candidate_{candidate_id}"})
+            docs = db.select("documents", filters={"user_id": f"eq.candidate_{candidate_id}"})
         if docs and docs[0].get("raw_markdown"):
             base_markdown = docs[0]["raw_markdown"]
         else:
-            resumes = sb.select("resumes", filters={"user_id": f"eq.{effective_cand}"})
+            resumes = db.select("resumes", filters={"user_id": f"eq.{effective_cand}"})
             if resumes and resumes[0].get("raw_text"):
                 base_markdown = resumes[0]["raw_text"]
     except Exception:
@@ -567,7 +567,7 @@ def run_ats_90_goal_pipeline(
             f"- **Databases & Vector**: PostgreSQL, Supabase, pgvector, Redis\n"
             f"- **Cloud & DevOps**: Docker, AWS, GitHub Actions, CI/CD, Linux\n\n"
             f"## Experience\n"
-            f"### Full Stack AI Engineer — CareerOS / Agentic Labs (2023 - Present)\n"
+            f"### Full Stack AI Engineer — SkillSetu / Agentic Labs (2023 - Present)\n"
             f"- Architected multi-agent governance pipeline reducing security delegation overhead by 40%.\n"
             f"- Implemented high-throughput RAG search using pgvector and Gemini embeddings over 10,000+ candidate document chunks.\n"
             f"- Built real-time WebSocket dashboard for agent observatory telemetry.\n\n"
@@ -720,7 +720,7 @@ def run_ats_90_goal_pipeline(
     pdf_res = generate_tailored_pdf(current_markdown, pdf_full_path)
     final_pdf_path = pdf_res.get("pdf_path", pdf_full_path)
 
-    # 7. Store Result to Database (Supabase tailored_resumes table)
+    # 7. Store Result to Database (Firebase Firestore tailored_resumes collection)
     pydantic_tailored = TailoredResumeSchema(
         user_id=user_id,
         profile_id=candidate_id,

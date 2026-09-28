@@ -25,7 +25,7 @@ from my_agent.models.schemas import (
     InterviewSessionConfigSchema,
 )
 from my_agent.tools.ats_goal_pipeline import generate_hr_grade_company_job_intel
-from my_agent.tools.db_tools import get_supabase, read_from_db, store_to_db
+from my_agent.tools.db_tools import get_firestore, read_from_db, store_to_db
 from my_agent.tools.llm_tools import call_groq_llm
 
 global_armoriq = ArmorIQClient()

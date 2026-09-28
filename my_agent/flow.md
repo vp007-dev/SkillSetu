@@ -1,8 +1,8 @@
-# CareerOS — ArmorIQ Governed Multi-Agent Pipeline Flow
+# SkillSetu — ArmorIQ Governed Multi-Agent Pipeline Flow
 
 ## Overview
 
-CareerOS is an automated multi-agent platform governed by **ArmorIQ Security SDK**. The Root Coordinator agent plans the workflow and cryptographically delegates authority to 5 specialized sub-agents. Each sub-agent operates with its own **cryptographic keypair**, connects to its own **dedicated MCP server**, and executes actions using `invoke()`.
+SkillSetu is an automated multi-agent platform governed by **ArmorIQ Security SDK**. The Root Coordinator agent plans the workflow and cryptographically delegates authority to 5 specialized sub-agents. Each sub-agent operates with its own **cryptographic keypair**, connects to its own **dedicated MCP server**, and executes actions using `invoke()`.
 
 ---
 
@@ -68,7 +68,7 @@ armoriq = ArmorIQClient(api_key=os.getenv("ARMORIQ_API_KEY"))
 
 plan = armoriq.capture_plan(
     agent_id="root_coordinator_agent",
-    intent="Execute CareerOS pipeline: extract, analyze, profile, scout, rank opportunities",
+    intent="Execute SkillSetu pipeline: extract, analyze, profile, scout, rank opportunities",
     allowed_tools=[
         "mcp_extractor.extract_and_store_resume",
         "mcp_analyzer.analyze_and_store_resume",

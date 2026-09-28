@@ -158,42 +158,42 @@ export default function ATSGoalTrackerModal({
     : trace[trace.length - 1] || null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/85 backdrop-blur-xl animate-fade-in">
-      <div className="relative w-full max-w-5xl max-h-[92vh] bg-slate-900/95 border border-slate-700/80 rounded-3xl shadow-2xl overflow-hidden flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/40 backdrop-blur-md animate-fade-in">
+      <div className="relative w-full max-w-5xl max-h-[92vh] bg-white border border-slate-200 rounded-3xl shadow-2xl overflow-hidden flex flex-col">
         
         {/* Glowing Top Rainbow Ribbon */}
-        <div className="h-1.5 w-full bg-gradient-to-r from-amber-400 via-emerald-400 via-cyan-400 to-indigo-500 animate-pulse" />
+        <div className="h-1.5 w-full bg-gradient-to-r from-indigo-500 via-cyan-500 to-emerald-500" />
 
         {/* Modal Header */}
-        <div className="p-5 sm:p-6 bg-slate-900/90 border-b border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="p-5 sm:p-6 bg-white border-b border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-1.5 flex-1">
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="px-3 py-1 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 border border-emerald-500/40 text-emerald-300 font-extrabold text-[11px] rounded-full flex items-center gap-1.5 shadow-sm">
-                <Target className="w-3.5 h-3.5 text-emerald-400 animate-spin" style={{ animationDuration: '6s' }} />
+              <span className="px-3 py-1 bg-emerald-50 border border-emerald-200 text-emerald-800 font-extrabold text-[11px] rounded-full flex items-center gap-1.5 shadow-2xs">
+                <Target className="w-3.5 h-3.5 text-emerald-600 animate-spin" style={{ animationDuration: '6s' }} />
                 AUTONOMOUS ATS 90+ GOAL PIPELINE
               </span>
-              <span className="px-2.5 py-0.5 bg-purple-950/70 border border-purple-500/30 text-purple-300 font-mono text-[10px] font-bold rounded-full flex items-center gap-1">
-                <ShieldCheck className="w-3 h-3 text-purple-400" />
+              <span className="px-2.5 py-0.5 bg-purple-50 border border-purple-200 text-purple-800 font-mono text-[10px] font-bold rounded-full flex items-center gap-1">
+                <ShieldCheck className="w-3 h-3 text-purple-600" />
                 ArmorIQ Cryptographically Governed
               </span>
             </div>
 
-            <h2 className="text-xl sm:text-2xl font-black text-white leading-tight flex items-center gap-2 flex-wrap">
+            <h2 className="text-xl sm:text-2xl font-black text-slate-900 leading-tight flex items-center gap-2 flex-wrap">
               <span>{oppTitle}</span>
-              <span className="text-slate-500 font-normal">at</span>
-              <span className="text-cyan-400">{compName}</span>
+              <span className="text-slate-400 font-normal">at</span>
+              <span className="text-indigo-700 font-extrabold">{compName}</span>
             </h2>
 
-            <p className="text-xs text-slate-400 flex items-center gap-3 flex-wrap">
-              <span className="flex items-center gap-1">
-                <Building2 className="w-3.5 h-3.5 text-indigo-400" />
+            <p className="text-xs text-slate-500 flex items-center gap-3 flex-wrap font-medium">
+              <span className="flex items-center gap-1 font-bold text-slate-700">
+                <Building2 className="w-3.5 h-3.5 text-indigo-600" />
                 {compName}
               </span>
-              <span className="text-slate-600">•</span>
-              <span className="text-slate-300 font-medium">Candidate: {candidateName}</span>
-              <span className="text-slate-600">•</span>
-              <span className="text-amber-400 font-semibold flex items-center gap-1">
-                <Sparkles className="w-3 h-3 text-amber-400" />
+              <span className="text-slate-300">•</span>
+              <span className="text-slate-700 font-semibold">Candidate: {candidateName}</span>
+              <span className="text-slate-300">•</span>
+              <span className="text-amber-800 font-bold flex items-center gap-1">
+                <Sparkles className="w-3 h-3 text-amber-500" />
                 Target ATS: 90+ Score
               </span>
             </p>
@@ -202,14 +202,14 @@ export default function ATSGoalTrackerModal({
           {/* Quick Score Delta & Close */}
           <div className="flex items-center gap-4 shrink-0">
             {pipelineResult && (
-              <div className="flex items-center gap-3 bg-slate-950/80 p-2.5 px-4 rounded-2xl border border-slate-800">
+              <div className="flex items-center gap-3 bg-slate-50 p-2.5 px-4 rounded-2xl border border-slate-200 shadow-2xs">
                 <ScoreGauge score={finalScore} size={48} strokeWidth={4.5} />
                 <div className="text-left">
-                  <div className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">Final ATS Score</div>
+                  <div className="text-[10px] font-extrabold uppercase tracking-wider text-slate-500">Final ATS Score</div>
                   <div className="flex items-center gap-1.5">
-                    <span className="text-sm font-black text-white">{finalScore}/100</span>
+                    <span className="text-sm font-black text-slate-900">{finalScore}/100</span>
                     {scoreDelta > 0 && (
-                      <span className="text-[10px] font-extrabold text-emerald-400 bg-emerald-950/80 px-1.5 py-0.2 rounded border border-emerald-500/30">
+                      <span className="text-[10px] font-extrabold text-emerald-800 bg-emerald-100 px-1.5 py-0.2 rounded border border-emerald-200">
                         +{scoreDelta}
                       </span>
                     )}
@@ -220,7 +220,7 @@ export default function ATSGoalTrackerModal({
 
             <button
               onClick={onClose}
-              className="p-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-xl transition-colors cursor-pointer"
+              className="p-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition-colors cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
@@ -228,19 +228,19 @@ export default function ATSGoalTrackerModal({
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex items-center gap-1 px-4 sm:px-6 border-b border-slate-800 bg-slate-950/50 overflow-x-auto">
+        <div className="flex items-center gap-1 px-4 sm:px-6 border-b border-slate-200 bg-slate-50 overflow-x-auto">
           <button
             onClick={() => setActiveTab('loop_tracker')}
             className={`py-3 px-3.5 text-xs font-extrabold flex items-center gap-2 border-b-2 whitespace-nowrap transition-all cursor-pointer ${
               activeTab === 'loop_tracker'
-                ? 'border-emerald-400 text-emerald-400 bg-emerald-950/20'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-emerald-600 text-emerald-800 bg-white shadow-2xs'
+                : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
-            <TrendingUp className="w-3.5 h-3.5 text-emerald-400" />
+            <TrendingUp className="w-3.5 h-3.5 text-emerald-600" />
             Loop Execution Trace
             {trace.length > 0 && (
-              <span className="px-1.5 py-0.2 text-[10px] font-black bg-emerald-500/20 text-emerald-300 rounded-md border border-emerald-500/30">
+              <span className="px-1.5 py-0.2 text-[10px] font-extrabold bg-emerald-100 text-emerald-800 rounded-md border border-emerald-200">
                 {trace.length} Steps
               </span>
             )}
@@ -250,27 +250,27 @@ export default function ATSGoalTrackerModal({
             onClick={() => setActiveTab('hr_intel')}
             className={`py-3 px-3.5 text-xs font-extrabold flex items-center gap-2 border-b-2 whitespace-nowrap transition-all cursor-pointer ${
               activeTab === 'hr_intel'
-                ? 'border-cyan-400 text-cyan-400 bg-cyan-950/20'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-indigo-600 text-indigo-800 bg-white shadow-2xs'
+                : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
-            <Flame className="w-3.5 h-3.5 text-cyan-400" />
+            <Flame className="w-3.5 h-3.5 text-amber-500" />
             Deep HR Company & JD Dossier
-            {intel && <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />}
+            {intel && <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />}
           </button>
 
           <button
             onClick={() => setActiveTab('rubric')}
             className={`py-3 px-3.5 text-xs font-extrabold flex items-center gap-2 border-b-2 whitespace-nowrap transition-all cursor-pointer ${
               activeTab === 'rubric'
-                ? 'border-purple-400 text-purple-400 bg-purple-950/20'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-purple-600 text-purple-800 bg-white shadow-2xs'
+                : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
-            <Award className="w-3.5 h-3.5 text-purple-400" />
+            <Award className="w-3.5 h-3.5 text-purple-600" />
             ATS 6-Factor Scorecard
             {currentRubric && (
-              <span className="px-1.5 py-0.2 text-[10px] font-black bg-purple-500/20 text-purple-300 rounded-md border border-purple-500/30">
+              <span className="px-1.5 py-0.2 text-[10px] font-extrabold bg-purple-100 text-purple-800 rounded-md border border-purple-200">
                 {currentRubric.overall_score}%
               </span>
             )}
@@ -280,11 +280,11 @@ export default function ATSGoalTrackerModal({
             onClick={() => setActiveTab('resume_preview')}
             className={`py-3 px-3.5 text-xs font-extrabold flex items-center gap-2 border-b-2 whitespace-nowrap transition-all cursor-pointer ${
               activeTab === 'resume_preview'
-                ? 'border-indigo-400 text-indigo-400 bg-indigo-950/20'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-indigo-600 text-indigo-800 bg-white shadow-2xs'
+                : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
-            <FileText className="w-3.5 h-3.5 text-indigo-400" />
+            <FileText className="w-3.5 h-3.5 text-indigo-600" />
             Tailored Resume & PDF
           </button>
         </div>
@@ -294,15 +294,15 @@ export default function ATSGoalTrackerModal({
 
           {/* Running State Live Animation */}
           {isRunning && (
-            <div className="p-6 bg-slate-950/80 border border-emerald-500/30 rounded-2xl shadow-xl space-y-4 animate-fade-in">
+            <div className="p-6 bg-emerald-50/80 border border-emerald-200 rounded-2xl shadow-sm space-y-4 animate-fade-in">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-3 h-3 rounded-full bg-emerald-400 animate-ping" />
-                  <span className="text-xs font-black uppercase tracking-wider text-emerald-400">
+                  <div className="w-3 h-3 rounded-full bg-emerald-500 animate-ping" />
+                  <span className="text-xs font-black uppercase tracking-wider text-emerald-800">
                     Running Autonomous ATS 90+ Goal Loop...
                   </span>
                 </div>
-                <span className="text-xs font-mono text-slate-400">
+                <span className="text-xs font-mono text-slate-500 font-bold">
                   Step {currentStepIndex + 1} of {stepsList.length}
                 </span>
               </div>
@@ -314,25 +314,25 @@ export default function ATSGoalTrackerModal({
                     key={idx}
                     className={`p-2.5 rounded-xl border transition-all ${
                       idx === currentStepIndex
-                        ? 'bg-emerald-950/60 border-emerald-400 shadow-md text-emerald-200'
+                        ? 'bg-white border-emerald-400 shadow-sm text-emerald-900 font-bold'
                         : idx < currentStepIndex
-                        ? 'bg-slate-900/80 border-slate-700 text-slate-300'
-                        : 'bg-slate-950/40 border-slate-800/60 text-slate-600'
+                        ? 'bg-slate-100/80 border-slate-200 text-slate-700'
+                        : 'bg-white/60 border-slate-200 text-slate-400'
                     }`}
                   >
                     <div className="flex items-center gap-1.5 mb-1">
                       {idx < currentStepIndex ? (
-                        <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+                        <CheckCircle2 className="w-3 h-3 text-emerald-600" />
                       ) : idx === currentStepIndex ? (
-                        <RefreshCw className="w-3 h-3 text-emerald-400 animate-spin" />
+                        <RefreshCw className="w-3 h-3 text-emerald-600 animate-spin" />
                       ) : (
-                        <span className="w-3 h-3 rounded-full border border-slate-700 text-[9px] flex items-center justify-center font-bold">
+                        <span className="w-3 h-3 rounded-full border border-slate-300 text-[9px] flex items-center justify-center font-bold">
                           {idx + 1}
                         </span>
                       )}
                       <span className="text-[10px] font-bold truncate">{st.title}</span>
                     </div>
-                    <p className="text-[9px] text-slate-400 line-clamp-2">{st.desc}</p>
+                    <p className="text-[9px] text-slate-500 line-clamp-2">{st.desc}</p>
                   </div>
                 ))}
               </div>

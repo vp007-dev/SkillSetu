@@ -1,4 +1,4 @@
-# CareerOS v3 — Test Manifest & Pipeline Verification (testv2.md)
+# SkillSetu v3 — Test Manifest & Pipeline Verification (testv2.md)
 
 > **Purpose:** Ensure every pipeline stage, document conversion, RAG vector retrieval, resume tailoring engine, and ArmorIQ governance scope check functions flawlessly.
 

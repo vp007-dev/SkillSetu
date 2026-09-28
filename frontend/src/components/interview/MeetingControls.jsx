@@ -47,7 +47,7 @@ export default function MeetingControls({
     <footer className="h-16 px-4 bg-slate-950 border-t border-slate-800/80 flex items-center justify-between z-30 select-none relative">
       {/* Left Info */}
       <div className="hidden md:flex items-center space-x-3 text-xs text-slate-400">
-        <span className="font-mono text-slate-300 font-medium">meet.careeros/live-interview</span>
+        <span className="font-mono text-slate-300 font-medium">meet.skillsetu/live-interview</span>
         <span className="text-slate-600">•</span>
         <span className="text-slate-400">Gemini 3.1 Flash Live (Full Duplex)</span>
       </div>

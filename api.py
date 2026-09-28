@@ -1,4 +1,4 @@
-"""FastAPI Backend Server for CareerOS v3.
+"""FastAPI Backend Server for SkillSetu v3.
 
 Exposes REST API endpoints for multi-user relational candidate intelligence:
 - /api/documents/upload: Accepts multi-format file upload (PDF, DOCX, images, OCR), Docling converts, embeds with Gemini 001, pgvector storage
@@ -14,6 +14,8 @@ Exposes REST API endpoints for multi-user relational candidate intelligence:
 
 import io
 import json
+import hashlib
+import hmac
 import os
 import sqlite3
 import sys
@@ -42,7 +44,7 @@ from my_agent.armoriq_wrapper import ArmorIQClient, ArmorIQScopeViolationError
 # MCP & Tools
 from my_agent.tools.docling_tools import convert_document
 from my_agent.tools.embedding_tools import embed_chunks
-from my_agent.tools.db_tools import store_document, store_embeddings, get_supabase, store_to_db, read_from_db, delete_from_db
+from my_agent.tools.db_tools import store_document, store_embeddings, get_firestore, get_firebase_db, get_supabase, store_to_db, read_from_db, delete_from_db
 from my_agent.tools.knowledge_tools import search_knowledge_base, get_rag_context, seed_candidate_knowledge_bases
 from my_agent.tools.tailor_tools import tailor_resume_for_opportunity, generate_tailored_pdf, _build_native_pdf_binary
 from my_agent.tools.llm_tools import call_groq_llm
@@ -86,12 +88,20 @@ global_armoriq = ArmorIQClient()
 global_keypairs = generate_pipeline_keypairs()
 global_armoriq.seed_initial_audit_trail(global_keypairs)
 
-app = FastAPI(title="CareerOS v3 API Server", version="3.0")
+app = FastAPI(title="SkillSetu v3 API Server", version="3.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_origin_regex=r".*",
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://localhost:8001",
+        "http://127.0.0.1:8001",
+        "*"
+    ],
+    allow_origin_regex=r"https?://.*",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -103,7 +113,7 @@ async def get_current_user(
     authorization: Optional[str] = Header(None),
     x_user_id: Optional[str] = Header(None)
 ) -> str:
-    """Supabase Auth JWT middleware with token decoding and header support."""
+    """Firebase Auth JWT & Session middleware with token decoding and header support."""
     if x_user_id and x_user_id.strip():
         return x_user_id.strip()
     if not authorization:
@@ -112,7 +122,7 @@ async def get_current_user(
     if token in SESSION_TOKENS:
         return SESSION_TOKENS[token]
     
-    # Try decoding Supabase JWT payload (sub is user_id)
+    # Try decoding Firebase Auth JWT payload (sub / user_id is UID)
     if "." in token:
         try:
             parts = token.split(".")
@@ -120,14 +130,14 @@ async def get_current_user(
                 padding = "=" * (4 - len(parts[1]) % 4)
                 payload_json = base64.b64decode(parts[1] + padding).decode("utf-8")
                 payload = json.loads(payload_json)
-                user_id = payload.get("sub") or payload.get("user_id") or payload.get("id")
+                user_id = payload.get("user_id") or payload.get("sub") or payload.get("uid") or payload.get("id")
                 if user_id:
                     SESSION_TOKENS[token] = str(user_id)
                     return str(user_id)
         except Exception:
             pass
 
-    return "default-user"
+    raise HTTPException(status_code=401, detail="Invalid or expired authentication token.")
 
 
 class QueryRequest(BaseModel):
@@ -252,61 +262,37 @@ class LoginReq(BaseModel):
     candidate_id: Optional[str] = None
 
 
-# In-memory authentication & session store
-USER_AUTH_ACCOUNTS = {
-    "mohitupraity123@gmail.com": {
-        "id": "candidate_mohit",
-        "email": "mohitupraity123@gmail.com",
-        "name": "Mohit Prasad Upraity",
-        "role": "Software Engineer | Full-Stack & AI Systems",
-        "password": "password123"
-    },
-    "vishnu9027872285@gmail.com": {
-        "id": "candidate_vishnu",
-        "email": "vishnu9027872285@gmail.com",
-        "name": "Vishnu Kumar",
-        "role": "Python Developer | Backend & API Engineering | ML Systems",
-        "password": "password123"
-    },
-    "krati.verma@careeros.ai": {
-        "id": "candidate_krati",
-        "email": "krati.verma@careeros.ai",
-        "name": "Krati Verma",
-        "role": "Lead Frontend & UI/UX Developer",
-        "password": "password123"
-    }
-}
-
-
 @app.post("/api/auth/register")
 def register_endpoint(req: RegisterReq):
-    """Registers a new user in Supabase with an isolated profile and clean slate."""
+    """Registers a new user in Firebase Firestore with an isolated profile and clean slate."""
     email_clean = req.email.strip().lower()
     if not email_clean or not req.password:
         raise HTTPException(status_code=400, detail="Email and password are required.")
 
-    sb = get_supabase()
-    existing_users = sb.select("users", filters={"email": f"eq.{email_clean}"})
+    db = get_firestore()
+    existing_users = db.select("users", filters={"email": f"eq.{email_clean}"})
     if existing_users:
-        user_id = str(existing_users[0]["id"])
-    else:
-        user_id = str(uuid.uuid4())
-        display_name = req.name.strip() or "New Engineer"
-        new_user = {
-            "id": user_id,
-            "email": email_clean,
-            "name": display_name,
-            "target_roles": [req.role or "Software Engineer"],
-            "location_preferences": ["Remote"]
-        }
-        sb.insert("users", new_user)
+        raise HTTPException(status_code=409, detail="An account with this email already exists.")
+    if "@" not in email_clean or len(req.password) < 8:
+        raise HTTPException(status_code=422, detail="Enter a valid email and a password with at least 8 characters.")
+    user_id = str(uuid.uuid4())
+    display_name = req.name.strip() or "New Engineer"
+    new_user = {
+        "id": user_id,
+        "email": email_clean,
+        "name": display_name,
+        "password_hash": hashlib.sha256(req.password.encode("utf-8")).hexdigest(),
+        "target_roles": [req.role or "Software Engineer"],
+        "location_preferences": ["Remote"]
+    }
+    db.insert("users", new_user)
 
-    # Ensure profile in Supabase
-    existing_profs = sb.select("profiles", filters={"user_id": f"eq.{user_id}"})
+    # Ensure profile in Firestore
+    existing_profs = db.select("profiles", filters={"user_id": f"eq.{user_id}"})
     if not existing_profs:
         prof_id = str(uuid.uuid4())
         base_md = f"# {req.name.strip() or 'New Engineer'}\n**{req.role or 'Software Engineer'}**\n{email_clean}\n\n## Professional Summary\nFresh profile. Upload your resume to begin.\n"
-        sb.insert("profiles", {
+        db.insert("profiles", {
             "id": prof_id,
             "user_id": user_id,
             "name": req.name.strip() or "New Engineer",
@@ -319,7 +305,7 @@ def register_endpoint(req: RegisterReq):
             "search_keywords": ["software engineering jobs"]
         })
 
-    token = f"careeros_jwt_{uuid.uuid4().hex}"
+    token = f"skillsetu_jwt_{uuid.uuid4().hex}"
     SESSION_TOKENS[token] = user_id
 
     return {
@@ -331,24 +317,24 @@ def register_endpoint(req: RegisterReq):
             "name": req.name.strip() or "New Engineer",
             "role": req.role or "Software Engineer"
         },
-        "message": "Account created successfully in Supabase!"
+        "message": "Account created successfully in Firebase Auth & Firestore!"
     }
 
 
 @app.post("/api/auth/login")
 def login_endpoint(req: LoginReq):
-    """Authenticates user or allows 1-click candidate profile login directly via Supabase."""
-    sb = get_supabase()
+    """Authenticates user or allows 1-click candidate profile login directly via Firebase Firestore."""
+    db = get_firestore()
 
     # 1. Candidate ID quick login
     if req.candidate_id:
-        profs = sb.select("profiles", filters={"id": f"eq.{req.candidate_id}"})
+        profs = db.select("profiles", filters={"id": f"eq.{req.candidate_id}"})
         if not profs:
-            profs = sb.select("profiles", filters={"user_id": f"eq.{req.candidate_id}"})
+            profs = db.select("profiles", filters={"user_id": f"eq.{req.candidate_id}"})
         if profs:
             cand = profs[0]
             cand_user_id = str(cand.get("user_id", cand.get("id")))
-            token = f"careeros_jwt_{uuid.uuid4().hex}"
+            token = f"skillsetu_jwt_{uuid.uuid4().hex}"
             SESSION_TOKENS[token] = cand_user_id
             return {
                 "status": "success",
@@ -356,20 +342,23 @@ def login_endpoint(req: LoginReq):
                 "user": {
                     "id": cand_user_id,
                     "candidate_id": str(cand.get("id")),
-                    "email": cand.get("email", "candidate@careeros.ai"),
+                    "email": cand.get("email", "candidate@skillsetu.example"),
                     "name": cand.get("name", "Candidate"),
                     "role": cand.get("role", "Software Engineer")
                 }
             }
 
     # 2. Email / Password login
-    if req.email:
+    if req.email and req.password:
         email_clean = req.email.strip().lower()
-        users = sb.select("users", filters={"email": f"eq.{email_clean}"})
+        users = db.select("users", filters={"email": f"eq.{email_clean}"})
         if users:
             account = users[0]
+            password_hash = account.get("password_hash")
+            if not password_hash or not hmac.compare_digest(password_hash, hashlib.sha256(req.password.encode("utf-8")).hexdigest()):
+                raise HTTPException(status_code=401, detail="Invalid email or password.")
             user_id = str(account["id"])
-            token = f"careeros_jwt_{uuid.uuid4().hex}"
+            token = f"skillsetu_jwt_{uuid.uuid4().hex}"
             SESSION_TOKENS[token] = user_id
             return {
                 "status": "success",
@@ -381,46 +370,7 @@ def login_endpoint(req: LoginReq):
                     "role": (account.get("target_roles") or ["Software Engineer"])[0] if isinstance(account.get("target_roles"), list) else "Software Engineer"
                 }
             }
-        else:
-            # Auto-create user in Supabase
-            user_id = str(uuid.uuid4())
-            cand_name = email_clean.split('@')[0].replace('.', ' ').title()
-            new_user = {
-                "id": user_id,
-                "email": email_clean,
-                "name": cand_name,
-                "target_roles": ["Software Engineer"],
-                "location_preferences": ["Remote"]
-            }
-            sb.insert("users", new_user)
-
-            prof_id = str(uuid.uuid4())
-            sb.insert("profiles", {
-                "id": prof_id,
-                "user_id": user_id,
-                "name": cand_name,
-                "role": "Software Engineer",
-                "email": email_clean,
-                "is_primary": True,
-                "skills": ["Software Engineering"],
-                "tech_stack": ["Software Engineering"],
-                "raw_markdown": f"# {cand_name}\n**Software Engineer**\n{email_clean}\n\n## Professional Summary\nFresh profile. Upload your resume to begin.\n"
-            })
-
-            token = f"careeros_jwt_{uuid.uuid4().hex}"
-            SESSION_TOKENS[token] = user_id
-            return {
-                "status": "success",
-                "token": token,
-                "user": {
-                    "id": user_id,
-                    "email": email_clean,
-                    "name": cand_name,
-                    "role": "Software Engineer"
-                }
-            }
-
-    raise HTTPException(status_code=400, detail="Invalid login credentials.")
+    raise HTTPException(status_code=401, detail="Invalid email or password.")
 
 
 class GoogleLoginReq(BaseModel):
@@ -433,22 +383,21 @@ class GoogleLoginReq(BaseModel):
 
 @app.post("/api/auth/google")
 def google_auth_endpoint(req: GoogleLoginReq):
-    """Handles Google Sign-In with isolated Supabase candidate account and isolated documents."""
+    """Handles Google Sign-In with isolated Firebase candidate account and isolated documents."""
     email_clean = req.email.strip().lower()
     if not email_clean:
         raise HTTPException(status_code=400, detail="Valid Google email is required.")
 
-    sb = get_supabase()
+    db = get_firestore()
     display_name = req.name.strip() if req.name else email_clean.split('@')[0].replace('.', ' ').title()
 
-    # 1. Lookup or create user in Supabase
-    users = sb.select("users", filters={"email": f"eq.{email_clean}"})
+    # 1. Lookup or create user in Firestore
+    users = db.select("users", filters={"email": f"eq.{email_clean}"})
     if users:
         user_record = users[0]
         user_id = str(user_record["id"])
-        # Update avatar or name if changed
         if req.avatar_url or req.name:
-            sb.update("users", {"avatar_url": req.avatar_url, "name": display_name}, {"id": f"eq.{user_id}"})
+            db.update("users", {"avatar_url": req.avatar_url, "name": display_name}, {"id": f"eq.{user_id}"})
     else:
         user_id = req.google_id or str(uuid.uuid4())
         user_record = {
@@ -459,17 +408,17 @@ def google_auth_endpoint(req: GoogleLoginReq):
             "target_roles": [req.role or "Software Engineer"],
             "location_preferences": ["Remote"]
         }
-        sb.insert("users", user_record)
+        db.insert("users", user_record)
 
-    # 2. Ensure primary candidate profile exists in Supabase profiles
-    profs = sb.select("profiles", filters={"user_id": f"eq.{user_id}"})
+    # 2. Ensure primary candidate profile exists in Firestore profiles
+    profs = db.select("profiles", filters={"user_id": f"eq.{user_id}"})
     if not profs:
         prof_id = str(uuid.uuid4())
         resume_id = str(uuid.uuid4())
         base_md = f"# {display_name}\n**{req.role or 'Software Engineer'}**\n{email_clean}\n\n## Professional Summary\nFresh profile for {display_name}. Upload your master resume to begin.\n\n## Technical Skills\n- **Core Competencies**: Full Stack Development, AI Systems\n"
         
         try:
-            sb.insert("resumes", {
+            db.insert("resumes", {
                 "id": resume_id,
                 "user_id": user_id,
                 "name": display_name,
@@ -478,7 +427,7 @@ def google_auth_endpoint(req: GoogleLoginReq):
                 "raw_text": base_md
             })
 
-            sb.insert("profiles", {
+            db.insert("profiles", {
                 "id": prof_id,
                 "user_id": user_id,
                 "resume_id": resume_id,
@@ -493,7 +442,7 @@ def google_auth_endpoint(req: GoogleLoginReq):
         except Exception as e:
             print(f"[Google Auth profile init notice] {e}")
 
-    token = f"careeros_jwt_{uuid.uuid4().hex}"
+    token = f"skillsetu_jwt_{uuid.uuid4().hex}"
     SESSION_TOKENS[token] = user_id
 
     return {
@@ -506,7 +455,7 @@ def google_auth_endpoint(req: GoogleLoginReq):
             "role": req.role or "Software Engineer",
             "avatar_url": req.avatar_url or user_record.get("avatar_url")
         },
-        "message": "Signed in with Google successfully via Supabase."
+        "message": "Signed in with Google successfully via Firebase Auth."
     }
 
 
@@ -526,12 +475,58 @@ def logout_endpoint():
     return {"status": "success", "message": "Signed out successfully."}
 
 
+@app.get("/api/opportunities")
+def get_opportunities_endpoint(candidate_id: Optional[str] = Query(None), user_id: str = Depends(get_current_user)):
+    """Returns opportunities for candidate or default target role from Firestore."""
+    db = get_firestore()
+    target_id = candidate_id or user_id or "default-user"
+    opps = db.select("opportunities", filters={"profile_id": f"eq.{target_id}"})
+    return {"status": "success", "opportunities": opps}
+
+
+@app.get("/api/opportunities/{opportunity_id}")
+def get_opportunity_by_id_endpoint(opportunity_id: str):
+    """Returns a specific opportunity by ID."""
+    db = get_firestore()
+    opps = db.select("opportunities", filters={"id": f"eq.{opportunity_id}"})
+    if opps:
+        return {"status": "success", "opportunity": opps[0]}
+    raise HTTPException(status_code=404, detail="Opportunity not found")
+
+
+@app.post("/api/opportunities/{opportunity_id}/deep-research")
+def deep_research_opportunity_endpoint(opportunity_id: str, req: Optional[dict] = None):
+    """Generates a deep research dossier for the target opportunity."""
+    opps = get_firestore().select("opportunities", filters={"id": f"eq.{opportunity_id}"})
+    opportunity = opps[0] if opps else None
+    if not opportunity:
+        raise HTTPException(status_code=404, detail="Opportunity not found")
+    company = opportunity.get("company_name") or opportunity.get("company")
+    title = opportunity.get("title")
+    if not company or not title:
+        raise HTTPException(status_code=422, detail="Opportunity is missing company or title")
+    dossier = deep_research_company_and_role(company, title, opportunity.get("url"))
+    return {"status": "success", "opportunity_id": opportunity_id, "company_name": company, "role_title": title, "dossier": dossier}
+
+
+@app.post("/api/opportunities/custom-search")
+def custom_scout_search_endpoint(req: CustomScoutReq):
+    """Searches web for custom opportunities."""
+    res = search_web(req.query, req.category or "job")
+    return {
+        "status": "success",
+        "query": req.query,
+        "results": res.get("results", []),
+        "engine": res.get("engine", "google_search_api")
+    }
+
+
 
 @app.get("/")
 def read_root():
     return {
         "status": "online",
-        "service": "CareerOS v3 ArmorIQ Governed API Server",
+        "service": "SkillSetu v3 ArmorIQ Governed API Server",
         "version": "3.0",
         "documentation": "/docs",
         "endpoints": {
@@ -570,7 +565,7 @@ async def get_adk_graph():
         "name": "my_agent",
         "root_agent": {
             "name": "root_agent",
-            "description": "CareerOS v3 coordinator agent orchestrating 8 ArmorIQ-governed sub-agents.",
+            "description": "SkillSetu v3 coordinator agent orchestrating 8 ArmorIQ-governed sub-agents.",
             "sub_agents": [
                 {"name": "document_processor", "description": "Processes multi-format documents, chunks, embeds with Gemini 001", "tools": [{"name": "convert_document"}, {"name": "embed_chunks"}, {"name": "store_to_db"}]},
                 {"name": "resume_extractor", "description": "Extracts structured fields from candidate resume", "tools": [{"name": "extract_resume"}, {"name": "store_to_db"}]},
@@ -611,8 +606,7 @@ async def run_root_agent_endpoint(req: RootAgentRequest):
     # 1. Fetch live Grounded Candidate Persona from Supabase
     c = _get_unified_candidate(user_id)
     if not c:
-        all_cands = _get_all_unified_candidates()
-        c = all_cands[0] if all_cands else {}
+        raise HTTPException(status_code=404, detail="Candidate not found")
 
     cand_name = c.get("name", "Candidate")
     cand_role = c.get("role", "Software Engineer")
@@ -624,7 +618,7 @@ async def run_root_agent_endpoint(req: RootAgentRequest):
     # Query RAG Context
     rag_context = get_rag_context(msg_text, user_id=c.get("user_id", user_id), candidate_id=c.get("id"))
 
-    system_instruction = f"""You are CareerOS v3 AI, an intelligent, multi-agent career copilot and advisor.
+    system_instruction = f"""You are SkillSetu v3 AI, an intelligent, multi-agent career copilot and advisor.
 You have direct real-time access to the candidate's Supabase database, knowledge graph, RAG vector store, and career profile.
 
 === GROUNDED CANDIDATE IDENTITY & PROFILE ===
@@ -669,7 +663,7 @@ INSTRUCTIONS:
     if not events_out:
         events_out.append({
             "author": "root_agent",
-            "text": f"Hello {cand_name}! I am your CareerOS AI copilot. How can I assist your career as a {cand_role} today?",
+            "text": f"Hello {cand_name}! I am your SkillSetu AI copilot. How can I assist your career as a {cand_role} today?",
             "event_type": "AdkAgentResponse"
         })
 
@@ -696,9 +690,9 @@ async def upload_document(
     create_new_persona: Optional[bool] = Form(False),
     auth_user: str = Depends(get_current_user)
 ):
-    """Upload ANY document (PDF, DOCX, Images, OCR). Docling converts, Gemini embeds, extracts profile, updates Knowledge Graph & ranks opportunities in Supabase."""
+    """Upload ANY document (PDF, DOCX, Images, OCR). Docling converts, Gemini embeds, extracts profile, updates Knowledge Graph & ranks opportunities in Firestore."""
     effective_user = user_id or auth_user or "default-user"
-    sb = get_supabase()
+    db = get_firestore()
 
     temp_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "temp_uploads")
     os.makedirs(temp_dir, exist_ok=True)
@@ -734,11 +728,11 @@ async def upload_document(
 
         # Check if the target profile already belongs to another candidate name
         if target_cand_id and target_cand_id not in ("all", "candidate_all") and not is_explicit_new:
-            existing_prof_check = sb.select("profiles", filters={"id": f"eq.{target_cand_id}"})
+            existing_prof_check = db.select("profiles", filters={"id": f"eq.{target_cand_id}"})
             if existing_prof_check:
                 existing_res_id = existing_prof_check[0].get("resume_id")
                 if existing_res_id:
-                    existing_res = sb.select("resumes", filters={"id": f"eq.{existing_res_id}"})
+                    existing_res = db.select("resumes", filters={"id": f"eq.{existing_res_id}"})
                     if existing_res and existing_res[0].get("name"):
                         existing_name = existing_res[0].get("name", "").strip().lower()
                         new_name = cand_name.strip().lower()
@@ -749,7 +743,7 @@ async def upload_document(
         if is_explicit_new or not target_cand_id or target_cand_id in ("all", "candidate_all"):
             target_cand_id = str(uuid.uuid4())
 
-        # 1. Store document in Supabase
+        # 1. Store document in Firestore
         doc_id = store_document(
             user_id=effective_user,
             filename=file.filename,
@@ -759,13 +753,13 @@ async def upload_document(
             candidate_id=target_cand_id
         )
 
-        # 2. Store vector embeddings in Supabase pgvector
+        # 2. Store vector embeddings in Firestore
         embedded = embed_chunks(doc_res.get("chunks", []))
         stored_count = store_embeddings(doc_id, effective_user, embedded, candidate_id=target_cand_id)
 
-        # 3. Store structured resume in Supabase
+        # 3. Store structured resume in Firestore
         resume_id = str(uuid.uuid4())
-        sb.insert("resumes", {
+        db.insert("resumes", {
             "id": resume_id,
             "user_id": effective_user,
             "document_id": doc_id,
@@ -780,10 +774,10 @@ async def upload_document(
             "raw_text": raw_markdown
         })
 
-        # 4. Update or create profile in Supabase
-        existing_prof = sb.select("profiles", filters={"id": f"eq.{target_cand_id}"})
+        # 4. Update or create profile in Firestore
+        existing_prof = db.select("profiles", filters={"id": f"eq.{target_cand_id}"})
         if not existing_prof and target_cand_id and not is_explicit_new:
-            existing_prof = sb.select("profiles", filters={"user_id": f"eq.{target_cand_id}"})
+            existing_prof = db.select("profiles", filters={"user_id": f"eq.{target_cand_id}"})
 
         prof_payload = {
             "id": target_cand_id,
@@ -797,12 +791,12 @@ async def upload_document(
             "search_keywords": [f"{s} jobs" for s in skills_list[:4]]
         }
         if existing_prof and not is_explicit_new:
-            sb.update("profiles", prof_payload, {"id": f"eq.{target_cand_id}"})
+            db.update("profiles", prof_payload, {"id": f"eq.{target_cand_id}"})
         else:
-            sb.insert("profiles", prof_payload)
+            db.insert("profiles", prof_payload)
 
         # 5. Update users table name and target roles if needed
-        user_recs = sb.select("users", filters={"id": f"eq.{effective_user}"})
+        user_recs = db.select("users", filters={"id": f"eq.{effective_user}"})
         if user_recs:
             u_update = {}
             if not user_recs[0].get("name") or user_recs[0].get("name") == "Mohit ai":
@@ -810,11 +804,11 @@ async def upload_document(
             if not user_recs[0].get("target_roles"):
                 u_update["target_roles"] = [cand_role]
             if u_update:
-                sb.update("users", u_update, {"id": f"eq.{effective_user}"})
+                db.update("users", u_update, {"id": f"eq.{effective_user}"})
 
-        # 5. Automatically rank opportunities in Supabase for this candidate persona
+        # 5. Automatically rank opportunities in Firestore for this candidate persona
         all_opps = list(CURATED_CANDIDATE_OPPORTUNITIES)
-        db_opps = sb.select("opportunities")
+        db_opps = db.select("opportunities")
         all_opps.extend(db_opps)
 
         candidate_obj = {
@@ -834,9 +828,9 @@ async def upload_document(
             target_candidate_id=target_cand_id
         )
 
-        # Store ranked opportunities in Supabase
+        # Store ranked opportunities in Firestore
         for r_item in ranked[:10]:
-            sb.insert("ranked_opportunities", {
+            db.insert("ranked_opportunities", {
                 "id": str(uuid.uuid4()),
                 "opportunity_id": str(r_item.get("id")),
                 "profile_id": target_cand_id,
@@ -1292,7 +1286,7 @@ async def live_interview_websocket(websocket: WebSocket):
     to Google Gemini Live API and streams back 24kHz audio, live captions, and tool execution.
     """
     await websocket.accept()
-    print("🚀 React client connected to live interview room WebSocket.")
+    print("React client connected to live interview room WebSocket.")
 
     query_params = dict(websocket.query_params)
     company_name = query_params.get("company", "Google Cloud")
@@ -1316,8 +1310,11 @@ async def live_interview_websocket(websocket: WebSocket):
             interview_type = first_payload.get("interviewType") or interview_type
             company_name = first_payload.get("company") or company_name
             custom_ctx = first_payload.get("customContext", "")
+            candidate_resume = first_payload.get("candidateResume", "")
             if custom_ctx:
                 uploaded_resume_text = custom_ctx
+            elif candidate_resume:
+                uploaded_resume_text = candidate_resume
         else:
             buffered_first_payload = first_payload
     except (asyncio.TimeoutError, Exception) as e:
@@ -1360,10 +1357,12 @@ async def live_interview_websocket(websocket: WebSocket):
     try:
         from google import genai
         from google.genai import types
+        if not gemini_key:
+            raise RuntimeError("GEMINI_API_KEY is not configured on the backend")
         client = genai.Client(api_key=gemini_key)
-        live_model = os.getenv("GEMINI_LIVE_MODEL", "gemini-3.1-flash-live-preview")
+        live_model = os.getenv("GEMINI_LIVE_MODEL", "gemini-2.5-flash-native-audio-preview-12-2025").strip()
         if live_model.startswith("models/"):
-            live_model = live_model.replace("models/", "")
+            live_model = live_model[len("models/"):]
         live_config = types.LiveConnectConfig(
             response_modalities=["AUDIO"],
             input_audio_transcription=types.AudioTranscriptionConfig(),
@@ -1404,16 +1403,18 @@ async def live_interview_websocket(websocket: WebSocket):
                 # Continuous 16kHz PCM Audio Stream
                 if (payload.get("type") == "audio" or payload.get("audio")) and payload.get("data"):
                     raw_pcm = base64.b64decode(payload["data"]) if isinstance(payload["data"], str) else payload["data"]
-                    await gemini_session.send_realtime_input(audio={"data": raw_pcm, "mime_type": "audio/pcm;rate=16000"})
+                    audio_blob = types.Blob(data=raw_pcm, mime_type="audio/pcm;rate=16000")
+                    await gemini_session.send_realtime_input(audio=audio_blob)
                     audio_chunk_count_ref[0] += 1
                     if audio_chunk_count_ref[0] % 50 == 1:
-                        print(f"🎤 Mic audio chunks forwarded to Gemini: {audio_chunk_count_ref[0]} (latest: {len(raw_pcm)} bytes)")
+                        print(f"Mic audio chunks forwarded to Gemini: {audio_chunk_count_ref[0]} (latest: {len(raw_pcm)} bytes)")
                     return
 
                 # Video Frame or Screen Frame (Base64 JPEG)
                 if payload.get("type") in ["video", "video_frame", "screen_frame"] and payload.get("data"):
                     raw_jpg = base64.b64decode(payload["data"]) if isinstance(payload["data"], str) else payload["data"]
-                    await gemini_session.send_realtime_input(video={"data": raw_jpg, "mime_type": "image/jpeg"})
+                    video_blob = types.Blob(data=raw_jpg, mime_type="image/jpeg")
+                    await gemini_session.send_realtime_input(video=video_blob)
                     return
 
                 # Realtime Code Updates
@@ -1540,22 +1541,22 @@ async def live_interview_websocket(websocket: WebSocket):
                                             })
 
                                 if getattr(server_content, "interrupted", False):
-                                    print("⚡ Gemini Live detected interruption")
+                                    print("Gemini Live detected interruption")
                                     await websocket.send_json({
                                         "type": "interrupted"
                                     })
 
                                 if getattr(server_content, "turn_complete", False):
-                                    print(f"🔄 Gemini turn complete (after {response_count} chunks). Ready for candidate speech.")
+                                    print(f"Gemini turn complete (after {response_count} chunks). Ready for candidate speech.")
                                     await websocket.send_json({
                                         "type": "turn_complete"
                                     })
                         except (WebSocketDisconnect, RuntimeError) as ws_err:
-                            print(f"🛑 WebSocket closed ({ws_err}) — stopping Gemini forward loop.")
+                            print(f"WebSocket closed ({ws_err}) - stopping Gemini forward loop.")
                             break
                         except Exception as inner_err:
                             if "close message has been sent" in str(inner_err) or "Cannot call" in str(inner_err):
-                                print("🛑 WebSocket closed — stopping Gemini forward loop.")
+                                print("WebSocket closed - stopping Gemini forward loop.")
                                 break
                             print(f"[send_to_client] Error processing response #{response_count}: {inner_err}")
                             continue
@@ -1569,82 +1570,17 @@ async def live_interview_websocket(websocket: WebSocket):
                 t.cancel()
 
     except WebSocketDisconnect:
-        print("🛑 React client disconnected from live interview.")
+        print("React client disconnected from live interview.")
     except Exception as e:
-        print(f"[Live Gemini Stream Fallback Triggered] {e}")
+        print(f"[Live Gemini Stream Error] {e}")
         try:
-            greeting = f"Hello {candidate_name.split()[0] if candidate_name else 'there'}, welcome to {company_name}! I am Dr. Elena Vance, Senior Director of Talent and Lead Bar-Raiser for the {job_title} role. Could you start by introducing yourself and walking me through a major technical project you engineered?"
             await websocket.send_json({
-                "type": "transcript",
-                "role": "interviewer",
-                "text": greeting
+                "type": "error",
+                "message": f"Gemini Live API connection failed for model '{os.getenv('GEMINI_LIVE_MODEL', 'gemini-2.5-flash-native-audio-preview-12-2025')}': {str(e)}",
+                "interviewer": "Dr. Elena Vance (Lead Bar-Raiser)"
             })
-            await websocket.send_json({"type": "turn_complete"})
-            session_transcript.append(f"[Interviewer]: {greeting}")
-
-            while True:
-                data = await websocket.receive_text()
-                payload = json.loads(data)
-                
-                if payload.get("event") == "observation_note":
-                    session_observations.append(payload.get("data", {}))
-                    continue
-
-                if payload.get("type") == "run_code":
-                    code_to_exec = payload.get("code", "")
-                    out = await run_python_interview_sandbox(code_to_exec)
-                    await websocket.send_json({
-                        "type": "execution_result",
-                        "output": out
-                    })
-                    session_transcript.append(f"[Candidate Code Output]: {out}")
-                    user_txt = f"I wrote and ran this code:\n```python\n{code_to_exec}\n```\nExecution Output: {out}"
-                else:
-                    user_txt = payload.get("text") or payload.get("user_text", "")
-
-                if user_txt:
-                    session_transcript.append(f"[Candidate]: {user_txt}")
-                    dialogue_history = "\n".join(session_transcript[-8:])
-                    prompt_context = f"""INTERVIEW CONVERSATION HISTORY SO FAR:
-{dialogue_history}
-
-LATEST CANDIDATE INPUT:
-"{user_txt}"
-
-TASK AS SENIOR BAR-RAISER DR. ELENA VANCE:
-1. Provide a brief 1-sentence analytical feedback or acknowledgment.
-2. Ask your NEXT focused technical or behavioral question grounded in {company_name}'s tech stack for {job_title}.
-Keep your total response under 60 words for natural real-time speaking pacing.
-"""
-                    reply = call_groq_llm(
-                        system_prompt=system_instruction_text,
-                        user_content=prompt_context,
-                        temperature=0.3,
-                        max_tokens=250
-                    )
-                    
-                    if not reply or len(reply.strip()) < 10:
-                        # Staged Bar-Raiser Question Bank Fallback
-                        q_bank = [
-                            f"That is a very interesting approach. Could you dive deeper into how you handled high concurrency, data consistency, and database indexing in that architecture at scale?",
-                            f"Thank you for walking me through that. In a production incident with degraded latency, how would you triage root causes across your service boundaries and cache layers?",
-                            f"Understood. Tell me about a time at work where you faced a significant technical disagreement with a team member. How did you resolve the trade-off?",
-                            f"Great explanation. How would you design a fault-tolerant, horizontally scalable rate limiter or event queue for {company_name}?"
-                        ]
-                        turn_idx = len([t for t in session_transcript if t.startswith("[Candidate]:")])
-                        reply = q_bank[(turn_idx - 1) % len(q_bank)]
-
-                    session_transcript.append(f"[Interviewer]: {reply}")
-                    await websocket.send_json({
-                        "type": "transcript",
-                        "role": "interviewer",
-                        "text": reply
-                    })
-                    await websocket.send_json({"type": "turn_complete"})
-        except WebSocketDisconnect:
+        except Exception:
             pass
-        except Exception as ex:
-            print(f"[Fallback Session Closed] {ex}")
     finally:
         try:
             await websocket.close()
@@ -1938,7 +1874,7 @@ USER_PROFILE_STORE = {
         "user_id": "db4a7b96-079d-4695-9c0c-990a41cf88aa",
         "candidate_id": "candidate_krati",
         "name": "Krati Verma",
-        "email": "krati.verma@careeros.ai",
+        "email": "krati.verma@skillsetu.example",
         "phone": "+91-9811223344",
         "role": "Lead Frontend & Design System Architect",
         "location": "Noida, Uttar Pradesh, India",
@@ -1960,7 +1896,7 @@ USER_PROFILE_STORE = {
         "user_id": "f4b3d0ed-0334-4460-9805-b1cb21e03335",
         "candidate_id": "candidate_vishnu",
         "name": "Vishnu Kumar",
-        "email": "vishnu.kumar@careeros.ai",
+        "email": "vishnu.kumar@skillsetu.example",
         "phone": "+91-9123456789",
         "role": "Senior Backend & API Engineer",
         "location": "Noida, Uttar Pradesh, India",
@@ -2208,8 +2144,7 @@ def get_user_profile(candidate_id: Optional[str] = None, user_id: str = Depends(
 
     c = _get_unified_candidate(target_id)
     if not c:
-        all_cands = _get_all_unified_candidates()
-        c = all_cands[0] if all_cands else {}
+        raise HTTPException(status_code=404, detail="Candidate profile not found")
 
     sb = get_supabase()
     user_owner_id = c.get("user_id", user_id)
@@ -3004,9 +2939,9 @@ def get_all_opportunities(candidate_id: Optional[str] = None, user_id: Optional[
     except Exception as e:
         print(f"[Opportunities DB Query Warning] {e}")
 
-    # 2. Combine Curated Ground Truth with DB Records (Deduplicating by title/company)
-    all_opps = list(CURATED_CANDIDATE_OPPORTUNITIES)
-    seen_keys = {(o["title"].lower(), (o.get("company") or "").lower()) for o in all_opps}
+    # This feed represents persisted opportunities only, never hard-coded demo listings.
+    all_opps = []
+    seen_keys = set()
 
     for d in joined_db:
         key = (d["title"].lower(), (d.get("company") or "").lower())
@@ -3015,7 +2950,7 @@ def get_all_opportunities(candidate_id: Optional[str] = None, user_id: Optional[
             seen_keys.add(key)
 
     # 3. Dynamic Candidate Registry scoped strictly to the relevant user's personas
-    all_cands = _get_all_unified_candidates()
+    all_cands = _get_all_unified_candidates(user_id=user_id)
     
     # If candidate_id is specific, resolve its owner user_id
     active_cand = _get_unified_candidate(candidate_id) if (candidate_id and candidate_id not in ("all", "candidate_all")) else None
@@ -3551,7 +3486,7 @@ CANDIDATES_REGISTRY = {
         "top_skills": ["Python", "FastAPI", "React", "PyTorch", "IoT & Smart Shoes", "PostgreSQL"],
         "projects": [
             {
-                "title": "CareerOS Multi-Agent Pipeline",
+                "title": "SkillSetu Multi-Agent Pipeline",
                 "desc": "Autonomous RAG system with real-time WebSocket telemetry, Docling OCR, and ArmorIQ scope delegation.",
                 "tech": "Python, FastAPI, Gemini 001 Embeddings, Docling, PostgreSQL",
                 "skills": ["Python", "FastAPI", "PostgreSQL", "LangChain"]
@@ -3692,7 +3627,7 @@ Software Engineer — May 2025 – Present
         "name": "Krati Verma",
         "role": "Lead Frontend & UI/UX Developer",
         "cluster_color": "#ec4899",
-        "email": "krati.verma@careeros.ai",
+        "email": "krati.verma@skillsetu.example",
         "phone": "+91-9876543210",
         "location": "Noida, Uttar Pradesh, India",
         "summary": "Frontend Specialist and UI/UX Designer crafting responsive, accessible (WCAG AAA), and high-performance web applications with React, TypeScript, and Tailwind CSS design systems.",
@@ -3772,7 +3707,7 @@ Software Engineer — May 2025 – Present
         "peer_gaps": ["Python Backend & AI APIs (Mastered by Mohit & Vishnu)", "Distributed Systems & SQL (Mastered by Vishnu)"],
         "resume_markdown": """# Krati Verma
 **Lead Frontend & UI/UX Engineer | Design Systems Specialist**
-Phone: +91-9876543210 | Email: krati.verma@careeros.ai | Location: Noida, India
+Phone: +91-9876543210 | Email: krati.verma@skillsetu.example | Location: Noida, India
 GitHub: github.com/krativerma | Portfolio: krati-designs.dev | LinkedIn: linkedin.com/in/krati-verma
 
 ## Professional Summary
@@ -3970,7 +3905,7 @@ def create_candidate_persona(
 
     clean_name = req.name.strip() or "Candidate Persona"
     clean_role = req.role.strip() if req.role else "Software Engineer"
-    clean_email = req.email.strip() if req.email else f"{cand_id[:8]}@careeros.ai"
+    clean_email = req.email.strip() if req.email else f"{cand_id[:8]}@skillsetu.example"
     clean_skills = req.skills or ["Software Engineering", "Full Stack Development"]
 
     base_md = req.resume_markdown or f"# {clean_name}\n**{clean_role}**\n{clean_email} | {req.location or 'Remote'}\n\n## Professional Summary\n{req.bio or f'Career profile for {clean_name}.'}\n\n## Technical Skills\n- **Skills**: {', '.join(clean_skills)}\n\n## Experience\n\n## Projects\n\n## Education\n"
@@ -4154,13 +4089,7 @@ async def get_knowledge_graph(user_id: str = "default-user", candidate_id: Optio
                         "similarity_score": 93.1
                     }
 
-            return {
-                "source_doc": fallback_doc,
-                "chunk_index": 0,
-                "chunk_excerpt": f"Entity '{term}' extracted from Candidate Portfolio and verified via vector search.",
-                "embedding_model": "Gemini 001 (768-dim Vector)",
-                "similarity_score": 91.0
-            }
+            return None
 
         # 1. Fetch Unified Candidates from Supabase
         candidates_list = _get_all_unified_candidates(user_id=user_id, candidate_id=candidate_id)
@@ -4191,19 +4120,14 @@ async def get_knowledge_graph(user_id: str = "default-user", candidate_id: Optio
         # ── 1. Create Candidate Person Nodes ─────────────────────────────────
         for cid, cinfo in active_candidates.items():
             is_focused = cid in focused_candidate_ids
+            profile_reference = find_vector_reference(cinfo.get("name", ""), fallback_doc=cinfo.get("doc_name", ""))
             nodes.append({
                 "id": cid,
                 "label": cinfo["name"],
                 "group": "user",
                 "val": 15 if is_focused else 10,
                 "cluster_color": cinfo["cluster_color"],
-                "vector_reference": {
-                    "source_doc": cinfo["doc_name"],
-                    "chunk_index": 0,
-                    "chunk_excerpt": f"Candidate profile for {cinfo['name']} ({cinfo['role']}). {cinfo['summary']}",
-                    "embedding_model": "Gemini 001 (768-dim Vector)",
-                    "similarity_score": 100.0
-                },
+                "vector_reference": profile_reference,
                 "attributes": {
                     "candidate_id": cid,
                     "name": cinfo["name"],
@@ -4238,6 +4162,8 @@ async def get_knowledge_graph(user_id: str = "default-user", candidate_id: Optio
             owners_names = [active_candidates[oid]["name"] for oid in owner_ids if oid in active_candidates]
             non_owners_names = [c["name"] for oid, c in active_candidates.items() if oid not in owner_ids]
             v_ref = find_vector_reference(skill_name, fallback_doc="Candidate Skill Portfolio")
+            if not v_ref:
+                continue
 
             if skill_id not in added_node_ids:
                 nodes.append({
@@ -4524,39 +4450,10 @@ async def get_knowledge_graph(user_id: str = "default-user", candidate_id: Optio
                 })
 
         # ── 8. Peer Collaborative Synergies (Graph RAG Bridges) ──────
-        if focused_id == "all":
-            synergies = [
-                {
-                    "source": "candidate_mohit",
-                    "target": "candidate_krati",
-                    "type": "TEAM_SYNERGY",
-                    "label": "Full-Stack AI Product Synergy",
-                    "desc": "Mohit (AI Systems & IoT Backend) + Krati (Figma & UI/UX Design System) form an end-to-end AI Product Team."
-                },
-                {
-                    "source": "candidate_mohit",
-                    "target": "candidate_vishnu",
-                    "type": "TEAM_SYNERGY",
-                    "label": "High-Scale Backend & AI Synergy",
-                    "desc": "Mohit (FastAPI & Vector Search) + Vishnu (Distributed Systems & Database Scaling) form a high-throughput backend infrastructure team."
-                },
-                {
-                    "source": "candidate_krati",
-                    "target": "candidate_vishnu",
-                    "type": "TEAM_SYNERGY",
-                    "label": "Client-Server Collaboration",
-                    "desc": "Krati (Accessible UI & Next.js) + Vishnu (Robust Microservice APIs & PostgreSQL) build responsive enterprise web apps."
-                }
-            ]
-            for syn in synergies:
-                edges.append(syn)
-
         # ── 9. Discovered & Tailored Opportunity Nodes ───────────────────────
         all_global_opps = get_all_opportunities().get("opportunities", [])
         for focus_cid in focused_candidate_ids:
             cand_opps = [o for o in all_global_opps if o.get("matched_candidate_id") == focus_cid or focus_cid in (o.get("candidate_similarities") or {})]
-            if not cand_opps:
-                cand_opps = all_global_opps
             for opp in cand_opps[:6]:
                 opp_id = f"opp_{opp.get('id')}"
                 title = opp.get("title") or "Engineering Opportunity"
@@ -4851,7 +4748,7 @@ def health_check():
     """Health check endpoint for container probes and load balancers."""
     return {
         "status": "healthy",
-        "service": "CareerOS v3 API",
+        "service": "SkillSetu v3 API",
         "armoriq_shield": "active",
         "timestamp": time.time()
     }

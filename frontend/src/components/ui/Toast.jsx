@@ -19,24 +19,24 @@ const Toast = ({ id, message, type, removeToast }) => {
   }, [id, removeToast]);
 
   const icons = {
-    success: <CheckCircle className="w-5 h-5 text-emerald-400" />,
-    error: <XCircle className="w-5 h-5 text-red-400" />,
-    warning: <AlertTriangle className="w-5 h-5 text-amber-400" />,
-    info: <Info className="w-5 h-5 text-blue-400" />
+    success: <CheckCircle className="w-5 h-5 text-emerald-600" />,
+    error: <XCircle className="w-5 h-5 text-rose-600" />,
+    warning: <AlertTriangle className="w-5 h-5 text-amber-600" />,
+    info: <Info className="w-5 h-5 text-indigo-600" />
   };
 
   const borders = {
-    success: 'border-emerald-500/30',
-    error: 'border-red-500/30',
-    warning: 'border-amber-500/30',
-    info: 'border-blue-500/30'
+    success: 'border-emerald-200',
+    error: 'border-rose-200',
+    warning: 'border-amber-200',
+    info: 'border-indigo-200'
   };
 
   const progressColors = {
     success: 'bg-emerald-500',
-    error: 'bg-red-500',
+    error: 'bg-rose-500',
     warning: 'bg-amber-500',
-    info: 'bg-blue-500'
+    info: 'bg-indigo-500'
   };
 
   return (
@@ -44,18 +44,18 @@ const Toast = ({ id, message, type, removeToast }) => {
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, scale: 0.95 }}
-      className={`bg-slate-900/90 backdrop-blur-xl border ${borders[type]} rounded-xl shadow-xl overflow-hidden pointer-events-auto flex flex-col min-w-[300px] mb-3 relative`}
+      className={`bg-white/95 backdrop-blur-xl border ${borders[type]} rounded-2xl shadow-xl overflow-hidden pointer-events-auto flex flex-col min-w-[300px] mb-3 relative`}
     >
       <div className="flex items-start p-4 pr-10">
         <div className="shrink-0 mr-3 mt-0.5">
           {icons[type]}
         </div>
-        <div className="flex-1 text-sm font-medium text-slate-200">
+        <div className="flex-1 text-sm font-bold text-slate-800">
           {message}
         </div>
         <button 
           onClick={() => removeToast(id)}
-          className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors"
+          className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 transition-colors cursor-pointer"
         >
           <X className="w-4 h-4" />
         </button>

@@ -1,4 +1,4 @@
-# Multi-stage Dockerfile for CareerOS (Unified Frontend + FastAPI Backend)
+# Multi-stage Dockerfile for SkillSetu (Unified Frontend + FastAPI Backend)
 # Stage 1: Build the React 19 Frontend
 FROM node:22-slim AS frontend-builder
 WORKDIR /app/frontend
@@ -42,14 +42,14 @@ COPY . /app
 COPY --from=frontend-builder /app/frontend/dist /app/frontend/dist
 
 # Expose standard production port
-EXPOSE 8000
+EXPOSE 8001
 
-ENV PORT=8000
+ENV PORT=8001
 ENV PYTHONUNBUFFERED=1
 
 # Healthcheck
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-    CMD curl -f http://localhost:8000/api/health || exit 1
+    CMD curl -f http://localhost:8001/api/health || exit 1
 
 # Launch FastAPI Uvicorn server
-CMD ["sh", "-c", "uvicorn api:app --host 0.0.0.0 --port ${PORT:-8000}"]
+CMD ["sh", "-c", "uvicorn api:app --host 0.0.0.0 --port ${PORT:-8001}"]

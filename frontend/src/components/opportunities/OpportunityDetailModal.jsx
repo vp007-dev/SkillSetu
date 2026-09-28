@@ -95,61 +95,61 @@ export default function OpportunityDetailModal({ opportunity, isOpen, onClose, c
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-fade-in">
-      <div className="relative w-full max-w-4xl max-h-[90vh] bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md animate-fade-in">
+      <div className="relative w-full max-w-4xl max-h-[90vh] bg-white border border-slate-200 rounded-3xl shadow-2xl overflow-hidden flex flex-col">
         
         {/* Header */}
-        <div className="p-6 bg-slate-900/90 border-b border-slate-800 flex items-start justify-between gap-4">
+        <div className="p-6 bg-white border-b border-slate-200 flex items-start justify-between gap-4">
           <div className="space-y-2 flex-1">
             <div className="flex items-center gap-2 flex-wrap">
               <Badge variant={getCategoryBadgeVariant(opportunity.category)}>
                 {opportunity.category?.toUpperCase() || 'OPPORTUNITY'}
               </Badge>
               {opportunity.source && (
-                <span className="text-[11px] font-bold text-cyan-400 bg-cyan-950/60 border border-cyan-500/20 px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                <span className="text-[11px] font-bold text-cyan-800 bg-cyan-50 border border-cyan-200 px-2.5 py-0.5 rounded-full flex items-center gap-1">
                   <Globe className="w-3 h-3" />
                   {opportunity.source}
                 </span>
               )}
               {opportunity.matched_candidate_id && (
-                <span className="text-[11px] font-bold text-purple-400 bg-purple-950/60 border border-purple-500/20 px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                <span className="text-[11px] font-bold text-indigo-800 bg-indigo-50 border border-indigo-200 px-2.5 py-0.5 rounded-full flex items-center gap-1">
                   <Users className="w-3 h-3" />
                   Matched Candidate
                 </span>
               )}
             </div>
 
-            <h2 className="text-xl md:text-2xl font-black text-white leading-tight">
+            <h2 className="text-xl md:text-2xl font-black text-slate-900 leading-tight">
               {opportunity.title}
             </h2>
 
-            <div className="flex items-center gap-4 text-xs text-slate-400 flex-wrap">
-              <div className="flex items-center gap-1.5 font-semibold text-slate-300">
-                <Building2 className="w-4 h-4 text-indigo-400" />
+            <div className="flex items-center gap-4 text-xs text-slate-500 font-medium flex-wrap">
+              <div className="flex items-center gap-1.5 font-bold text-slate-800">
+                <Building2 className="w-4 h-4 text-indigo-600" />
                 <span>{opportunity.company || opportunity.source || 'Tech Company'}</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <MapPin className="w-4 h-4 text-slate-500" />
+                <MapPin className="w-4 h-4 text-slate-400" />
                 <span>{opportunity.location || 'Noida, India / Remote'}</span>
               </div>
-              <div className="flex items-center gap-1.5 font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-2 py-0.5 rounded-full">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <div className="flex items-center gap-1.5 font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 <span>{opportunity.application_status || 'Actively Hiring'}</span>
               </div>
               {opportunity.deadline && (
-                <div className="flex items-center gap-1.5 font-semibold text-amber-300">
-                  <Calendar className="w-4 h-4 text-amber-400" />
+                <div className="flex items-center gap-1.5 font-bold text-amber-800">
+                  <Calendar className="w-4 h-4 text-amber-500" />
                   <span>Deadline: {opportunity.deadline}</span>
                 </div>
               )}
             </div>
 
             {opportunity.interest_alignment && (
-              <div className="p-2.5 bg-slate-950/70 border border-slate-800 rounded-xl flex items-center gap-2">
-                <span className="text-[10px] font-extrabold uppercase tracking-wider text-cyan-400 bg-cyan-950/80 px-2 py-0.5 rounded border border-cyan-500/30">
+              <div className="p-2.5 bg-slate-50 border border-slate-200 rounded-xl flex items-center gap-2">
+                <span className="text-[10px] font-extrabold uppercase tracking-wider text-cyan-800 bg-cyan-100 px-2 py-0.5 rounded border border-cyan-200">
                   Profile Interest Fit
                 </span>
-                <span className="text-xs text-slate-200 font-medium">
+                <span className="text-xs text-slate-800 font-medium">
                   {opportunity.interest_alignment}
                 </span>
               </div>
@@ -159,33 +159,29 @@ export default function OpportunityDetailModal({ opportunity, isOpen, onClose, c
           <div className="flex items-center gap-2.5 shrink-0 flex-wrap">
             <button
               onClick={() => setIsInterviewSetupOpen(true)}
-              className="px-3.5 py-2 bg-gradient-to-r from-cyan-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 text-white font-black text-xs rounded-xl shadow-lg shadow-indigo-950/50 flex items-center gap-1.5 transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
+              className="btn-aesthetic-primary text-xs py-2 px-3.5 shadow-sm"
               title="Real-Time Google Meet style AI Interview"
             >
-              <Video className="w-3.5 h-3.5 text-cyan-300" />
+              <Video className="w-3.5 h-3.5" />
               <span>Take AI Interview</span>
             </button>
             <button
               onClick={() => setIsATSGoalOpen(true)}
-              className="relative group px-3.5 py-2 bg-gradient-to-r from-amber-400 via-emerald-400 to-cyan-400 hover:from-amber-300 hover:via-emerald-300 hover:to-cyan-300 text-slate-950 font-black text-xs rounded-xl shadow-lg shadow-emerald-950/50 flex items-center gap-1.5 transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
+              className="btn-aesthetic-subtle text-xs py-2 px-3.5 bg-amber-50 text-amber-800 border-amber-200 hover:bg-amber-100"
               title="Autonomous ATS 90+ Tailoring Loop"
             >
-              <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-              </span>
-              <Target className="w-3.5 h-3.5 text-slate-950" />
+              <Target className="w-3.5 h-3.5 text-amber-600" />
               <span>Run ATS 90+ Goal</span>
-              <Sparkles className="w-3 h-3 text-slate-950" />
+              <Sparkles className="w-3 h-3 text-amber-600" />
             </button>
 
             <div className="text-right hidden sm:block">
               <ScoreGauge score={opportunity.relevance_score || 94} size={44} strokeWidth={4} />
-              <p className="text-[9px] font-bold text-slate-400 mt-0.5">Relevance</p>
+              <p className="text-[9px] font-bold text-slate-500 mt-0.5">Relevance</p>
             </div>
             <button
               onClick={onClose}
-              className="p-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-xl transition-colors cursor-pointer"
+              className="p-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition-colors cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
@@ -193,29 +189,29 @@ export default function OpportunityDetailModal({ opportunity, isOpen, onClose, c
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex items-center gap-2 px-6 border-b border-slate-800 bg-slate-950/40">
+        <div className="flex items-center gap-2 px-6 border-b border-slate-200 bg-slate-50">
           <button
             onClick={() => setActiveTab('company_intel')}
             className={`py-3 px-4 text-xs font-bold flex items-center gap-2 border-b-2 transition-all cursor-pointer ${
               activeTab === 'company_intel'
-                ? 'border-cyan-400 text-cyan-400 bg-cyan-950/20'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-indigo-600 text-indigo-700 bg-white shadow-2xs'
+                : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
-            <Flame className="w-4 h-4 text-cyan-400" />
+            <Flame className="w-4 h-4 text-amber-500" />
             Firecrawl Company Intel
-            {intel && <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />}
+            {intel && <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />}
           </button>
 
           <button
             onClick={() => setActiveTab('overview')}
             className={`py-3 px-4 text-xs font-bold flex items-center gap-2 border-b-2 transition-all cursor-pointer ${
               activeTab === 'overview'
-                ? 'border-indigo-400 text-indigo-400 bg-indigo-950/20'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-indigo-600 text-indigo-700 bg-white shadow-2xs'
+                : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
-            <Briefcase className="w-4 h-4 text-indigo-400" />
+            <Briefcase className="w-4 h-4 text-indigo-600" />
             Role Description & JD
           </button>
 
@@ -223,11 +219,11 @@ export default function OpportunityDetailModal({ opportunity, isOpen, onClose, c
             onClick={() => setActiveTab('skills_match')}
             className={`py-3 px-4 text-xs font-bold flex items-center gap-2 border-b-2 transition-all cursor-pointer ${
               activeTab === 'skills_match'
-                ? 'border-purple-400 text-purple-400 bg-purple-950/20'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                ? 'border-indigo-600 text-indigo-700 bg-white shadow-2xs'
+                : 'border-transparent text-slate-600 hover:text-slate-900'
             }`}
           >
-            <Code className="w-4 h-4 text-purple-400" />
+            <Code className="w-4 h-4 text-purple-600" />
             ATS Keyword Match
           </button>
         </div>
@@ -239,20 +235,20 @@ export default function OpportunityDetailModal({ opportunity, isOpen, onClose, c
           {activeTab === 'company_intel' && (
             <div className="space-y-6 animate-fade-in">
               {/* Header Action Strip */}
-              <div className="flex items-center justify-between bg-slate-950/80 border border-slate-800 p-4 rounded-2xl">
+              <div className="flex items-center justify-between bg-slate-50 border border-slate-200 p-4 rounded-2xl">
                 <div>
-                  <h4 className="text-sm font-bold text-white flex items-center gap-2">
-                    <Flame className="w-4 h-4 text-amber-400" />
+                  <h4 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+                    <Flame className="w-4 h-4 text-amber-500" />
                     Deep Crawled Company Dossier
                   </h4>
-                  <p className="text-xs text-slate-400">
+                  <p className="text-xs text-slate-500 font-medium">
                     Live Firecrawl intelligence scraped across company website, tech stack, and engineering culture.
                   </p>
                 </div>
                 <button
                   onClick={handleRunDeepResearch}
                   disabled={isResearching}
-                  className="px-3 py-1.5 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-extrabold text-xs rounded-xl shadow flex items-center gap-1.5 transition-all cursor-pointer disabled:opacity-50"
+                  className="btn-aesthetic-primary text-xs py-1.5 px-3 disabled:opacity-50"
                 >
                   <Search className="w-3.5 h-3.5" />
                   {isResearching ? 'Crawling Intel...' : 'Refresh Intel'}
@@ -260,25 +256,25 @@ export default function OpportunityDetailModal({ opportunity, isOpen, onClose, c
               </div>
 
               {isResearching ? (
-                <div className="p-12 text-center bg-slate-950/40 rounded-2xl border border-slate-800/60">
+                <div className="p-12 text-center bg-slate-50 rounded-2xl border border-slate-200">
                   <LoadingSpinner size="lg" text="Firecrawl is analyzing company website, careers portal, tech stack, and engineering culture..." />
                 </div>
               ) : intel ? (
                 <div className="space-y-5">
                   {/* Executive Overview */}
-                  <div className="bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4 space-y-2">
-                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-cyan-400 flex items-center gap-1.5">
+                  <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-2">
+                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-cyan-800 flex items-center gap-1.5">
                       <Lightbulb className="w-3.5 h-3.5" />
                       Company Mission & Overview
                     </span>
-                    <p className="text-xs text-slate-200 leading-relaxed">
+                    <p className="text-xs text-slate-800 leading-relaxed font-medium">
                       {intel.overview}
                     </p>
                   </div>
 
                   {/* Scraped Engineering Tech Stack */}
-                  <div className="bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4 space-y-3">
-                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-indigo-400 flex items-center gap-1.5">
+                  <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-3">
+                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-indigo-800 flex items-center gap-1.5">
                       <Cpu className="w-3.5 h-3.5" />
                       Scraped Engineering Tech Stack
                     </span>
@@ -286,7 +282,7 @@ export default function OpportunityDetailModal({ opportunity, isOpen, onClose, c
                       {(intel.tech_stack || []).map((tech, idx) => (
                         <span
                           key={idx}
-                          className="px-2.5 py-1 bg-indigo-950/70 border border-indigo-500/30 text-indigo-200 font-mono text-xs rounded-lg font-semibold shadow-sm"
+                          className="px-2.5 py-1 bg-indigo-50 border border-indigo-200 text-indigo-800 font-mono text-xs rounded-lg font-bold shadow-2xs"
                         >
                           {tech}
                         </span>
@@ -296,18 +292,18 @@ export default function OpportunityDetailModal({ opportunity, isOpen, onClose, c
 
                   {/* Engineering Culture & Values */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4 space-y-2">
-                      <span className="text-[11px] font-extrabold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
+                    <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-2">
+                      <span className="text-[11px] font-extrabold uppercase tracking-wider text-emerald-800 flex items-center gap-1.5">
                         <ShieldCheck className="w-3.5 h-3.5" />
                         Engineering Culture
                       </span>
-                      <p className="text-xs text-slate-300 leading-relaxed">
+                      <p className="text-xs text-slate-700 leading-relaxed font-medium">
                         {intel.engineering_culture}
                       </p>
                     </div>
 
-                    <div className="bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4 space-y-2">
-                      <span className="text-[11px] font-extrabold uppercase tracking-wider text-purple-400 flex items-center gap-1.5">
+                    <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-2">
+                      <span className="text-[11px] font-extrabold uppercase tracking-wider text-purple-800 flex items-center gap-1.5">
                         <Sparkles className="w-3.5 h-3.5" />
                         Core Values & Priorities
                       </span>
@@ -315,7 +311,7 @@ export default function OpportunityDetailModal({ opportunity, isOpen, onClose, c
                         {(intel.key_values || []).map((val, idx) => (
                           <span
                             key={idx}
-                            className="px-2 py-0.5 bg-purple-950/60 border border-purple-500/30 text-purple-300 text-xs rounded-md font-medium"
+                            className="px-2 py-0.5 bg-purple-50 border border-purple-200 text-purple-800 text-xs rounded-md font-bold"
                           >
                             {val}
                           </span>
@@ -325,8 +321,8 @@ export default function OpportunityDetailModal({ opportunity, isOpen, onClose, c
                   </div>
 
                   {/* Target ATS Keywords */}
-                  <div className="bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4 space-y-2.5">
-                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
+                  <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-2.5">
+                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-amber-800 flex items-center gap-1.5">
                       <Layers className="w-3.5 h-3.5" />
                       Priority ATS Keywords (Injected into Tailoring Context)
                     </span>
@@ -334,7 +330,7 @@ export default function OpportunityDetailModal({ opportunity, isOpen, onClose, c
                       {(intel.ats_keywords || []).map((kw, idx) => (
                         <span
                           key={idx}
-                          className="px-2 py-1 bg-amber-950/50 border border-amber-500/30 text-amber-200 text-xs rounded-lg font-medium"
+                          className="px-2 py-1 bg-amber-50 border border-amber-200 text-amber-900 text-xs rounded-lg font-bold"
                         >
                           {kw}
                         </span>
@@ -344,15 +340,15 @@ export default function OpportunityDetailModal({ opportunity, isOpen, onClose, c
 
                   {/* Technical Interview Focus Areas */}
                   {intel.interview_focus_areas && intel.interview_focus_areas.length > 0 && (
-                    <div className="bg-slate-950/60 border border-slate-800/80 rounded-2xl p-4 space-y-2">
-                      <span className="text-[11px] font-extrabold uppercase tracking-wider text-rose-400 flex items-center gap-1.5">
-                        <CheckCircle2 className="w-3.5 h-3.5" />
+                    <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-2">
+                      <span className="text-[11px] font-extrabold uppercase tracking-wider text-rose-800 flex items-center gap-1.5">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-rose-600" />
                         Interview Focus Areas
                       </span>
-                      <ul className="space-y-1.5 text-xs text-slate-300">
+                      <ul className="space-y-1.5 text-xs text-slate-800 font-medium">
                         {intel.interview_focus_areas.map((focus, idx) => (
                           <li key={idx} className="flex items-start gap-2">
-                            <span className="text-rose-400 font-bold">•</span>
+                            <span className="text-rose-600 font-bold">•</span>
                             <span>{focus}</span>
                           </li>
                         ))}
@@ -361,7 +357,7 @@ export default function OpportunityDetailModal({ opportunity, isOpen, onClose, c
                   )}
                 </div>
               ) : (
-                <div className="p-8 text-center text-xs text-slate-400">
+                <div className="p-8 text-center text-xs text-slate-500 font-medium">
                   No company intelligence found. Click 'Refresh Intel' to crawl with Firecrawl.
                 </div>
               )}
@@ -371,21 +367,21 @@ export default function OpportunityDetailModal({ opportunity, isOpen, onClose, c
           {/* TAB 2: Role Overview & Full JD */}
           {activeTab === 'overview' && (
             <div className="space-y-4 animate-fade-in">
-              <div className="bg-slate-950/60 border border-slate-800/80 rounded-2xl p-5 space-y-3">
-                <h4 className="text-xs font-extrabold uppercase tracking-wider text-indigo-400">
+              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-3">
+                <h4 className="text-xs font-extrabold uppercase tracking-wider text-indigo-700">
                   Job Description & Scope
                 </h4>
-                <div className="text-xs text-slate-300 leading-relaxed whitespace-pre-line">
+                <div className="text-xs text-slate-800 leading-relaxed whitespace-pre-line font-medium">
                   {opportunity.description || opportunity.raw_jd || 'No direct JD text available. Please see direct opportunity apply link.'}
                 </div>
               </div>
 
               {opportunity.skills_required && (
-                <div className="bg-slate-950/60 border border-slate-800/80 rounded-2xl p-5 space-y-2">
-                  <h4 className="text-xs font-extrabold uppercase tracking-wider text-cyan-400">
+                <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-2">
+                  <h4 className="text-xs font-extrabold uppercase tracking-wider text-cyan-800">
                     Required Competencies & Tech
                   </h4>
-                  <p className="text-xs text-slate-300">
+                  <p className="text-xs text-slate-800 font-medium">
                     {opportunity.skills_required}
                   </p>
                 </div>
@@ -396,28 +392,28 @@ export default function OpportunityDetailModal({ opportunity, isOpen, onClose, c
           {/* TAB 3: Candidate Skill Match */}
           {activeTab === 'skills_match' && (
             <div className="space-y-4 animate-fade-in">
-              <div className="bg-slate-950/60 border border-slate-800/80 rounded-2xl p-5 space-y-4">
+              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-4">
                 <div className="flex items-center justify-between">
-                  <h4 className="text-xs font-extrabold uppercase tracking-wider text-purple-400">
+                  <h4 className="text-xs font-extrabold uppercase tracking-wider text-purple-800">
                     ATS Skill Overlap & Alignment
                   </h4>
-                  <span className="text-xs font-extrabold text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-2.5 py-1 rounded-lg">
+                  <span className="text-xs font-extrabold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-lg">
                     {opportunity.relevance_score || 94}% Overall Compatibility
                   </span>
                 </div>
 
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  CareerOS RAG matches candidate portfolio artifacts against {opportunity.company}'s requirements to highlight optimal project bullets.
+                <p className="text-xs text-slate-700 leading-relaxed font-medium">
+                  SkillSetu RAG matches candidate portfolio artifacts against {opportunity.company}'s requirements to highlight optimal project bullets.
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                  <div className="p-3 bg-emerald-950/30 border border-emerald-500/20 rounded-xl space-y-1">
-                    <span className="text-[11px] font-bold text-emerald-400">Strong Matched Skills</span>
-                    <p className="text-xs text-slate-300">React, Python, FastAPI, Node.js, PostgreSQL, AI Systems, REST APIs</p>
+                  <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl space-y-1">
+                    <span className="text-[11px] font-extrabold text-emerald-800">Strong Matched Skills</span>
+                    <p className="text-xs text-slate-800 font-medium">React, Python, FastAPI, Node.js, PostgreSQL, AI Systems, REST APIs</p>
                   </div>
-                  <div className="p-3 bg-amber-950/30 border border-amber-500/20 rounded-xl space-y-1">
-                    <span className="text-[11px] font-bold text-amber-400">Keywords to Emphasize</span>
-                    <p className="text-xs text-slate-300">Scalable Microservices, Docker, CI/CD, Automated Testing</p>
+                  <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl space-y-1">
+                    <span className="text-[11px] font-extrabold text-amber-800">Keywords to Emphasize</span>
+                    <p className="text-xs text-slate-800 font-medium">Scalable Microservices, Docker, CI/CD, Automated Testing</p>
                   </div>
                 </div>
               </div>
@@ -427,11 +423,11 @@ export default function OpportunityDetailModal({ opportunity, isOpen, onClose, c
         </div>
 
         {/* Footer Action Bar */}
-        <div className="p-6 bg-slate-950 border-t border-slate-800 flex items-center justify-between gap-4 flex-wrap">
-          <div className="text-xs text-slate-400">
+        <div className="p-6 bg-white border-t border-slate-200 flex items-center justify-between gap-4 flex-wrap">
+          <div className="text-xs text-slate-600 font-bold">
             {intel ? (
-              <span className="text-emerald-400 flex items-center gap-1.5 font-semibold">
-                <CheckCircle2 className="w-3.5 h-3.5" />
+              <span className="text-emerald-700 flex items-center gap-1.5 font-bold">
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                 Firecrawl Deep Intelligence Ready for Tailoring
               </span>
             ) : (
@@ -445,7 +441,7 @@ export default function OpportunityDetailModal({ opportunity, isOpen, onClose, c
                 href={opportunity.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white font-bold text-xs rounded-xl border border-slate-700 flex items-center gap-2 transition-colors"
+                className="btn-aesthetic-secondary text-xs py-2 px-4 shadow-sm"
               >
                 <ExternalLink className="w-3.5 h-3.5" />
                 Apply on Portal
@@ -453,26 +449,24 @@ export default function OpportunityDetailModal({ opportunity, isOpen, onClose, c
             )}
             <button
               onClick={handleOpenInStudio}
-              className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white font-bold text-xs rounded-xl border border-slate-700 flex items-center gap-2 transition-all cursor-pointer"
+              className="btn-aesthetic-secondary text-xs py-2 px-4 shadow-sm"
             >
-              <Wand2 className="w-3.5 h-3.5 text-purple-400" />
+              <Wand2 className="w-3.5 h-3.5 text-purple-600" />
               Studio Editor
             </button>
             <button
               onClick={() => setIsInterviewSetupOpen(true)}
-              className="px-4 py-2 bg-gradient-to-r from-cyan-600 via-indigo-600 to-purple-600 hover:from-cyan-500 hover:to-purple-500 text-white font-black text-xs rounded-xl shadow-lg shadow-indigo-950 flex items-center gap-1.5 transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
+              className="btn-aesthetic-primary text-xs py-2 px-4 shadow-sm"
             >
-              <Video className="w-4 h-4 text-cyan-300" />
+              <Video className="w-4 h-4 text-white" />
               <span>Take AI Interview</span>
-              <span className="text-[9px] px-1.5 py-0.2 rounded-full bg-cyan-950/80 border border-cyan-400/40 text-cyan-300">LIVE</span>
             </button>
             <button
               onClick={() => setIsATSGoalOpen(true)}
-              className="px-5 py-2 bg-gradient-to-r from-amber-400 via-emerald-400 to-cyan-400 hover:from-amber-300 hover:via-emerald-300 hover:to-cyan-300 text-slate-950 font-black text-xs rounded-xl shadow-lg shadow-emerald-950 flex items-center gap-2 transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
+              className="btn-aesthetic-primary text-xs py-2 px-4 shadow-sm"
             >
-              <Target className="w-4 h-4 text-slate-950" />
+              <Target className="w-4 h-4 text-white" />
               Run ATS 90+ Goal Loop
-              <Sparkles className="w-3.5 h-3.5 text-slate-950" />
             </button>
           </div>
         </div>
@@ -498,7 +492,7 @@ export default function OpportunityDetailModal({ opportunity, isOpen, onClose, c
         onStartInterview={(sessionConfig) => {
           setIsInterviewSetupOpen(false);
           onClose();
-          navigate(`/interview?company=${encodeURIComponent(sessionConfig.company_name)}&role=${encodeURIComponent(sessionConfig.job_title)}&candidate=${encodeURIComponent(sessionConfig.candidate_name)}&voice=${encodeURIComponent(sessionConfig.voice_name)}&oppId=${encodeURIComponent(opportunity.id || '')}`);
+          navigate(`/interview?company=${encodeURIComponent(sessionConfig.company_name)}&role=${encodeURIComponent(sessionConfig.job_title)}&candidate=${encodeURIComponent(sessionConfig.candidate_name)}&voice=${encodeURIComponent(sessionConfig.voice_name)}&seniority=${encodeURIComponent(sessionConfig.target_role_level || 'Senior')}&format=${encodeURIComponent(sessionConfig.interview_type || 'Full Technical & Coding')}&oppId=${encodeURIComponent(opportunity.id || '')}`);
         }}
       />
     </div>

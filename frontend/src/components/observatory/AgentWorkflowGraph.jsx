@@ -121,7 +121,7 @@ export default function AgentWorkflowGraph() {
         const data = await fetchAdkGraph();
         const root = data?.root_agent || {
           name: 'root_coordinator_agent',
-          description: 'CareerOS Root Coordinator delegating authority with Ed25519 tokens',
+          description: 'SkillSetu Root Coordinator delegating authority with Ed25519 tokens',
           sub_agents: []
         };
 

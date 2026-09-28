@@ -1,9 +1,9 @@
-"""Verification test script for Firecrawl MCP integration in CareerOS."""
+"""Verification test script for Firecrawl MCP integration in SkillSetu."""
 
 import os
 import sys
 
-# Ensure d:\careerOS is in path
+# Ensure d:\SkillSetu is in path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from my_agent.tools.search_tools import search_web

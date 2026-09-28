@@ -37,7 +37,7 @@ from my_agent.mcp_servers.mcp_ranker_server import rank_and_store_opportunities
 
 def run_demo():
     print("==========================================================================")
-    print("  🛡️  CareerOS — ArmorIQ Multi-Agent Governance Demo (Problem 2)  🛡️  ")
+    print("  🛡️  SkillSetu — ArmorIQ Multi-Agent Governance Demo (Problem 2)  🛡️  ")
     print("==========================================================================\n")
 
     # -------------------------------------------------------------------------

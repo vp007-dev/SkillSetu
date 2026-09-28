@@ -1,1 +1,1 @@
-# CareerOS tools package
+# SkillSetu tools package

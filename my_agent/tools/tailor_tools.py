@@ -374,18 +374,18 @@ def tailor_resume_for_opportunity(
     3. Grounded AI Tailoring -> Tailored Markdown
     4. Tailored Markdown -> Docling AST -> Publication-Grade PDF
     """
-    # 1. Retrieve candidate base resume dynamically from Supabase
+    # 1. Retrieve candidate base resume dynamically from Firebase Firestore
     base_markdown = (original_markdown or "").strip()
     if not base_markdown and (candidate_id or user_id):
         target = candidate_id or user_id
-        from my_agent.tools.db_tools import get_supabase
-        sb = get_supabase()
+        from my_agent.tools.db_tools import get_firestore
+        db = get_firestore()
         # Look in documents first
-        docs = sb.select("documents", filters={"user_id": f"eq.{target}"})
+        docs = db.select("documents", filters={"user_id": f"eq.{target}"})
         if docs and docs[0].get("raw_markdown"):
             base_markdown = docs[0]["raw_markdown"]
         else:
-            resumes = sb.select("resumes", filters={"user_id": f"eq.{target}"})
+            resumes = db.select("resumes", filters={"user_id": f"eq.{target}"})
             if resumes and resumes[0].get("raw_text"):
                 base_markdown = resumes[0]["raw_text"]
     

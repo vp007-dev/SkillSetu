@@ -9,9 +9,9 @@ const GlassCard = ({
   onClick, 
   padding = 'p-5' 
 }) => {
-  const baseClasses = 'bg-slate-900/40 backdrop-blur-xl border border-white/[0.06] rounded-2xl shadow-lg relative overflow-hidden transition-all duration-300';
+  const baseClasses = 'bg-[#fffefa] border border-[#e5e4dc] rounded-2xl shadow-sm text-[#292c27] relative overflow-hidden transition-all duration-200';
   
-  const hoverClasses = hover ? 'hover:border-indigo-500/30 hover:shadow-[0_0_20px_rgba(99,102,241,0.15)]' : '';
+  const hoverClasses = hover ? 'hover:border-[#c9c7ba] hover:shadow-md' : '';
   const cursorClass = onClick ? 'cursor-pointer' : '';
   
   let glowClasses = '';

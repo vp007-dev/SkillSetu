@@ -50,7 +50,7 @@ export default function ArmorIQExplainer() {
       color: 'from-cyan-500 to-blue-600',
       tag: 'Cryptographic Identity',
       description:
-        'Four function calls in one process is NOT a delegation chain. In CareerOS, all 8 sub-agents and the Root Coordinator maintain distinct cryptographic keypairs. Every delegation token and invocation request is signed and verified across agent boundaries.',
+        'Four function calls in one process is NOT a delegation chain. In SkillSetu, all 8 sub-agents and the Root Coordinator maintain distinct cryptographic keypairs. Every delegation token and invocation request is signed and verified across agent boundaries.',
       keyPoints: [
         'Root Coordinator keypair: Master authority signer with plan ownership.',
         '8 Sub-Agent keypairs: Isolated public key fingerprints with zero shared secrets.',
@@ -214,7 +214,7 @@ except ArmorIQScopeViolationError as e:
 
             <p className="text-sm text-slate-300 leading-relaxed">
               In traditional multi-agent systems, trust becomes implicit the moment an agent delegates work.
-              <strong className="text-indigo-300"> CareerOS</strong> enforces ArmorIQ's 5 core pillars across{' '}
+              <strong className="text-indigo-300"> SkillSetu</strong> enforces ArmorIQ's 5 core pillars across{' '}
               <strong className="text-cyan-300">8 isolated sub-agents</strong> and{' '}
               <strong className="text-emerald-300">5 MCP tool servers</strong>, ensuring that every tool call
               is cryptographically authorized, time-bounded, and auditable back to the root user intent.
@@ -437,7 +437,7 @@ except ArmorIQScopeViolationError as e:
               <tr className="border-b border-slate-800 text-slate-400 uppercase font-mono text-[10px]">
                 <th className="py-3 px-4">Track Requirement / Rule</th>
                 <th className="py-3 px-4">Mandate Description</th>
-                <th className="py-3 px-4">CareerOS Implementation Evidence</th>
+                <th className="py-3 px-4">SkillSetu Implementation Evidence</th>
                 <th className="py-3 px-4 text-right">Verdict</th>
               </tr>
             </thead>

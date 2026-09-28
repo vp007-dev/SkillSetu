@@ -105,7 +105,7 @@ export default function InterviewHistoryView({ onLaunchInterview }) {
       try {
         let stored = [];
         try {
-          const raw = localStorage.getItem("careeros_interview_history");
+          const raw = localStorage.getItem("skillsetu_interview_history");
           if (raw) stored = JSON.parse(raw);
         } catch (e) {}
 

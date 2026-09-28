@@ -41,7 +41,7 @@ export default function CandidateSelector({ compact = false }) {
     await addCandidatePersona({
       name: newPersona.name.trim(),
       role: newPersona.role.trim() || 'Software Engineer',
-      email: newPersona.email.trim() || `${newPersona.name.toLowerCase().replace(/\s+/g, '.')}@careeros.ai`,
+      email: newPersona.email.trim() || `${newPersona.name.toLowerCase().replace(/\s+/g, '.')}@skillsetu.example`,
       phone: newPersona.phone.trim() || '',
       location: newPersona.location.trim() || 'Remote',
       bio: newPersona.bio.trim(),
@@ -79,8 +79,8 @@ export default function CandidateSelector({ compact = false }) {
   const getPersonaLabel = () => {
     if (selectedCandidateId === 'all') {
       return {
-        name: 'All Candidates (Multi-View)',
-        role: `${candidates.length} Candidate Personas`,
+        name: 'All Candidates',
+        role: 'Combined Feed',
         color: '#6366f1',
         isAll: true
       };
@@ -88,7 +88,7 @@ export default function CandidateSelector({ compact = false }) {
     const formatRole = (r) => {
       if (!r) return 'Software Engineer';
       const clean = r.split(' at ')[0].split('(')[0].split('|')[0].trim();
-      return clean.length > 25 ? clean.slice(0, 23) + '...' : clean;
+      return clean.length > 20 ? clean.slice(0, 18) + '...' : clean;
     };
 
     if (activeCandidate) {
@@ -110,42 +110,42 @@ export default function CandidateSelector({ compact = false }) {
   const current = getPersonaLabel();
 
   return (
-    <div className="relative">
+    <div className="relative candidate-selector">
       {/* Selector Trigger Button */}
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         className={`w-full flex items-center justify-between gap-2.5 p-2.5 rounded-xl border transition-all cursor-pointer ${
           isOpen
-            ? 'bg-slate-900 border-indigo-500/60 shadow-lg shadow-indigo-500/10'
-            : 'bg-slate-900/70 hover:bg-slate-900 border-slate-800 hover:border-slate-700'
+            ? 'bg-indigo-50/80 border-indigo-300 shadow-sm'
+            : 'bg-slate-100/90 hover:bg-slate-200/70 border-slate-200/90'
         }`}
       >
         <div className="flex items-center gap-2.5 min-w-0 text-left">
           <div
-            className="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs text-white shrink-0 shadow-inner"
+            className="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs text-white shrink-0 shadow-sm"
             style={{ backgroundColor: current.color }}
           >
             {current.isAll ? <Users className="w-4 h-4" /> : current.name.charAt(0).toUpperCase()}
           </div>
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-1.5">
-              <span className="text-xs font-bold text-slate-100 truncate">{current.name}</span>
+              <span className="text-xs font-bold text-slate-800 truncate">{current.name}</span>
             </div>
-            <p className="text-[10px] text-slate-400 truncate">{current.role}</p>
+            <p className="text-[10px] text-slate-500 truncate">{current.role}</p>
           </div>
         </div>
-        <ChevronDown className={`w-4 h-4 text-slate-400 shrink-0 transition-transform ${isOpen ? 'rotate-180 text-indigo-400' : ''}`} />
+        <ChevronDown className={`w-4 h-4 text-slate-400 shrink-0 transition-transform ${isOpen ? 'rotate-180 text-indigo-600' : ''}`} />
       </button>
 
       {/* Dropdown Menu */}
       {isOpen && (
         <>
           <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)} />
-          <div className="absolute top-full left-0 right-0 mt-2 z-50 bg-slate-950/95 backdrop-blur-xl border border-slate-800/90 rounded-2xl shadow-2xl p-2 space-y-1.5 animate-in fade-in zoom-in-95 duration-150">
-            <div className="px-2 py-1 flex items-center justify-between text-[11px] font-semibold text-slate-400 border-b border-slate-800/60 pb-1.5 mb-1">
+          <div className="candidate-menu absolute top-full left-0 right-0 mt-2 z-50 bg-white border border-slate-200 rounded-2xl shadow-xl p-2 space-y-1.5 animate-in fade-in duration-150">
+            <div className="px-2 py-1 flex items-center justify-between text-[11px] font-bold text-slate-500 border-b border-slate-100 pb-1.5 mb-1">
               <span>Candidate Personas</span>
-              <span className="font-mono text-[10px] bg-slate-800/80 px-1.5 py-0.5 rounded text-indigo-300">
+              <span className="font-mono text-[10px] bg-indigo-50 border border-indigo-100 px-1.5 py-0.5 rounded text-indigo-700 font-bold">
                 {candidates.length} Available
               </span>
             </div>
@@ -159,20 +159,20 @@ export default function CandidateSelector({ compact = false }) {
               }}
               className={`w-full flex items-center justify-between p-2 rounded-xl text-left transition-colors cursor-pointer ${
                 selectedCandidateId === 'all'
-                  ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-500/40'
-                  : 'hover:bg-slate-900 text-slate-300'
+                  ? 'bg-indigo-50 text-indigo-800 border border-indigo-200 font-bold'
+                  : 'hover:bg-slate-50 text-slate-700'
               }`}
             >
               <div className="flex items-center gap-2 min-w-0">
-                <div className="w-7 h-7 rounded-lg bg-indigo-600/30 border border-indigo-500/40 flex items-center justify-center text-indigo-400 shrink-0">
+                <div className="w-7 h-7 rounded-lg bg-indigo-100 border border-indigo-200 flex items-center justify-center text-indigo-600 shrink-0">
                   <Users className="w-3.5 h-3.5" />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-xs font-bold text-slate-100 truncate">All Candidates</p>
-                  <p className="text-[10px] text-slate-400 truncate">Combined multi-persona database</p>
+                  <p className="text-xs font-bold text-slate-800 truncate">All Candidates</p>
+                  <p className="text-[10px] text-slate-500 truncate">Combined multi-persona database</p>
                 </div>
               </div>
-              {selectedCandidateId === 'all' && <Check className="w-4 h-4 text-indigo-400 shrink-0 ml-2" />}
+              {selectedCandidateId === 'all' && <Check className="w-4 h-4 text-indigo-600 shrink-0 ml-2" />}
             </button>
 
             {/* Candidates List */}
@@ -184,8 +184,8 @@ export default function CandidateSelector({ compact = false }) {
                     key={cand.id}
                     className={`group flex items-center justify-between p-2 rounded-xl text-left transition-colors ${
                       isSelected
-                        ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-500/40'
-                        : 'hover:bg-slate-900 text-slate-300'
+                        ? 'bg-indigo-50 text-indigo-800 border border-indigo-200 font-bold'
+                        : 'hover:bg-slate-50 text-slate-700'
                     }`}
                   >
                     <button
@@ -198,18 +198,18 @@ export default function CandidateSelector({ compact = false }) {
                     >
                       <div
                         className="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs text-white shrink-0 shadow-sm"
-                        style={{ backgroundColor: cand.cluster_color || '#38bdf8' }}
+                        style={{ backgroundColor: cand.cluster_color || '#6366f1' }}
                       >
                         {cand.name.charAt(0).toUpperCase()}
                       </div>
                       <div className="min-w-0 flex-1">
-                        <p className="text-xs font-semibold text-slate-100 truncate">{cand.name}</p>
-                        <p className="text-[10px] text-slate-400 truncate">{cand.role}</p>
+                        <p className="text-xs font-bold text-slate-800 truncate">{cand.name}</p>
+                        <p className="text-[10px] text-slate-500 truncate">{cand.role}</p>
                       </div>
                     </button>
 
                     <div className="flex items-center gap-1 shrink-0 ml-1.5">
-                      {isSelected && <Check className="w-4 h-4 text-indigo-400" />}
+                      {isSelected && <Check className="w-4 h-4 text-indigo-600" />}
                       {!cand.is_primary && candidates.length > 1 && (
                         <button
                           type="button"
@@ -219,7 +219,7 @@ export default function CandidateSelector({ compact = false }) {
                               removeCandidatePersona(cand.id);
                             }
                           }}
-                          className="p-1 text-slate-500 hover:text-red-400 hover:bg-slate-800 rounded opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+                          className="p-1 text-slate-400 hover:text-red-600 hover:bg-slate-100 rounded opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
                           title="Delete Persona"
                         >
                           <Trash2 className="w-3 h-3" />
@@ -232,14 +232,14 @@ export default function CandidateSelector({ compact = false }) {
             </div>
 
             {/* Add New Persona Action */}
-            <div className="pt-1.5 border-t border-slate-800/80">
+            <div className="pt-1.5 border-t border-slate-100">
               <button
                 type="button"
                 onClick={() => {
                   setIsOpen(false);
                   setShowModal(true);
                 }}
-                className="w-full py-2 px-3 bg-gradient-to-r from-indigo-600/30 to-cyan-600/30 hover:from-indigo-600/40 hover:to-cyan-600/40 border border-indigo-500/40 rounded-xl text-xs font-bold text-indigo-200 flex items-center justify-center gap-2 transition-all cursor-pointer shadow"
+                className="w-full btn-aesthetic-secondary py-2 px-3 text-xs font-bold text-indigo-700 flex items-center justify-center gap-2"
               >
                 <UserPlus className="w-3.5 h-3.5" />
                 <span>+ Add Candidate Persona</span>
@@ -249,10 +249,11 @@ export default function CandidateSelector({ compact = false }) {
         </>
       )}
 
+
       {/* Modal: Add New Candidate Persona */}
       {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-md p-4 animate-in fade-in duration-200">
-          <div className="bg-slate-900 border border-slate-800 w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-150">
+        <div className="persona-modal fixed inset-0 z-50 flex items-center justify-center bg-black/55 backdrop-blur-md p-4 animate-in fade-in duration-200">
+          <div className="persona-dialog bg-white border border-slate-200 w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-150">
             <div className="px-6 py-4 border-b border-slate-800 flex items-center justify-between bg-slate-950/60">
               <div className="flex items-center gap-2.5">
                 <div className="w-8 h-8 rounded-xl bg-indigo-500/20 border border-indigo-500/40 flex items-center justify-center text-indigo-400">
@@ -336,7 +337,7 @@ export default function CandidateSelector({ compact = false }) {
                     <label className="block text-[11px] font-semibold text-slate-300 mb-1">Email</label>
                     <input
                       type="email"
-                      placeholder="alex.morgan@careeros.ai"
+                      placeholder="alex.morgan@skillsetu.example"
                       value={newPersona.email}
                       onChange={(e) => setNewPersona({ ...newPersona, email: e.target.value })}
                       className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500"
@@ -388,7 +389,7 @@ export default function CandidateSelector({ compact = false }) {
                     type="submit"
                     className="px-5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-indigo-600/30 transition-all cursor-pointer"
                   >
-                    Save Persona to Supabase
+                    Save Persona to Firebase
                   </button>
                 </div>
               </form>

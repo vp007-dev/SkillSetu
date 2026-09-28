@@ -1,8 +1,8 @@
-# CareerOS — Full-Stack Architecture & API Specification
+# SkillSetu — Full-Stack Architecture & API Specification
 
 ## 1. Overview
 
-**CareerOS** is a full-stack, ArmorIQ-governed career automation platform. It combines:
+**SkillSetu** is a full-stack, ArmorIQ-governed career automation platform. It combines:
 - **Frontend (React / Next.js):** Interactive candidate dashboard, resume uploader, 5-stage visual execution tracker, opportunity marketplace, and live ArmorIQ security audit console.
 - **Backend API (FastAPI):** RESTful service connecting the UI to SQLite (`career_os.db`) and the multi-agent execution pipeline.
 - **Multi-Agent Engine (Google ADK + ArmorIQ SDK):** 5 specialized sub-agents with distinct cryptographic keypairs, dedicated MCP servers, scoped delegation tokens, and real-time scope violation block enforcement.
@@ -117,7 +117,7 @@ The FastAPI backend exposes endpoints for the frontend UI:
 ## 5. Implementation Code: FastAPI Backend (`api.py`)
 
 ```python
-# d:\careerOS\api.py
+# d:\SkillSetu\api.py
 from fastapi import FastAPI, HTTPException, Form
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -127,7 +127,7 @@ import os
 from my_agent.tools.db_tools import read_from_db
 from my_agent.demo_armoriq_governance import run_demo
 
-app = FastAPI(title="CareerOS Full-Stack API", version="1.0")
+app = FastAPI(title="SkillSetu Full-Stack API", version="1.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -261,4 +261,4 @@ The frontend features 4 key interactive sections:
    ```
 
 3. **Open Browser:**
-   Navigate to `http://localhost:3000` to interact with CareerOS!
+   Navigate to `http://localhost:3000` to interact with SkillSetu!

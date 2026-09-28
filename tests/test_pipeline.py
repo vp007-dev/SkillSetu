@@ -1,6 +1,7 @@
 """End-to-end testing for document processing, embedding, storage, and RAG retrieval."""
 
 import os
+import tempfile
 from my_agent.tools.docling_tools import convert_document
 from my_agent.tools.embedding_tools import embed_text, embed_chunks
 from my_agent.tools.db_tools import store_document, store_embeddings
@@ -11,7 +12,7 @@ def test_document_to_rag_pipeline():
     print("=== Testing Full Ingestion & RAG Pipeline ===")
     
     # 1. Create sample test resume file
-    test_file = "/tmp/test_candidate_resume.txt"
+    test_file = os.path.join(tempfile.gettempdir(), "test_candidate_resume.txt")
     sample_text = """# John Doe - Senior Backend & Cloud Engineer
 Email: john.doe@example.com | Phone: +1-555-0199
 Location: San Francisco, CA

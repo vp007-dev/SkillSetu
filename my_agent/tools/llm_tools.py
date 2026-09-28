@@ -193,7 +193,7 @@ def call_groq_llm(
             return _in_place_tailor_fallback(orig_md, target_role, target_company, target_reqs)
 
     if any(w in prompt_lower for w in ["hi", "hello", "hey", "greeting", "who are you", "what can you do"]):
-        return """Hello! 👋 I am CareerOS v3, your central Root Agent co-pilot.
+        return """Hello! 👋 I am SkillSetu v3, your central Root Agent co-pilot.
 
 I manage your career automation workflow using knowledge base RAG and specialized tools:
 - 📄 **Resume Processing & Parsing**: Extract fields, analyze strengths, and build structured candidate profiles.
@@ -215,7 +215,7 @@ How can I help you today?"""
 ---
 As your Root Agent, I can analyze this data further, search for matching job opportunities, or tailor your resume for a target role. What would you like to do next?"""
 
-    return """I am CareerOS v3 Root Agent. I have logged your request and queried your candidate knowledge base.
+    return """I am SkillSetu v3 Root Agent. I have logged your request and queried your candidate knowledge base.
 
 To get started:
 1. Upload your resume or career documents in the **Documents & Opps** tab.

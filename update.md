@@ -1,4 +1,4 @@
-# CareerOS v3 — Architecture Evolution Plan
+# SkillSetu v3 — Architecture Evolution Plan
 
 > **Status:** 📋 DECISIONS LOCKED — Ready to implement  
 > **Hackathon Track:** Problem 2 — "Who authorized that?" (ArmorIQ Multi-Agent Delegation & Governance)  
@@ -61,7 +61,7 @@ resume tailored for that company → WeasyPrint generates PDF → download
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
-│                           CareerOS v3 User Flow                                  │
+│                           SkillSetu v3 User Flow                                  │
 │                                                                                  │
 │  ① SIGN IN (Google Auth via Supabase)                                            │
 │     • One-click Google login                                                     │
@@ -322,7 +322,7 @@ def embed_chunks(chunks: list[dict]) -> list[dict]:
 
 ```sql
 -- ============================================================
--- CareerOS v3 — Supabase Schema Migration
+-- SkillSetu v3 — Supabase Schema Migration
 -- Run this in Supabase SQL Editor
 -- ============================================================
 
@@ -1400,7 +1400,7 @@ def test_knowledge_builder_scope_violation():
 echo "=== Testing Document Upload Endpoint ==="
 
 # Test 1: Upload PDF
-curl -X POST http://localhost:8000/api/documents/upload \
+curl -X POST http://localhost:8001/api/documents/upload \
   -H "Authorization: Bearer YOUR_TEST_TOKEN" \
   -F "file=@tests/fixtures/sample_resume.pdf" \
   -F "doc_type=resume" \
@@ -1410,14 +1410,14 @@ echo ""
 echo "Expected: status=success, document_id=..., chunk_count > 0"
 
 # Test 2: Upload DOCX
-curl -X POST http://localhost:8000/api/documents/upload \
+curl -X POST http://localhost:8001/api/documents/upload \
   -H "Authorization: Bearer YOUR_TEST_TOKEN" \
   -F "file=@tests/fixtures/sample_resume.docx" \
   -F "doc_type=resume" \
   | python -m json.tool
 
 # Test 3: RAG Search
-curl -X POST http://localhost:8000/api/knowledge/search \
+curl -X POST http://localhost:8001/api/knowledge/search \
   -H "Authorization: Bearer YOUR_TEST_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"query": "Python developer skills"}' \
@@ -1451,7 +1451,7 @@ python -m pytest tests/test_tailor.py -v
 python -m pytest tests/test_armoriq.py -v
 
 # 7. Seventh: Start server and test from frontend
-uvicorn api:app --reload --port 8000
+uvicorn api:app --reload --port 8001
 # Then run: bash tests/test_frontend_upload.sh
 ```
 

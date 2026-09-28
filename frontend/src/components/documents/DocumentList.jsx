@@ -66,7 +66,7 @@ export default function DocumentList({ refreshTrigger, selectedCandidateId = 'ca
   };
 
   return (
-    <div className="w-full space-y-4">
+    <div className="w-full space-y-4 document-list">
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-bold text-slate-100 flex items-center gap-2">
           <FolderOpen className="w-6 h-6 text-indigo-400" />

@@ -92,7 +92,7 @@ export class AudioStreamingManager {
 
     for (let i = 0; i < float32Array.length; i++) {
       const s = Math.max(-1, Math.min(1, float32Array[i]));
-      const val = s < 0 ? s * 0x8000 : s * 0x7fff;
+      const val = s < 0 ? s * 0x8001 : s * 0x7fff;
       view.setInt16(i * 2, val, true);
     }
 

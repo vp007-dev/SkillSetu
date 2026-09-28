@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "skillsetu-frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,8 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.112.4",
     "@xyflow/react": "^12.11.5",
+    "firebase": "^10.14.1",
     "framer-motion": "^13.1.1",
     "lucide-react": "^1.33.0",
     "react": "^19.2.8",

@@ -23,7 +23,7 @@ def test_endpoint(name, url, method="GET", data=None):
         print(f"[FAIL] [{name}] | Error: {e}")
         return None
 
-print("=== STARTING FULL CAREEROS SYSTEM AUDIT ===\n")
+print("=== STARTING FULL SKILLSETU SYSTEM AUDIT ===\n")
 
 # 1. Root
 test_endpoint("Root Welcome Endpoint", f"{BASE}/")

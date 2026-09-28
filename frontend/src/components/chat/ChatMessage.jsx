@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { motion } from 'framer-motion';
-import { Bot, ChevronDown, ChevronUp } from 'lucide-react';
+import { Bot, ChevronDown, ChevronUp, User } from 'lucide-react';
 
 export default function ChatMessage({ message }) {
   const { role, text, author, event_type, sources, timestamp } = message;
@@ -13,26 +13,36 @@ export default function ChatMessage({ message }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.2 }}
       className={`flex w-full mb-4 ${isUser ? 'justify-end' : 'justify-start'}`}
     >
       <div
-        className={`relative max-w-[85%] sm:max-w-[80%] px-4 py-3 ${
+        className={`relative max-w-[88%] sm:max-w-[80%] px-5 py-4 ${
           isUser
-            ? 'bg-indigo-600 text-white rounded-2xl rounded-br-sm shadow-sm'
-            : 'bg-white/10 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-white/10 rounded-2xl rounded-bl-sm text-slate-800 dark:text-slate-100 shadow-sm'
+            ? 'bg-indigo-600 text-white rounded-3xl rounded-br-sm shadow-md shadow-indigo-500/20 border border-indigo-500 font-medium'
+            : 'bg-white backdrop-blur-xl border border-slate-200/90 rounded-3xl rounded-bl-sm text-slate-800 shadow-sm'
         }`}
       >
-        {!isUser && author && (
-          <div className="flex items-center gap-1.5 mb-2 text-xs font-medium text-indigo-500 dark:text-indigo-400">
-            <Bot size={14} />
-            <span>{author}</span>
-            {event_type && <span className="text-slate-400 dark:text-slate-500">({event_type})</span>}
+        {!isUser && (
+          <div className="flex items-center gap-2 mb-2 pb-2 border-b border-slate-100 text-xs font-bold text-indigo-700">
+            <div className="w-5 h-5 rounded-lg bg-indigo-50 border border-indigo-200 flex items-center justify-center">
+              <Bot size={12} className="text-indigo-600" />
+            </div>
+            <span>{author || 'SkillSetu Assistant'}</span>
+            {event_type && <span className="text-slate-400 font-mono text-[10px]">({event_type})</span>}
+          </div>
+        )}
+
+        {isUser && (
+          <div className="flex items-center gap-1.5 mb-1 justify-end text-[11px] font-bold text-indigo-100">
+            <span>You</span>
+            <User size={12} />
           </div>
         )}
         
-        <div className={`prose-chat prose prose-sm max-w-none ${isUser ? 'prose-invert text-white' : 'dark:prose-invert'} prose-p:leading-relaxed prose-pre:bg-slate-900 prose-pre:border prose-pre:border-slate-700`}>
+        <div className={`prose-chat text-sm leading-relaxed ${isUser ? 'text-white' : 'text-slate-800'}`}>
           {isUser ? (
             <div className="whitespace-pre-wrap">{text}</div>
           ) : (
@@ -41,18 +51,18 @@ export default function ChatMessage({ message }) {
         </div>
 
         {!isUser && sources && sources.length > 0 && (
-          <div className="mt-3 pt-3 border-t border-slate-200/50 dark:border-slate-700/50">
+          <div className="mt-3 pt-2.5 border-t border-slate-100">
             <button 
               onClick={() => setShowSources(!showSources)}
-              className="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
+              className="flex items-center gap-1.5 text-xs text-indigo-600 font-semibold hover:text-indigo-800 transition-colors cursor-pointer"
             >
               {showSources ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-              Sources used ({sources.length})
+              RAG Sources Grounding ({sources.length})
             </button>
             {showSources && (
               <ul className="mt-2 space-y-1">
                 {sources.map((src, i) => (
-                  <li key={i} className="text-xs text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-black/20 rounded px-2 py-1 truncate">
+                  <li key={i} className="text-xs text-slate-600 bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1 truncate font-mono">
                     {src.title || src.url || src}
                   </li>
                 ))}
@@ -62,11 +72,13 @@ export default function ChatMessage({ message }) {
         )}
         
         {timeStr && (
-          <div className={`text-[10px] mt-2 text-right ${isUser ? 'text-indigo-200' : 'text-slate-400 dark:text-slate-500'}`}>
+          <div className={`text-[10px] mt-2 text-right font-mono font-medium ${isUser ? 'text-indigo-100' : 'text-slate-400'}`}>
             {timeStr}
           </div>
         )}
       </div>
+
     </motion.div>
   );
 }
+

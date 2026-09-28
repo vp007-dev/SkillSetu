@@ -243,7 +243,7 @@ export default function ProfilePage() {
           <button
             onClick={handleSaveProfile}
             disabled={isSaving}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 text-white font-semibold text-sm shadow-lg shadow-indigo-500/25 transition disabled:opacity-50 cursor-pointer"
+            className="btn-aesthetic-primary text-xs py-2.5 px-5 disabled:opacity-50"
           >
             {isSaving ? (
               <RefreshCw className="w-4 h-4 animate-spin" />
@@ -254,6 +254,7 @@ export default function ProfilePage() {
           </button>
         </div>
       }
+
     >
       <div className="space-y-6 max-w-5xl pb-12">
         {/* Error Alert */}
@@ -265,15 +266,15 @@ export default function ProfilePage() {
         )}
 
         {/* Profile Card Header */}
-        <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 backdrop-blur-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-center gap-4">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-2xl font-bold shadow-lg shadow-indigo-500/20">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-600 to-cyan-600 flex items-center justify-center text-white text-2xl font-bold shadow-sm">
               {getInitials(profile.name || user?.name)}
             </div>
             <div>
-              <h2 className="text-xl font-bold text-slate-100">{profile.name || user?.name || 'Candidate Persona'}</h2>
-              <p className="text-sm text-indigo-400 font-medium">{profile.role || 'Software Engineer'}</p>
-              <div className="flex items-center gap-2 mt-1 text-xs text-slate-400">
+              <h2 className="text-xl font-extrabold text-slate-900">{profile.name || user?.name || 'Candidate Persona'}</h2>
+              <p className="text-sm text-indigo-700 font-bold">{profile.role || 'Software Engineer'}</p>
+              <div className="flex items-center gap-2 mt-1 text-xs text-slate-500 font-medium">
                 <span>{profile.email || user?.email || 'authenticated'}</span>
                 <span>•</span>
                 <span>{profile.location || 'Remote'}</span>
@@ -289,7 +290,7 @@ export default function ProfilePage() {
                   const val = e.target.value;
                   setSelectedCandidateId(val);
                 }}
-                className="w-full bg-slate-950 border border-slate-700/80 rounded-xl px-3 py-2 text-xs text-slate-100 font-extrabold focus:outline-none focus:border-indigo-500 appearance-none pr-8 cursor-pointer shadow-inner truncate"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs text-slate-800 font-extrabold focus:outline-none focus:border-indigo-500 appearance-none pr-8 cursor-pointer shadow-sm truncate"
               >
                 {candidates.map((c) => {
                   const cleanRole = c.role ? c.role.split(' at ')[0].split('(')[0].split('|')[0].trim() : '';
@@ -305,17 +306,17 @@ export default function ProfilePage() {
             <button
               onClick={handleDeletePersona}
               disabled={isSaving}
-              className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-red-950/60 hover:bg-red-900 text-red-300 text-xs font-bold border border-red-800/80 transition cursor-pointer disabled:opacity-50"
+              className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-red-50 hover:bg-red-100 text-red-700 text-xs font-bold border border-red-200 transition cursor-pointer disabled:opacity-50"
               title="Delete this Candidate Persona"
             >
-              <Trash2 className="w-4 h-4 text-red-400" />
+              <Trash2 className="w-4 h-4 text-red-600" />
               <span>Delete Persona</span>
             </button>
             <button
               onClick={handleSignOut}
-              className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-red-950 hover:text-red-300 text-slate-300 text-xs font-semibold border border-slate-700 transition cursor-pointer"
+              className="btn-aesthetic-subtle text-xs py-2 px-3.5"
             >
-              <LogOut className="w-4 h-4" />
+              <LogOut className="w-4 h-4 text-slate-600" />
               <span>Sign Out</span>
             </button>
           </div>
@@ -323,20 +324,20 @@ export default function ProfilePage() {
 
         {/* Status Alerts */}
         {saveSuccess && (
-          <div className="flex items-center gap-3 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm animate-fade-in">
-            <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
+          <div className="flex items-center gap-3 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm font-semibold animate-fade-in">
+            <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0" />
             <span>Profile and search preferences saved! All future searches will use these preferences.</span>
           </div>
         )}
         {uploadSuccess && (
-          <div className="flex items-center gap-3 p-4 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-sm animate-fade-in">
-            <Sparkles className="w-5 h-5 flex-shrink-0" />
+          <div className="flex items-center gap-3 p-4 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-800 text-sm font-semibold animate-fade-in">
+            <Sparkles className="w-5 h-5 text-indigo-600 flex-shrink-0" />
             <span>Resume parsed via Docling OCR! Template structure preserved and links auto-extracted.</span>
           </div>
         )}
         {error && (
-          <div className="flex items-center gap-3 p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400 text-sm">
-            <AlertCircle className="w-5 h-5 flex-shrink-0" />
+          <div className="flex items-center gap-3 p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-sm font-semibold">
+            <AlertCircle className="w-5 h-5 text-rose-600 flex-shrink-0" />
             <span>{error}</span>
           </div>
         )}
@@ -347,64 +348,64 @@ export default function ProfilePage() {
           <div className="lg:col-span-2 space-y-8">
 
             {/* 1. Basic Info */}
-            <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800/80 space-y-5">
-              <div className="flex items-center gap-2.5 text-slate-100 font-semibold text-base border-b border-slate-800 pb-3">
-                <User className="w-5 h-5 text-indigo-400" />
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+              <div className="flex items-center gap-2.5 text-slate-800 font-extrabold text-base border-b border-slate-200 pb-3">
+                <User className="w-5 h-5 text-indigo-600" />
                 <span>Personal & Contact Information</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-400 mb-1.5">Full Name</label>
+                  <label className="block text-xs font-bold text-slate-600 mb-1.5">Full Name</label>
                   <input
                     type="text"
                     value={profile.name || ''}
                     onChange={(e) => setProfile({ ...profile, name: e.target.value })}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 transition"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500 transition"
                     placeholder="Your Name"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-400 mb-1.5">Primary Role / Title</label>
+                  <label className="block text-xs font-bold text-slate-600 mb-1.5">Primary Role / Title</label>
                   <input
                     type="text"
                     value={profile.role || ''}
                     onChange={(e) => setProfile({ ...profile, role: e.target.value })}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 transition"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500 transition"
                     placeholder="e.g. Full Stack Engineer"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-400 mb-1.5">Email Address</label>
+                  <label className="block text-xs font-bold text-slate-600 mb-1.5">Email Address</label>
                   <input
                     type="email"
                     value={profile.email || ''}
                     onChange={(e) => setProfile({ ...profile, email: e.target.value })}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 transition"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500 transition"
                     placeholder="name@gmail.com"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-400 mb-1.5">Phone Number</label>
+                  <label className="block text-xs font-bold text-slate-600 mb-1.5">Phone Number</label>
                   <input
                     type="text"
                     value={profile.phone || ''}
                     onChange={(e) => setProfile({ ...profile, phone: e.target.value })}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 transition"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500 transition"
                     placeholder="+1 555-0199"
                   />
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label className="block text-xs font-semibold text-slate-400 mb-1.5">Primary Location</label>
+                  <label className="block text-xs font-bold text-slate-600 mb-1.5">Primary Location</label>
                   <input
                     type="text"
                     value={profile.location || ''}
                     onChange={(e) => setProfile({ ...profile, location: e.target.value })}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 transition"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-indigo-500 transition"
                     placeholder="e.g. San Francisco, CA / Remote"
                   />
                 </div>
@@ -412,48 +413,48 @@ export default function ProfilePage() {
             </div>
 
             {/* 2. Social Portfolios */}
-            <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800/80 space-y-5">
-              <div className="flex items-center gap-2.5 text-slate-100 font-semibold text-base border-b border-slate-800 pb-3">
-                <Code2 className="w-5 h-5 text-cyan-400" />
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+              <div className="flex items-center gap-2.5 text-slate-800 font-extrabold text-base border-b border-slate-200 pb-3">
+                <Code2 className="w-5 h-5 text-cyan-600" />
                 <span>Social Profiles & Coding Portfolios</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="flex items-center gap-2 text-xs font-semibold text-slate-400 mb-1.5">
-                    <LinkedinIcon className="w-3.5 h-3.5 text-blue-400" /> LinkedIn Profile
+                  <label className="flex items-center gap-2 text-xs font-bold text-slate-600 mb-1.5">
+                    <LinkedinIcon className="w-3.5 h-3.5 text-blue-600" /> LinkedIn Profile
                   </label>
                   <input
                     type="url"
                     value={profile.linkedin_url || ''}
                     onChange={(e) => setProfile({ ...profile, linkedin_url: e.target.value })}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-cyan-500 transition"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-cyan-500 transition"
                     placeholder="https://linkedin.com/in/username"
                   />
                 </div>
 
                 <div>
-                  <label className="flex items-center gap-2 text-xs font-semibold text-slate-400 mb-1.5">
-                    <GithubIcon className="w-3.5 h-3.5 text-slate-300" /> GitHub Profile
+                  <label className="flex items-center gap-2 text-xs font-bold text-slate-600 mb-1.5">
+                    <GithubIcon className="w-3.5 h-3.5 text-slate-700" /> GitHub Profile
                   </label>
                   <input
                     type="url"
                     value={profile.github_url || ''}
                     onChange={(e) => setProfile({ ...profile, github_url: e.target.value })}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-cyan-500 transition"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-cyan-500 transition"
                     placeholder="https://github.com/username"
                   />
                 </div>
 
                 <div>
-                  <label className="flex items-center gap-2 text-xs font-semibold text-slate-400 mb-1.5">
-                    <Globe className="w-3.5 h-3.5 text-emerald-400" /> Portfolio / Website
+                  <label className="flex items-center gap-2 text-xs font-bold text-slate-600 mb-1.5">
+                    <Globe className="w-3.5 h-3.5 text-emerald-600" /> Portfolio / Website
                   </label>
                   <input
                     type="url"
                     value={profile.portfolio_url || ''}
                     onChange={(e) => setProfile({ ...profile, portfolio_url: e.target.value })}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-cyan-500 transition"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm text-slate-800 focus:outline-none focus:border-cyan-500 transition"
                     placeholder="https://yourportfolio.dev"
                   />
                 </div>
@@ -461,24 +462,24 @@ export default function ProfilePage() {
             </div>
 
             {/* 3. Search Preferences */}
-            <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800/80 space-y-5">
-              <div className="flex items-center gap-2.5 text-slate-100 font-semibold text-base border-b border-slate-800 pb-3">
-                <Sliders className="w-5 h-5 text-indigo-400" />
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-5">
+              <div className="flex items-center gap-2.5 text-slate-800 font-extrabold text-base border-b border-slate-200 pb-3">
+                <Sliders className="w-5 h-5 text-indigo-600" />
                 <span>Career Search Tweaks & RAG Preferences</span>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-400 mb-2">Work Mode Preference</label>
+                <label className="block text-xs font-bold text-slate-600 mb-2">Work Mode Preference</label>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                   {['Remote', 'Hybrid', 'Onsite', 'Open to Any'].map((mode) => (
                     <button
                       key={mode}
                       type="button"
                       onClick={() => setProfile({ ...profile, work_mode: mode })}
-                      className={`px-3 py-2 rounded-xl text-xs font-semibold border transition-all cursor-pointer ${
+                      className={`px-3 py-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
                         profile.work_mode === mode
-                          ? 'bg-indigo-600/20 border-indigo-500 text-indigo-300 shadow-sm'
-                          : 'bg-slate-950 border-slate-800 text-slate-400 hover:border-slate-700'
+                          ? 'bg-indigo-50 border-indigo-300 text-indigo-700 shadow-sm'
+                          : 'bg-slate-50 border-slate-200 text-slate-600 hover:border-slate-300'
                       }`}
                     >
                       {mode}
@@ -488,7 +489,7 @@ export default function ProfilePage() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-400 mb-2">Preferred Opportunity Types</label>
+                <label className="block text-xs font-bold text-slate-600 mb-2">Preferred Opportunity Types</label>
                 <div className="flex flex-wrap gap-2">
                   {[
                     { id: 'job', label: 'Full-Time Jobs' },
@@ -502,10 +503,10 @@ export default function ProfilePage() {
                         key={cat.id}
                         type="button"
                         onClick={() => toggleCategory(cat.id)}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all cursor-pointer ${
+                        className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-all cursor-pointer ${
                           isSelected
-                            ? 'bg-emerald-500/20 border-emerald-500 text-emerald-300'
-                            : 'bg-slate-950 border-slate-800 text-slate-400 hover:border-slate-700'
+                            ? 'bg-emerald-50 border-emerald-300 text-emerald-800'
+                            : 'bg-slate-50 border-slate-200 text-slate-600 hover:border-slate-300'
                         }`}
                       >
                         {cat.label}
@@ -516,18 +517,18 @@ export default function ProfilePage() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-400 mb-2">Target Roles & Job Titles</label>
+                <label className="block text-xs font-bold text-slate-600 mb-2">Target Roles & Job Titles</label>
                 <div className="flex flex-wrap gap-2 mb-2.5">
                   {(profile.target_roles || []).map((role) => (
                     <span
                       key={role}
-                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs bg-slate-800 text-slate-200 border border-slate-700"
+                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs bg-indigo-50 text-indigo-800 border border-indigo-200 font-bold"
                     >
                       <span>{role}</span>
                       <button
                         type="button"
                         onClick={() => handleRemoveRole(role)}
-                        className="text-slate-400 hover:text-rose-400 cursor-pointer"
+                        className="text-indigo-400 hover:text-indigo-900 cursor-pointer"
                       >
                         ×
                       </button>
@@ -540,11 +541,11 @@ export default function ProfilePage() {
                     value={newRoleInput}
                     onChange={(e) => setNewRoleInput(e.target.value)}
                     placeholder="Add target role (e.g. AI Systems Architect) and press Enter"
-                    className="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 text-xs text-slate-200 focus:outline-none focus:border-indigo-500"
+                    className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 text-xs text-slate-800 focus:outline-none focus:border-indigo-500"
                   />
                   <button
                     type="submit"
-                    className="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-xs font-semibold transition cursor-pointer"
+                    className="btn-aesthetic-secondary text-xs py-2 px-3.5"
                   >
                     Add
                   </button>
@@ -556,7 +557,7 @@ export default function ProfilePage() {
               <button
                 onClick={handleSaveProfile}
                 disabled={isSaving}
-                className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white font-semibold text-sm shadow-lg shadow-indigo-600/30 transition active:scale-95 disabled:opacity-50 cursor-pointer"
+                className="btn-aesthetic-primary text-sm py-3 px-6 shadow-sm disabled:opacity-50"
               >
                 {isSaving ? (
                   <>
@@ -577,18 +578,18 @@ export default function ProfilePage() {
           {/* Right Column: Template Upload */}
           <div className="space-y-6">
 
-            <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800/80 space-y-4">
-              <div className="flex items-center gap-2 text-slate-100 font-semibold text-base border-b border-slate-800 pb-3">
-                <Upload className="w-5 h-5 text-indigo-400" />
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+              <div className="flex items-center gap-2 text-slate-800 font-extrabold text-base border-b border-slate-200 pb-3">
+                <Upload className="w-5 h-5 text-indigo-600" />
                 <span>Upload Golden Base Resume</span>
               </div>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <p className="text-xs text-slate-600 leading-relaxed">
                 Upload your authentic PDF, DOCX, or scanned resume. <strong>Docling OCR</strong> will extract the layout, contact details, and sections to use as your preserved golden template for in-place tailoring.
               </p>
 
-              <label className="relative flex flex-col items-center justify-center p-6 border-2 border-dashed border-slate-700 hover:border-indigo-500 rounded-2xl bg-slate-950/60 cursor-pointer transition group">
-                <FileText className="w-10 h-10 text-slate-500 group-hover:text-indigo-400 transition mb-2" />
-                <span className="text-xs font-semibold text-slate-300 group-hover:text-white">
+              <label className="relative flex flex-col items-center justify-center p-6 border-2 border-dashed border-slate-300 hover:border-indigo-500 rounded-2xl bg-slate-50/60 cursor-pointer transition group">
+                <FileText className="w-10 h-10 text-slate-400 group-hover:text-indigo-600 transition mb-2" />
+                <span className="text-xs font-bold text-slate-700 group-hover:text-slate-900">
                   {isUploading ? 'Parsing via Docling OCR...' : 'Click or Drag PDF Resume here'}
                 </span>
                 <span className="text-[10px] text-slate-500 mt-1">PDF, DOCX, PNG (Max 15MB)</span>
@@ -600,22 +601,22 @@ export default function ProfilePage() {
                   className="hidden"
                 />
                 {isUploading && (
-                  <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center gap-2">
-                    <RefreshCw className="w-6 h-6 text-indigo-400 animate-spin" />
-                    <span className="text-xs font-semibold text-indigo-300">Docling Multi-Modal OCR Active...</span>
+                  <div className="absolute inset-0 bg-white/90 backdrop-blur-sm rounded-2xl flex flex-col items-center justify-center gap-2">
+                    <RefreshCw className="w-6 h-6 text-indigo-600 animate-spin" />
+                    <span className="text-xs font-bold text-indigo-700">Docling Multi-Modal OCR Active...</span>
                   </div>
                 )}
               </label>
             </div>
 
             {/* Preserved Template Switcher */}
-            <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800/80 space-y-4">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                <div className="flex items-center gap-2 text-slate-100 font-semibold text-base">
-                  <Layers className="w-5 h-5 text-purple-400" />
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+              <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+                <div className="flex items-center gap-2 text-slate-800 font-extrabold text-base">
+                  <Layers className="w-5 h-5 text-purple-600" />
                   <span>Preserved Resume Templates</span>
                 </div>
-                <span className="text-xs font-semibold text-indigo-400">
+                <span className="text-xs font-bold text-indigo-700">
                   {profile.available_templates?.length || 0} Available
                 </span>
               </div>
@@ -630,35 +631,35 @@ export default function ProfilePage() {
                         onClick={() => handleSelectTemplate(tpl)}
                         className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
                           isActive
-                            ? 'bg-indigo-950/60 border-indigo-500 ring-1 ring-indigo-500/50 shadow-lg shadow-indigo-500/15'
-                            : 'bg-slate-950/60 border-slate-800 hover:border-slate-700 hover:bg-slate-900/60'
+                            ? 'bg-indigo-50/80 border-indigo-300 ring-1 ring-indigo-200 shadow-sm'
+                            : 'bg-slate-50 border-slate-200 hover:border-slate-300 hover:bg-slate-100/80'
                         }`}
                       >
                         <div className="flex items-center justify-between mb-1.5">
-                          <div className="text-xs font-bold text-slate-100 flex items-center gap-1.5">
-                            <FileText className={`w-3.5 h-3.5 ${isActive ? 'text-indigo-400' : 'text-slate-500'}`} />
+                          <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                            <FileText className={`w-3.5 h-3.5 ${isActive ? 'text-indigo-600' : 'text-slate-400'}`} />
                             <span className="truncate max-w-[180px]">{tpl.name}</span>
                           </div>
                           {isActive ? (
-                            <span className="px-2 py-0.5 text-[10px] font-bold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
-                              <CheckCircle2 className="w-3 h-3" />
+                            <span className="px-2 py-0.5 text-[10px] font-extrabold rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200 flex items-center gap-1">
+                              <CheckCircle2 className="w-3 h-3 text-emerald-600" />
                               Active Master
                             </span>
                           ) : (
-                            <span className="px-2 py-0.5 text-[10px] font-semibold rounded-full bg-slate-800 text-slate-400 hover:text-indigo-300 border border-slate-700">
+                            <span className="px-2 py-0.5 text-[10px] font-semibold rounded-full bg-slate-200 text-slate-600 hover:text-indigo-700 border border-slate-300">
                               Click to Set Active
                             </span>
                           )}
                         </div>
-                        <div className="text-[11px] text-slate-400 mb-2">{tpl.role}</div>
-                        <div className="text-[10px] text-slate-500 font-mono bg-slate-900/80 p-2 rounded-lg truncate border border-slate-800/50">
+                        <div className="text-[11px] text-slate-500 font-medium mb-2">{tpl.role}</div>
+                        <div className="text-[10px] text-slate-600 font-mono bg-white p-2 rounded-lg truncate border border-slate-200">
                           {tpl.preview}
                         </div>
                       </div>
                     );
                   })
                 ) : (
-                  <div className="p-4 rounded-xl border border-dashed border-slate-800 text-center text-xs text-slate-500">
+                  <div className="p-4 rounded-xl border border-dashed border-slate-200 text-center text-xs text-slate-500">
                     No custom resume uploaded yet. Upload your PDF resume above to establish your master template.
                   </div>
                 )}
@@ -666,12 +667,12 @@ export default function ProfilePage() {
             </div>
 
             {/* Live Markdown Preview */}
-            <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800/80 space-y-3">
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold text-slate-300">Active Template Markdown</span>
-                <span className="text-[10px] text-slate-500">{profile.resume_markdown?.length || 0} chars</span>
+                <span className="text-xs font-bold text-slate-700">Active Template Markdown</span>
+                <span className="text-[10px] text-slate-500 font-mono">{profile.resume_markdown?.length || 0} chars</span>
               </div>
-              <div className="max-h-60 overflow-y-auto bg-slate-950 p-3 rounded-xl border border-slate-800 font-mono text-[11px] text-slate-300 leading-relaxed whitespace-pre-wrap">
+              <div className="max-h-60 overflow-y-auto bg-slate-50 p-3 rounded-xl border border-slate-200 font-mono text-[11px] text-slate-800 leading-relaxed whitespace-pre-wrap">
                 {profile.resume_markdown || 'No template loaded yet. Upload your resume above.'}
               </div>
             </div>

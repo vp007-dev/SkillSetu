@@ -1,4 +1,4 @@
-"""Web search tool for CareerOS — real live internet opportunity discovery powered by Firecrawl MCP."""
+"""Web search tool for SkillSetu — real live internet opportunity discovery powered by Firecrawl MCP."""
 
 import html
 import json
@@ -57,7 +57,7 @@ def search_web(query: str, category: str, location: str = "Noida, India") -> dic
                 headers={
                     "Authorization": f"Bearer {firecrawl_key}",
                     "Content-Type": "application/json",
-                    "User-Agent": "CareerOS-ADK-Agent/1.0"
+                    "User-Agent": "SkillSetu-ADK-Agent/1.0"
                 },
                 method="POST"
             )

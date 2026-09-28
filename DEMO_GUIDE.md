@@ -1,4 +1,4 @@
-# CareerOS — Hackathon Submission & Live Demo Guide
+# SkillSetu — Hackathon Submission & Live Demo Guide
 
 > **Hackathon Track:** Problem 2 — "Who authorized that?" (Multi-Agent Delegation & Governance)  
 > **Core Engine:** ArmorIQ SDK + Google ADK + 5 Isolated MCP Tool Servers + SQLite  
@@ -8,9 +8,9 @@
 
 ## 1. Executive Summary for Submission
 
-**CareerOS** is a zero-trust multi-agent career automation platform. It processes candidate resumes, builds structured candidate profiles, discovers real-world opportunities (jobs, internships, hackathons, conclaves), and ranks them by relevance.
+**SkillSetu** is a zero-trust multi-agent career automation platform. It processes candidate resumes, builds structured candidate profiles, discovers real-world opportunities (jobs, internships, hackathons, conclaves), and ranks them by relevance.
 
-To solve **Problem 2 ("Who authorized that?")**, CareerOS implements **Zero-Trust Cryptographic Delegation**:
+To solve **Problem 2 ("Who authorized that?")**, SkillSetu implements **Zero-Trust Cryptographic Delegation**:
 - **Keypair Isolation:** 5 sub-agents run with independent RSA/Ed25519 keypairs (`resume_extractor`, `resume_analyzer`, `profile_maker`, `opportunity_scout`, `opportunity_ranker`).
 - **Decoupled MCP Tool Servers:** Each sub-agent invokes dedicated tools via its own isolated MCP server (`mcp_extractor_server`, `mcp_analyzer_server`, `mcp_profiler_server`, `mcp_scout_server`, `mcp_ranker_server`).
 - **ArmorIQ SDK Core Methods:** Uses `capture_plan()` on Root Coordinator, `delegate()` for signed delegation tokens (with 300s TTL), and `invoke()` for tool execution.
@@ -52,9 +52,9 @@ MCP Server 1   MCP Server 2   MCP Server 3   MCP Server 4   MCP Server 5
 
 ### Step 1: Start Backend API & ArmorIQ Server
 ```bash
-python -m uvicorn api:app --reload --port 8000
+python -m uvicorn api:app --reload --port 8001
 ```
-*(Runs on `http://127.0.0.1:8000`)*
+*(Runs on `http://127.0.0.1:8001`)*
 
 ### Step 2: Start Frontend Dashboard
 ```bash

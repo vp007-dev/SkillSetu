@@ -9,6 +9,8 @@ export class AudioStreamingManager {
     this.outputAudioCtx = null;
     this.mediaStream = null;
     this.processorNode = null;
+    this.workletNode = null;
+    this.silentOutputNode = null;
     this.inputSourceNode = null;
     this.inputAnalyser = null;
     this.outputAnalyser = null;
@@ -35,7 +37,7 @@ export class AudioStreamingManager {
 
     const AudioContextClass = window.AudioContext || window.webkitAudioContext;
     // Input: 16kHz for Gemini Live WebSocket protocol
-    this.inputAudioCtx = new AudioContextClass({ sampleRate: 16000 });
+    this.inputAudioCtx = new AudioContextClass();
     // Output: 24kHz for Gemini Live speech
     this.outputAudioCtx = new AudioContextClass({ sampleRate: 24000 });
 
@@ -57,21 +59,67 @@ export class AudioStreamingManager {
     this.inputSourceNode = this.inputAudioCtx.createMediaStreamSource(stream);
     this.inputSourceNode.connect(this.inputAnalyser);
 
-    // 4096 buffer size at 16kHz yields smooth ~256ms audio frames
-    this.processorNode = this.inputAudioCtx.createScriptProcessor(4096, 1, 1);
-
-    this.processorNode.onaudioprocess = (e) => {
-      if (!this.isRunning || this.isMuted) return;
-
-      const channelData = e.inputBuffer.getChannelData(0);
-      const base64Pcm = this.floatTo16BitPCMBase64(channelData);
-      if (this.onAudioChunkCallback) {
-        this.onAudioChunkCallback(base64Pcm);
+    if (this.inputAudioCtx.audioWorklet && typeof AudioWorkletNode !== "undefined") {
+      const workletSource = `class PcmCaptureProcessor extends AudioWorkletProcessor {
+        constructor() {
+          super();
+          this.sourceRate = sampleRate;
+          this.step = this.sourceRate / 16000;
+          this.position = 0;
+          this.previous = 0;
+          this.output = [];
+        }
+        process(inputs) {
+          const channel = inputs[0] && inputs[0][0];
+          if (!channel || !channel.length) return true;
+          while (this.position < channel.length) {
+            const index = Math.floor(this.position);
+            const fraction = this.position - index;
+            const left = index === 0 ? this.previous : channel[index - 1];
+            const right = channel[Math.min(index, channel.length - 1)];
+            this.output.push(left + (right - left) * fraction);
+            this.position += this.step;
+          }
+          this.position -= channel.length;
+          this.previous = channel[channel.length - 1];
+          if (this.output.length >= 1600) {
+            const frame = new Float32Array(this.output.splice(0, 1600));
+            this.port.postMessage(frame, [frame.buffer]);
+          }
+          return true;
+        }
       }
-    };
-
-    this.inputAnalyser.connect(this.processorNode);
-    this.processorNode.connect(this.inputAudioCtx.destination);
+      registerProcessor("pcm-capture-processor", PcmCaptureProcessor);`;
+      const workletUrl = URL.createObjectURL(new Blob([workletSource], { type: "text/javascript" }));
+      try {
+        await this.inputAudioCtx.audioWorklet.addModule(workletUrl);
+      } finally {
+        URL.revokeObjectURL(workletUrl);
+      }
+      this.workletNode = new AudioWorkletNode(this.inputAudioCtx, "pcm-capture-processor", {
+        numberOfInputs: 1,
+        numberOfOutputs: 1,
+        outputChannelCount: [1],
+      });
+      this.workletNode.port.onmessage = (event) => {
+        if (!this.isRunning || this.isMuted || !this.onAudioChunkCallback) return;
+        this.onAudioChunkCallback(this.floatTo16BitPCMBase64(event.data));
+      };
+      this.silentOutputNode = this.inputAudioCtx.createGain();
+      this.silentOutputNode.gain.value = 0;
+      this.inputSourceNode.connect(this.workletNode);
+      this.workletNode.connect(this.silentOutputNode);
+      this.silentOutputNode.connect(this.inputAudioCtx.destination);
+    } else {
+      // Compatibility path for browsers without AudioWorklet support.
+      this.processorNode = this.inputAudioCtx.createScriptProcessor(2048, 1, 1);
+      this.processorNode.onaudioprocess = (e) => {
+        if (!this.isRunning || this.isMuted || !this.onAudioChunkCallback) return;
+        this.onAudioChunkCallback(this.floatTo16BitPCMBase64(e.inputBuffer.getChannelData(0)));
+      };
+      this.inputAnalyser.connect(this.processorNode);
+      this.processorNode.connect(this.inputAudioCtx.destination);
+    }
 
     this.isRunning = true;
     this.startVolumeMonitoring();
@@ -94,7 +142,7 @@ export class AudioStreamingManager {
 
     for (let i = 0; i < float32Array.length; i++) {
       const s = Math.max(-1, Math.min(1, float32Array[i]));
-      const val = s < 0 ? s * 0x8000 : s * 0x7fff;
+      const val = s < 0 ? s * 0x8001 : s * 0x7fff;
       view.setInt16(i * 2, val, true);
     }
 
@@ -229,6 +277,15 @@ export class AudioStreamingManager {
     if (this.processorNode) {
       this.processorNode.disconnect();
       this.processorNode = null;
+    }
+    if (this.workletNode) {
+      this.workletNode.port.onmessage = null;
+      this.workletNode.disconnect();
+      this.workletNode = null;
+    }
+    if (this.silentOutputNode) {
+      this.silentOutputNode.disconnect();
+      this.silentOutputNode = null;
     }
     if (this.inputSourceNode) {
       this.inputSourceNode.disconnect();

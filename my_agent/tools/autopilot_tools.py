@@ -1,4 +1,4 @@
-"""Autonomous Career & Resume Studio Engine for CareerOS v3.
+"""Autonomous Career & Resume Studio Engine for SkillSetu v3.
 
 Orchestrates full end-to-end automation:
 1. Ingestion & Extraction (PDF, DOCX, URL, or Raw Text)

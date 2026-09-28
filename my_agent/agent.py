@@ -115,8 +115,8 @@ resume_tailor = Agent(
 root_agent = Agent(
     model=MODEL,
     name="root_agent",
-    description="CareerOS v3 coordinator root agent. Central decision maker for all user requests.",
-    instruction="""You are the CareerOS v3 central root agent. 
+    description="SkillSetu v3 coordinator root agent. Central decision maker for all user requests.",
+    instruction="""You are the SkillSetu v3 central root agent. 
 Any candidate request goes directly to you. Analyze the user's intent and dynamically decide what tools or sub-agents to use:
 
 1. For queries or questions: ALWAYS query the RAG Knowledge Base first using `search_knowledge_base` or `get_rag_context` to retrieve candidate context before answering.

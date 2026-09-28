@@ -1,4 +1,4 @@
-# 🤖 CareerOS v3 — Zero-Trust Multi-Agent Career Intelligence & Real-Time AI Interview Platform
+# 🤖 SkillSetu v3 — Zero-Trust Multi-Agent Career Intelligence & Real-Time AI Interview Platform
 
 > **Hackathon Submission Track:** Problem 2 — *"Who authorized that?"* (Multi-Agent Delegation & Governance) + Problem 1 (*Human-in-the-Loop High-Stakes Action Governance*)  
 > **Core Architecture:** ArmorIQ SDK + Google ADK + Gemini Multimodal Live API + IBM Docling + Gemini 768d Embeddings + Decoupled MCP Tool Servers + Supabase / SQLite + ZopDay Cloud Deployment  
@@ -8,9 +8,9 @@
 
 ## 🌟 Executive Summary
 
-**CareerOS v3** is a production-grade, zero-trust autonomous multi-agent career intelligence and real-time interview acceleration platform. It ingests multi-format candidate resumes and portfolio documents, constructs a dense vector knowledge base using IBM Docling and Google Gemini 768d embeddings, performs domain-clustered cosine semantic matching across live opportunities (Jobs, Internships, Competitions, Hackathons, Conclaves), extracts deep company tech stack and culture intelligence, dynamically tailors publication-grade resumes, executes an autonomous one-click career autopilot, and conducts **real-time multimodal AI video & voice mock interviews with live bar-raiser debriefs**.
+**SkillSetu v3** is a production-grade, zero-trust autonomous multi-agent career intelligence and real-time interview acceleration platform. It ingests multi-format candidate resumes and portfolio documents, constructs a dense vector knowledge base using IBM Docling and Google Gemini 768d embeddings, performs domain-clustered cosine semantic matching across live opportunities (Jobs, Internships, Competitions, Hackathons, Conclaves), extracts deep company tech stack and culture intelligence, dynamically tailors publication-grade resumes, executes an autonomous one-click career autopilot, and conducts **real-time multimodal AI video & voice mock interviews with live bar-raiser debriefs**.
 
-To solve **Problem 2 ("Who authorized that?")** and **Problem 1 ("High-Stakes Autonomous Action Hold")**, CareerOS enforces **Zero-Trust Cryptographic Delegation Protocols**:
+To solve **Problem 2 ("Who authorized that?")** and **Problem 1 ("High-Stakes Autonomous Action Hold")**, SkillSetu enforces **Zero-Trust Cryptographic Delegation Protocols**:
 * **Cryptographic Keypair Isolation:** Every sub-agent operates with its own isolated asymmetric cryptographic keypair (RSA / Ed25519) generated in `armoriq_crypto.py`.
 * **Decoupled MCP Tool Servers:** Sub-agents invoke tools strictly through isolated Model Context Protocol (MCP) server modules (`my_agent/mcp_servers/`).
 * **ArmorIQ Core Security Protocols:** Uses `capture_plan()` on the Root Coordinator, `delegate()` for cryptographically signed delegation tokens (with 300s TTL), and `invoke()` for runtime verification of caller identity, token expiration, and authorized tool scopes.
@@ -73,7 +73,7 @@ MCP Server 6            MCP Server 7               MCP Server 8               MC
 
 ## 🎙️ Real-Time Multimodal AI Interview Room (v3 Feature)
 
-CareerOS v3 features a **Google Meet-style Real-Time AI Video & Voice Interview Room**:
+SkillSetu v3 features a **Google Meet-style Real-Time AI Video & Voice Interview Room**:
 
 1. **Gemini Multimodal Live API Full-Duplex Audio & Video:**
    * Natural, low-latency, interruptible voice conversation with Dr. Elena Vance (Lead Bar-Raiser).
@@ -94,13 +94,13 @@ CareerOS v3 features a **Google Meet-style Real-Time AI Video & Voice Interview 
 
 ## 🛡️ Zero-Trust ArmorIQ Governance Protocols
 
-CareerOS fulfills all requirements for **Hackathon Problem 2 ("Who authorized that?")** and **Problem 1**:
+SkillSetu fulfills all requirements for **Hackathon Problem 2 ("Who authorized that?")** and **Problem 1**:
 
 ### 1. Plan Capture (`capture_plan`)
 ```python
 plan = armoriq.capture_plan(
     agent_id="root_coordinator_agent",
-    intent="Execute CareerOS pipeline: parse, profile, scout, rank, and tailor opportunities",
+    intent="Execute SkillSetu pipeline: parse, profile, scout, rank, and tailor opportunities",
     allowed_tools=[
         "mcp_docproc.process_and_embed_document",
         "mcp_extractor.extract_and_store_resume",
@@ -203,7 +203,7 @@ result = armoriq.invoke(
 
 ## ☁️ Cloud & ZopDay Deployment Guide
 
-CareerOS is containerized using a **production multi-stage Docker build** that serves both the React 19 Frontend and FastAPI Backend under port `8000`.
+SkillSetu is containerized using a **production multi-stage Docker build** that serves both the React 19 Frontend and FastAPI Backend under port `8001`.
 
 ### 1. Deploy on ZopDay (1-Click Git Connect)
 
@@ -215,7 +215,7 @@ CareerOS is containerized using a **production multi-stage Docker build** that s
 3. Set the build parameters:
    * **Build Type:** `Docker`
    * **Dockerfile Path:** `./Dockerfile`
-   * **Port:** `8000`
+   * **Port:** `8001`
    * **Health Check Path:** `/api/health`
 4. Set Environment Variables in ZopDay Secrets:
    * `GROQ_API_KEY`, `GEMINI_API_KEY`, `FIRECRAWL_API_KEY`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `JWT_SECRET`
@@ -226,9 +226,9 @@ CareerOS is containerized using a **production multi-stage Docker build** that s
 ```bash
 docker compose up --build
 ```
-* **Unified Web App:** [http://localhost:8000](http://localhost:8000)
-* **API Documentation:** [http://localhost:8000/docs](http://localhost:8000/docs)
-* **Health Check:** [http://localhost:8000/api/health](http://localhost:8000/api/health)
+* **Unified Web App:** [http://localhost:8001](http://localhost:8001)
+* **API Documentation:** [http://localhost:8001/docs](http://localhost:8001/docs)
+* **Health Check:** [http://localhost:8001/api/health](http://localhost:8001/api/health)
 
 ---
 
@@ -248,7 +248,7 @@ GEMINI_API_KEY=your_gemini_api_key
 FIRECRAWL_API_KEY=your_firecrawl_api_key
 SUPABASE_URL=your_supabase_url
 SUPABASE_KEY=your_supabase_anon_or_service_key
-JWT_SECRET=careeros_super_secret_jwt_key
+JWT_SECRET=skillsetu_super_secret_jwt_key
 ```
 
 ### Step 2: Install Dependencies
@@ -265,7 +265,7 @@ cd ..
 ### Step 3: Run Servers
 ```bash
 # Terminal 1: Backend API Server
-python -m uvicorn api:app --reload --port 8000
+python -m uvicorn api:app --reload --port 8001
 
 # Terminal 2: Frontend Dashboard
 cd frontend
@@ -273,13 +273,13 @@ npm run dev
 ```
 
 * **Frontend Dashboard:** [http://localhost:5173](http://localhost:5173)
-* **Backend API Docs:** [http://localhost:8000/docs](http://localhost:8000/docs)
+* **Backend API Docs:** [http://localhost:8001/docs](http://localhost:8001/docs)
 
 ---
 
 ## 📜 Hackathon Compliance Scorecard (Problem 2 & Problem 1)
 
-| Rule / Requirement | Status | Verification in CareerOS v3 |
+| Rule / Requirement | Status | Verification in SkillSetu v3 |
 | :--- | :---: | :--- |
 | **Every Sub-Agent has $\ge 1$ MCP Tool** | ✅ Verified | All sub-agents invoke tools through decoupled MCP servers under `my_agent/mcp_servers/`. |
 | **Sub-Agents run with Separate Keypairs** | ✅ Verified | Asymmetric RSA keypairs generated per sub-agent in `armoriq_crypto.py`. |

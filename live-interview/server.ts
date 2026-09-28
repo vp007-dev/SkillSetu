@@ -224,7 +224,7 @@ app.post("/api/evaluate-interview", async (req, res) => {
       conclusionData,
     } = req.body;
 
-    const evaluationPrompt = `You are CareerOS v3 Principal Bar-Raiser and Hiring Committee Leader. Evaluate this candidate based on their full interview transcript, company/JD requirements, candidate resume claims, live conduct/warnings, interviewer observations, and in-meeting conclusion status.
+    const evaluationPrompt = `You are SkillSetu v3 Principal Bar-Raiser and Hiring Committee Leader. Evaluate this candidate based on their full interview transcript, company/JD requirements, candidate resume claims, live conduct/warnings, interviewer observations, and in-meeting conclusion status.
 
 Target Metadata:
 - Company: ${company}
@@ -345,7 +345,7 @@ Please output a comprehensive, structured evaluation JSON adhering STRICTLY to t
                 messages: [
                   {
                     role: "system",
-                    content: "You are CareerOS v3 Principal Bar-Raiser and Hiring Authority. You always respond in valid JSON matching the requested schema.",
+                    content: "You are SkillSetu v3 Principal Bar-Raiser and Hiring Authority. You always respond in valid JSON matching the requested schema.",
                   },
                   { role: "user", content: evaluationPrompt },
                 ],
@@ -408,15 +408,15 @@ wss.on("connection", (clientWs: WebSocket) => {
           systemInstruction: customInstruction,
         } = msg;
 
-        const defaultInstruction = `You are CareerOS v3, the world's most advanced Autonomous Career Intelligence and Principal Executive Bar-Raiser Interviewer, conducting a high-stakes, multimodal proctored interview for ${company}.
+        const defaultInstruction = `You are SkillSetu v3, the world's most advanced Autonomous Career Intelligence and Principal Executive Bar-Raiser Interviewer, conducting a high-stakes, multimodal proctored interview for ${company}.
 Target Position: ${seniority} ${role}.
 Interview Format: ${interviewType}.
 Candidate Name: ${candidateName}.
 
 ═══════════════════════════════════════════════════════════
-CAREEROS v3 INTELLIGENCE PERSONA & EVALUATION STANDARD:
+SKILLSETU v3 INTELLIGENCE PERSONA & EVALUATION STANDARD:
 ═══════════════════════════════════════════════════════════
-1. IDENTITY: You are CareerOS v3 — an elite, high-EQ hiring authority, bar-raiser architect, and talent committee chair. You benchmark candidate capabilities against global engineering standards (Google, Meta, Stripe, OpenAI, Amazon, Apple).
+1. IDENTITY: You are SkillSetu v3 — an elite, high-EQ hiring authority, bar-raiser architect, and talent committee chair. You benchmark candidate capabilities against global engineering standards (Google, Meta, Stripe, OpenAI, Amazon, Apple).
 2. TONE & STYLE: Articulate, intellectually curious, warm yet uncompromising on technical depth, system design trade-offs, and behavioral authenticity.
 3. CONVERSATIONAL CADENCE: Keep verbal turns concise, sharp, and natural (1-3 sentences per turn). FULL DUPLEX & INTERRUPTIBLE — yield immediately when the candidate speaks and actively probe their technical reasoning.
 
@@ -451,7 +451,7 @@ If you observe gaze shifts, phone usage, reading from notes, or suspicious gestu
 - VERBALLY give the warning directly in your response and tell them how to correct it:
   • Warning 1: "${candidateName}, I noticed your eye gaze repeatedly looking away / looking down at your phone. Please look directly at the camera and maintain eye contact with me throughout our discussion."
   • Warning 2: "This is your second warning regarding looking at off-screen notes or devices. Please keep your hands visible and eyes on the camera. One more distraction will result in immediate disqualification."
-  • Warning 3: Call 'conclude_interview' with conduct_disqualification: true and overall_verdict: 'Disqualified'. Calmly state: "Because of multiple integrity concerns and off-screen distractions, CareerOS v3 is concluding this interview session now."
+  • Warning 3: Call 'conclude_interview' with conduct_disqualification: true and overall_verdict: 'Disqualified'. Calmly state: "Because of multiple integrity concerns and off-screen distractions, SkillSetu v3 is concluding this interview session now."
 - If the candidate is slouching or nervous, gently coach them: "Can you sit up and look directly into the camera? Let's hear your explanation with strong executive presence."
 
 ═══════════════════════════════════════════════════════════
@@ -607,7 +607,7 @@ INTERVIEW CONDUCT & INTERACTION TOOLS:
             if (liveSession && clientWs.readyState === WebSocket.OPEN) {
               console.log("[Gemini Live] Sending greeting trigger for", candidateName);
               liveSession.sendRealtimeInput({
-                text: `[SYSTEM: Candidate ${candidateName} has joined the video interview room for ${company}. Please warmly introduce yourself as Sarah, Principal Bar-Raiser powered by CareerOS v3, welcome them to the ${seniority} ${role} interview at ${company}, outline the agenda, and ask your warm opening question.]`,
+                text: `[SYSTEM: Candidate ${candidateName} has joined the video interview room for ${company}. Please warmly introduce yourself as Sarah, Principal Bar-Raiser powered by SkillSetu v3, welcome them to the ${seniority} ${role} interview at ${company}, outline the agenda, and ask your warm opening question.]`,
               });
             }
           }, 600);

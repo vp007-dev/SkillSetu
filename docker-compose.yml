@@ -1,16 +1,16 @@
 version: '3.8'
 
 services:
-  careeros:
+  skillsetu:
     build:
       context: .
       dockerfile: Dockerfile
-    image: careeros:latest
-    container_name: careeros-app
+    image: skillsetu:latest
+    container_name: skillsetu-app
     ports:
-      - "8000:8000"
+      - "8001:8001"
     environment:
-      - PORT=8000
+      - PORT=8001
       - GROQ_API_KEY=${GROQ_API_KEY}
       - GEMINI_API_KEY=${GEMINI_API_KEY}
       - FIRECRAWL_API_KEY=${FIRECRAWL_API_KEY}

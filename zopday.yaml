@@ -1,5 +1,5 @@
-# ZopDay / ZopDev Deployment Manifest for CareerOS
-name: careeros-app
+# ZopDay / ZopDev Deployment Manifest for SkillSetu
+name: skillsetu-app
 version: 3.0.0
 
 deployment:
@@ -13,7 +13,7 @@ build:
 
 service:
   type: web
-  port: 8000
+  port: 8001
   protocol: http
   healthCheck:
     path: /api/health
@@ -24,7 +24,7 @@ service:
 
 env:
   - name: PORT
-    value: "8000"
+    value: "8001"
   - name: PYTHONUNBUFFERED
     value: "1"
   - name: NODE_ENV

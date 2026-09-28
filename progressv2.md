@@ -1,4 +1,4 @@
-# CareerOS v3 — Progress Tracking Dashboard (progressv2.md)
+# SkillSetu v3 — Progress Tracking Dashboard (progressv2.md)
 
 > **Last Updated:** 2026-08-26  
 > **Status:** 🎉 100% Complete — All 14 Phases Implemented & Verified  

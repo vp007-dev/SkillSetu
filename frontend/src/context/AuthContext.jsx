@@ -1,13 +1,31 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { supabase } from '../lib/supabase';
+import { auth, googleProvider } from '../lib/firebase';
+import { signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
 import { loginUser, registerUser, loginWithGoogle, fetchCandidates, createCandidate, deleteCandidate } from '../api/client';
 
 const AuthContext = createContext(null);
 
+// Migrate saved sign-in, profile, and interview state to the SkillSetu namespace.
+const legacyStorageKeys = [
+  'user', 'token', 'active_candidate_id', 'resume_text', 'raw_resume',
+  'parsed_resume', 'session_id', 'interview_history',
+];
+try {
+  for (const suffix of legacyStorageKeys) {
+    const oldKey = `careeros_${suffix}`;
+    const newKey = `skillsetu_${suffix}`;
+    const oldValue = localStorage.getItem(oldKey);
+    if (oldValue !== null && localStorage.getItem(newKey) === null) localStorage.setItem(newKey, oldValue);
+    if (oldValue !== null) localStorage.removeItem(oldKey);
+  }
+} catch {
+  // Storage can be unavailable in restricted browser contexts; auth initialization handles that separately.
+}
+
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
     try {
-      const saved = localStorage.getItem('careeros_user');
+      const saved = localStorage.getItem('skillsetu_user');
       return saved ? JSON.parse(saved) : null;
     } catch {
       return null;
@@ -15,19 +33,19 @@ export const AuthProvider = ({ children }) => {
   });
 
   const [token, setToken] = useState(() => {
-    return localStorage.getItem('careeros_token') || null;
+    return localStorage.getItem('skillsetu_token') || null;
   });
 
   const [candidates, setCandidates] = useState([]);
   const [selectedCandidateId, setSelectedCandidateIdState] = useState(() => {
-    return localStorage.getItem('careeros_active_candidate_id') || 'all';
+    return localStorage.getItem('skillsetu_active_candidate_id') || 'all';
   });
 
   const [loading, setLoading] = useState(false);
 
   const setSelectedCandidateId = (id) => {
     setSelectedCandidateIdState(id);
-    localStorage.setItem('careeros_active_candidate_id', id);
+    localStorage.setItem('skillsetu_active_candidate_id', id);
   };
 
   const refreshCandidates = useCallback(async (userId = null) => {
@@ -36,7 +54,6 @@ export const AuthProvider = ({ children }) => {
       const res = await fetchCandidates(targetUser);
       if (res?.candidates) {
         setCandidates(res.candidates);
-        // If current selection is invalid, set to 'all' or first candidate
         if (selectedCandidateId !== 'all' && !res.candidates.find(c => c.id === selectedCandidateId)) {
           if (res.candidates.length > 0) {
             setSelectedCandidateId(res.candidates[0].id);
@@ -82,88 +99,67 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const syncSupabaseUser = async (sbUser, sbToken) => {
+  const syncFirebaseAuthUser = async (fbUser, fbToken) => {
     try {
-      const email = sbUser.email;
-      const name = sbUser.user_metadata?.full_name || sbUser.user_metadata?.name || email.split('@')[0];
-      const avatar_url = sbUser.user_metadata?.avatar_url || sbUser.user_metadata?.picture;
+      const email = fbUser.email;
+      const name = fbUser.displayName || email.split('@')[0];
+      const avatar_url = fbUser.photoURL;
       
       const res = await loginWithGoogle({
         email,
         name,
         avatar_url,
-        google_id: sbUser.id
+        google_id: fbUser.uid
       });
 
       if (res.user) {
-        const prevUserStr = localStorage.getItem('careeros_user');
+        const prevUserStr = localStorage.getItem('skillsetu_user');
         let prevUserId = null;
         try {
           prevUserId = prevUserStr ? JSON.parse(prevUserStr)?.id : null;
         } catch {}
 
         if (prevUserId && prevUserId !== res.user.id) {
-          localStorage.removeItem('careeros_active_candidate_id');
+          localStorage.removeItem('skillsetu_active_candidate_id');
           setSelectedCandidateIdState('all');
           setCandidates([]);
         }
 
         setUser(res.user);
-        const activeToken = res.token || sbToken;
+        const activeToken = res.token || fbToken;
         setToken(activeToken);
-        localStorage.setItem('careeros_user', JSON.stringify(res.user));
-        localStorage.setItem('careeros_token', activeToken);
+        localStorage.setItem('skillsetu_user', JSON.stringify(res.user));
+        localStorage.setItem('skillsetu_token', activeToken);
         await refreshCandidates(res.user.id);
         return res.user;
       }
     } catch (err) {
-      console.error('[Supabase Auth Sync Error]', err);
+      console.error('[Firebase Auth Sync Error]', err);
     }
   };
 
-  // Listen to live Supabase Auth State (OAuth callback / session persistence)
+  // Listen to live Firebase Auth State
   useEffect(() => {
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
-      if (session?.user) {
-        await syncSupabaseUser(session.user, session.access_token);
+    const unsubscribe = onAuthStateChanged(auth, async (fbUser) => {
+      if (fbUser) {
+        const fbToken = await fbUser.getIdToken();
+        await syncFirebaseAuthUser(fbUser, fbToken);
       }
     });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
-      if (session?.user) {
-        await syncSupabaseUser(session.user, session.access_token);
-      } else if (event === 'SIGNED_OUT') {
-        setUser(null);
-        setToken(null);
-        setCandidates([]);
-        localStorage.removeItem('careeros_user');
-        localStorage.removeItem('careeros_token');
-        localStorage.removeItem('careeros_active_candidate_id');
-      }
-    });
-
-    return () => {
-      subscription?.unsubscribe();
-    };
+    return () => unsubscribe();
   }, []);
 
   const signInWithGoogleOAuth = async () => {
     setLoading(true);
     try {
-      const { data, error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: `${window.location.origin}/`,
-          queryParams: {
-            access_type: 'offline',
-            prompt: 'select_account',
-          }
-        }
-      });
-      if (error) throw error;
-      return data;
+      const result = await signInWithPopup(auth, googleProvider);
+      if (result?.user) {
+        const fbToken = await result.user.getIdToken();
+        return await syncFirebaseAuthUser(result.user, fbToken);
+      }
     } catch (err) {
-      console.warn('[Google OAuth Notice]', err.message);
+      console.warn('[Firebase Google Auth Notice]', err.message);
       throw err;
     } finally {
       setLoading(false);
@@ -177,8 +173,8 @@ export const AuthProvider = ({ children }) => {
       if (res.user && res.token) {
         setUser(res.user);
         setToken(res.token);
-        localStorage.setItem('careeros_user', JSON.stringify(res.user));
-        localStorage.setItem('careeros_token', res.token);
+        localStorage.setItem('skillsetu_user', JSON.stringify(res.user));
+        localStorage.setItem('skillsetu_token', res.token);
         await refreshCandidates(res.user.id);
         return res.user;
       }
@@ -191,9 +187,10 @@ export const AuthProvider = ({ children }) => {
     setLoading(true);
     try {
       try {
-        const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-        if (!error && data?.user) {
-          return await syncSupabaseUser(data.user, data.session?.access_token);
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        if (userCredential?.user) {
+          const fbToken = await userCredential.user.getIdToken();
+          return await syncFirebaseAuthUser(userCredential.user, fbToken);
         }
       } catch {}
 
@@ -201,8 +198,8 @@ export const AuthProvider = ({ children }) => {
       if (res.user && res.token) {
         setUser(res.user);
         setToken(res.token);
-        localStorage.setItem('careeros_user', JSON.stringify(res.user));
-        localStorage.setItem('careeros_token', res.token);
+        localStorage.setItem('skillsetu_user', JSON.stringify(res.user));
+        localStorage.setItem('skillsetu_token', res.token);
         await refreshCandidates(res.user.id);
         return res.user;
       }
@@ -215,19 +212,15 @@ export const AuthProvider = ({ children }) => {
     setLoading(true);
     try {
       try {
-        await supabase.auth.signUp({
-          email,
-          password,
-          options: { data: { full_name: name, role: role || 'Software Engineer' } }
-        });
+        await createUserWithEmailAndPassword(auth, email, password);
       } catch {}
 
       const res = await registerUser({ email, password, name, role });
       if (res.user && res.token) {
         setUser(res.user);
         setToken(res.token);
-        localStorage.setItem('careeros_user', JSON.stringify(res.user));
-        localStorage.setItem('careeros_token', res.token);
+        localStorage.setItem('skillsetu_user', JSON.stringify(res.user));
+        localStorage.setItem('skillsetu_token', res.token);
         await refreshCandidates(res.user.id);
         return res.user;
       }
@@ -238,15 +231,15 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await supabase.auth.signOut();
+      await signOut(auth);
     } catch {}
     setUser(null);
     setToken(null);
     setCandidates([]);
     setSelectedCandidateIdState('all');
-    localStorage.removeItem('careeros_user');
-    localStorage.removeItem('careeros_token');
-    localStorage.removeItem('careeros_active_candidate_id');
+    localStorage.removeItem('skillsetu_user');
+    localStorage.removeItem('skillsetu_token');
+    localStorage.removeItem('skillsetu_active_candidate_id');
   };
 
   const activeCandidate = candidates.find(c => c.id === selectedCandidateId) || null;

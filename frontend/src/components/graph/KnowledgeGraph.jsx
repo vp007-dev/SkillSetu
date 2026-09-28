@@ -215,6 +215,26 @@ const THEME_PALETTES = {
       MATCHES_PROFILE: '#f97316',
       SOURCES_CANDIDATE_DATA: '#38bdf8',
     }
+  },
+  paper: {
+    id: 'paper',
+    name: '✦ SkillSetu Paper',
+    bg: '#f3f2ec',
+    gridColor: 'rgba(39, 43, 36, 0.08)',
+    nodeColors: {
+      user: '#6257bd', skill: '#628b44', project: '#8063a8', experience: '#bf6b72',
+      achievement: '#b28035', education: '#4d7b96', certification: '#4e9185',
+      opportunity: '#c16b43', document: '#567eae',
+    },
+    candidateColors: {
+      candidate_mohit: '#6257bd', candidate_krati: '#bf6b72', candidate_vishnu: '#628b44', candidate_all: '#8063a8',
+    },
+    edgeColors: {
+      KNOWS_SKILL: '#628b44', BUILT_PROJECT: '#8063a8', USES_TECH: '#9a9d92',
+      WORKED_AT: '#bf6b72', EARNED_AWARD: '#b28035', STUDIED_AT: '#4d7b96',
+      ACQUIRED_CERT: '#4e9185', TEAM_SYNERGY: '#8063a8', MATCHES_PROFILE: '#c16b43',
+      SOURCES_CANDIDATE_DATA: '#567eae',
+    }
   }
 };
 
@@ -289,7 +309,7 @@ export default function KnowledgeGraph({ userId = 'default-user' }) {
   }, [selectedCandidateId, userId]);
 
   // ── Theme & Style Engine ───────────────────────────────────────────────────
-  const [visualTheme, setVisualTheme] = useState('cyberpunk');   // 'cyberpunk' | 'cosmic' | 'matrix' | 'minimal_glass'
+  const [visualTheme, setVisualTheme] = useState('paper');
   const [nodeShape, setNodeShape] = useState('sphere');          // 'sphere' | 'hexagon' | 'badge' | 'diamond'
   const [bgAtmosphere, setBgAtmosphere] = useState('grid');      // 'grid' | 'stars' | 'void'
   const [linkStyle, setLinkStyle] = useState('laser');           // 'laser' | 'dashed' | 'subtle'
@@ -597,7 +617,7 @@ export default function KnowledgeGraph({ userId = 'default-user' }) {
       if (canvas) {
         const imageURI = canvas.toDataURL('image/png');
         const link = document.createElement('a');
-        link.download = `careeros-${visualTheme}-graph-${selectedCandidate}-${Date.now()}.png`;
+        link.download = `skillsetu-${visualTheme}-graph-${selectedCandidate}-${Date.now()}.png`;
         link.href = imageURI;
         link.click();
       }
@@ -608,7 +628,7 @@ export default function KnowledgeGraph({ userId = 'default-user' }) {
   const handleExportJSON = () => {
     const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(filteredData, null, 2));
     const link = document.createElement('a');
-    link.download = `careeros-knowledge-graph-${selectedCandidate}.json`;
+    link.download = `skillsetu-knowledge-graph-${selectedCandidate}.json`;
     link.href = dataStr;
     link.click();
   };
@@ -680,7 +700,7 @@ export default function KnowledgeGraph({ userId = 'default-user' }) {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="knowledge-graph-workspace space-y-6">
       {/* Top Multi-Candidate Controls Header */}
       <GlassCard className="p-4 bg-slate-900/80 backdrop-blur-md border border-slate-800 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 shadow-xl">
         {/* Candidate Switcher Dropdown */}
@@ -1261,7 +1281,7 @@ export default function KnowledgeGraph({ userId = 'default-user' }) {
             <div className="pt-2 border-t border-slate-800 flex items-center justify-between">
               <button
                 onClick={() => {
-                  setVisualTheme('cyberpunk');
+                  setVisualTheme('paper');
                   setNodeShape('sphere');
                   handleSelectTopology('flower');
                 }}
@@ -1438,7 +1458,7 @@ export default function KnowledgeGraph({ userId = 'default-user' }) {
 
                 const textWidth = ctx.measureText(label).width;
                 const bckgDimensions = [textWidth + 6, fontSize + 3];
-                ctx.fillStyle = 'rgba(3, 7, 18, 0.88)';
+                ctx.fillStyle = visualTheme === 'paper' ? 'rgba(255, 254, 250, 0.96)' : 'rgba(3, 7, 18, 0.88)';
                 ctx.fillRect(
                   node.x - bckgDimensions[0] / 2,
                   node.y + radius + 2,
@@ -1446,7 +1466,7 @@ export default function KnowledgeGraph({ userId = 'default-user' }) {
                   bckgDimensions[1]
                 );
 
-                ctx.fillStyle = isCandidate ? '#ffffff' : '#cbd5e1';
+                ctx.fillStyle = visualTheme === 'paper' ? (isCandidate ? '#292c27' : '#555a51') : (isCandidate ? '#ffffff' : '#cbd5e1');
                 ctx.fillText(label, node.x, node.y + radius + 3);
               }
 

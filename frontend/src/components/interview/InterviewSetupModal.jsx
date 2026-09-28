@@ -157,7 +157,8 @@ export default function InterviewSetupModal({
         job_description: opportunity?.description || opportunity?.raw_jd || '',
         uploaded_resume_text: uploadedResumeText || '',
         voice_name: selectedVoice,
-        target_role_level: 'Senior'
+        target_role_level: 'Senior',
+        interview_type: 'Full Technical & Coding',
       };
 
       await initInterviewSession(sessionConfig);
@@ -175,7 +176,7 @@ export default function InterviewSetupModal({
       });
     } catch (err) {
       console.error('Session init error:', err);
-      // Still proceed
+      // Still proceed to the interview room
       if (mediaStreamRef.current) {
         mediaStreamRef.current.getTracks().forEach((t) => t.stop());
       }
@@ -186,10 +187,14 @@ export default function InterviewSetupModal({
         opportunity_id: opportunity?.id,
         company_name: company,
         job_title: role,
-        uploaded_resume_text: uploadedResumeText,
+        job_description: opportunity?.description || opportunity?.raw_jd || '',
+        uploaded_resume_text: uploadedResumeText || '',
         voice_name: selectedVoice,
+        target_role_level: 'Senior',
+        interview_type: 'Full Technical & Coding',
         micEnabled,
-        videoEnabled
+        videoEnabled,
+        companyIntel: opportunity?.intelligence || opportunity?.company_intel || null
       });
     } finally {
       setIsInitializing(false);

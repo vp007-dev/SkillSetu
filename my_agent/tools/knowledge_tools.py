@@ -1,12 +1,12 @@
 """Knowledge Base & RAG Vector Search Integration.
 
-100% Supabase PostgreSQL pgvector connected with strict user & candidate persona isolation.
-Zero SQLite dependency and zero cross-tenant leakage.
+100% Firebase Firestore connected with strict user & candidate persona isolation.
+Zero cross-tenant leakage.
 """
 
 import json
 from typing import Any, Dict, List, Optional
-from my_agent.tools.db_tools import get_supabase
+from my_agent.tools.db_tools import get_firestore, get_firebase_db
 from my_agent.tools.embedding_tools import embed_query
 
 
@@ -29,41 +29,19 @@ def search_knowledge_base(
     top_k: int = 10,
     match_threshold: float = 0.0
 ) -> List[Dict[str, Any]]:
-    """Strictly isolated semantic vector search over authenticated user & candidate documents in Supabase."""
+    """Strictly isolated semantic vector search over authenticated user & candidate documents in Firebase Firestore."""
     if not user_id:
         return []
 
     query_vector = embed_query(query)
-    sb = get_supabase()
+    db = get_firestore()
 
-    # 1. Try Supabase pgvector RPC function
-    try:
-        rpc_params = {
-            "query_embedding": query_vector,
-            "match_threshold": match_threshold,
-            "match_count": top_k * 2 if candidate_id else top_k,
-            "filter_user_id": user_id
-        }
-
-        res = sb.rpc("match_embeddings", rpc_params)
-        if res and isinstance(res, list) and len(res) > 0:
-            if candidate_id and candidate_id not in ("all", "candidate_all"):
-                res = [
-                    r for r in res
-                    if (r.get("chunk_metadata") or {}).get("candidate_id") == candidate_id
-                    or r.get("user_id") == candidate_id
-                ]
-            if res:
-                return res[:top_k]
-    except Exception as e:
-        print(f"[Supabase RPC vector search notice] {e}")
-
-    # 2. Query Supabase embeddings table with strict user_id filtering
+    # Query Firestore embeddings collection with user_id filtering
     try:
         filters = {"user_id": f"eq.{user_id}"}
-        rows = sb.select("embeddings", filters=filters, limit=100)
-        
-        # If candidate_id is specified, filter further in memory if candidate_id was stored in metadata
+        rows = db.select("embeddings", filters=filters, limit=200)
+
+        # If candidate_id is specified, filter further in memory
         if candidate_id and candidate_id not in ("all", "candidate_all"):
             rows = [
                 r for r in rows
@@ -108,12 +86,12 @@ def search_knowledge_base(
         results.sort(key=lambda x: x["similarity"], reverse=True)
         return results[:top_k]
     except Exception as e:
-        print(f"[Supabase direct vector search error] {e}")
+        print(f"[Firebase Firestore vector search error] {e}")
         return []
 
 
 def get_rag_context(query: str, user_id: str, candidate_id: Optional[str] = None, top_k: int = 8) -> str:
-    """Retrieves top relevant chunks from Supabase and formats them as RAG context for LLM prompt."""
+    """Retrieves top relevant chunks from Firebase Firestore and formats them as RAG context for LLM prompt."""
     if not user_id:
         return "No authenticated context available."
 
@@ -134,12 +112,12 @@ def get_rag_context(query: str, user_id: str, candidate_id: Optional[str] = None
 
 
 def seed_candidate_knowledge_bases(force: bool = False):
-    """Seeds initial authentic candidate profiles & embeddings directly into Supabase if empty."""
+    """Seeds initial authentic candidate profiles & embeddings directly into Firebase Firestore if empty."""
     from my_agent.tools.embedding_tools import embed_chunks
     from my_agent.tools.db_tools import store_embeddings, store_document, store_to_db, read_from_db
 
-    sb = get_supabase()
-    existing = sb.select("embeddings", limit=5)
+    db = get_firestore()
+    existing = db.select("embeddings", limit=5)
     if existing and len(existing) >= 3 and not force:
         return {"status": "already_seeded", "count": len(existing)}
 
@@ -168,7 +146,7 @@ def seed_candidate_knowledge_bases(force: bool = False):
         {
             "id": "candidate_krati",
             "name": "Krati Verma",
-            "email": "krati.verma@careeros.ai",
+            "email": "krati.verma@skillsetu.example",
             "role": "Lead Frontend Engineer & Design Systems Architect",
             "location": "Noida, Uttar Pradesh, India",
             "phone": "+91-9876543210",
@@ -188,7 +166,7 @@ def seed_candidate_knowledge_bases(force: bool = False):
         {
             "id": "candidate_vishnu",
             "name": "Vishnu Kumar",
-            "email": "vishnu.kumar@careeros.ai",
+            "email": "vishnu.kumar@skillsetu.example",
             "role": "Senior Full-Stack Developer & Distributed Systems Engineer",
             "location": "Noida, Uttar Pradesh, India",
             "phone": "+91-9123456789",
@@ -208,8 +186,8 @@ def seed_candidate_knowledge_bases(force: bool = False):
     ]
 
     for cand in candidates_data:
-        # 1. Store profile in Supabase
-        sb.insert("profiles", {
+        # 1. Store profile in Firestore
+        db.insert("profiles", {
             "id": cand["id"],
             "user_id": cand["id"],
             "name": cand["name"],
@@ -222,7 +200,7 @@ def seed_candidate_knowledge_bases(force: bool = False):
             "search_keywords": [f"{s} jobs" for s in cand["skills"][:4]]
         })
 
-        # 2. Store document in Supabase
+        # 2. Store document in Firestore
         raw_md = f"# {cand['name']}\n**{cand['role']}**\n{cand['email']} | {cand['phone']} | {cand['location']}\n\n## Professional Summary\n{cand['bio']}\n\n## Technical Skills\n{', '.join(cand['skills'])}\n\n## Experience\n"
         for exp in cand["experiences"]:
             raw_md += f"- **{exp['role']}** at {exp['company']} ({exp['period']}): {exp['desc']}\n"
@@ -242,7 +220,7 @@ def seed_candidate_knowledge_bases(force: bool = False):
             candidate_id=cand["id"]
         )
 
-        # 3. Embed chunks and store in Supabase
+        # 3. Embed chunks and store in Firestore
         chunks = [
             {"text": f"Candidate: {cand['name']} ({cand['role']}). {cand['bio']}", "meta": {"heading": "Profile Summary", "candidate_id": cand["id"]}},
             {"text": f"Skills for {cand['name']}: {', '.join(cand['skills'])}", "meta": {"heading": "Technical Skills", "candidate_id": cand["id"]}}

@@ -6,6 +6,7 @@ import {
   Minimize2,
   Hand,
   ShieldCheck,
+  AlertCircle,
 } from "lucide-react";
 import { AudioStreamingManager } from "./AudioStreamingManager";
 import { INITIAL_RUBRIC_STAGES, INTERVIEWER_PROFILES } from "./interviewData";
@@ -51,6 +52,8 @@ export default function LiveInterviewRoom({
   const [userVolume, setUserVolume] = useState(0);
   const [isConnecting, setIsConnecting] = useState(true);
   const [isInterrupted, setIsInterrupted] = useState(false);
+  const [wsError, setWsError] = useState(null);
+  const [retryCount, setRetryCount] = useState(0);
   const [currentCaption, setCurrentCaption] = useState({
     speaker: "none",
     speakerName: "",
@@ -185,18 +188,19 @@ export default function LiveInterviewRoom({
           setIsConnecting(false);
           audioManager.playAudioChunk(msg.data);
           setIsInterrupted(false);
-        } else if (msg.type === "output_transcript") {
+        } else if (msg.type === "output_transcript" || (msg.type === "transcript" && msg.role === "interviewer")) {
+          const textToSpeak = msg.text;
           setCurrentCaption({
             speaker: "ai",
             speakerName: selectedProfile.name,
-            text: msg.text,
+            text: textToSpeak,
           });
           setTranscripts((prev) => {
             const last = prev[prev.length - 1];
             if (last && last.speaker === "ai" && !last.isFinal) {
               return [
                 ...prev.slice(0, -1),
-                { ...last, text: last.text + " " + msg.text },
+                { ...last, text: last.text + " " + textToSpeak },
               ];
             }
             return [
@@ -205,7 +209,7 @@ export default function LiveInterviewRoom({
                 id: `ai-${Date.now()}`,
                 speaker: "ai",
                 speakerName: selectedProfile.name,
-                text: msg.text,
+                text: textToSpeak,
                 timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
                 isFinal: false,
               },
@@ -244,6 +248,8 @@ export default function LiveInterviewRoom({
           }));
         } else if (msg.type === "error") {
           console.error("❌ Server error:", msg.message);
+          setWsError(msg.message || "Connection error");
+          setIsConnecting(false);
         } else if (msg.type === "session_closed") {
           console.warn("⚠️ Gemini Live session closed by server");
         }
@@ -252,7 +258,16 @@ export default function LiveInterviewRoom({
       }
     };
 
-    const wsUrl = `ws://${window.location.hostname || "localhost"}:3000/api/live`;
+    const configuredApiBase = import.meta.env.VITE_API_BASE || "/api";
+    const pageHost = window.location.hostname;
+    const apiBase = configuredApiBase.startsWith("/")
+      ? `${window.location.protocol}//${pageHost}:8001`
+      : configuredApiBase.replace(/localhost:8000(?=\/|$)/, `${pageHost}:8001`);
+    const apiUrl = new URL(apiBase, window.location.origin);
+    const wsProtocol = apiUrl.protocol === "https:" ? "wss:" : "ws:";
+    const wsUrl = `${wsProtocol}//${apiUrl.host}/ws/live-interview?company=${encodeURIComponent(config.company || "Google Cloud")}&role=${encodeURIComponent(config.role || "Senior Software Engineer")}&candidate=${encodeURIComponent(config.candidateName || "Candidate")}&voice=${encodeURIComponent(selectedProfile.voice || "Zephyr")}&seniority=${encodeURIComponent(config.seniority || "Senior")}&format=${encodeURIComponent(config.format || "Full Technical & Coding")}`;
+    setWsError(null);
+    setIsConnecting(true);
     const ws = new WebSocket(wsUrl);
     socketRef.current = ws;
 
@@ -284,13 +299,20 @@ export default function LiveInterviewRoom({
 
     ws.onmessage = handleSocketMessage;
 
-    ws.onclose = (e) => {
-      console.warn("🔌 WebSocket closed:", e.code, e.reason);
+    ws.onerror = (err) => {
+      console.error("WebSocket error on", wsUrl, err);
+      setWsError(`Cannot reach the live interview backend at ${apiUrl.host}. Start the FastAPI app on port 8001 and verify GEMINI_API_KEY/GEMINI_LIVE_MODEL in the backend environment.`);
+      setIsConnecting(false);
     };
 
-    ws.onerror = (err) => {
-      console.warn("WebSocket error on", wsUrl, err);
-      setIsConnecting(false);
+    ws.onclose = (e) => {
+      console.warn("🔌 WebSocket closed:", e.code, e.reason);
+      if (isMounted && !wsError && retryCount < 3 && e.code !== 1000) {
+        const delay = Math.pow(2, retryCount) * 1000;
+        setTimeout(() => {
+          setRetryCount((prev) => prev + 1);
+        }, delay);
+      }
     };
 
     // Forward mic audio PCM to WebSocket
@@ -320,45 +342,13 @@ export default function LiveInterviewRoom({
         console.log("✅ Audio capture started with lobby stream");
       } else {
         console.warn("⚠️ Lobby stream audio tracks are dead, requesting new stream...");
-        navigator.mediaDevices
-          ?.getUserMedia({
-            audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true },
-            video: { width: { ideal: 640 }, height: { ideal: 360 } },
-          })
-          .then((stream) => {
-            if (isMounted) {
-              activeStreamRef.current = stream;
-              audioManager.startAudioCapture(stream);
-              if (videoFeedRef.current) {
-                videoFeedRef.current.srcObject = stream;
-              }
-              console.log("✅ Audio capture started with NEW stream");
-            }
-          })
-          .catch((err) => {
-            console.error("❌ Could not get media stream:", err);
-          });
+        setWsError("Lobby microphone stream ended. Return to the lobby and rejoin with microphone permission enabled.");
+        setIsConnecting(false);
       }
     } else {
       console.warn("⚠️ No userStream provided, requesting new stream...");
-      navigator.mediaDevices
-        ?.getUserMedia({
-          audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true },
-          video: { width: { ideal: 640 }, height: { ideal: 360 } },
-        })
-        .then((stream) => {
-          if (isMounted) {
-            activeStreamRef.current = stream;
-            audioManager.startAudioCapture(stream);
-            if (videoFeedRef.current) {
-              videoFeedRef.current.srcObject = stream;
-            }
-            console.log("✅ Audio capture started with fallback stream");
-          }
-        })
-        .catch((err) => {
-          console.error("❌ Could not get media stream:", err);
-        });
+      setWsError("Microphone stream is unavailable. Return to the lobby and allow microphone access before joining.");
+      setIsConnecting(false);
     }
 
     // Video Frame Streaming Loop (~1 FPS, 640x360 high-definition vision feed)
@@ -394,12 +384,14 @@ export default function LiveInterviewRoom({
       isMounted = false;
       clearInterval(analyticsTimer);
       if (frameIntervalRef.current) clearInterval(frameIntervalRef.current);
-      audioManager.cleanup();
       if (ws.readyState === WebSocket.OPEN || ws.readyState === WebSocket.CONNECTING) {
         ws.close();
       }
+      setTimeout(() => {
+        if (socketRef.current === ws) audioManager.cleanup();
+      }, 0);
     };
-  }, []);
+  }, [retryCount]);
 
   // Sync mute state
   useEffect(() => {
@@ -587,15 +579,15 @@ export default function LiveInterviewRoom({
       candidateResume: config.candidateResume || config.resumeText,
       conductWarnings: conductWarnings,
       interviewerObservations: interviewerObservations,
-      codeSnippet: lastCodeSnippet,
       conclusionData: conclusionData,
       notes: chatMessages.map((m) => `${m.senderName}: ${m.text}`).join("\n"),
     };
 
     try {
+      const apiBase = import.meta.env.VITE_API_BASE || "http://localhost:8001";
       let res;
       try {
-        res = await fetch("http://localhost:3000/api/evaluate-interview", {
+        res = await fetch(`${apiBase}/api/evaluate-interview`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(evalPayload),
@@ -652,8 +644,8 @@ export default function LiveInterviewRoom({
           executiveSummary: data.executive_summary || data.executiveSummary || "Completed full duplex bar-raiser simulation.",
           ...data,
         };
-        const existing = JSON.parse(localStorage.getItem("careeros_interview_history") || "[]");
-        localStorage.setItem("careeros_interview_history", JSON.stringify([historyItem, ...existing.slice(0, 50)]));
+        const existing = JSON.parse(localStorage.getItem("skillsetu_interview_history") || "[]");
+        localStorage.setItem("skillsetu_interview_history", JSON.stringify([historyItem, ...existing.slice(0, 50)]));
       } catch (saveErr) {
         console.warn("[Interview History Save Error]", saveErr);
       }
@@ -670,13 +662,35 @@ export default function LiveInterviewRoom({
   };
 
   return (
-    <div className="h-screen w-screen bg-slate-950 text-slate-100 flex flex-col overflow-hidden select-none relative font-sans">
+    <div className="live-interview-room h-screen w-screen bg-slate-950 text-slate-100 flex flex-col overflow-hidden select-none relative font-sans">
       {/* Hidden elements for video frame capture */}
       <video ref={videoFeedRef} autoPlay playsInline muted className="hidden" />
       <canvas ref={hiddenCanvasRef} className="hidden" />
 
       {/* Floating Emojis */}
       <FloatingReactions reactions={reactions} />
+
+      {/* Connection Error Banner */}
+      {wsError && (
+      <div className="absolute top-0 left-0 right-0 z-50 bg-rose-950/95 border-b-2 border-rose-500 px-4 py-2.5 flex items-center justify-between text-white">
+          <div className="flex items-center gap-3">
+            <AlertCircle className="w-5 h-5 text-rose-400 flex-shrink-0" />
+            <div>
+              <span className="text-xs font-bold text-rose-300 uppercase tracking-wider">Connection Error</span>
+              <p className="text-sm text-rose-200 mt-0.5">{wsError}</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] text-slate-400">Retry: {retryCount}/3</span>
+            <button
+              onClick={() => { setWsError(null); setRetryCount(0); }}
+              className="text-xs px-3 py-1 bg-slate-800 hover:bg-slate-700 rounded-lg font-bold transition-colors"
+            >
+              Retry
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Top Meeting Bar */}
       <header className="h-14 px-4 sm:px-6 bg-slate-950 border-b border-slate-800 flex items-center justify-between z-20">

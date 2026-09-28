@@ -1,4 +1,4 @@
-"""Resume extraction tool for CareerOS powered by LiteLLM & Groq Cloud LLM with Pydantic validation."""
+"""Resume extraction tool for SkillSetu powered by LiteLLM & Groq Cloud LLM with Pydantic validation."""
 
 import json
 import re

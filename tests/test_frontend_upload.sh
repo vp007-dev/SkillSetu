@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
-# Shell test script for FastAPI CareerOS v3 Document Upload & RAG Search
+# Shell test script for FastAPI SkillSetu v3 Document Upload & RAG Search
 
-API_URL="http://127.0.0.1:8000"
+API_URL="http://127.0.0.1:8001"
 
-echo "=== CareerOS v3 API Server Upload Test ==="
+echo "=== SkillSetu v3 API Server Upload Test ==="
 
 # 1. Test root endpoint
 echo "1. Checking Root API Status..."
-curl -s "${API_URL}/" | grep -q "CareerOS v3" && echo "  ✅ Root endpoint responsive" || echo "  ❌ Server offline"
+curl -s "${API_URL}/" | grep -q "SkillSetu v3" && echo "  ✅ Root endpoint responsive" || echo "  ❌ Server offline"
 
 # 2. Test Document Upload (Multi-part form)
 echo "2. Uploading Sample Resume Document..."

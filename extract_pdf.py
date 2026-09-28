@@ -72,7 +72,7 @@ def extract_pdf_text(pdf_path):
 
 
 if __name__ == '__main__':
-    text = extract_pdf_text(r'd:\careerOS\PS Automate India Hack.pdf')
-    with open(r'd:\careerOS\pdf_text.txt', 'w', encoding='utf-8') as f:
+    text = extract_pdf_text(r'd:\SkillSetu\PS Automate India Hack.pdf')
+    with open(r'd:\SkillSetu\pdf_text.txt', 'w', encoding='utf-8') as f:
         f.write(text)
     print("Extracted to pdf_text.txt, length:", len(text))

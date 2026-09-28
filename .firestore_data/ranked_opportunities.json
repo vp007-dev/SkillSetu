@@ -1,0 +1,1222 @@
+[
+  {
+    "id": "d1879ebd-fd34-4c9a-9890-eea6316f8e8c",
+    "opportunity_id": "007b285a-6478-495d-9c07-82e102179bd6",
+    "profile_id": "304a12ba-f38c-4138-8d4b-06224383882f",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: competition"
+    ],
+    "rank": 1,
+    "category": "competition",
+    "created_at": null,
+    "title": "Software job Competitions on Unstop",
+    "url": "https://unstop.com/competitions?search=Software%20job"
+  },
+  {
+    "id": "b5042aed-2de8-414a-878f-7316ad2162ad",
+    "opportunity_id": "5ae17d38-df2b-42fa-b718-b74e507d4631",
+    "profile_id": "304a12ba-f38c-4138-8d4b-06224383882f",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: competition"
+    ],
+    "rank": 2,
+    "category": "competition",
+    "created_at": null,
+    "title": "Software job Coding Challenges on HackerEarth",
+    "url": "https://www.hackerearth.com/challenges/"
+  },
+  {
+    "id": "ffb5414d-66f1-4e06-ba14-3ccf6aa2401b",
+    "opportunity_id": "26715dfe-c91f-44d8-becc-f96417c0ea6f",
+    "profile_id": "304a12ba-f38c-4138-8d4b-06224383882f",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: competition"
+    ],
+    "rank": 3,
+    "category": "competition",
+    "created_at": null,
+    "title": "Software job Data Science & AI Competitions on Kaggle",
+    "url": "https://www.kaggle.com/competitions?search=Software%20job"
+  },
+  {
+    "id": "a013ea63-b2e3-4623-b949-c3d06f9c94ed",
+    "opportunity_id": "49b6e4f7-c75b-4ae4-8b6c-f487460b35de",
+    "profile_id": "304a12ba-f38c-4138-8d4b-06224383882f",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: hackathon"
+    ],
+    "rank": 4,
+    "category": "hackathon",
+    "created_at": null,
+    "title": "Major League Hacking (MLH) Season",
+    "url": "https://mlh.io/seasons/2025/events"
+  },
+  {
+    "id": "67c3ed72-e80a-439b-9c1c-018e0166123e",
+    "opportunity_id": "3160f4a5-c442-4df9-8cfb-e9b217ac65c9",
+    "profile_id": "304a12ba-f38c-4138-8d4b-06224383882f",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: hackathon"
+    ],
+    "rank": 5,
+    "category": "hackathon",
+    "created_at": null,
+    "title": "Software job Hackathons on Unstop",
+    "url": "https://unstop.com/hackathons?search=Software%20job"
+  },
+  {
+    "id": "09321fde-aa2a-4c65-906c-b7dbb8c9da4a",
+    "opportunity_id": "05a4b374-7d4c-4c4e-ad4d-96592cb99836",
+    "profile_id": "304a12ba-f38c-4138-8d4b-06224383882f",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: hackathon"
+    ],
+    "rank": 6,
+    "category": "hackathon",
+    "created_at": null,
+    "title": "Software job Global Hackathons on Devpost",
+    "url": "https://devpost.com/hackathons?search=Software%20job"
+  },
+  {
+    "id": "cda0ef4b-c7b8-4eea-8e27-75a15cc9ffde",
+    "opportunity_id": "604c21de-3e2d-4270-9b80-2e16e4cec8b5",
+    "profile_id": "304a12ba-f38c-4138-8d4b-06224383882f",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: job"
+    ],
+    "rank": 7,
+    "category": "job",
+    "created_at": null,
+    "title": "Software job Direct Google Career Portal",
+    "url": "https://www.google.com/search?ibp=htl;jobs&q=Software%20job+jobs+in+Noida+apply"
+  },
+  {
+    "id": "96daf4b4-6529-4e22-ae49-a9a4edb89a8f",
+    "opportunity_id": "64c547c4-4e63-4376-bc1a-39181b05a4da",
+    "profile_id": "304a12ba-f38c-4138-8d4b-06224383882f",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: job"
+    ],
+    "rank": 8,
+    "category": "job",
+    "created_at": null,
+    "title": "Software job Tech Roles on Wellfound (AngelList)",
+    "url": "https://wellfound.com/jobs?role=Software%20job"
+  },
+  {
+    "id": "f2422707-e15e-44eb-8881-8328b26087a5",
+    "opportunity_id": "9f224df4-489d-4ba7-9ad7-15e33d32b5fa",
+    "profile_id": "304a12ba-f38c-4138-8d4b-06224383882f",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: job"
+    ],
+    "rank": 9,
+    "category": "job",
+    "created_at": null,
+    "title": "Software job Openings on Indeed",
+    "url": "https://in.indeed.com/jobs?q=Software%20job&l=Noida"
+  },
+  {
+    "id": "0b72c65c-c77a-4c61-9734-c07511623afe",
+    "opportunity_id": "81598a64-09e0-412b-a4c8-74b80e20e9b9",
+    "profile_id": "304a12ba-f38c-4138-8d4b-06224383882f",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: job"
+    ],
+    "rank": 10,
+    "category": "job",
+    "created_at": null,
+    "title": "Software job Openings on LinkedIn Jobs",
+    "url": "https://www.linkedin.com/jobs/search/?keywords=Software%20job&location=Noida%2C%20India"
+  },
+  {
+    "id": "0cee86c7-afe0-4360-92a5-0cec9c4ccd98",
+    "opportunity_id": "a492cdb8-8b51-46b6-8be5-63809dc8b805",
+    "profile_id": "5ef8fb53-64e2-4cd4-a856-0b2f3ca0de4a",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: competition"
+    ],
+    "rank": 1,
+    "category": "competition",
+    "created_at": null,
+    "title": "Software job Competitions on Unstop",
+    "url": "https://unstop.com/competitions?search=Software%20job"
+  },
+  {
+    "id": "212f8a34-4018-409c-9270-54335dd4accb",
+    "opportunity_id": "ef51ac76-e9a0-4729-9dba-f4cf092caa67",
+    "profile_id": "5ef8fb53-64e2-4cd4-a856-0b2f3ca0de4a",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: competition"
+    ],
+    "rank": 2,
+    "category": "competition",
+    "created_at": null,
+    "title": "Software job Coding Challenges on HackerEarth",
+    "url": "https://www.hackerearth.com/challenges/"
+  },
+  {
+    "id": "f72919b1-d6be-43aa-8fcc-8a80d65dd54a",
+    "opportunity_id": "bdfd9042-dab0-4a08-8b35-6c332f95771f",
+    "profile_id": "5ef8fb53-64e2-4cd4-a856-0b2f3ca0de4a",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: competition"
+    ],
+    "rank": 3,
+    "category": "competition",
+    "created_at": null,
+    "title": "Software job Data Science & AI Competitions on Kaggle",
+    "url": "https://www.kaggle.com/competitions?search=Software%20job"
+  },
+  {
+    "id": "2dcaa2ed-03af-40d8-9d34-0803cc550df4",
+    "opportunity_id": "d12a78e6-3a9b-44a1-9de2-bbe762c7119d",
+    "profile_id": "5ef8fb53-64e2-4cd4-a856-0b2f3ca0de4a",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: job"
+    ],
+    "rank": 4,
+    "category": "job",
+    "created_at": null,
+    "title": "Software job Direct Google Career Portal",
+    "url": "https://www.google.com/search?ibp=htl;jobs&q=Software%20job+jobs+in+Noida+apply"
+  },
+  {
+    "id": "89eb424c-7b68-47ce-a8ef-63c915e16640",
+    "opportunity_id": "2978a5db-b7a9-4edb-929d-5bb18f833768",
+    "profile_id": "5ef8fb53-64e2-4cd4-a856-0b2f3ca0de4a",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: job"
+    ],
+    "rank": 5,
+    "category": "job",
+    "created_at": null,
+    "title": "Software job Tech Roles on Wellfound (AngelList)",
+    "url": "https://wellfound.com/jobs?role=Software%20job"
+  },
+  {
+    "id": "55e85f94-b1b4-4ede-882b-555ba830cc86",
+    "opportunity_id": "071ff5f2-9a70-453e-b318-3a3fafe508d2",
+    "profile_id": "5ef8fb53-64e2-4cd4-a856-0b2f3ca0de4a",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: job"
+    ],
+    "rank": 6,
+    "category": "job",
+    "created_at": null,
+    "title": "Software job Openings on Indeed",
+    "url": "https://in.indeed.com/jobs?q=Software%20job&l=Noida"
+  },
+  {
+    "id": "732cad07-06b5-4219-bab6-b4a1d1f2656c",
+    "opportunity_id": "6c093921-ccbd-425b-8aea-d33dfee70628",
+    "profile_id": "5ef8fb53-64e2-4cd4-a856-0b2f3ca0de4a",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: job"
+    ],
+    "rank": 7,
+    "category": "job",
+    "created_at": null,
+    "title": "Software job Openings on LinkedIn Jobs",
+    "url": "https://www.linkedin.com/jobs/search/?keywords=Software%20job&location=Noida%2C%20India"
+  },
+  {
+    "id": "03fc1b6a-a16d-49b9-8eb3-1ed9d9c1a45c",
+    "opportunity_id": "8e28a3f9-f2ec-4025-903b-78b6afc7105c",
+    "profile_id": "f8d68ae8-22bf-4382-aa71-6a5f75c82b69",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: competition"
+    ],
+    "rank": 1,
+    "category": "competition",
+    "created_at": null,
+    "title": "Software job Competitions on Unstop",
+    "url": "https://unstop.com/competitions?search=Software%20job"
+  },
+  {
+    "id": "2de42f33-b439-43ba-92a8-982d0df9e05e",
+    "opportunity_id": "8dcdd95b-a03c-43d7-acca-3278c89c301c",
+    "profile_id": "f8d68ae8-22bf-4382-aa71-6a5f75c82b69",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: competition"
+    ],
+    "rank": 2,
+    "category": "competition",
+    "created_at": null,
+    "title": "Software job Coding Challenges on HackerEarth",
+    "url": "https://www.hackerearth.com/challenges/"
+  },
+  {
+    "id": "bfd7fc44-22b6-42df-9644-86cb75f66bb3",
+    "opportunity_id": "ba7849d2-1d54-4e65-be5f-bbd5f18cf7bc",
+    "profile_id": "f8d68ae8-22bf-4382-aa71-6a5f75c82b69",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: competition"
+    ],
+    "rank": 3,
+    "category": "competition",
+    "created_at": null,
+    "title": "Software job Data Science & AI Competitions on Kaggle",
+    "url": "https://www.kaggle.com/competitions?search=Software%20job"
+  },
+  {
+    "id": "0522a3e2-0260-452a-aa0e-0b75c8075f13",
+    "opportunity_id": "1c74f2c5-a80b-45da-8de6-3d3f3e935fc9",
+    "profile_id": "f8d68ae8-22bf-4382-aa71-6a5f75c82b69",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: hackathon"
+    ],
+    "rank": 4,
+    "category": "hackathon",
+    "created_at": null,
+    "title": "Major League Hacking (MLH) Season",
+    "url": "https://mlh.io/seasons/2025/events"
+  },
+  {
+    "id": "70100930-98fd-4aab-9416-d7ab372d9753",
+    "opportunity_id": "98b4709e-fae4-4c80-930c-0add42c4d23a",
+    "profile_id": "f8d68ae8-22bf-4382-aa71-6a5f75c82b69",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: hackathon"
+    ],
+    "rank": 5,
+    "category": "hackathon",
+    "created_at": null,
+    "title": "Software job Hackathons on Unstop",
+    "url": "https://unstop.com/hackathons?search=Software%20job"
+  },
+  {
+    "id": "b4580e6e-f7b9-459a-badc-6aa392f6a5b7",
+    "opportunity_id": "7f679efb-ec94-409b-8148-d7d164a25ad4",
+    "profile_id": "f8d68ae8-22bf-4382-aa71-6a5f75c82b69",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: hackathon"
+    ],
+    "rank": 6,
+    "category": "hackathon",
+    "created_at": null,
+    "title": "Software job Global Hackathons on Devpost",
+    "url": "https://devpost.com/hackathons?search=Software%20job"
+  },
+  {
+    "id": "d2e0d949-1c86-4bd3-99de-52327fe1f010",
+    "opportunity_id": "044d2b10-32bd-489f-a35f-f174572a3239",
+    "profile_id": "f8d68ae8-22bf-4382-aa71-6a5f75c82b69",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: job"
+    ],
+    "rank": 7,
+    "category": "job",
+    "created_at": null,
+    "title": "Software job Direct Google Career Portal",
+    "url": "https://www.google.com/search?ibp=htl;jobs&q=Software%20job+jobs+in+Noida+apply"
+  },
+  {
+    "id": "9ab9962f-5ad3-48c5-a258-f64f1dd85537",
+    "opportunity_id": "beafdbf1-9423-4684-a824-adc7bb80c34a",
+    "profile_id": "f8d68ae8-22bf-4382-aa71-6a5f75c82b69",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: job"
+    ],
+    "rank": 8,
+    "category": "job",
+    "created_at": null,
+    "title": "Software job Tech Roles on Wellfound (AngelList)",
+    "url": "https://wellfound.com/jobs?role=Software%20job"
+  },
+  {
+    "id": "80181313-3dde-46a8-97b5-f08247f919c9",
+    "opportunity_id": "62443715-01d3-4303-8e85-e67472a3e2e7",
+    "profile_id": "f8d68ae8-22bf-4382-aa71-6a5f75c82b69",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: job"
+    ],
+    "rank": 9,
+    "category": "job",
+    "created_at": null,
+    "title": "Software job Openings on Indeed",
+    "url": "https://in.indeed.com/jobs?q=Software%20job&l=Noida"
+  },
+  {
+    "id": "d0f0708b-de5d-4961-b659-1c5150af6114",
+    "opportunity_id": "13b5e85a-f0b6-4a01-aad6-a2f1baa43d50",
+    "profile_id": "f8d68ae8-22bf-4382-aa71-6a5f75c82b69",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: job"
+    ],
+    "rank": 10,
+    "category": "job",
+    "created_at": null,
+    "title": "Software job Openings on LinkedIn Jobs",
+    "url": "https://www.linkedin.com/jobs/search/?keywords=Software%20job&location=Noida%2C%20India"
+  },
+  {
+    "id": "00c75157-95bc-418d-8b2a-29369d99c0f0",
+    "opportunity_id": "7aaf9c7d-edb0-483b-9f72-680e1fa24ed1",
+    "profile_id": "b910880b-2d11-4bd8-a519-2f7a0e29b987",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: competition"
+    ],
+    "rank": 1,
+    "category": "competition",
+    "created_at": null,
+    "title": "Software job Competitions on Unstop",
+    "url": "https://unstop.com/competitions?search=Software%20job"
+  },
+  {
+    "id": "3c6db412-de66-427b-b3e8-914f646ae60c",
+    "opportunity_id": "011282e7-d2a1-41b0-8b38-86657a9c33a3",
+    "profile_id": "b910880b-2d11-4bd8-a519-2f7a0e29b987",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: competition"
+    ],
+    "rank": 2,
+    "category": "competition",
+    "created_at": null,
+    "title": "Software job Coding Challenges on HackerEarth",
+    "url": "https://www.hackerearth.com/challenges/"
+  },
+  {
+    "id": "70567b8e-7ba7-40cf-a06b-0e486485a694",
+    "opportunity_id": "d59556db-662a-4e82-aba6-ecd5ec752512",
+    "profile_id": "b910880b-2d11-4bd8-a519-2f7a0e29b987",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: competition"
+    ],
+    "rank": 3,
+    "category": "competition",
+    "created_at": null,
+    "title": "Software job Data Science & AI Competitions on Kaggle",
+    "url": "https://www.kaggle.com/competitions?search=Software%20job"
+  },
+  {
+    "id": "5acfc71d-aec4-4928-9441-4e2bbffcae28",
+    "opportunity_id": "e2d49ffd-8c40-4b40-9dc9-bce972c3af90",
+    "profile_id": "b910880b-2d11-4bd8-a519-2f7a0e29b987",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: job"
+    ],
+    "rank": 4,
+    "category": "job",
+    "created_at": null,
+    "title": "Software job Direct Google Career Portal",
+    "url": "https://www.google.com/search?ibp=htl;jobs&q=Software%20job+jobs+in+Noida+apply"
+  },
+  {
+    "id": "fe58a268-b31e-4864-9f7c-d74db1818a01",
+    "opportunity_id": "562a7f15-5159-4d61-8b73-62c86115bd5a",
+    "profile_id": "b910880b-2d11-4bd8-a519-2f7a0e29b987",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: job"
+    ],
+    "rank": 5,
+    "category": "job",
+    "created_at": null,
+    "title": "Software job Tech Roles on Wellfound (AngelList)",
+    "url": "https://wellfound.com/jobs?role=Software%20job"
+  },
+  {
+    "id": "f034cdd9-cdcb-4725-b713-9210617021d5",
+    "opportunity_id": "c718b484-22ff-48df-a9e2-000a2c671127",
+    "profile_id": "b910880b-2d11-4bd8-a519-2f7a0e29b987",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: job"
+    ],
+    "rank": 6,
+    "category": "job",
+    "created_at": null,
+    "title": "Software job Openings on Indeed",
+    "url": "https://in.indeed.com/jobs?q=Software%20job&l=Noida"
+  },
+  {
+    "id": "2fcf370f-9bfc-45e9-82ee-e01ca4841764",
+    "opportunity_id": "838397ec-1b39-4430-8990-a730d42c2c69",
+    "profile_id": "b910880b-2d11-4bd8-a519-2f7a0e29b987",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: job"
+    ],
+    "rank": 7,
+    "category": "job",
+    "created_at": null,
+    "title": "Software job Openings on LinkedIn Jobs",
+    "url": "https://www.linkedin.com/jobs/search/?keywords=Software%20job&location=Noida%2C%20India"
+  },
+  {
+    "id": "3396eadd-ff5b-4c4b-8138-03adc4cb1452",
+    "opportunity_id": "b5e9ac27-4564-4222-9569-6adae0c60eb7",
+    "profile_id": "99c99416-b51a-4f1b-9fe1-056012a4f457",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: hackathon"
+    ],
+    "rank": 1,
+    "category": "hackathon",
+    "created_at": null,
+    "title": "Major League Hacking (MLH) Season",
+    "url": "https://mlh.io/seasons/2025/events"
+  },
+  {
+    "id": "f02d4a4d-e692-48a6-aa43-e1b37e0cc593",
+    "opportunity_id": "1548636c-a383-41cf-9c17-a50f526eb58e",
+    "profile_id": "99c99416-b51a-4f1b-9fe1-056012a4f457",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: hackathon"
+    ],
+    "rank": 2,
+    "category": "hackathon",
+    "created_at": null,
+    "title": "Software job Hackathons on Unstop",
+    "url": "https://unstop.com/hackathons?search=Software%20job"
+  },
+  {
+    "id": "1a366340-c4a9-4416-9506-93596d0f430b",
+    "opportunity_id": "9c75438d-8206-483b-8af9-30247c40b5f0",
+    "profile_id": "99c99416-b51a-4f1b-9fe1-056012a4f457",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: hackathon"
+    ],
+    "rank": 3,
+    "category": "hackathon",
+    "created_at": null,
+    "title": "Software job Global Hackathons on Devpost",
+    "url": "https://devpost.com/hackathons?search=Software%20job"
+  },
+  {
+    "id": "08c906b9-eb5f-42c7-a091-d7d61079aa3c",
+    "opportunity_id": "56f5dac5-11a9-47ba-ac86-50e120427ab0",
+    "profile_id": "99c99416-b51a-4f1b-9fe1-056012a4f457",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: internship"
+    ],
+    "rank": 4,
+    "category": "internship",
+    "created_at": null,
+    "title": "Software job Direct Internship Portal via Google",
+    "url": "https://www.google.com/search?ibp=htl;jobs&q=Software%20job+internship+in+Noida+apply"
+  },
+  {
+    "id": "d5f608c0-4592-4238-91cb-79b10f4de7c4",
+    "opportunity_id": "89c1c3a7-0e10-453b-ad1c-0269a619e6b5",
+    "profile_id": "99c99416-b51a-4f1b-9fe1-056012a4f457",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: internship"
+    ],
+    "rank": 5,
+    "category": "internship",
+    "created_at": null,
+    "title": "Software job Internships on LinkedIn",
+    "url": "https://www.linkedin.com/jobs/search/?keywords=Software%20job%20internship&location=Noida%2C%20India&f_E=1"
+  },
+  {
+    "id": "0d2a32d9-c8cd-4d5f-83a4-425253b69f5e",
+    "opportunity_id": "21c049c1-a795-4154-9818-57e2e569e9e5",
+    "profile_id": "99c99416-b51a-4f1b-9fe1-056012a4f457",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: internship"
+    ],
+    "rank": 6,
+    "category": "internship",
+    "created_at": null,
+    "title": "Software job Internships on Unstop",
+    "url": "https://unstop.com/internships?search=Software%20job"
+  },
+  {
+    "id": "6d727c43-a8da-49c2-b358-b4c7adc27a98",
+    "opportunity_id": "b908c827-3de7-4807-bce2-8626b1e0e58e",
+    "profile_id": "99c99416-b51a-4f1b-9fe1-056012a4f457",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: internship"
+    ],
+    "rank": 7,
+    "category": "internship",
+    "created_at": null,
+    "title": "Software job Internships on Internshala",
+    "url": "https://internshala.com/internships/"
+  },
+  {
+    "id": "24d33f9e-58d1-4b27-8cfc-4fe0d5ae0a27",
+    "opportunity_id": "50ded443-f347-492f-8b29-36f93c3ef18c",
+    "profile_id": "99c99416-b51a-4f1b-9fe1-056012a4f457",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: job"
+    ],
+    "rank": 8,
+    "category": "job",
+    "created_at": null,
+    "title": "Software job Direct Google Career Portal",
+    "url": "https://www.google.com/search?ibp=htl;jobs&q=Software%20job+jobs+in+Noida+apply"
+  },
+  {
+    "id": "2eaa4ff1-7b91-4d23-8999-86f77af17287",
+    "opportunity_id": "f6721f58-c544-420d-b7e0-f2ca8927e65d",
+    "profile_id": "99c99416-b51a-4f1b-9fe1-056012a4f457",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: job"
+    ],
+    "rank": 9,
+    "category": "job",
+    "created_at": null,
+    "title": "Software job Tech Roles on Wellfound (AngelList)",
+    "url": "https://wellfound.com/jobs?role=Software%20job"
+  },
+  {
+    "id": "1a76bbdd-0163-4a8a-80d3-439288aec7c0",
+    "opportunity_id": "d0484aaa-483e-484e-953d-4927c78544f0",
+    "profile_id": "99c99416-b51a-4f1b-9fe1-056012a4f457",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: job"
+    ],
+    "rank": 10,
+    "category": "job",
+    "created_at": null,
+    "title": "Software job Openings on Indeed",
+    "url": "https://in.indeed.com/jobs?q=Software%20job&l=Noida"
+  },
+  {
+    "id": "6b8eaf3a-08ec-440c-9d36-3b8b9cc681bc",
+    "opportunity_id": "330b885a-a51f-4512-9158-2c856657d8f5",
+    "profile_id": "99c99416-b51a-4f1b-9fe1-056012a4f457",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: job"
+    ],
+    "rank": 11,
+    "category": "job",
+    "created_at": null,
+    "title": "Software job Openings on LinkedIn Jobs",
+    "url": "https://www.linkedin.com/jobs/search/?keywords=Software%20job&location=Noida%2C%20India"
+  },
+  {
+    "id": "fe1485ab-bd89-4137-a0f1-48cdf9f9fdae",
+    "opportunity_id": "150ae0ec-7a92-4c90-9351-01fbf1fa45b2",
+    "profile_id": "a1b0b7b1-f40a-486f-8caf-bb68eacd00ae",
+    "user_id": "default-user",
+    "relevance_score": 70,
+    "match_reasons": [
+      "Role match: Software Developer"
+    ],
+    "rank": 1,
+    "category": "competition",
+    "created_at": null,
+    "title": "USAII® Global AI Hackathon 2026: (* REGISTRATION EXPIRED JUNE 6 ...",
+    "url": "https://usaii-global-ai-hackathon-2026.devpost.com/"
+  },
+  {
+    "id": "b48c60df-c206-4b4c-ae8a-dc51711dfa6e",
+    "opportunity_id": "533e390f-d72c-403b-9a4f-df86e33c6e6c",
+    "profile_id": "a1b0b7b1-f40a-486f-8caf-bb68eacd00ae",
+    "user_id": "default-user",
+    "relevance_score": 70,
+    "match_reasons": [
+      "Role match: Software Developer"
+    ],
+    "rank": 2,
+    "category": "job",
+    "created_at": null,
+    "title": "Software Developer Jobs In Noida - Naukri.com",
+    "url": "https://www.naukri.com/software-developer-jobs-in-noida"
+  },
+  {
+    "id": "e9ed7a15-899c-43ab-b79a-c0b284635806",
+    "opportunity_id": "c6b89407-3ba5-4535-9d93-9f2a57bde736",
+    "profile_id": "a1b0b7b1-f40a-486f-8caf-bb68eacd00ae",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: hackathon"
+    ],
+    "rank": 3,
+    "category": "hackathon",
+    "created_at": null,
+    "title": "DeveloperWeek New York 2026 Hackathon: Join the nation's largest ...",
+    "url": "https://dwny-2026-hackathon.devpost.com/"
+  },
+  {
+    "id": "32b2d9b2-859e-47e3-a428-8ce42bf0c401",
+    "opportunity_id": "4a9eb09d-df7b-4057-9300-5cf353ff9e6e",
+    "profile_id": "a1b0b7b1-f40a-486f-8caf-bb68eacd00ae",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: hackathon"
+    ],
+    "rank": 4,
+    "category": "hackathon",
+    "created_at": null,
+    "title": "Unstop: Internships | Jobs | Competitions | Hackathons | Courses",
+    "url": "https://unstop.com/"
+  },
+  {
+    "id": "ea252e72-466c-4b5b-af24-92775f014d74",
+    "opportunity_id": "30d9ab0b-c8d2-43cc-a111-c09f351fcc6a",
+    "profile_id": "a1b0b7b1-f40a-486f-8caf-bb68eacd00ae",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: hackathon"
+    ],
+    "rank": 5,
+    "category": "hackathon",
+    "created_at": null,
+    "title": "USAII® Global AI Hackathon 2026: (* REGISTRATION EXPIRED JUNE 6 ...",
+    "url": "https://usaii-global-ai-hackathon-2026.devpost.com/"
+  },
+  {
+    "id": "b79fc359-737e-4b3c-9156-2585533dc8ce",
+    "opportunity_id": "af4b3d35-bda2-4abe-943d-7e0856cff92a",
+    "profile_id": "a1b0b7b1-f40a-486f-8caf-bb68eacd00ae",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: hackathon"
+    ],
+    "rank": 6,
+    "category": "hackathon",
+    "created_at": null,
+    "title": "2540+ Hackathons in India 2026 – Online & Student Challenges - Unstop",
+    "url": "https://unstop.com/hackathons"
+  },
+  {
+    "id": "c54e7548-5c05-4bdb-817d-79728eb9e7e3",
+    "opportunity_id": "1113c9a1-5395-42d8-81ca-2fdde3b1fee4",
+    "profile_id": "a1b0b7b1-f40a-486f-8caf-bb68eacd00ae",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: hackathon"
+    ],
+    "rank": 7,
+    "category": "hackathon",
+    "created_at": null,
+    "title": "Devpost - The home for hackathons",
+    "url": "https://devpost.com/"
+  },
+  {
+    "id": "89f23d66-689e-4054-b19f-f24acd49a075",
+    "opportunity_id": "24e1988f-2fb4-424e-a6cf-1fb9093eb157",
+    "profile_id": "a1b0b7b1-f40a-486f-8caf-bb68eacd00ae",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: hackathon"
+    ],
+    "rank": 8,
+    "category": "hackathon",
+    "created_at": null,
+    "title": "New & upcoming hackathons - Devpost",
+    "url": "https://devpost.com/hackathons"
+  },
+  {
+    "id": "3b1ee6b6-6eb4-4881-b9ed-894545cc1641",
+    "opportunity_id": "e23e0cf2-a498-4c78-bea9-9c2e31d676e1",
+    "profile_id": "a1b0b7b1-f40a-486f-8caf-bb68eacd00ae",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: competition"
+    ],
+    "rank": 9,
+    "category": "competition",
+    "created_at": null,
+    "title": "New & upcoming hackathons - Devpost",
+    "url": "https://devpost.com/hackathons"
+  },
+  {
+    "id": "b0abeaba-62aa-4b90-bf05-2d77bc98b511",
+    "opportunity_id": "fcd5ce1d-46e4-4cc8-bb0b-f31bff234a10",
+    "profile_id": "a1b0b7b1-f40a-486f-8caf-bb68eacd00ae",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: competition"
+    ],
+    "rank": 10,
+    "category": "competition",
+    "created_at": null,
+    "title": "Software Engineer - Graduate 2026 Job at Google | Multiple Locations",
+    "url": "https://unstop.com/jobs/software-engineer-graduate-2026-google-1462355"
+  },
+  {
+    "id": "636a7be1-8d1c-48a3-b2fa-5a5a2cbf862c",
+    "opportunity_id": "8fc0ee53-dc9f-4445-8eb8-6ab64759fd0d",
+    "profile_id": "a1b0b7b1-f40a-486f-8caf-bb68eacd00ae",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: competition"
+    ],
+    "rank": 11,
+    "category": "competition",
+    "created_at": null,
+    "title": "Kaggle Competitions",
+    "url": "https://www.kaggle.com/competitions"
+  },
+  {
+    "id": "b7ba4bdd-5157-442a-b821-103ba0bc9b44",
+    "opportunity_id": "e2ff9522-76b1-46dc-8814-269ee4f46852",
+    "profile_id": "a1b0b7b1-f40a-486f-8caf-bb68eacd00ae",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: competition"
+    ],
+    "rank": 12,
+    "category": "competition",
+    "created_at": null,
+    "title": "Hiring Challenges for Jobs & Freshers | Skill-Based Hiring - Unstop",
+    "url": "https://unstop.com/hiring-challenges"
+  },
+  {
+    "id": "0ed594e3-7e7d-4f84-a8de-a8b13c630562",
+    "opportunity_id": "aa62757f-32da-4e84-8422-3f0c97403853",
+    "profile_id": "a1b0b7b1-f40a-486f-8caf-bb68eacd00ae",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: competition"
+    ],
+    "rank": 13,
+    "category": "competition",
+    "created_at": null,
+    "title": "Unstop: Internships | Jobs | Competitions | Hackathons | Courses",
+    "url": "https://unstop.com/"
+  },
+  {
+    "id": "5a474be2-3681-4d3b-83b0-c5c2bf6bb770",
+    "opportunity_id": "e84a2e72-b110-47cb-bcb4-486f6853b94e",
+    "profile_id": "a1b0b7b1-f40a-486f-8caf-bb68eacd00ae",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: internship"
+    ],
+    "rank": 14,
+    "category": "internship",
+    "created_at": null,
+    "title": "Software Engineering Internship - Noida in Noida at Siemens | Unstop",
+    "url": "https://unstop.com/internships/software-engineering-internship-noida-siemens-1643716"
+  },
+  {
+    "id": "00a4cb55-c2cd-41a8-88cb-99f90a3a5eba",
+    "opportunity_id": "55537f64-b2ca-4ff3-9513-9fae2b6a9a70",
+    "profile_id": "a1b0b7b1-f40a-486f-8caf-bb68eacd00ae",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: internship"
+    ],
+    "rank": 15,
+    "category": "internship",
+    "created_at": null,
+    "title": "212 Software Development Internships - Internshala",
+    "url": "https://internshala.com/internships/software-development-internship/"
+  },
+  {
+    "id": "06024314-152f-496b-b900-05f755ac08cc",
+    "opportunity_id": "e7f6a983-5e39-45e2-a302-109c057991b3",
+    "profile_id": "a1b0b7b1-f40a-486f-8caf-bb68eacd00ae",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: internship"
+    ],
+    "rank": 16,
+    "category": "internship",
+    "created_at": null,
+    "title": "134 Software Development Internships in Noida - Internshala",
+    "url": "https://internshala.com/internships/software-development-internship-in-noida/"
+  },
+  {
+    "id": "ccc26bac-8b04-4df5-aab4-a526ff1ed086",
+    "opportunity_id": "8332cf34-d360-4223-bfbc-dd38de29777a",
+    "profile_id": "a1b0b7b1-f40a-486f-8caf-bb68eacd00ae",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: job"
+    ],
+    "rank": 17,
+    "category": "job",
+    "created_at": null,
+    "title": "Tech & Startup Jobs in Noida - Wellfound",
+    "url": "https://wellfound.com/location/noida"
+  },
+  {
+    "id": "553ecf0c-6e03-4a3f-9a30-4977411acffc",
+    "opportunity_id": "b7f25178-f911-4d82-b193-43d9c2ab3566",
+    "profile_id": "a1b0b7b1-f40a-486f-8caf-bb68eacd00ae",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: job"
+    ],
+    "rank": 18,
+    "category": "job",
+    "created_at": null,
+    "title": "Software Engineer Jobs in India - 2026 - Wellfound",
+    "url": "https://wellfound.com/role/l/software-engineer/india"
+  },
+  {
+    "id": "8b03a443-c962-45dc-8457-93a7eb92f2d2",
+    "opportunity_id": "c202499c-4746-4379-aee4-b9e4278f513f",
+    "profile_id": "a1b0b7b1-f40a-486f-8caf-bb68eacd00ae",
+    "user_id": "default-user",
+    "relevance_score": 60,
+    "match_reasons": [
+      "Category relevance: job"
+    ],
+    "rank": 19,
+    "category": "job",
+    "created_at": null,
+    "title": "Software Engineer Jobs in Noida, India - 2026 - Wellfound",
+    "url": "https://wellfound.com/role/l/software-engineer/noida"
+  },
+  {
+    "id": "15eb70b2-9376-47a7-be60-407c65238db1",
+    "opportunity_id": "opp_mohit_hcl",
+    "profile_id": "44ca233e-ed9c-4157-98c6-42344cb6efd7",
+    "user_id": "aBMH3Gyaf3c389ZNPDTNM8c51Cc2",
+    "title": "AI/ML Engineering Intern (Computer Vision & Wearables)",
+    "company": "HCL Technologies",
+    "relevance_score": 78,
+    "match_reasons": [],
+    "rank": 1,
+    "category": "job",
+    "created_at": "2026-09-23T18:57:21.211792Z"
+  },
+  {
+    "id": "0ccb7dec-7bba-43c9-b471-7b4b7a7f7d32",
+    "opportunity_id": "opp_mohit_drdo",
+    "profile_id": "44ca233e-ed9c-4157-98c6-42344cb6efd7",
+    "user_id": "aBMH3Gyaf3c389ZNPDTNM8c51Cc2",
+    "title": "Cybersecurity & AI Systems Research Intern",
+    "company": "Defence Research & Development Organization (DRDO)",
+    "relevance_score": 76,
+    "match_reasons": [],
+    "rank": 1,
+    "category": "job",
+    "created_at": "2026-09-23T18:57:21.229379Z"
+  },
+  {
+    "id": "ff288973-c15e-4173-8869-78303b8d2367",
+    "opportunity_id": "150ae0ec-7a92-4c90-9351-01fbf1fa45b2",
+    "profile_id": "44ca233e-ed9c-4157-98c6-42344cb6efd7",
+    "user_id": "aBMH3Gyaf3c389ZNPDTNM8c51Cc2",
+    "title": "USAII® Global AI Hackathon 2026: (* REGISTRATION EXPIRED JUNE 6 ...",
+    "company": null,
+    "relevance_score": 76,
+    "match_reasons": [],
+    "rank": 1,
+    "category": "competition",
+    "created_at": "2026-09-23T18:57:21.269220Z"
+  },
+  {
+    "id": "b440dfa6-ffa5-4605-a5f4-e9bf6d335b97",
+    "opportunity_id": "opp_mohit_apple",
+    "profile_id": "44ca233e-ed9c-4157-98c6-42344cb6efd7",
+    "user_id": "aBMH3Gyaf3c389ZNPDTNM8c51Cc2",
+    "title": "Edge AI & IoT Wearables Platform Engineer",
+    "company": "Apple",
+    "relevance_score": 75,
+    "match_reasons": [],
+    "rank": 1,
+    "category": "job",
+    "created_at": "2026-09-23T18:57:21.300737Z"
+  },
+  {
+    "id": "955134be-df1b-415d-b3c6-19406431a9be",
+    "opportunity_id": "af4b3d35-bda2-4abe-943d-7e0856cff92a",
+    "profile_id": "44ca233e-ed9c-4157-98c6-42344cb6efd7",
+    "user_id": "aBMH3Gyaf3c389ZNPDTNM8c51Cc2",
+    "title": "2540+ Hackathons in India 2026 – Online & Student Challenges - Unstop",
+    "company": null,
+    "relevance_score": 74,
+    "match_reasons": [],
+    "rank": 1,
+    "category": "hackathon",
+    "created_at": "2026-09-23T18:57:21.330724Z"
+  },
+  {
+    "id": "318a8d82-1d68-426c-b8b1-484f83720093",
+    "opportunity_id": "opp_krati_vercel",
+    "profile_id": "44ca233e-ed9c-4157-98c6-42344cb6efd7",
+    "user_id": "aBMH3Gyaf3c389ZNPDTNM8c51Cc2",
+    "title": "Lead Frontend & Design Systems Engineer",
+    "company": "Vercel",
+    "relevance_score": 73,
+    "match_reasons": [],
+    "rank": 1,
+    "category": "job",
+    "created_at": "2026-09-23T18:57:21.367144Z"
+  },
+  {
+    "id": "1875d922-07f9-467b-8b0f-b6efc075ad73",
+    "opportunity_id": "24e1988f-2fb4-424e-a6cf-1fb9093eb157",
+    "profile_id": "44ca233e-ed9c-4157-98c6-42344cb6efd7",
+    "user_id": "aBMH3Gyaf3c389ZNPDTNM8c51Cc2",
+    "title": "New & upcoming hackathons - Devpost",
+    "company": null,
+    "relevance_score": 72,
+    "match_reasons": [],
+    "rank": 1,
+    "category": "hackathon",
+    "created_at": "2026-09-23T18:57:21.399143Z"
+  },
+  {
+    "id": "0c37721e-593e-4db3-b38c-f44fce9bcb59",
+    "opportunity_id": "fcd5ce1d-46e4-4cc8-bb0b-f31bff234a10",
+    "profile_id": "44ca233e-ed9c-4157-98c6-42344cb6efd7",
+    "user_id": "aBMH3Gyaf3c389ZNPDTNM8c51Cc2",
+    "title": "Software Engineer - Graduate 2026 Job at Google | Multiple Locations",
+    "company": null,
+    "relevance_score": 72,
+    "match_reasons": [],
+    "rank": 1,
+    "category": "competition",
+    "created_at": "2026-09-23T18:57:21.425370Z"
+  },
+  {
+    "id": "c4cf05ec-7c11-4576-b2d3-e824344757fa",
+    "opportunity_id": "e23e0cf2-a498-4c78-bea9-9c2e31d676e1",
+    "profile_id": "44ca233e-ed9c-4157-98c6-42344cb6efd7",
+    "user_id": "aBMH3Gyaf3c389ZNPDTNM8c51Cc2",
+    "title": "New & upcoming hackathons - Devpost",
+    "company": null,
+    "relevance_score": 72,
+    "match_reasons": [],
+    "rank": 1,
+    "category": "competition",
+    "created_at": "2026-09-23T18:57:21.459685Z"
+  },
+  {
+    "id": "65e3e521-c28a-4a88-ba46-6b4877897639",
+    "opportunity_id": "e2ff9522-76b1-46dc-8814-269ee4f46852",
+    "profile_id": "44ca233e-ed9c-4157-98c6-42344cb6efd7",
+    "user_id": "aBMH3Gyaf3c389ZNPDTNM8c51Cc2",
+    "title": "Hiring Challenges for Jobs & Freshers | Skill-Based Hiring - Unstop",
+    "company": null,
+    "relevance_score": 72,
+    "match_reasons": [],
+    "rank": 1,
+    "category": "competition",
+    "created_at": "2026-09-23T18:57:21.488698Z"
+  },
+  {
+    "id": "2cdda718-af8e-478d-bf4f-99481ebae5d6",
+    "opportunity_id": "150ae0ec-7a92-4c90-9351-01fbf1fa45b2",
+    "profile_id": "6d763d7f-17df-4431-91d8-1e5b6aab6b50",
+    "user_id": "aBMH3Gyaf3c389ZNPDTNM8c51Cc2",
+    "title": "USAII® Global AI Hackathon 2026: (* REGISTRATION EXPIRED JUNE 6 ...",
+    "company": null,
+    "relevance_score": 77,
+    "match_reasons": [],
+    "rank": 1,
+    "category": "competition",
+    "created_at": "2026-09-28T19:05:43.721266Z"
+  },
+  {
+    "id": "05c23900-5ef8-471e-b392-8a7cdfdbb210",
+    "opportunity_id": "opp_mohit_hcl",
+    "profile_id": "6d763d7f-17df-4431-91d8-1e5b6aab6b50",
+    "user_id": "aBMH3Gyaf3c389ZNPDTNM8c51Cc2",
+    "title": "AI/ML Engineering Intern (Computer Vision & Wearables)",
+    "company": "HCL Technologies",
+    "relevance_score": 76,
+    "match_reasons": [],
+    "rank": 1,
+    "category": "job",
+    "created_at": "2026-09-28T19:05:43.759157Z"
+  },
+  {
+    "id": "6f6d8d64-3362-4d41-8bcb-6d56865e6203",
+    "opportunity_id": "fcd5ce1d-46e4-4cc8-bb0b-f31bff234a10",
+    "profile_id": "6d763d7f-17df-4431-91d8-1e5b6aab6b50",
+    "user_id": "aBMH3Gyaf3c389ZNPDTNM8c51Cc2",
+    "title": "Software Engineer - Graduate 2026 Job at Google | Multiple Locations",
+    "company": null,
+    "relevance_score": 76,
+    "match_reasons": [],
+    "rank": 1,
+    "category": "competition",
+    "created_at": "2026-09-28T19:05:43.793589Z"
+  },
+  {
+    "id": "9726fe99-2910-44a3-a89b-aa2cefaa7d72",
+    "opportunity_id": "af4b3d35-bda2-4abe-943d-7e0856cff92a",
+    "profile_id": "6d763d7f-17df-4431-91d8-1e5b6aab6b50",
+    "user_id": "aBMH3Gyaf3c389ZNPDTNM8c51Cc2",
+    "title": "2540+ Hackathons in India 2026 – Online & Student Challenges - Unstop",
+    "company": null,
+    "relevance_score": 76,
+    "match_reasons": [],
+    "rank": 1,
+    "category": "hackathon",
+    "created_at": "2026-09-28T19:05:43.823741Z"
+  },
+  {
+    "id": "c573d921-2845-4ca2-8f1e-b6141b5f9c12",
+    "opportunity_id": "24e1988f-2fb4-424e-a6cf-1fb9093eb157",
+    "profile_id": "6d763d7f-17df-4431-91d8-1e5b6aab6b50",
+    "user_id": "aBMH3Gyaf3c389ZNPDTNM8c51Cc2",
+    "title": "New & upcoming hackathons - Devpost",
+    "company": null,
+    "relevance_score": 75,
+    "match_reasons": [],
+    "rank": 1,
+    "category": "hackathon",
+    "created_at": "2026-09-28T19:05:43.858037Z"
+  },
+  {
+    "id": "b8ba2bca-862b-4019-928c-63e3b7f39765",
+    "opportunity_id": "bccc8636-db1e-44a5-863e-96d98bf4ff3e",
+    "profile_id": "6d763d7f-17df-4431-91d8-1e5b6aab6b50",
+    "user_id": "aBMH3Gyaf3c389ZNPDTNM8c51Cc2",
+    "title": "React AI Engineer Tech Roles on Wellfound (AngelList)",
+    "company": null,
+    "relevance_score": 75,
+    "match_reasons": [],
+    "rank": 1,
+    "category": "job",
+    "created_at": "2026-09-28T19:05:43.893389Z"
+  },
+  {
+    "id": "95e30d15-061c-40a2-b905-0fc5a2f11e1b",
+    "opportunity_id": "d9111f61-260e-4ae0-ad29-ffc8f5e2e711",
+    "profile_id": "6d763d7f-17df-4431-91d8-1e5b6aab6b50",
+    "user_id": "aBMH3Gyaf3c389ZNPDTNM8c51Cc2",
+    "title": "React AI Engineer Tech Roles on Wellfound (AngelList)",
+    "company": null,
+    "relevance_score": 75,
+    "match_reasons": [],
+    "rank": 1,
+    "category": "job",
+    "created_at": "2026-09-28T19:05:43.925730Z"
+  },
+  {
+    "id": "5808bb99-7d4b-4874-93bf-e433b125bd33",
+    "opportunity_id": "e23e0cf2-a498-4c78-bea9-9c2e31d676e1",
+    "profile_id": "6d763d7f-17df-4431-91d8-1e5b6aab6b50",
+    "user_id": "aBMH3Gyaf3c389ZNPDTNM8c51Cc2",
+    "title": "New & upcoming hackathons - Devpost",
+    "company": null,
+    "relevance_score": 75,
+    "match_reasons": [],
+    "rank": 1,
+    "category": "competition",
+    "created_at": "2026-09-28T19:05:43.955812Z"
+  },
+  {
+    "id": "2305e104-b6db-4500-bb80-00de6aeafac5",
+    "opportunity_id": "opp_mohit_drdo",
+    "profile_id": "6d763d7f-17df-4431-91d8-1e5b6aab6b50",
+    "user_id": "aBMH3Gyaf3c389ZNPDTNM8c51Cc2",
+    "title": "Cybersecurity & AI Systems Research Intern",
+    "company": "Defence Research & Development Organization (DRDO)",
+    "relevance_score": 75,
+    "match_reasons": [],
+    "rank": 1,
+    "category": "job",
+    "created_at": "2026-09-28T19:05:43.994218Z"
+  },
+  {
+    "id": "5165c69d-1984-4c66-a632-7d9d0e83a3ae",
+    "opportunity_id": "opp_vishnu_uber",
+    "profile_id": "6d763d7f-17df-4431-91d8-1e5b6aab6b50",
+    "user_id": "aBMH3Gyaf3c389ZNPDTNM8c51Cc2",
+    "title": "Backend Infrastructure & Platform Intern",
+    "company": "Uber Technologies",
+    "relevance_score": 74,
+    "match_reasons": [],
+    "rank": 1,
+    "category": "internship",
+    "created_at": "2026-09-28T19:05:44.033717Z"
+  }
+]
